@@ -9,8 +9,9 @@ volgende componenten:
   elke rij van de data aan gegevens wordt geleverd. Een dataset voor
   aansluitingen zal minstens een kolom "Aansluitingsnummer" bevatten, waarbij
   elke rij in de dataset een aansluiting beschrijft;
-* _dataservice_: de technische manier van verspreiden van de dataset. Dit gaat
-  over hoe de data ontsloten wordt (als bestand, API, database of file server);
+* _dataservice_: de (technische) manier van verspreiden van de dataset. Dit gaat
+  over hoe de data ontsloten wordt, de onderliggende architectuur en de
+  gebruiksscenario's;
 * _voorwaarden_: er kunnen voorwaarden liggen op beschikbaarheid, kwaliteit,
   classificatie en doelbinding bij gebruik van het dataproduct.
 
