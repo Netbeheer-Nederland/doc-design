@@ -88,7 +88,7 @@ rol worden in het volgende hoofdstuk beschreven.
 
 == Functionele eisen
 
-_Functionele eisen_ omschrijven wat een oplossing moet *doen*, en voor *wie*.
+_Functionele eisen_ beschrijven wat een oplossing moet *doen*, en voor *wie*.
 De meeste informatievragen over het elektriciteitsnet draaien rondom
 bedrijfsvoering (nettoplogie, congestie en _power flow_), netontwerp
 (nettopologie met een temporaal aspect) en marktfacilitering (meterstanden,
@@ -133,10 +133,6 @@ flexibiliteit). Onderstaand een detailoverzicht.
 
 |...
 |Knelpunt/congestie
-|...
-
-|...
-|Integriteit -> Master Data Management (MDM)
 |...
 
 |...
@@ -419,29 +415,29 @@ waar van toepassing.
 |===
 |Categorie |Beschrijving |Kwaliteitseisen
 
-|Prestaties
-|Snel en efficiënt functioneren, met minimale laadtijden en schaalbaar
-|
+ |Prestaties
+ |Snel en efficiënt functioneren, met minimale laadtijden en schaalbaar
+a|
 
-|Overdraagbaarheid
-|Eenvoudig te verplaatsen of te migreren naar een andere omgeving
-|
+ |Overdraagbaarheid
+ |Eenvoudig te verplaatsen of te migreren naar een andere omgeving
+a|
 
-|Gebruiksvriendelijkheid
-|Intuïtief en makkelijk te gebruiken voor de eindgebruiker
-|
+ |Gebruiksvriendelijkheid
+ |Intuïtief en makkelijk te gebruiken voor de eindgebruiker
+a|
 
-|Betrouwbaarheid
-|Stabiel en foutbestendig, met een hoge beschikbaarheid
-|
+ |Betrouwbaarheid
+ |Stabiel en foutbestendig, met een hoge beschikbaarheid
+a|* integriteit -> Masterdata Management (MDM)
 
-|Beveiliging
-|Bescherming bieden tegen ongeautoriseerde toegang en datalekken
-|
+ |Beveiliging
+ |Bescherming bieden tegen ongeautoriseerde toegang en datalekken
+a|
 
-|Onderhoudbaarheid
-|Eenvoudig aanpasbaar en uitbreidbaar zijn
-|
+ |Onderhoudbaarheid
+ |Eenvoudig aanpasbaar en uitbreidbaar zijn
+a|
 |===
 
 === Architectuur
