@@ -1,7 +1,8 @@
 = Meetdata
 
-Dit ontwerp beschrijft de beoogde gebruiksscenario's voor het dataproduct _GV
-Meetdata_, alsmede de achterliggende architectuur en gemaakte keuzes.
+Dit ontwerp beschrijft de beoogde gebruiksscenario's voor het dataproduct
+https://netbeheer-nederland.github.io/docs/dp-meetdata/latest/[``GV
+Meetdata``], alsmede de achterliggende architectuur en gemaakte keuzes.
 
 
 [NOTE]

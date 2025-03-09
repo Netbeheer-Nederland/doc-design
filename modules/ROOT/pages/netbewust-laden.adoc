@@ -1,7 +1,8 @@
 = Netbewust Laden
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
-_Netbewust Laden_, alsmede de achterliggende architectuur en gemaakte keuzes.
+https://netbeheer-nederland.github.io/docs/dp-netbewust-laden/latest/[``Netbewust
+Laden``], alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====

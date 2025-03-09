@@ -1,7 +1,7 @@
 = NL CIM Profile Group
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor de _NL CIM Profile
-Group_, alsmede de achterliggende architectuur en gemaakte keuzes.
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor de ``NL CIM Profile
+Group``, alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====

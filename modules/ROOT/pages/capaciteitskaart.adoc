@@ -1,7 +1,8 @@
 = Capaciteitskaart
 
 Dit ontwerp beschrijft de beoogde gebruiksscenarios voor het dataproduct
-_Capaciteitskaart_, alsmede de achterliggende architectuur en gemaakte keuzes.
+https://netbeheer-nederland.github.io/docs/dp-capaciteitskaart/latest/[``Capaciteitskaart``],
+alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====
