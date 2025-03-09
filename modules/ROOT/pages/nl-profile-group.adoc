@@ -62,7 +62,7 @@ profielen zijn dermate breed toepasbaar dat deze ook zelf weer een standaard
 worden, dan wel als enkel profiel of een verzameling van profielen: een
 _Profile Group_. De _Common Grid Model Exchange Standard_ (CGMES) is een
 voorbeeld van een gestandaardiseerde Profile Group, waarbij de TSO's binnen
-Europa de onderliggende profielen gebruiken op operationele informatie over hun
+Europa de onderliggende profielen gebruiken om operationele informatie over hun
 netten met elkaar uit te wisselen.
 
 == Rollen
