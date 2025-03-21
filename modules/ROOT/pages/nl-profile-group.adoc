@@ -136,6 +136,10 @@ flexibiliteit). Onderstaand een detailoverzicht.
 |...
 
 |...
+|Aangeslotene
+|...
+
+|...
 |Inzicht in het "waarom"
 |...
 |===
@@ -159,7 +163,7 @@ vullen zijn de volgende profielen vereist:
 |*Functionele* eigenschappen van componenten in het net (netfuncties)
 |
 
-|Geographical Location (GEO)
+|Geographical Location (GL)
 |Locatie van componenten in het net
 |
 
