@@ -548,7 +548,7 @@ classes: {
   gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
 * aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
 * netbeheerders leveren de dataset aan via een eigen bestandslocatie;
-* de profielen zijn vindbaar via het EDSN Dataportaal.
+* de profielen zijn vindbaar via het NBNL Dataportaal.
 
 == Voorwaarden
 
