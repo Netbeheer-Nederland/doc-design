@@ -43,14 +43,14 @@ vars: {
   }
 }
 
-Gebruiker -> EDSN: 1. Zoek dataproduct op EDSN Dataportaal
+Gebruiker -> EDSN: 1. Zoek dataproduct op NBNL Dataportaal
 EDSN -> Gebruiker: 2. Vind dataproduct
 Gebruiker -> Netbeheerder: 3. Vraag dataset bij individuele netbeheerder
 Netbeheerder -> Gebruiker: 4. Lever dataset
 Gebruiker -> Gebruiker: 5. Verwerk dataset
 ----
 
-1. de gebruiker zoekt het dataproduct op het EDSN Dataportaal;
+1. de gebruiker zoekt het dataproduct op het NBNL Dataportaal;
 2. de gebruiker vindt het gezochte dataproduct;
 3. de gebruiker downloadt de dataset voor een individuele netbeheerder vanuit
    de decentrale dataservice;
@@ -88,7 +88,7 @@ Load.class: [verb; business]
 
 "HTTP Server".class: [noun; application]
 "Data Product".class: [noun; application]
-"EDSN Dataportaal".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
 4.class: empty
 
 5.class: empty
@@ -97,7 +97,7 @@ Load.class: [verb; business]
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
-"EDSN Dataportaal" -> "Data Product": "accesses (read)"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
 Consumer -> Extract: "assigned to"
 "JSON File" -> "Data Product": "realises"
 "HTTP Server" -> "Data Product": "accesses (read)"
@@ -196,7 +196,7 @@ classes: {
   Een JSON Schema op basis van het logisch model is hiervoor beschikbaar
   gemaakt;
 * netbeheerders leveren de dataset aan via een eigen bestandslocatie;
-* het dataproduct _Netbewust Laden_ is vindbaar via het EDSN Dataportaal.
+* het dataproduct _Netbewust Laden_ is vindbaar via het NBNL Dataportaal.
 
 == Dataset
 

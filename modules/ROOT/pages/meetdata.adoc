@@ -235,7 +235,7 @@ Load.class: [verb; business]
 
 "MijnOmgeving/Maatwerk".class: [noun; application]
 "Data Product".class: [noun; application]
-"EDSN Dataportaal".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
 6.class: empty
 
 7.class: empty
@@ -244,7 +244,7 @@ Load.class: [verb; business]
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
-"EDSN Dataportaal" -> "Data Product": "accesses (read)"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
 Extract -> Consumer: "serves"
 EDSN -> Broker: "assigned to"
 Broker -> Extract: "assigned to"
@@ -341,7 +341,7 @@ classes: {
 * de structuur (logisch model) van de dataset is gebaseerd op het
 _Begrippenmodel NBNL_ en het _Common Information Model_;
 * aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
-* het dataproduct is vindbaar via het EDSN Dataportaal.
+* het dataproduct is vindbaar via het NBNL Dataportaal.
 
 == Dataset
 

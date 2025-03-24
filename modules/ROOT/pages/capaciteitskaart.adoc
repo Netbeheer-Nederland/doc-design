@@ -96,7 +96,7 @@ Load.class: [verb; business]
 
 "EDSN File Gateway".class: [noun; application]
 "Data Product".class: [noun; application]
-"EDSN Dataportaal".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
 6.class: empty
 
 7.class: empty
@@ -105,7 +105,7 @@ Load.class: [verb; business]
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
-"EDSN Dataportaal" -> "Data Product": "accesses (read)"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
 Extract -> Consumer: "serves"
 EDSN -> Broker: "assigned to"
 Broker -> Extract: "assigned to"
@@ -203,7 +203,7 @@ classes: {
 _Begrippenmodel NBNL_ en het _Common Information Model_;
 * aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
 * netbeheerders leveren de dataset aan via de _File Gateway_ van EDSN; het
-* dataproduct *Capaciteitskaart* is vindbaar via het EDSN Dataportaal.
+* dataproduct *Capaciteitskaart* is vindbaar via het NBNL Dataportaal.
 
 == Dataset
 
@@ -260,7 +260,7 @@ Dit dataproduct wordt als _open data_ aangeboden.
 |Voor elk jaar (tot 2030) wordt een aparte dataset per jaar opgeleverd.
 
 |Aanname
-|Het dataproduct wordt opgevoerd in het EDSN Dataportaal.
+|Het dataproduct wordt opgevoerd in het NBNL Dataportaal.
 
 |Aanname
 |Voedingsgebieden zijn *niet* stabiel over de tijdsperiode voor prognoses.
