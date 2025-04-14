@@ -10,6 +10,31 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
+Dit dataproduct verstrekt de informatie voor de volgende gebruikersscenario's:
+
+1. Wijkbewoners activeren om hun energie-gebruik en -opwek in balans te brengen op basis van beschikbare data, zodat het trafostation niet uitvalt. Door het aanjagen van zelforganisatie en gedragsverandering hopen we piekbelasting te reduceren en spanningsklachten te verminderen waarmee de wachttijd voor wijkgerichte verzwaring wordt overbrugd.
+2. Klanten in kritieke wijken inzicht en handelingsperspectief bieden.
+
+== Functionele eisen
+
+Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
+*doen*.
+
+.Functionele eisen
+[cols="1, 1, 1"]
+|===
+|Als Rol |Wil ik |Want
+
+|Gebruiker
+|De belasting van de transformatoren in de MSR in mijn wijk inzien (24 uren historisch, 24 uren geprognotiseerd en actueel)
+|Dan krijg ik inzicht in de momenten van overbelasting en kan ik mijn gedrag daarop kan aanpassen.
+
+|Gebruiker 
+|Meldingen van momenten waarop overbelasting wordt verwacht ontvangen
+|Dan kan ik mijn gedrag hierop aanpassen en helpen de overbelasting te voorkomen.
+
+|===
+
 == Dataservice
 
 === Gebruiksscenario
@@ -19,6 +44,7 @@ Het volgende gebruiksscenario wordt ondersteund:
 .Gebruiksscenario
 [d2,svg,theme=4]
 ----
+
 shape: sequence_diagram
 
 vars: {
@@ -26,6 +52,24 @@ vars: {
     pad: 20
   }
 }
+
+Gebruiker -> "App Store": "Downloaden app"
+"App Store" -> Gebruiker: "Installeren app"
+Gebruiker -> "BuurtnetApp": "Aanmelden"
+
+Netbeheerder -> BuurtnetApp: "Capaciteit & belasting"
+
+"Gebruiker vraagt op": {
+  Gebruiker -> "BuurtnetApp": "Opvragen capaciteit & belasting"
+  "BuurtnetApp" -> Gebruiker: "Capaciteit & belasting"
+}
+
+"BuurtnetApp stuurt melding": {
+  "BuurtnetApp" -> Gebruiker: "Melding over capaciteit & belasting"
+  "BuurtnetApp" -> Gebruiker: "Capaciteit & belasting"
+}
+
+Gebruiker -> Gebruiker: "Gedrag aanpassen"
 
 ----
 
@@ -181,16 +225,16 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|Laag, < 100MB (ongecomprimeerd)
+|Midden, < 300MB (ongecomprimeerd)
 
 |Variety
 |Gestructureerd
 
 |Veracity
-|Medium, ...
+|Midden, de dataset wordt samengesteld uit gegevens voor connectiviteit en aansluitingen. Beiden zijn zeer betrouwbaar, maar de koppeling tussen beiden is minder betrouwbaar
 
 |Velocity
-|Laag, ...
+|Midden, minimaal één maal per 24 uur (zie functionele eisen)
 |===
 
 == Voorwaarden
@@ -203,6 +247,10 @@ Dit dataproduct wordt als _open data_ aangeboden.
 |===
 |Type |Beschrijving
 
-|Beslissing
-|...
+|Aanname
+|BuurtnetApp bestaat uit een frontend en een backend
+
+|Aanname
+|BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
+
 |===
