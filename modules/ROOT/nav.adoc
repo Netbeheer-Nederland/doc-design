@@ -1,4 +1,5 @@
+* xref::buurtnet.adoc[]
 * xref::capaciteitskaart.adoc[]
-* xref::netbewust-laden.adoc[]
 * xref::meetdata.adoc[]
+* xref::netbewust-laden.adoc[]
 * xref::nl-profile-group.adoc[]
