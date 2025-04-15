@@ -240,6 +240,10 @@ include::partial$four_v.adoc[]
 == Voorwaarden
 
 Dit dataproduct wordt als _open data_ aangeboden.
+Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd: 
+
+1. Als gesloten data. Hierbij wordt een aansluiting direct gekoppeld aan een transformator. Hierdoor is er een directe koppeling tussen invoeding en afname van een specifieke aansluiting en de bijdrage die de aansluiting heeft in de belasting van de transformator. Hiervoor wordt de EAN-code van de aansluiting gecommuniceerd in de dataset. De EAN-code is privacygevoelig.
+2. Als open data. Hierbij wordt invoeding en afname geaggregeerd per postcode6 en wordt postcode6 gekoppeld aan een transformator. Hiervoor wordt geen EAN-code gecommuniceerd in de dataset. De gebruiker moet zelf aangeven voor welke postcode6 er capaciteit en belasting gevraagd wordt.
 
 == Beslissingen en aannames
 
@@ -252,5 +256,8 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 |Aanname
 |BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
+
+|Aanname
+|Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten
 
 |===
