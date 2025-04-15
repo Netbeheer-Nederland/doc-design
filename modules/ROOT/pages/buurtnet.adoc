@@ -1,4 +1,4 @@
-= Design
+= Buurtnet
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
 _Buurtnet_, alsmede de achterliggende architectuur en gemaakte keuzes.
