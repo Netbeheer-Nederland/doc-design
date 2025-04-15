@@ -262,7 +262,7 @@ Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 |BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
 
 |Aanname
-|Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten
+|Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op a) het inrichten van authenticatie en autorisatie bij elke netbeheerder; b) beperkt de herbruikbaarheid voor andere toepassingen en c) legt beperkingen op de gebruikers van het dataproduct.
 
 |Beslissing
 |Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatron
