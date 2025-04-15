@@ -82,6 +82,7 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4,scaledwidth=100%]
 ----
+
 vars: {
   d2-config: {
     pad: 20
@@ -95,7 +96,7 @@ vertical-gap: 80
 horizontal-gap: 160
 
 "Netbeheerder".class: [noun; business]
-Consumer.class: [noun; business]
+BuurtnetApp.class: [noun; business]
 1.class: empty
 2.class: empty
 
@@ -104,22 +105,22 @@ Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"HTTP Server".class: [noun; application]
+"?".class: [noun; application]
 "Data Product".class: [noun; application]
 "NBNL Dataportaal".class: [noun; application]
 4.class: empty
 
 5.class: empty
-"JSON File".class: [artifact; technology]
+"Excel File".class: [artifact; technology]
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
 "NBNL Dataportaal" -> "Data Product": "accesses (read)"
-Consumer -> Extract: "assigned to"
-"JSON File" -> "Data Product": "realises"
-"HTTP Server" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "HTTP Server": "assigned to"
+BuurtnetApp -> Extract: "assigned to"
+"Excel File" -> "Data Product": "realises"
+"?" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "?": "assigned to"
 
 legend: "" {
   style: {
@@ -205,9 +206,12 @@ classes: {
   }
 }
 
+
 ----
 
-* ...
+ToDo: 
+* Bespreken wat de technische invulling (inclusief integratiepatroon) van fase 1 moet zijn
+* Bespreken wat de technische invulling (inclusief integratiepatroon) van fase 2 moet zijn
 
 == Dataset
 
@@ -252,12 +256,15 @@ Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 |Type |Beschrijving
 
 |Aanname
-|BuurtnetApp bestaat uit een frontend en een backend
+|BuurtnetApp bestaat uit een frontend en een backend. Datasets worden vanuit de backend van de BuurtnetApp opgehaald bij de netbeheerder
 
 |Aanname
 |BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
 
 |Aanname
 |Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten
+
+|Beslissing
+|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatron
 
 |===
