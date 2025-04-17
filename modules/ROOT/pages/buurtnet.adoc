@@ -44,7 +44,6 @@ Het volgende gebruiksscenario wordt ondersteund:
 .Gebruiksscenario
 [d2,svg,theme=4]
 ----
-
 shape: sequence_diagram
 
 vars: {
@@ -53,27 +52,33 @@ vars: {
   }
 }
 
-Gebruiker -> "App Store": "Downloaden app"
-"App Store" -> Gebruiker: "Installeren app"
-Gebruiker -> "BuurtnetApp": "Aanmelden"
+Gebruiker -> "App Store": "1. Downloaden app"
+"App Store" -> Gebruiker: "2. Installeren app"
+Gebruiker -> "BuurtnetApp": "3. Aanmelden"
 
-Netbeheerder -> BuurtnetApp: "Capaciteit & belasting"
+Netbeheerder -> BuurtnetApp: "4. Capaciteit & belasting"
 
 "Gebruiker vraagt op": {
-  Gebruiker -> "BuurtnetApp": "Opvragen capaciteit & belasting"
-  "BuurtnetApp" -> Gebruiker: "Capaciteit & belasting"
+  Gebruiker -> "BuurtnetApp": "5. Opvragen capaciteit & belasting"
+  "BuurtnetApp" -> Gebruiker: "6. Capaciteit & belasting"
 }
 
 "BuurtnetApp stuurt melding": {
-  "BuurtnetApp" -> Gebruiker: "Melding over capaciteit & belasting"
-  "BuurtnetApp" -> Gebruiker: "Capaciteit & belasting"
+  "BuurtnetApp" -> Gebruiker: "7. Melding over capaciteit & belasting"
+  "BuurtnetApp" -> Gebruiker: "8. Capaciteit & belasting"
 }
 
-Gebruiker -> Gebruiker: "Gedrag aanpassen"
-
+Gebruiker -> Gebruiker: "9. Gedrag aanpassen"
 ----
 
-1. ...
+1. De gebruiker downloadt de BuurtnetApp;
+2. De gebruiker installeert de BuurtnetApp;
+3. De gebruiker meldt zich aan bij de BuurtnetApp met zijn/haar Postcode6;
+4. De netbeheerder levert capaciteit en belasting naar de BuurtnetApp;
+5. De gebruiker vraagt de belasting van haar MSR op;
+6. De gebruiker krijgt de capaciteit en belasting van zijn/haar MSR terug;
+7. De gebruiiker krijgt een melding over de capaciteit en belasting van zijn/haar MSR;
+8. De gebruiker past zijn/haar gedrag aan op basis van de ruimte op zijn/haar MSR.
 
 === Architectuur
 
