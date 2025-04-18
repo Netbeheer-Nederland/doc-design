@@ -79,7 +79,7 @@ Gebruiker -> Gebruiker: "9. Gedrag aanpassen"
 6. De gebruiker krijgt de capaciteit en belasting van haar MSR terug;
 7. De gebruiker krijgt een melding over de capaciteit en belasting van haar MSR;
 8. De gebruiker ontvangt capaciteit en belasting van de BuurtnetApp
-9. De gebruiker past haar gedrag aan op basis van de ruimte op zijn/haar MSR.
+9. De gebruiker past haar gedrag aan op basis van de capaciteit en belasting van haar MSR.
 
 === Architectuur
 
@@ -270,8 +270,10 @@ Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 |Aanname
 |Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op 
 
-a) het inrichten van authenticatie en autorisatie bij elke netbeheerder; 
+a) het inrichten van authenticatie en autorisatie bij elke netbeheerder;
+
 b) beperkt de herbruikbaarheid voor andere toepassingen en 
+
 c) legt beperkingen op de gebruikers van het dataproduct.
 
 |Beslissing
