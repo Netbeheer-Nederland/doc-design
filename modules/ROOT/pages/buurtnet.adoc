@@ -75,7 +75,7 @@ Gebruiker -> Gebruiker: "9. Gedrag aanpassen"
 2. De gebruiker installeert de BuurtnetApp;
 3. De gebruiker meldt zich aan bij de BuurtnetApp met haar Postcode6;
 4. De netbeheerder levert capaciteit en belasting naar de BuurtnetApp;
-5. De gebruiker vraagt de belasting van haar MSR op;
+5. De gebruiker vraagt de capaciteit en belasting van haar MSR op;
 6. De gebruiker krijgt de capaciteit en belasting van haar MSR terug;
 7. De gebruiker krijgt een melding over de capaciteit en belasting van haar MSR;
 8. De gebruiker ontvangt capaciteit en belasting van de BuurtnetApp
@@ -221,7 +221,7 @@ classes: {
 
 == Dataset
 
-De dataset beschrijft ...
+De dataset beschrijft de capaciteit en belasting van een MSR: 24 uren historisch, 24 uren geprognotiseerd en actueel.
 
 === Volume, variety, veracity, velocity
 
@@ -267,16 +267,19 @@ Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 |Aanname
 |BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
 
+|Beslissing
+|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatroon
+
+|Beslissing
+|Er is besloten voor een open dataproduct in fase 1. 
+
 |Aanname
-|Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op 
+|Er wordt in fase 2 gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op 
 
 a) het inrichten van authenticatie en autorisatie bij elke netbeheerder;
 
 b) beperkt de herbruikbaarheid voor andere toepassingen en 
 
 c) legt beperkingen op de gebruikers van het dataproduct.
-
-|Beslissing
-|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatroon
 
 |===
