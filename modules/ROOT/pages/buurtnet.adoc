@@ -12,7 +12,7 @@ include::partial$data_product.adoc[]
 
 Dit dataproduct verstrekt de informatie voor de volgende gebruikersscenario's:
 
-1. Wijkbewoners activeren om hun energie-gebruik en -opwek in balans te brengen op basis van beschikbare data, zodat het trafostation niet uitvalt. Door het aanjagen van zelforganisatie en gedragsverandering hopen we piekbelasting te reduceren en spanningsklachten te verminderen waarmee de wachttijd voor wijkgerichte verzwaring wordt overbrugd.
+1. Wijkbewoners activeren om hun energie-gebruik en -opwek in balans te brengen op basis van beschikbare data, zodat de MSR (trafostation) niet uitvalt. Door het aanjagen van zelforganisatie en gedragsverandering hopen we piekbelasting te reduceren en spanningsklachten te verminderen waarmee de wachttijd voor wijkgerichte verzwaring wordt overbrugd;
 2. Klanten in kritieke wijken inzicht en handelingsperspectief bieden.
 
 == Functionele eisen
@@ -73,12 +73,13 @@ Gebruiker -> Gebruiker: "9. Gedrag aanpassen"
 
 1. De gebruiker downloadt de BuurtnetApp;
 2. De gebruiker installeert de BuurtnetApp;
-3. De gebruiker meldt zich aan bij de BuurtnetApp met zijn/haar Postcode6;
+3. De gebruiker meldt zich aan bij de BuurtnetApp met haar Postcode6;
 4. De netbeheerder levert capaciteit en belasting naar de BuurtnetApp;
 5. De gebruiker vraagt de belasting van haar MSR op;
-6. De gebruiker krijgt de capaciteit en belasting van zijn/haar MSR terug;
-7. De gebruiiker krijgt een melding over de capaciteit en belasting van zijn/haar MSR;
-8. De gebruiker past zijn/haar gedrag aan op basis van de ruimte op zijn/haar MSR.
+6. De gebruiker krijgt de capaciteit en belasting van haar MSR terug;
+7. De gebruiker krijgt een melding over de capaciteit en belasting van haar MSR;
+8. De gebruiker ontvangt capaciteit en belasting van de BuurtnetApp
+9. De gebruiker past haar gedrag aan op basis van de ruimte op zijn/haar MSR.
 
 === Architectuur
 
@@ -110,7 +111,7 @@ Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"?".class: [noun; application]
+"HTTP Server".class: [noun; application]
 "Data Product".class: [noun; application]
 "NBNL Dataportaal".class: [noun; application]
 4.class: empty
@@ -124,8 +125,8 @@ Transform -> Load: "triggers"
 "NBNL Dataportaal" -> "Data Product": "accesses (read)"
 BuurtnetApp -> Extract: "assigned to"
 "Excel File" -> "Data Product": "realises"
-"?" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "?": "assigned to"
+"HTTP Server" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "HTTP Server": "assigned to"
 
 legend: "" {
   style: {
@@ -211,12 +212,12 @@ classes: {
   }
 }
 
-
 ----
 
-ToDo: 
-* Bespreken wat de technische invulling (inclusief integratiepatroon) van fase 1 moet zijn
-* Bespreken wat de technische invulling (inclusief integratiepatroon) van fase 2 moet zijn
+* de structuur (logisch model) van de dataset behorende bij het dataproduct is gebaseerd op het conceptuele model _Begrippenmodel NBNL_ en het _Common Information Model_ ; 
+* aanlevering van de dataset vanuit de netbeheerder geschiedt via Excel-bestand;
+* netbeheerders leveren de dataset aan via een eigen bestandslocatie;
+* het dataproduct _Buurtnet App_ is vindbaar via het NBNL Dataportaal.
 
 == Dataset
 
@@ -267,9 +268,13 @@ Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 |BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
 
 |Aanname
-|Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op a) het inrichten van authenticatie en autorisatie bij elke netbeheerder; b) beperkt de herbruikbaarheid voor andere toepassingen en c) legt beperkingen op de gebruikers van het dataproduct.
+|Er wordt gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op 
+
+a) het inrichten van authenticatie en autorisatie bij elke netbeheerder; 
+b) beperkt de herbruikbaarheid voor andere toepassingen en 
+c) legt beperkingen op de gebruikers van het dataproduct.
 
 |Beslissing
-|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatron
+|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatroon
 
 |===
