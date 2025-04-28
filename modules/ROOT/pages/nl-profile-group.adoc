@@ -32,15 +32,16 @@ _International Electrotechnical Commission_ (IEC). Het CIM faciliteert de
 interoperabiliteit tussen verschillende energiesystemen en -applicaties door
 een uniforme en geformaliseerde taal te bieden.
 
-Het CIM bestaat uit drie standaarden met verschillende doelen, die de betekenis
+Het CIM bestaat uit vier standaarden met verschillende doelen, die de betekenis
 van componenten van het elektriciteitsnet beschrijven:
 
-* IEC 61970: bedrijfsvoering & netontwerp;
-* IEC 61968: ondersteuning van de bedrijfsvoering, zoals _asset_- en
+1. IEC 61968: ondersteuning van de bedrijfsvoering, zoals _asset_- en
 werkordermanagement;
-* IEC 62325: marktfacilitering voor US- en EU-energiemarkten.
+1. IEC 61970: bedrijfsvoering & netontwerp;
+1. IEC 62325: marktfacilitering voor US- en EU-energiemarkten;
+1. IEC 62746: decentrale opwekking van energie.
 
-Deze drie standaarden beschrijven klassen van data, welke attributen er
+Deze vier standaarden beschrijven klassen van data, welke attributen er
 vastgelegd worden per klasse en de relaties tussen klassen. Het zijn deze
 klassen die de betekenis van "dingen" in de echte wereld uitdrukken voor een
 specifiek doel.
