@@ -10,7 +10,11 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-_Doel van dit dataproduct._
+Per 1-1-2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een ouderwetse terugdraaimeter hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter hangen met een aparte registratie voor levering en teruglevering. 
+
+De netbeheerders zullen om die reden opnieuw de slimme meter gaan aanbieden bij de aangeslotenen. Wordt de slimme meter geweigerd of lukt het niet om een andere meter te plaatsen dan ontstaat de verplichting dit te melden bij de RDI obv de gegevens zoals hiernaast vermeld.
+
+Er lopen nog gesprekken met verschillende partijen over welke informatie exact moet worden aangeleverd en via welke weg, waarbij op dit moment de GUE als belangrijkste kandidaat wordt gezien door onder andere de RDI zelf. *De informatie uitwisseling zal starten per 1-1-2026.*
 
 == Functionele eisen
 
@@ -21,9 +25,29 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 |===
 |Als Rol |Wil ik |Want
 
-|_Rol_
-|_Wens_
-|_Opdat_
+|RDI
+|Een uniform overzicht van klanten met een ouderwetse terugdraaimeter
+|Ik wens hun meter te vervangen door een meter met een aparte registratie voor levering en teruglevering
+
+|RDI
+|Van deze klanten een uniform overzicht met de status van de meterwissel
+|Ik wens te weten bij welke klanten de meter nog niet gewisseld is
+
+|RDI
+|Van deze klanten een uniform overzicht met klantinteractie
+|Ik wens te weten hoe vaak en wanneer de meterwisel is aangeboden en geweigerd
+
+|Aangeslotene Register
+|Een uniform overzicht van alle aansluitingen met een ouderwetse terugdraaimeter en de contactgegevens van de bijbehorende klanten
+|Ik wens deze aansluitingen aan de bijbehorende klanten te koppelen
+
+|Netbeheerder
+|Een lijst van klanten (aansluitingen) waarvoor ik de klantinteractie moet leveren
+|Ik wens te weten of ik alle beschikbare klantinteracties moet leveren of alleen van klanten met een ouderwetse terugdraaimeter
+
+|Netbeheerder
+|Een lijst van meterinformatie die ik moet leveren
+|Ik wens te weten welke meterinformatie ik moet leveren
 
 |===
 
