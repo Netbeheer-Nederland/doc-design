@@ -1,7 +1,7 @@
-= Template
+= Rijksinpsectie Data Infrastructuur (RDI) Data delen
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
-_DATAPRODUCT_, alsmede de achterliggende architectuur en gemaakte keuzes.
+_RDI_, alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====
@@ -203,10 +203,10 @@ Dit dataproduct wordt als _open/gesloten data_ aangeboden.
 |Type |Beschrijving
 
 |Aanname
-|_Aanname._
+|_Aanname_
 
 |Beslissing
-|_Beslissing._
+|_Beslissing_
 
 
 |===
