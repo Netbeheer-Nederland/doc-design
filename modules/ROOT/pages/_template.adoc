@@ -1,0 +1,212 @@
+= Template
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
+_DATAPRODUCT_, alsmede de achterliggende architectuur en gemaakte keuzes.
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+_Doel van dit dataproduct._
+
+== Functionele eisen
+
+Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *doen*.
+
+.Functionele eisen
+[cols="1, 1, 1"]
+|===
+|Als Rol |Wil ik |Want
+
+|_Rol_
+|_Wens_
+|_Opdat_
+
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"Rol 1"-> "Rol 2": "1. Gebeurtenis"
+----
+
+1. _Toelichting gebeurtenis_
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 1
+grid-columns: 2
+
+vertical-gap: 80
+horizontal-gap: 160
+
+"Blokje".class: [noun; business]
+2_1.class: invisible
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+  invisible: {
+    style.opacity: 0
+    label: ""
+  }
+}
+
+----
+
+* _Toelichting_.
+
+== Dataset
+
+_De dataset bevat..._
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|_Laag, Midden, Hoog. Met toelichting._
+
+|Variety
+|_Gestructureerd, Ongestructureerd. Met toelichting._
+
+|Veracity
+|_Laag, Midden, Hoog. Met toelichting._
+
+|Velocity
+|_Laag, Midden, Hoog. Met toelichting._
+|===
+
+== Voorwaarden
+
+Dit dataproduct wordt als _open/gesloten data_ aangeboden.
+
+== Beslissingen en aannames
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Aanname
+|_Aanname_
+
+|Beslissing
+|_Beslissing_
+
+
+|===
