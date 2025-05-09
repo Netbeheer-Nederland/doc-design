@@ -3,3 +3,4 @@
 * xref::meetdata.adoc[]
 * xref::netbewust-laden.adoc[]
 * xref::nl-profile-group.adoc[]
+* xref::RDI.adoc[]
