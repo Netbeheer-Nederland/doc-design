@@ -206,14 +206,14 @@ classes: {
 
 == Dataset
 
-Er zijn maar liefst vijf verschillende datasets, ieder met haar eigen _volume_, _variety_, _veracity_ en _velocity_.
-
 === Volume, variety, veracity, velocity
 
 [NOTE]
 ====
 include::partial$four_v.adoc[]
 ====
+
+Er zijn maar liefst vijf verschillende datasets, ieder met haar eigen _volume_, _variety_, _veracity_ en _velocity_.
 
 ==== Klantgegevens
 [cols="1, 3"]
@@ -307,7 +307,13 @@ include::partial$four_v.adoc[]
 
 == Voorwaarden
 
-Dit dataproduct wordt als _open/gesloten data_ aangeboden.
+Bij elke dataset hoort precies één dataproduct. 
+
+* Het dataproduct behorende bij de dataset klantgegevens wordt als gesloten data aangeboden.
+* Het dataproduct behorende bij de dataset aansluitingengegevens wordt als gesloten data aangeboden.
+* Het dataproduct behorende bij de dataset aangeslotenegegevens wordt als gesloten data aangeboden.
+* Het dataproduct behorende bij de dataset klantinteractiegegevens wordt als gesloten data aangeboden.
+* Het dataproduct behorende bij de dataset meteringegevens wordt als gesloten data aangeboden.
 
 == Beslissingen en aannames
 
@@ -316,10 +322,22 @@ Dit dataproduct wordt als _open/gesloten data_ aangeboden.
 |Type |Beschrijving
 
 |Aanname
-|_Aanname_
+|De meterwisselopdracht is geen dataproduct, maar een opdracht
+
+|Aanname
+|Er is doel/binding voor alle dataproducten
+
+|Aanname
+|Het Aangeslotene Register kan de klantgegevens en de aansluitingengegevens opslaan en doorgeven
+
+|Aanname
+|Klantgegevens en aansluitingengegevens kunnen gekoppeld worden
+
+|Aanname
+|Aangeslotenegegevens, klantinteractiegegevens en meteringgegevens kunnen gekoppeld worden
 
 |Beslissing
-|_Beslissing_
+|Bij elke datast hoort precies één dataproduct
 
 
 |===
