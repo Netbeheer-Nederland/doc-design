@@ -25,29 +25,29 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 |===
 |Als Rol |Wil ik |Want
 
-|RDI
-|Een uniform overzicht van klanten met een ouderwetse terugdraaimeter
-|Ik wens hun meter te vervangen door een meter met een aparte registratie voor levering en teruglevering
+|Energieleverancier
+|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten
+|Deze informatie moet ik naar het Aangeslotene Register (AR) sturen
 
-|RDI
-|Van deze klanten een uniform overzicht met de status van de meterwissel
-|Ik wens te weten bij welke klanten de meter nog niet gewisseld is
+|Netbeheerder
+|Een uniform overzicht met aansluitingengegevens van mijn aangeslotenen
+|Deze informatie moet ik naar het Aangeslotene Register (AR) sturen
 
-|RDI
-|Van deze klanten een uniform overzicht met klantinteractie
-|Ik wens te weten hoe vaak en wanneer de meterwisel is aangeboden en geweigerd
+|Netbeheerder
+|Een uniform overzicht met klantinteractiegegevens van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
+|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur (RDI) sturen
+
+|Netbeheerder
+|Een uniform overzicht met meterinformatie van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
+|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur (RDI) sturen
 
 |Aangeslotene Register
-|Een uniform overzicht van alle aansluitingen met een ouderwetse terugdraaimeter en de contactgegevens van de bijbehorende klanten
-|Ik wens deze aansluitingen aan de bijbehorende klanten te koppelen
+|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten met een 'ouderwetse terugdraaimeter'
+|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur (RDI) sturen
 
-|Netbeheerder
-|Een lijst van klanten (aansluitingen) waarvoor ik de klantinteractie moet leveren
-|Ik wens te weten of ik alle beschikbare klantinteracties moet leveren of alleen van klanten met een ouderwetse terugdraaimeter
-
-|Netbeheerder
-|Een lijst van meterinformatie die ik moet leveren
-|Ik wens te weten welke meterinformatie ik moet leveren
+|Rijksinspectie Digitale Infrastructuur
+|Een uniform overzicht met aansluitingen en contactgegevens van alle aangeslotenen met een 'ouderwetse terugdraaimeter'
+|Ik wens de netbeheerder te instrueren van deze aangesloten de meter te vervangen 
 
 |===
 
