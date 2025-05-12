@@ -102,14 +102,25 @@ vars: {
   }
 }
 
-grid-rows: 1
+grid-rows: 3
 grid-columns: 2
 
 vertical-gap: 80
 horizontal-gap: 160
 
-"Blokje".class: [noun; business]
+RNB.class: noun
+EL.class: noun
+
 2_1.class: invisible
+AR.class: noun
+
+RDI.class: noun
+3_2.class: invisible
+
+RNB -> AR: serves (aansluit)
+RNB -> RDI: serves (klant, metering)
+EL -> AR: serves (klant)
+AR -> RDI: serves (aangeslotene)
 
 legend: "" {
   style: {
@@ -202,7 +213,7 @@ classes: {
 ----
 
 * de structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
-* aanlevering van de dataset vanuit de energieleverancier, de regionale netbeheerder, het aangeslotene register en de Rijksinspecti Digitale Infrastructuur geschiedt via JSON-bestanden
+* aanlevering van de dataset vanuit de energieleverancier, de regionale netbeheerder, het aangeslotene register en de Rijksinspectie Digitale Infrastructuur geschiedt via JSON-bestanden
 
 == Dataset
 
@@ -322,7 +333,7 @@ Bij elke dataset hoort precies één dataproduct.
 |Type |Beschrijving
 
 |Aanname
-|De meterwisselopdracht is geen dataproduct, maar een opdracht
+|De meterwisselopdracht is geen dataproduct, maar een opdracht van de RDI aan de RNB's
 
 |Aanname
 |Er is doel/binding voor alle dataproducten
@@ -347,6 +358,5 @@ Bij elke dataset hoort precies één dataproduct.
 
 |Beslissing
 |Bij elke dataset hoort precies één dataproduct
-
 
 |===
