@@ -201,11 +201,12 @@ classes: {
 
 ----
 
-* _Toelichting_.
+* de structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
+* aanlevering van de dataset vanuit de energieleverancier, de regionale netbeheerder, het aangeslotene register en de Rijksinspecti Digitale Infrastructuur geschiedt via JSON-bestanden
 
 == Dataset
 
-_De dataset bevat..._
+Er zijn maar liefst vijf verschillende datasets, ieder met haar eigen _volume_, _variety_, _veracity_ en _velocity_.
 
 === Volume, variety, veracity, velocity
 
@@ -214,21 +215,94 @@ _De dataset bevat..._
 include::partial$four_v.adoc[]
 ====
 
-[cols="1, 1"]
+==== Klantgegevens
+[cols="1, 3"]
 |===
 |Type |Beschrijving
 
 |Volume
-|_Laag, Midden, Hoog. Met toelichting._
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
 
 |Variety
-|_Gestructureerd, Ongestructureerd. Met toelichting._
+|Gestructureerd
 
 |Veracity
-|_Laag, Midden, Hoog. Met toelichting._
+|Hoog, de dataset wordt samengesteld uit brongegevens die ook voor facturatie worden ingezet
 
 |Velocity
-|Midden, minimaal één maal per 24 uur (zie functionele eisen)
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+|===
+
+==== Aansluitingengegevens
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog
+
+|Velocity
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+|===
+
+==== Aangeslotenegegevens
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog
+
+|Velocity
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+|===
+
+==== Klantinteractiegegevens
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog
+
+|Velocity
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+|===
+
+==== Meteringegevens
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog
+
+|Velocity
+|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
 |===
 
 == Voorwaarden
