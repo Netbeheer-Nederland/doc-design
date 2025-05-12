@@ -1,4 +1,4 @@
-= Rijksinpsectie Data Infrastructuur (RDI) Data delen
+= Rijksinspectie Data Infrastructuur (RDI) Data delen
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
 _RDI_, alsmede de achterliggende architectuur en gemaakte keuzes.
