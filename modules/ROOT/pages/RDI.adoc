@@ -122,6 +122,8 @@ RNB <-> RDI: " \nserves (opdracht)\n \nserves(klant, metering)\n "
 EL -> AR: serves (klant)
 AR -> RDI: serves (aangeslotene)
 
+"""
+
 legend: "" {
   style: {
     fill: transparent
@@ -169,6 +171,8 @@ legend: "" {
   }
 }
 
+"""
+
 classes: {
   *: {
     style: {
@@ -212,8 +216,8 @@ classes: {
 
 ----
 
-* de structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
-* aanlevering van de dataset vanuit de energieleverancier, de regionale netbeheerder, het aangeslotene register en de Rijksinspectie Digitale Infrastructuur geschiedt via JSON-bestanden
+1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
+2. Aanlevering van de dataset vanuit de energieleverancier, de regionale netbeheerder, het aangeslotene register en de Rijksinspectie Digitale Infrastructuur geschiedt via JSON-bestanden
 
 == Dataset
 
