@@ -25,27 +25,27 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 |===
 |Als Rol |Wil ik |Want
 
-|Energieleverancier
-|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten
-|Deze informatie moet ik naar het Aangeslotene Register (AR) sturen
+|Energieleverancier (EL)
+|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten (klantgegevens)
+|Deze informatie moet ik naar het Aangeslotene Register sturen
 
-|Netbeheerder
+|Netbeheerder (RNB)
 |Een uniform overzicht met aansluitingengegevens van mijn aangeslotenen
-|Deze informatie moet ik naar het Aangeslotene Register (AR) sturen
+|Deze informatie moet ik naar het Aangeslotene Register sturen
 
 |Netbeheerder
 |Een uniform overzicht met klantinteractiegegevens van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
-|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur (RDI) sturen
+|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
 
 |Netbeheerder
 |Een uniform overzicht met meterinformatie van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
-|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur (RDI) sturen
+|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
 
-|Aangeslotene Register
-|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten met een 'ouderwetse terugdraaimeter'
-|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur (RDI) sturen
+|Aangeslotene Register (AR)
+|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten met een 'ouderwetse terugdraaimeter' (aangeslotenegegevens)
+|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
 
-|Rijksinspectie Digitale Infrastructuur
+|Rijksinspectie Digitale Infrastructuur (RDI)
 |Een uniform overzicht met aansluitingen en contactgegevens van alle aangeslotenen met een 'ouderwetse terugdraaimeter'
 |Ik wens de netbeheerder te instrueren van deze aangesloten de meter te vervangen 
 
@@ -68,7 +68,17 @@ vars: {
   }
 }
 
-"Rol 1"-> "Rol 2": "1. Gebeurtenis"
+EL
+RNB
+AR
+RDI
+
+EL -> AR: 1. Lever dataset\: klantgegevens
+RNB -> AR: 2. Lever dataset\: aansluitingengegevens
+AR -> RDI: 3. Lever dataset\: aangeslotenegegevens
+RNB -> RDI: 4. Lever dataset\: klantinteractiegegevens
+RNB -> RDI: 5. Lever dataset\: meterinformatie
+RDI -> RNB: 6. Meterwisselopdracht
 ----
 
 1. _Toelichting gebeurtenis_
