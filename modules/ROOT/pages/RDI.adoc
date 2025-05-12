@@ -29,16 +29,16 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 |Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten (klantgegevens)
 |Deze informatie moet ik naar het Aangeslotene Register sturen
 
-|Netbeheerder (RNB)
+|Regionale Netbeheerder (RNB)
 |Een uniform overzicht met aansluitingengegevens van mijn aangeslotenen
 |Deze informatie moet ik naar het Aangeslotene Register sturen
 
-|Netbeheerder
+|Regionale Netbeheerder (RNB)
 |Een uniform overzicht met klantinteractiegegevens van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
 |Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
 
-|Netbeheerder
-|Een uniform overzicht met meterinformatie van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
+|Regionale Netbeheerder (RNB)
+|Een uniform overzicht met meteringegevens van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
 |Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
 
 |Aangeslotene Register (AR)
@@ -77,11 +77,16 @@ EL -> AR: 1. Lever dataset\: klantgegevens
 RNB -> AR: 2. Lever dataset\: aansluitingengegevens
 AR -> RDI: 3. Lever dataset\: aangeslotenegegevens
 RNB -> RDI: 4. Lever dataset\: klantinteractiegegevens
-RNB -> RDI: 5. Lever dataset\: meterinformatie
+RNB -> RDI: 5. Lever dataset\: meteringegevens
 RDI -> RNB: 6. Meterwisselopdracht
 ----
 
-1. _Toelichting gebeurtenis_
+1. De energieleverancier levert klantgegevens
+2. De regionale netbeheerder levert aansluitingsgegevens
+3. Het aangeslotene register levert aangeslotenegegevens
+4. De regionale netbeheerder levert klantinteractiegegevens
+5. De regionale netbeheerder levert meteringgegevens
+6. De Rijksinspectie Digitale Infrastructuur geeft opdracht tot het vervangen van de 'ouderwetse terugdraaimeter''
 
 === Architectuur
 
