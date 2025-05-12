@@ -309,11 +309,11 @@ Er zijn maar liefst vijf verschillende datasets, ieder met haar eigen _volume_, 
 
 Bij elke dataset hoort precies één dataproduct. 
 
-* Het dataproduct behorende bij de dataset klantgegevens wordt als gesloten data aangeboden.
-* Het dataproduct behorende bij de dataset aansluitingengegevens wordt als gesloten data aangeboden.
-* Het dataproduct behorende bij de dataset aangeslotenegegevens wordt als gesloten data aangeboden.
-* Het dataproduct behorende bij de dataset klantinteractiegegevens wordt als gesloten data aangeboden.
-* Het dataproduct behorende bij de dataset meteringegevens wordt als gesloten data aangeboden.
+1. Het dataproduct behorende bij de dataset klantgegevens wordt als gesloten data aangeboden.
+2. Het dataproduct behorende bij de dataset aansluitingengegevens wordt als gesloten data aangeboden.
+3. Het dataproduct behorende bij de dataset aangeslotenegegevens wordt als gesloten data aangeboden.
+4. Het dataproduct behorende bij de dataset klantinteractiegegevens wordt als gesloten data aangeboden.
+5. Het dataproduct behorende bij de dataset meteringegevens wordt als gesloten data aangeboden.
 
 == Beslissingen en aannames
 
@@ -336,8 +336,17 @@ Bij elke dataset hoort precies één dataproduct.
 |Aanname
 |Aangeslotenegegevens, klantinteractiegegevens en meteringgegevens kunnen gekoppeld worden
 
+|Aanname
+|De datasets worden niet als open datasets gepubliceerd
+
+|Aanname
+|De dataverlading incrementeel
+
+|Aanname
+|De aansluitingengegevens die de RNB's aanleveren bevatten alleen gegevens van aansluitingen met een  'ouderwetse terugdraaimeter'. Dus niet _verzenden en dan filteren_, maar _filteren en dan verzenden_. Idem voor klantinteractiegegevens en meteringegevens
+
 |Beslissing
-|Bij elke datast hoort precies één dataproduct
+|Bij elke dataset hoort precies één dataproduct
 
 
 |===
