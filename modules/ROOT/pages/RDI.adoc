@@ -118,7 +118,7 @@ RDI.class: noun
 3_2.class: invisible
 
 RNB -> AR: serves (aansluit)
-RNB -> RDI: serves (klant, metering)
+RNB <-> RDI: " \nserves (opdracht)\n \nserves(klant, metering)\n "
 EL -> AR: serves (klant)
 AR -> RDI: serves (aangeslotene)
 
