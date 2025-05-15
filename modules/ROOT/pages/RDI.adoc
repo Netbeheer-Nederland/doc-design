@@ -81,12 +81,12 @@ RNB -> RDI: 5. Lever dataset\: meteringegevens
 RDI -> RNB: 6. Meterwisselopdracht
 ----
 
-1. De energieleverancier levert klantgegevens
-2. De regionale netbeheerder levert aansluitingsgegevens
-3. Het aangeslotene register levert aangeslotenegegevens
-4. De regionale netbeheerder levert klantinteractiegegevens
-5. De regionale netbeheerder levert meteringgegevens
-6. De Rijksinspectie Digitale Infrastructuur geeft opdracht tot het vervangen van de 'ouderwetse terugdraaimeter''
+1. De energieleverancier levert klantgegevens.
+2. De regionale netbeheerder levert aansluitingsgegevens.
+3. Het aangeslotene register levert aangeslotenegegevens.
+4. De regionale netbeheerder levert klantinteractiegegevens.
+5. De regionale netbeheerder levert meteringgegevens.
+6. De Rijksinspectie Digitale Infrastructuur geeft opdracht tot het vervangen van de 'ouderwetse terugdraaimeter''.
 
 === Architectuur
 
