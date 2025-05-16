@@ -25,37 +25,32 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 |===
 |Als Rol |Wil ik |Want
 
-|Energieleverancier (EL)
-|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten (klantgegevens)
-|Deze informatie moet ik naar het Aangeslotene Register sturen
-
-|Regionale Netbeheerder (RNB)
-|Een uniform overzicht met aansluitingengegevens van mijn aangeslotenen
-|Deze informatie moet ik naar het Aangeslotene Register sturen
-
-|Regionale Netbeheerder (RNB)
-|Een uniform overzicht met klantinteractiegegevens van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
-|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
-
-|Regionale Netbeheerder (RNB)
-|Een uniform overzicht met meteringegevens van mijn aangeslotenen met een 'ouderwetse terugdraaimeter'
-|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
-
-|Aangeslotene Register (AR)
-|Een uniform overzicht met aansluitingen en contactgegevens van al mijn klanten met een 'ouderwetse terugdraaimeter' (aangeslotenegegevens)
-|Deze informatie moet ik naar de Rijksinspectie Digitale Infrastructuur sturen
+|Rijksinspectie Digitale Infrastructuur (RDI)
+|Een uniform overzicht van 'ouderwetse terugdraaimeters'
+|Deze meters moeten vervangen worden
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht met aansluitingen en contactgegevens van alle aangeslotenen met een 'ouderwetse terugdraaimeter'
-|Ik wens de netbeheerder te instrueren van deze aangesloten de meter te vervangen 
+|Een uniform overzicht met contactgegevens van aangeslotenen met een 'ouderwetse terugdraaimeter'
+|Deze aangeslotenen moeten hun meter laten vervangen
+
+|Rijksinspectie Digitale Infrastructuur (RDI)
+|Een uniform overzicht met klantinteractiegegevens van aangeslotenen met een 'ouderwetse terugdraaimeter'
+|Ik wil weten wat de status van de meterwissel is
+
+|Rijksinspectie Digitale Infrastructuur (RDI)
+|Een uniform overzicht met metergegevens van de 'ouderwetse terugdraaimeter
+|Ik wil de meterfunctionaliteit vervangen
 
 |===
 
 == Dataservice
 
-=== Gebruiksscenario
+Er moet gekozen worden tussen een tweetal scenario's: centraal en decentraal. 
 
-Het volgende gebruiksscenario wordt ondersteund:
+* In het centrale scenario verzamelt en integreert EDSN alle datasets en biedt het aan als één dataset;
+* In het decentrale scenario biedt elke regionale netbeheerder haar eigen dataset aan en zullen deze datasets nog verrijkt moeten worden met klantgegevens.
+
+=== Gebruiksscenario: centraal dataproduct
 
 .Gebruiksscenario
 [d2,svg,theme=4]
@@ -68,25 +63,60 @@ vars: {
   }
 }
 
-EL
-RNB
-AR
-RDI
+Energie\nleverancier
+Regionale\nnetbeheerder
+EDSN
+Rijksinspectie\nDigitale Infrastructuur
 
-EL -> AR: 1. Lever dataset\: klantgegevens
-RNB -> AR: 2. Lever dataset\: aansluitingengegevens
-AR -> RDI: 3. Lever dataset\: aangeslotenegegevens
-RNB -> RDI: 4. Lever dataset\: klantinteractiegegevens
-RNB -> RDI: 5. Lever dataset\: meteringegevens
-RDI -> RNB: 6. meterwisselopdracht
+Rijksinspectie\nDigitale Infrastructuur -> EDSN: 1. Verzoek meterwisselgegevens
+EDSN -> Regionale\nnetbeheerder: 2. Verzoek metergegevens
+Regionale\nnetbeheerder -> EDSN: 3. Lever dataset metergegevens
+EDSN -> Energie\nleverancier: 4. Verzoek klantgegevens
+Energie\nleverancier -> EDSN: 5. Lever dataset klantgegevens
+EDSN -> EDSN: 6. Consolideer metergegevens
+EDSN -> EDSN: 7. Integreer klantgegevens
+EDSN -> Rijksinspectie\nDigitale Infrastructuur: 8. meterwisselgegevens
+
 ----
 
-1. De energieleverancier levert klantgegevens
-2. De regionale netbeheerder levert aansluitingsgegevens
-3. Het aangeslotene register levert aangeslotenegegevens
-4. De regionale netbeheerder levert klantinteractiegegevens
-5. De regionale netbeheerder levert meteringgegevens
-6. De Rijksinspectie Digitale Infrastructuur geeft opdracht tot het vervangen van de 'ouderwetse terugdraaimeter''
+1. De Rijksinspectie Digitale Infrastructuur (RDI) verzoekt om meterwisselgegevens ('ouderwetse terugdraaimeters' en klantgegevens)
+2. EDSN verzoekt metergegevens (aansluitingsgegevens, klantinteractiegegevens en meteringsgegevens)
+3. De regionale netbeheerders leveren metergegevens
+4. EDSN verzoekt klantgegevens (aansluiting en contactgegevens)
+5. De energieleverancier levert klantgegevens
+6. EDSN consolideert de metergegevens
+7. EDSN integreert klantgegevens in metergegevens
+8. EDSN levert meterwisselgegevens
+
+=== Gebruiksscenario: decentraal dataproduct
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+Energie\nleverancier
+Regionale\nnetbeheerder
+Rijksinspectie\nDigitale Infrastructuur
+
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 1. Lever dataset\: aansluitingengegevens
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 2. Lever dataset\: aangeslotenegegevens
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 3. Lever dataset\: klantinteractiegegevens
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 4. Lever dataset\: meteringegevens
+Energiel\nleverancier -> Rijksinspectie\nDigitale Infrastructuur: 5. Lever dataset\: klantgegevens
+----
+
+1. De regionale netbeheerders leveren aansluitingengegevens
+2. De regionale netbeheerders leveren aangeslotenegegevens
+3. De regionale netbeheerders leveren klantinteractiegegevens
+4. De regionale netbeheerders leveren meteringegevens
+5. De energieleverancier levert klantgegevens
 
 === Architectuur
 
