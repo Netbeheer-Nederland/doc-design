@@ -1,4 +1,4 @@
-= Rijksinspectie Data Infrastructuur (RDI) Data delen
+= Rijksinspectie Data Infrastructuur (RDI)
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
 _RDI_, alsmede de achterliggende architectuur en gemaakte keuzes.
@@ -78,22 +78,22 @@ RNB -> AR: 2. Lever dataset\: aansluitingengegevens
 AR -> RDI: 3. Lever dataset\: aangeslotenegegevens
 RNB -> RDI: 4. Lever dataset\: klantinteractiegegevens
 RNB -> RDI: 5. Lever dataset\: meteringegevens
-RDI -> RNB: 6. Meterwisselopdracht
+RDI -> RNB: 6. meterwisselopdracht
 ----
 
-1. De energieleverancier levert klantgegevens.
-2. De regionale netbeheerder levert aansluitingsgegevens.
-3. Het aangeslotene register levert aangeslotenegegevens.
-4. De regionale netbeheerder levert klantinteractiegegevens.
-5. De regionale netbeheerder levert meteringgegevens.
-6. De Rijksinspectie Digitale Infrastructuur geeft opdracht tot het vervangen van de 'ouderwetse terugdraaimeter''.
+1. De energieleverancier levert klantgegevens
+2. De regionale netbeheerder levert aansluitingsgegevens
+3. Het aangeslotene register levert aangeslotenegegevens
+4. De regionale netbeheerder levert klantinteractiegegevens
+5. De regionale netbeheerder levert meteringgegevens
+6. De Rijksinspectie Digitale Infrastructuur geeft opdracht tot het vervangen van de 'ouderwetse terugdraaimeter''
 
 === Architectuur
 
 Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 
 .Architectuur
-[d2,svg,theme=4,scaledwidth=100%]
+[d2,svg,theme=4, width=100%]
 ----
 
 vars: {
