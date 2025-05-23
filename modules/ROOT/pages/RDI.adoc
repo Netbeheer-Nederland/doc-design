@@ -12,9 +12,9 @@ include::partial$data_product.adoc[]
 
 Per 1-1-2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een ouderwetse terugdraaimeter hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter hangen met een aparte registratie voor levering en teruglevering. 
 
-De netbeheerders zullen om die reden opnieuw de slimme meter gaan aanbieden bij de aangeslotenen. Wordt de slimme meter geweigerd of lukt het niet om een andere meter te plaatsen dan ontstaat de verplichting dit te melden bij de RDI obv de gegevens zoals hiernaast vermeld.
+De netbeheerders zullen om die reden opnieuw de slimme meter gaan aanbieden bij de aangeslotenen. Wordt de slimme meter geweigerd of lukt het niet om een andere meter te plaatsen dan ontstaat de verplichting dit te melden bij de Rijksinspectie Digitale Infrastructuur (RDI) op basis van informatie over de meter, de aangeslotene en de klantinteractie.
 
-Er lopen nog gesprekken met verschillende partijen over welke informatie exact moet worden aangeleverd en via welke weg, waarbij op dit moment de GUE als belangrijkste kandidaat wordt gezien door onder andere de RDI zelf. *De informatie uitwisseling zal starten per 1-1-2026.*
+Er lopen nog gesprekken met verschillende partijen over welke informatie exact moet worden aangeleverd en via welke weg, waarbij op dit moment de Gegevensuitwisselingsentiteit (GUE) als belangrijkste kandidaat wordt gezien door onder andere de RDI zelf. *De informatie uitwisseling zal starten per 1-1-2026.*
 
 == Functionele eisen
 
@@ -25,21 +25,25 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 |===
 |Als Rol |Wil ik |Want
 
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht van 'ouderwetse terugdraaimeters'
-|Deze meters moeten vervangen worden
+|RDI
+|Een uniform overzicht van 'ouderwetse terugdraaimeters' (metergegevens)
+|Deze meters moeten vervangen worden 
 
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht met contactgegevens van aangeslotenen met een 'ouderwetse terugdraaimeter'
+|RDI
+|Een uniform overzicht van de klanten die deze meters gebruiken (aansluitingsgegevens)
 |Deze aangeslotenen moeten hun meter laten vervangen
 
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht met klantinteractiegegevens van aangeslotenen met een 'ouderwetse terugdraaimeter'
+|RDI
+|Een uniform overzicht met contactgegevens van deze aangeslotenen (klantcontactgegevens)
+|Deze aangeslotenen moeten aangeschreven worden
+
+|RDI
+|Een uniform overzicht van de interactie (communicatie) met deze aangeslotenen (klantinteractiegegevens)
 |Ik wil weten wat de status van de meterwissel is
 
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht met metergegevens van de 'ouderwetse terugdraaimeter
-|Ik wil de meterfunctionaliteit vervangen
+|RDI
+|Een uniform overzicht van de eigenschappen van de meter (metergegevens)
+|Ik wil een geschikte vervangende meter aanbieden
 
 |===
 
