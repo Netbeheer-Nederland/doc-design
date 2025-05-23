@@ -51,7 +51,7 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 
 Er moet gekozen worden tussen een tweetal scenario's: centraal en decentraal. 
 
-* In het centrale scenario verzamelt en integreert EDSN alle datasets en biedt het aan als één dataset;
+* In het centrale scenario verzamelt en integreert EDSN alle datasets en biedt het aan als één dataset (meterwisselgegevens);
 * In het decentrale scenario biedt elke regionale netbeheerder haar eigen dataset aan en zullen deze datasets nog verrijkt moeten worden met klantgegevens.
 
 === Gebruiksscenario: centraal dataproduct
@@ -67,30 +67,37 @@ vars: {
   }
 }
 
-Energie\nleverancier
-Regionale\nnetbeheerder
-EDSN
 Rijksinspectie\nDigitale Infrastructuur
+"EDSN\n "
+Regionale\nnetbeheerder
+Aangeslotene\nRegister
 
-Rijksinspectie\nDigitale Infrastructuur -> EDSN: 1. Verzoek meterwisselgegevens
-EDSN -> Regionale\nnetbeheerder: 2. Verzoek metergegevens
-Regionale\nnetbeheerder -> EDSN: 3. Lever dataset metergegevens
-EDSN -> Energie\nleverancier: 4. Verzoek klantgegevens
-Energie\nleverancier -> EDSN: 5. Lever dataset klantgegevens
-EDSN -> EDSN: 6. Consolideer metergegevens
-EDSN -> EDSN: 7. Integreer klantgegevens
-EDSN -> Rijksinspectie\nDigitale Infrastructuur: 8. meterwisselgegevens
+Rijksinspectie\nDigitale Infrastructuur -> "EDSN\n ": 1. Verzoek meterwisselgegevens
+
+"EDSN\n " -> Regionale\nnetbeheerder: 2. Verzoek metergegevens
+"EDSN\n " -> Aangeslotene\nRegister: 3. Verzoek aangeslotenegegevens
+"EDSN\n " -> Regionale\nnetbeheerder: 4. Verzoek klantinteractiegegevens
+
+Regionale\nnetbeheerder -> "EDSN\n ": 5. Lever metergegevens
+Aangeslotene\nRegister -> "EDSN\n ": 6. Lever aangeslotenegegevens
+Regionale\nnetbeheerder -> "EDSN\n ": 7. Lever klantinteractiegegevens
+
+"EDSN\n " -> "EDSN\n ": 8. Integreer gegevens
+
+"EDSN\n " -> Rijksinspectie\nDigitale Infrastructuur: 9. Lever meterwisselgegevens
 
 ----
 
-1. De Rijksinspectie Digitale Infrastructuur (RDI) verzoekt om meterwisselgegevens ('ouderwetse terugdraaimeters' en klantgegevens)
-2. EDSN verzoekt metergegevens (aansluitingsgegevens, klantinteractiegegevens en meteringsgegevens)
-3. De regionale netbeheerders leveren metergegevens
-4. EDSN verzoekt klantgegevens (aansluiting en contactgegevens)
-5. De energieleverancier levert klantgegevens
-6. EDSN consolideert de metergegevens
-7. EDSN integreert klantgegevens in metergegevens
-8. EDSN levert meterwisselgegevens
+1. De RDI verzoekt om meterwisselgegevens 
+2. EDSN verzoekt om metergegevens van ouderwetse terugdraaimeter
+3. EDSN verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens)
+4. EDSN verzoekt om klantinteractiegegevens
+5. De RNB levert metergegevens
+6. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
+7. De RNB levert klantinteractiegegevens
+8. EDSN combineert de metergegevens, klantinteratiegegevens en de aangeslotnegegevens tot meterwisselgegevens
+9. EDSN levert meterwisselgegevens
+
 
 === Gebruiksscenario: decentraal dataproduct
 
@@ -105,22 +112,29 @@ vars: {
   }
 }
 
-Energie\nleverancier
-Regionale\nnetbeheerder
 Rijksinspectie\nDigitale Infrastructuur
+Regionale\nnetbeheerder
+Aangeslotene\nRegister
 
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 1. Lever dataset\: aansluitingengegevens
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 2. Lever dataset\: aangeslotenegegevens
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 3. Lever dataset\: klantinteractiegegevens
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 4. Lever dataset\: meteringegevens
-Energiel\nleverancier -> Rijksinspectie\nDigitale Infrastructuur: 5. Lever dataset\: klantgegevens
+Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 1. Verzoek metergegevens
+Rijksinspectie\nDigitale Infrastructuur -> Aangeslotene\nRegister: 2. Verzoek aangeslotenegegevens
+Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 3. Verzoek klantinteractiegegevens
+
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 4. Lever metergegevens
+Aangeslotene\nRegister -> Rijksinspectie\nDigitale Infrastructuur: 5. Lever aangeslotenegegevens
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 6. Lever klantinteractiegegevens
+
+Rijksinspectie\nDigitale Infrastructuur -> Rijksinspectie\nDigitale Infrastructuur: 7. Integreer gegevens
+
 ----
 
-1. De regionale netbeheerders leveren aansluitingengegevens
-2. De regionale netbeheerders leveren aangeslotenegegevens
-3. De regionale netbeheerders leveren klantinteractiegegevens
-4. De regionale netbeheerders leveren meteringegevens
-5. De energieleverancier levert klantgegevens
+1. De RDI verzoekt om metergegevens van ouderwetse terugdraaimeter
+2. De RDI verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens)
+3. De RDI verzoekt om klantinteractiegegevens
+4. De RNB levert metergegevens
+5. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
+6. De RNB levert klantinteractiegegevens
+7. De RDI combineert de metergegevens, klantinteratiegegevens en de aangeslotnegegevens tot meterwisselgegevens
 
 === Architectuur
 
