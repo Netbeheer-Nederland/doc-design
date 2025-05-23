@@ -197,6 +197,7 @@ Load -> RDI: "serving"
 "File gateway" -> DP_RDI: "reads"
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
+DP_Klantinteractie -> Maatwerk: "reads"
 
 legend: "" {
   style: {
