@@ -75,11 +75,10 @@ Aangeslotene\nRegister
 Rijksinspectie\nDigitale Infrastructuur -> "EDSN\n ": 1. Verzoek meterwisselgegevens
 
 "EDSN\n " -> Regionale\nnetbeheerder: 2. Verzoek metergegevens
-"EDSN\n " -> Aangeslotene\nRegister: 3. Verzoek aangeslotenegegevens
-"EDSN\n " -> Regionale\nnetbeheerder: 4. Verzoek klantinteractiegegevens
-
-Regionale\nnetbeheerder -> "EDSN\n ": 5. Lever metergegevens
-Aangeslotene\nRegister -> "EDSN\n ": 6. Lever aangeslotenegegevens
+Regionale\nnetbeheerder -> "EDSN\n ": 3. Lever metergegevens
+"EDSN\n " -> Aangeslotene\nRegister: 4. Verzoek aangeslotenegegevens
+Aangeslotene\nRegister -> "EDSN\n ": 5. Lever aangeslotenegegevens
+"EDSN\n " -> Regionale\nnetbeheerder: 6. Verzoek klantinteractiegegevens
 Regionale\nnetbeheerder -> "EDSN\n ": 7. Lever klantinteractiegegevens
 
 "EDSN\n " -> "EDSN\n ": 8. Integreer gegevens
@@ -90,10 +89,10 @@ Regionale\nnetbeheerder -> "EDSN\n ": 7. Lever klantinteractiegegevens
 
 1. De RDI verzoekt om meterwisselgegevens 
 2. EDSN verzoekt om metergegevens van ouderwetse terugdraaimeter
-3. EDSN verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens)
-4. EDSN verzoekt om klantinteractiegegevens
-5. De RNB levert metergegevens
-6. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
+3. De RNB levert metergegevens
+4. EDSN verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters
+5. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
+6. EDSN verzoekt om klantinteractiegegevens van deze klanten
 7. De RNB levert klantinteractiegegevens
 8. EDSN combineert de metergegevens, klantinteratiegegevens en de aangeslotnegegevens tot meterwisselgegevens
 9. EDSN levert meterwisselgegevens
@@ -117,11 +116,10 @@ Regionale\nnetbeheerder
 Aangeslotene\nRegister
 
 Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 1. Verzoek metergegevens
-Rijksinspectie\nDigitale Infrastructuur -> Aangeslotene\nRegister: 2. Verzoek aangeslotenegegevens
-Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 3. Verzoek klantinteractiegegevens
-
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 4. Lever metergegevens
-Aangeslotene\nRegister -> Rijksinspectie\nDigitale Infrastructuur: 5. Lever aangeslotenegegevens
+Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 2. Lever metergegevens
+Rijksinspectie\nDigitale Infrastructuur -> Aangeslotene\nRegister: 3. Verzoek aangeslotenegegevens
+Aangeslotene\nRegister -> Rijksinspectie\nDigitale Infrastructuur: 4. Lever aangeslotenegegevens
+Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 5. Verzoek klantinteractiegegevens
 Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 6. Lever klantinteractiegegevens
 
 Rijksinspectie\nDigitale Infrastructuur -> Rijksinspectie\nDigitale Infrastructuur: 7. Integreer gegevens
@@ -129,10 +127,10 @@ Rijksinspectie\nDigitale Infrastructuur -> Rijksinspectie\nDigitale Infrastructu
 ----
 
 1. De RDI verzoekt om metergegevens van ouderwetse terugdraaimeter
-2. De RDI verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens)
-3. De RDI verzoekt om klantinteractiegegevens
-4. De RNB levert metergegevens
-5. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
+2. De RNB levert metergegevens
+3. De RDI verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters
+4. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
+5. De RDI verzoekt om klantinteractiegegevens van deze klanten
 6. De RNB levert klantinteractiegegevens
 7. De RDI combineert de metergegevens, klantinteratiegegevens en de aangeslotnegegevens tot meterwisselgegevens
 
@@ -143,34 +141,51 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4, width=100%]
 ----
-
 vars: {
   d2-config: {
     pad: 20
   }
 }
 
-grid-rows: 3
-grid-columns: 2
+grid-rows: 5
+grid-columns: 4
 
 vertical-gap: 80
 horizontal-gap: 160
 
-RNB.class: noun
-EL.class: noun
+1.class: empty
+EDSN.class: [noun; business]
+2.class: empty
+3.class: empty
 
-2_1.class: invisible
-AR.class: noun
+Netbeheerder.class: [noun; business]
+Broker.class: [noun; business]
+Consumer.class: [noun; business]
+4.class: empty
 
-RDI.class: noun
-3_2.class: invisible
+5.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
 
-RNB -> AR: serves (aansluit)
-RNB <-> RDI: " \nserves (opdracht)\n \nserves(klant, metering)\n "
-EL -> AR: serves (klant)
-AR -> RDI: serves (aangeslotene)
+"MijnOmgeving/Maatwerk".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+6.class: empty
 
-"""
+7.class: empty
+"JSON File".class: [artifact; technology]
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Extract -> Consumer: "serves"
+EDSN -> Broker: "assigned to"
+Broker -> Extract: "assigned to"
+"JSON File" -> "Data Product": "realises"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
 legend: "" {
   style: {
@@ -219,8 +234,6 @@ legend: "" {
   }
 }
 
-"""
-
 classes: {
   *: {
     style: {
@@ -256,16 +269,13 @@ classes: {
       fill: "#afffaf"
     }
   }
-  invisible: {
-    style.opacity: 0
-    label: ""
-  }
 }
 
 ----
 
+
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
-2. Aanlevering van de dataset vanuit de energieleverancier, de regionale netbeheerder, het aangeslotene register en de Rijksinspectie Digitale Infrastructuur geschiedt via JSON-bestanden
+2. Aanlevering van de metergegevens, de aangeslotenegegevens en de klantinteractiegegevens geschiedt via JSON-bestanden
 
 == Dataset
 
@@ -276,81 +286,8 @@ classes: {
 include::partial$four_v.adoc[]
 ====
 
-Er zijn maar liefst vijf verschillende datasets, ieder met haar eigen _volume_, _variety_, _veracity_ en _velocity_.
+In centrale dataproduct scenario is er één dataset: de meterwisselgegevens. In het decentrale scenario zijn er drie datasets: metergegevens, aangeslotenegegevens en klantinteractiegegevens. Deze worden echter geïntegreerd tot één dataset.
 
-==== Klantgegevens
-[cols="1, 3"]
-|===
-|Type |Beschrijving
-
-|Volume
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-
-|Variety
-|Gestructureerd
-
-|Veracity
-|Hoog, de dataset wordt samengesteld uit brongegevens die ook voor facturatie worden ingezet
-
-|Velocity
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-|===
-
-==== Aansluitingengegevens
-[cols="1, 3"]
-|===
-|Type |Beschrijving
-
-|Volume
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-
-|Variety
-|Gestructureerd
-
-|Veracity
-|Hoog
-
-|Velocity
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-|===
-
-==== Aangeslotenegegevens
-[cols="1, 3"]
-|===
-|Type |Beschrijving
-
-|Volume
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-
-|Variety
-|Gestructureerd
-
-|Veracity
-|Hoog
-
-|Velocity
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-|===
-
-==== Klantinteractiegegevens
-[cols="1, 3"]
-|===
-|Type |Beschrijving
-
-|Volume
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-
-|Variety
-|Gestructureerd
-
-|Veracity
-|Hoog
-
-|Velocity
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
-|===
-
-==== Meteringegevens
 [cols="1, 3"]
 |===
 |Type |Beschrijving
@@ -370,13 +307,8 @@ Er zijn maar liefst vijf verschillende datasets, ieder met haar eigen _volume_, 
 
 == Voorwaarden
 
-Bij elke dataset hoort precies één dataproduct. 
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_.
 
-1. Het dataproduct behorende bij de dataset klantgegevens wordt als gesloten data aangeboden.
-2. Het dataproduct behorende bij de dataset aansluitingengegevens wordt als gesloten data aangeboden.
-3. Het dataproduct behorende bij de dataset aangeslotenegegevens wordt als gesloten data aangeboden.
-4. Het dataproduct behorende bij de dataset klantinteractiegegevens wordt als gesloten data aangeboden.
-5. Het dataproduct behorende bij de dataset meteringegevens wordt als gesloten data aangeboden.
 
 == Beslissingen en aannames
 
@@ -385,30 +317,18 @@ Bij elke dataset hoort precies één dataproduct.
 |Type |Beschrijving
 
 |Aanname
-|De meterwisselopdracht is geen dataproduct, maar een opdracht van de RDI aan de RNB's
+|Er is doel/binding voor alle datasets
 
 |Aanname
-|Er is doel/binding voor alle dataproducten
+|Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de kopelbaarheid met de aansluitingsgegevens van de RNB)
 
 |Aanname
-|Het Aangeslotene Register kan de klantgegevens en de aansluitingengegevens opslaan en doorgeven
-
-|Aanname
-|Klantgegevens en aansluitingengegevens kunnen gekoppeld worden
-
-|Aanname
-|Aangeslotenegegevens, klantinteractiegegevens en meteringgegevens kunnen gekoppeld worden
-
-|Aanname
-|De datasets worden niet als open datasets gepubliceerd
+|Aangeslotenegegevens, klantinteractiegegevens en meteregevens kunnen gekoppeld worden
 
 |Aanname
 |De dataverlading incrementeel
 
 |Aanname
 |De aansluitingengegevens die de RNB's aanleveren bevatten alleen gegevens van aansluitingen met een  'ouderwetse terugdraaimeter'. Dus niet _verzenden en dan filteren_, maar _filteren en dan verzenden_. Idem voor klantinteractiegegevens en meteringegevens
-
-|Beslissing
-|Bij elke dataset hoort precies één dataproduct
 
 |===
