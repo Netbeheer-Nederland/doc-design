@@ -141,6 +141,7 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4, width=100%]
 ----
+
 vars: {
   d2-config: {
     pad: 20
@@ -148,44 +149,54 @@ vars: {
 }
 
 grid-rows: 5
-grid-columns: 4
+grid-columns: 5
 
 vertical-gap: 80
 horizontal-gap: 160
 
-1.class: empty
-EDSN.class: [noun; business]
-2.class: empty
-3.class: empty
-
 Netbeheerder.class: [noun; business]
-Broker.class: [noun; business]
-Consumer.class: [noun; business]
-4.class: empty
+EDSN1.class: [noun; business]
+1_3.class: empty
+EDSN2.class: [noun; business]
+RDI.class: [noun; business]
 
-5.class: empty
+2_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
+2_5.class: empty
 
-"MijnOmgeving/Maatwerk".class: [noun; application]
-"Data Product".class: [noun; application]
-"NBNL Dataportaal".class: [noun; application]
-6.class: empty
+3_1.class: empty
+3_2.class: empty
+Datamarkt.class: [noun; application]
+3_4.class: empty
+3_5.class: empty
 
-7.class: empty
-"JSON File".class: [artifact; technology]
+Maatwerk.class: [noun; application]
+DP_Klantinteractie.class: [noun; application]
+"File gateway".class: [noun; application]
+DP_RDI.class: [noun; application]
+4_5.class: empty
 
+5_1.class: empty
+"JSON File1".class: [artifact; technology]
+5_3.class: empty
+"JSON File2".class: [artifact; technology]
+5_5.class: empty
+
+Netbeheerder -> Maatwerk: "assigned to"
+Extract -> EDSN1: "serves"
+DP_Klantinteractie -> Extract: "serves"
+"JSON File1" -> DP_Klantinteractie: "realises"
+Datamarkt -> Transform: "serves"
+"JSON File2" -> DP_RDI: "realises"
+DP_RDI -> Load: "serves"
+Load <- EDSN2: "assigned to"
+DP_Klantinteractie -> "File gateway": "reads"
+Load -> RDI: "serving"
+"File gateway" -> DP_RDI: "reads"
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
-"Data Product" -> "Extract": "serves"
-"NBNL Dataportaal" -> "Data Product": "accesses (read)"
-Extract -> Consumer: "serves"
-EDSN -> Broker: "assigned to"
-Broker -> Extract: "assigned to"
-"JSON File" -> "Data Product": "realises"
-"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
 legend: "" {
   style: {
