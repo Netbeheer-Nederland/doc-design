@@ -56,7 +56,7 @@ Er moet gekozen worden tussen een tweetal scenario's: centraal en decentraal.
 
 === Gebruiksscenario: centraal dataproduct
 
-.Gebruiksscenario
+.Gebruiksscenario centraal dataproduct
 [d2,svg,theme=4]
 ----
 shape: sequence_diagram
@@ -100,7 +100,7 @@ Regionale\nnetbeheerder -> "EDSN\n ": 7. Lever klantinteractiegegevens
 
 === Gebruiksscenario: decentraal dataproduct
 
-.Gebruiksscenario
+.Gebruiksscenario decentraal dataproduct
 [d2,svg,theme=4]
 ----
 shape: sequence_diagram
@@ -182,9 +182,15 @@ Datamarkt.class: [noun; application]
 3_5.class: invisible
 
 Maatwerk.class: [noun; application]
-DP_Klantinteractie.class: [noun; application]
+DP_Klantinteractie: {
+  label: Dataproduct\nKlantinteractie
+  class: [noun; application]
+}
 "File gateway".class: [noun; application]
-DP_RDI.class: [noun; application]
+DP_RDI: {
+  label: Dataproduct\nRDI
+  class: [noun; application]
+}
 4_5.class: invisible
 
 5_1.class: invisible
@@ -306,12 +312,11 @@ classes: {
   }
 }
 
-
 ----
 
 
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
-2. Aanlevering van de metergegevens, de aangeslotenegegevens en de klantinteractiegegevens geschiedt via JSON-bestanden
+2. Aanlevering van de metergegevens, de aangeslotenegegevens en de klantinteractiegegevens geschiedt via JSON-bestanden.
 
 == Dataset
 
@@ -322,14 +327,14 @@ classes: {
 include::partial$four_v.adoc[]
 ====
 
-In centrale dataproduct scenario is er één dataset: de meterwisselgegevens. In het decentrale scenario zijn er drie datasets: metergegevens, aangeslotenegegevens en klantinteractiegegevens. Deze worden echter geïntegreerd tot één dataset.
+In centrale dataproduct scenario is er één dataproduct: de meterwisselgegevens. In het decentrale scenario zijn er twee dataproducten: klantinteractie en RDI.
 
 [cols="1, 3"]
 |===
 |Type |Beschrijving
 
 |Volume
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+|Laag, < 100MB (ongecomprimeerd)
 
 |Variety
 |Gestructureerd
@@ -338,7 +343,7 @@ In centrale dataproduct scenario is er één dataset: de meterwisselgegevens. In
 |Hoog
 
 |Velocity
-|Laag, na de initiële verlading volgen alleen maar incrementele verladingen
+|Laag
 |===
 
 == Voorwaarden
@@ -353,16 +358,13 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |Type |Beschrijving
 
 |Aanname
-|Er is doel/binding voor alle datasets
+|Er is gekozen voor het decentrale scenario
 
 |Aanname
 |Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de kopelbaarheid met de aansluitingsgegevens van de RNB)
 
 |Aanname
 |Aangeslotenegegevens, klantinteractiegegevens en meteregevens kunnen gekoppeld worden
-
-|Aanname
-|De dataverlading incrementeel
 
 |Aanname
 |De aansluitingengegevens die de RNB's aanleveren bevatten alleen gegevens van aansluitingen met een  'ouderwetse terugdraaimeter'. Dus niet _verzenden en dan filteren_, maar _filteren en dan verzenden_. Idem voor klantinteractiegegevens en meteringegevens
