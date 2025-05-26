@@ -51,8 +51,8 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *
 
 Er moet gekozen worden tussen een tweetal scenario's: centraal en decentraal. 
 
-* In het centrale scenario verzamelt en integreert EDSN alle datasets en biedt het aan als één dataset (meterwisselgegevens);
-* In het decentrale scenario biedt elke regionale netbeheerder haar eigen dataset aan en zullen deze datasets nog verrijkt moeten worden met klantgegevens.
+1. In het centrale scenario verzamelt en integreert EDSN alle datasets en biedt het aan als één dataset (meterwisselgegevens);
+2. In het decentrale scenario biedt elke regionale netbeheerder haar eigen dataset aan en zullen deze datasets nog verrijkt moeten worden met klantgegevens.
 
 === Gebruiksscenario: centraal dataproduct
 
@@ -154,50 +154,69 @@ grid-columns: 5
 vertical-gap: 80
 horizontal-gap: 160
 
-Netbeheerder.class: [noun; business]
-EDSN1.class: [noun; business]
-1_3.class: empty
-EDSN2.class: [noun; business]
+RNB: {
+  label: Netbeheerder
+  class: [noun; business]
+}
+EDSN1: {
+  label: EDSN
+  class: [noun; business]
+}
+1_3.class: invisible
+EDSN2: {
+  label: EDSN
+  class: [noun; business]
+}
 RDI.class: [noun; business]
 
-2_1.class: empty
+2_1.class: invisible
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
-2_5.class: empty
+2_5.class: invisible
 
-3_1.class: empty
-3_2.class: empty
+3_1.class: invisible
+3_2.class: invisible
 Datamarkt.class: [noun; application]
-3_4.class: empty
-3_5.class: empty
+3_4.class: invisible
+3_5.class: invisible
 
 Maatwerk.class: [noun; application]
 DP_Klantinteractie.class: [noun; application]
 "File gateway".class: [noun; application]
 DP_RDI.class: [noun; application]
-4_5.class: empty
+4_5.class: invisible
 
-5_1.class: empty
-"JSON File1".class: [artifact; technology]
-5_3.class: empty
-"JSON File2".class: [artifact; technology]
-5_5.class: empty
+5_1.class: invisible
+"JSON File1": {
+  label: JSON File\nKlantinteractie
+  class: [artifact; technology]
+}
+5_3.class: invisible
+"JSON File2": {
+  label: JSON File\nRDI
+  class: [artifact; technology]
+}
+5_5.class: invisible
 
-Netbeheerder -> Maatwerk: "assigned to"
-Extract -> EDSN1: "serves"
-DP_Klantinteractie -> Extract: "serves"
-"JSON File1" -> DP_Klantinteractie: "realises"
-Datamarkt -> Transform: "serves"
-"JSON File2" -> DP_RDI: "realises"
-DP_RDI -> Load: "serves"
-Load <- EDSN2: "assigned to"
-DP_Klantinteractie -> "File gateway": "reads"
-Load -> RDI: "serving"
-"File gateway" -> DP_RDI: "reads"
+RNB -> Maatwerk: "assigned to"
+EDSN1 -> Extract: "assigned to"
+EDSN2 -> Load: "assigned to"
+
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
+Load -> RDI: "serves"
+
+Datamarkt -> Transform: "serves"
+
 DP_Klantinteractie -> Maatwerk: "reads"
+DP_Klantinteractie -> Extract: "serves"
+DP_Klantinteractie -> "File gateway": "reads"
+DP_RDI -> "File gateway": "reads"
+DP_RDI -> Load: "serves"
+
+"JSON File1" -> DP_Klantinteractie: "realises"
+"JSON File2" -> DP_RDI: "realises"
 
 legend: "" {
   style: {
@@ -259,6 +278,10 @@ classes: {
       stroke-width: 0
     }
   }
+  invisible: {
+    style.opacity: 0
+    label: a
+  }
   verb: {
     style: {border-radius: 30}
   }
@@ -282,6 +305,7 @@ classes: {
     }
   }
 }
+
 
 ----
 
