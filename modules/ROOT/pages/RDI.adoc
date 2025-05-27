@@ -1,7 +1,10 @@
 = Rijksinspectie Data Infrastructuur (RDI)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
-_RDI_, alsmede de achterliggende architectuur en gemaakte keuzes.
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor de dataproducten _Klantinteractie_ en _RDI_, alsmede hun achterliggende architectuur en de gemaakte keuzes. 
+
+- Dataproduct _Klantinteractie_ bevat als dataset klantinteractiegegevens en metergegevens. 
+
+- Dataproduct _RDI_ bevat als dataset klantcontactgegevens en aansluitingsgegevens. 
 
 [NOTE]
 ====
@@ -18,41 +21,41 @@ Er lopen nog gesprekken met verschillende partijen over welke informatie exact m
 
 == Functionele eisen
 
-Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *doen*.
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen welke data ("*Wil ik*") je ("*Als rol*") nodig hebt en waarom ("*Want*").
 
 .Functionele eisen
 [cols="1, 1, 1"]
 |===
-|Als Rol |Wil ik |Want
+|Als rol |Wil ik |Want
 
-|RDI
+|Rijksinspectie Digitale Infrastructuur (RDI)
 |Een uniform overzicht van 'ouderwetse terugdraaimeters' (metergegevens)
 |Deze meters moeten vervangen worden 
 
-|RDI
+|Rijksinspectie Digitale Infrastructuur (RDI)
 |Een uniform overzicht van de klanten die deze meters gebruiken (aansluitingsgegevens)
 |Deze aangeslotenen moeten hun meter laten vervangen
 
-|RDI
+|Rijksinspectie Digitale Infrastructuur (RDI)
 |Een uniform overzicht met contactgegevens van deze aangeslotenen (klantcontactgegevens)
 |Deze aangeslotenen moeten aangeschreven worden
 
-|RDI
+|Rijksinspectie Digitale Infrastructuur (RDI)
 |Een uniform overzicht van de interactie (communicatie) met deze aangeslotenen (klantinteractiegegevens)
 |Ik wil weten wat de status van de meterwissel is
-
-|RDI
-|Een uniform overzicht van de eigenschappen van de meter (metergegevens)
-|Ik wil een geschikte vervangende meter aanbieden
 
 |===
 
 == Dataservice
 
-Er moet gekozen worden tussen een tweetal scenario's: centraal en decentraal. 
+Er moet gekozen worden tussen een tweetal scenario's: _centraal_ en _decentraal_. 
 
-1. In het centrale scenario verzamelt en integreert EDSN alle datasets en biedt het aan als één dataset (meterwisselgegevens);
-2. In het decentrale scenario biedt elke regionale netbeheerder haar eigen dataset aan en zullen deze datasets nog verrijkt moeten worden met klantgegevens.
+1. In het _centrale scenario_ vraagt de Rijksinspectie Digitale Infrastructuur (RDI) aan EDSN om de meterwisselgegevens. De EDSN vraagt de benodigde gegevens op bij de Regionale Netbeheerders (RNB) en het Aangeslotene Register (AR) om vervolgens deze gegevens te integreren tot één dataset en te geven aan de RDI;
+2. In het _decentrale scenario_ vraagt de RDI de benodigde gegevens zelf op bij elke RNB en bij het AR om vervolgens deze gegevens zelf te integreren tot één dataset.
+
+In beide scenario's gaat het om twee dataset, _klantinteractiegegevens_ en _aangeslotenegegevens_, die geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
+
+Vanuit doelarchitectuur en om de inspanningen van de RNBs te minimaliseren gaat de voorkeur uit naar het _centrale_ scenario waarin EDSN de benodigde gegevens opvraagt, integreert en beschikbaar stelt. Voorwaarde is wel dat EDSN hiervoor voldoende capaciteit beschikbaar kan stellen.
 
 === Gebruiksscenario: centraal dataproduct
 
@@ -67,23 +70,20 @@ vars: {
   }
 }
 
-Rijksinspectie\nDigitale Infrastructuur
-"EDSN\n "
-Regionale\nnetbeheerder
-Aangeslotene\nRegister
+RDI:  "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
+EDSN: " \nEDSN\n \n "
+RNB:  "Regionale\nNetbeheerder\n(RNB)"
+AR:   "Aangeslotene\nRegister\n(AR)"
 
-Rijksinspectie\nDigitale Infrastructuur -> "EDSN\n ": 1. Verzoek meterwisselgegevens
-
-"EDSN\n " -> Regionale\nnetbeheerder: 2. Verzoek metergegevens
-Regionale\nnetbeheerder -> "EDSN\n ": 3. Lever metergegevens
-"EDSN\n " -> Aangeslotene\nRegister: 4. Verzoek aangeslotenegegevens
-Aangeslotene\nRegister -> "EDSN\n ": 5. Lever aangeslotenegegevens
-"EDSN\n " -> Regionale\nnetbeheerder: 6. Verzoek klantinteractiegegevens
-Regionale\nnetbeheerder -> "EDSN\n ": 7. Lever klantinteractiegegevens
-
-"EDSN\n " -> "EDSN\n ": 8. Integreer gegevens
-
-"EDSN\n " -> Rijksinspectie\nDigitale Infrastructuur: 9. Lever meterwisselgegevens
+RDI -> EDSN:   1. Verzoek meterwisselgegevens
+EDSN -> RNB:   2. Verzoek metergegevens
+RNB -> EDSN:   3. Lever metergegevens
+EDSN -> AR:    4. Verzoek aangeslotenegegevens
+AR -> EDSN:    5. Lever aangeslotenegegevens
+EDSN -> RNB:   6. Verzoek klantinteractiegegevens
+RNB -> EDSN:   7. Lever klantinteractiegegevens
+EDSN -> EDSN:  8. Integreer gegevens
+EDSN -> RDI:   9. Lever meterwisselgegevens
 
 ----
 
@@ -111,18 +111,17 @@ vars: {
   }
 }
 
-Rijksinspectie\nDigitale Infrastructuur
-Regionale\nnetbeheerder
-Aangeslotene\nRegister
+RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
+RNB: "Regionale\nNetbeheerder\n(RNB)"
+AR:  "Aangeslotene\nRegister\n(AR)"
 
-Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 1. Verzoek metergegevens
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 2. Lever metergegevens
-Rijksinspectie\nDigitale Infrastructuur -> Aangeslotene\nRegister: 3. Verzoek aangeslotenegegevens
-Aangeslotene\nRegister -> Rijksinspectie\nDigitale Infrastructuur: 4. Lever aangeslotenegegevens
-Rijksinspectie\nDigitale Infrastructuur -> Regionale\nnetbeheerder: 5. Verzoek klantinteractiegegevens
-Regionale\nnetbeheerder -> Rijksinspectie\nDigitale Infrastructuur: 6. Lever klantinteractiegegevens
-
-Rijksinspectie\nDigitale Infrastructuur -> Rijksinspectie\nDigitale Infrastructuur: 7. Integreer gegevens
+RDI -> RNB: 1. Verzoek metergegevens
+RNB -> RDI: 2. Lever metergegevens
+RDI -> AR:  3. Verzoek aangeslotenegegevens
+AR -> RDI:  4. Lever aangeslotenegegevens
+RDI -> RNB: 5. Verzoek klantinteractiegegevens
+RNB -> RDI: 6. Lever klantinteractiegegevens
+RDI -> RDI: 7. Integreer gegevens
 
 ----
 
@@ -139,7 +138,7 @@ Rijksinspectie\nDigitale Infrastructuur -> Rijksinspectie\nDigitale Infrastructu
 Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 
 .Architectuur
-[d2,svg,theme=4, scaledwidth=100%]
+[d2,svg,theme=4]
 ----
 vars: {
   d2-config: {
@@ -333,7 +332,7 @@ In centrale dataproduct scenario is er één dataproduct: de meterwisselgegevens
 
 == Voorwaarden
 
-Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_.
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettelijke verplichting_.
 
 
 == Beslissingen en aannames
@@ -343,7 +342,10 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |Type |Beschrijving
 
 |Aanname
-|Er is gekozen voor het decentrale scenario
+|Er is gekozen voor het centrale scenario
+
+|Aanname
+|EDSN heeft voldoende capaciteit om de benodigde gegevens op te vragen en te integreren 
 
 |Aanname
 |Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de kopelbaarheid met de aansluitingsgegevens van de RNB)
