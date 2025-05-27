@@ -198,7 +198,7 @@ Volume en velocity bepalen het integratiepatroon. Variety en veracity bepalen de
 
 == Voorwaarden
 
-Dit dataproduct wordt als _open/gesloten data_ aangeboden.
+Dit dataproduct wordt als _open/gesloten data_ aangeboden, onder de grondslag _Toestemming / Overeenkomst / Wettelijke verplichting / Vitaal belang / Taak van algemeen belang of uitoefening van openbaar gezag / Gerechtvaardigd belang_.
 
 == Beslissingen en aannames
 
