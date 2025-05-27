@@ -3,6 +3,8 @@
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
 _DATAPRODUCT_, alsmede de achterliggende architectuur en gemaakte keuzes.
 
+Schrijf dit document vanuit het perspectief van de klant en haar dataproductbehoefte. 
+
 [NOTE]
 ====
 include::partial$data_product.adoc[]
@@ -14,7 +16,7 @@ _Doel van dit dataproduct._
 
 == Functionele eisen
 
-Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet *doen*.
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wat je (_rol_) met de data wilt doen (_wil_) en waarom (_want_). 
 
 .Functionele eisen
 [cols="1, 1, 1"]
@@ -191,6 +193,8 @@ include::partial$four_v.adoc[]
 |Velocity
 |_Laag, Midden, Hoog. Met toelichting._
 |===
+
+Volume en velocity bepalen het integratiepatroon. Variety en veracity bepalen de kwaliteit van de data.
 
 == Voorwaarden
 
