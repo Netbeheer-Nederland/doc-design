@@ -141,7 +141,6 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4, width=100%]
 ----
-
 vars: {
   d2-config: {
     pad: 20
@@ -149,7 +148,7 @@ vars: {
 }
 
 grid-rows: 5
-grid-columns: 5
+grid-columns: 4
 
 vertical-gap: 80
 horizontal-gap: 160
@@ -158,28 +157,19 @@ RNB: {
   label: Netbeheerder
   class: [noun; business]
 }
-EDSN1: {
-  label: EDSN
-  class: [noun; business]
-}
-1_3.class: invisible
-EDSN2: {
-  label: EDSN
-  class: [noun; business]
-}
+1_2.class: empty
+EDSN.class: [noun; business]
 RDI.class: [noun; business]
 
-2_1.class: invisible
+2_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
-2_5.class: invisible
 
-3_1.class: invisible
-3_2.class: invisible
-Datamarkt.class: [noun; application]
-3_4.class: invisible
-3_5.class: invisible
+3_1.class: empty
+3_2.class: empty
+Datamart.class: [noun; application]
+3_4.class: empty
 
 Maatwerk.class: [noun; application]
 DP_Klantinteractie: {
@@ -191,35 +181,35 @@ DP_RDI: {
   label: Dataproduct\nRDI
   class: [noun; application]
 }
-4_5.class: invisible
 
-5_1.class: invisible
+5_1.class: empty
 "JSON File1": {
   label: JSON File\nKlantinteractie
   class: [artifact; technology]
 }
-5_3.class: invisible
+5_3.class: empty
 "JSON File2": {
   label: JSON File\nRDI
   class: [artifact; technology]
 }
-5_5.class: invisible
 
 RNB -> Maatwerk: "assigned to"
-EDSN1 -> Extract: "assigned to"
-EDSN2 -> Load: "assigned to"
+EDSN -> Extract: "assigned to"
+EDSN -> Transform: "assigned to"
+EDSN -> Load: "assigned to"
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
-Load -> RDI: "serves"
+Load -> RDI: "serving"
 
-Datamarkt -> Transform: "serves"
+Datamart -> Transform: "serving"
+Datamart -> Load: "serving"
 
-DP_Klantinteractie -> Maatwerk: "reads"
-DP_Klantinteractie -> Extract: "serves"
-DP_Klantinteractie -> "File gateway": "reads"
-DP_RDI -> "File gateway": "reads"
-DP_RDI -> Load: "serves"
+Maatwerk -> DP_Klantinteractie: "accesses (write)"
+DP_Klantinteractie -> Extract: "serving"
+"File gateway" -> DP_Klantinteractie: "accesses (read)"
+"File gateway" -> DP_RDI: "accesses (read)"
+DP_RDI -> Load: "serving"
 
 "JSON File1" -> DP_Klantinteractie: "realises"
 "JSON File2" -> DP_RDI: "realises"
@@ -284,10 +274,6 @@ classes: {
       stroke-width: 0
     }
   }
-  invisible: {
-    style.opacity: 0
-    label: a
-  }
   verb: {
     style: {border-radius: 30}
   }
@@ -311,7 +297,6 @@ classes: {
     }
   }
 }
-
 ----
 
 
