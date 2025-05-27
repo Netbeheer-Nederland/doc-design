@@ -1,10 +1,11 @@
 = Rijksinspectie Data Infrastructuur (RDI)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor de dataproducten _Klantinteractie_ en _RDI_, alsmede hun achterliggende architectuur en de gemaakte keuzes. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor de dataproducten _RDI_ en _Klantinteractie_, alsmede hun achterliggende architectuur en de gemaakte keuzes. 
 
+- Dataproduct _RDI_ bevat als dataset klantcontactgegevens en aansluitingsgegevens;
 - Dataproduct _Klantinteractie_ bevat als dataset klantinteractiegegevens en metergegevens. 
 
-- Dataproduct _RDI_ bevat als dataset klantcontactgegevens en aansluitingsgegevens. 
+
 
 [NOTE]
 ====
@@ -21,7 +22,7 @@ Er lopen nog gesprekken met verschillende partijen over welke informatie exact m
 
 == Functionele eisen
 
-Het dataproduct moet voldoen aan functionele eisen; deze vertellen welke data ("*Wil ik*") je ("*Als rol*") nodig hebt en waarom ("*Want*").
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*").
 
 .Functionele eisen
 [cols="1, 1, 1"]
@@ -33,7 +34,7 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen welke data ("
 |Deze meters moeten vervangen worden 
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht van de klanten die deze meters gebruiken (aansluitingsgegevens)
+|Een uniform overzicht van de klanten die deze meters gebruiken (aangeslotenegegevens)
 |Deze aangeslotenen moeten hun meter laten vervangen
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
@@ -44,16 +45,20 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen welke data ("
 |Een uniform overzicht van de interactie (communicatie) met deze aangeslotenen (klantinteractiegegevens)
 |Ik wil weten wat de status van de meterwissel is
 
+|Rijksinspectie Digitale Infrastructuur (RDI)
+|Een integratie van metergegevens, aangeslotenegegevens, klantcontactgegevens en klantinteractiegegevens
+|Ik wil de integratie van deze gegevens: meterwisselgegevens
+
 |===
 
 == Dataservice
 
 Er moet gekozen worden tussen een tweetal scenario's: _centraal_ en _decentraal_. 
 
-1. In het _centrale scenario_ vraagt de Rijksinspectie Digitale Infrastructuur (RDI) aan EDSN om de meterwisselgegevens. De EDSN vraagt de benodigde gegevens op bij de Regionale Netbeheerders (RNB) en het Aangeslotene Register (AR) om vervolgens deze gegevens te integreren tot één dataset en te geven aan de RDI;
+1. In het _centrale scenario_ vraagt de Rijksinspectie Digitale Infrastructuur (RDI) aan EDSN om de meterwisselgegevens. De EDSN vraagt de benodigde gegevens op bij de Regionale Netbeheerders (RNBs) en het Aangeslotene Register (AR) om vervolgens deze gegevens te integreren tot één dataset en te geven aan de RDI;
 2. In het _decentrale scenario_ vraagt de RDI de benodigde gegevens zelf op bij elke RNB en bij het AR om vervolgens deze gegevens zelf te integreren tot één dataset.
 
-In beide scenario's gaat het om twee dataset, _klantinteractiegegevens_ en _aangeslotenegegevens_, die geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
+In beide scenario's gaat het om twee datasets, _klantinteractiegegevens_ en _aangeslotenegegevens_, die geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
 
 Vanuit doelarchitectuur en om de inspanningen van de RNBs te minimaliseren gaat de voorkeur uit naar het _centrale_ scenario waarin EDSN de benodigde gegevens opvraagt, integreert en beschikbaar stelt. Voorwaarde is wel dat EDSN hiervoor voldoende capaciteit beschikbaar kan stellen.
 
@@ -87,15 +92,15 @@ EDSN -> RDI:   9. Lever meterwisselgegevens
 
 ----
 
-1. De RDI verzoekt om meterwisselgegevens 
-2. EDSN verzoekt om metergegevens van ouderwetse terugdraaimeter
-3. De RNB levert metergegevens
-4. EDSN verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters
-5. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
-6. EDSN verzoekt om klantinteractiegegevens van deze klanten
-7. De RNB levert klantinteractiegegevens
-8. EDSN combineert de metergegevens, klantinteratiegegevens en de aangeslotnegegevens tot meterwisselgegevens
-9. EDSN levert meterwisselgegevens
+1. De RDI verzoekt om meterwisselgegevens;
+2. EDSN verzoekt om metergegevens van ouderwetse terugdraaimeter;
+3. De RNB levert metergegevens;
+4. EDSN verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
+5. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens);
+6. EDSN verzoekt om klantinteractiegegevens van deze klanten;
+7. De RNB levert klantinteractiegegevens;
+8. EDSN combineert de metergegevens, klantinteratiegegevens en de aangeslotenegegevens tot meterwisselgegevens;
+9. EDSN levert meterwisselgegevens.
 
 
 === Gebruiksscenario: decentraal dataproduct
@@ -125,13 +130,13 @@ RDI -> RDI: 7. Integreer gegevens
 
 ----
 
-1. De RDI verzoekt om metergegevens van ouderwetse terugdraaimeter
-2. De RNB levert metergegevens
-3. De RDI verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters
-4. Het Aangeslotene Register levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens)
-5. De RDI verzoekt om klantinteractiegegevens van deze klanten
-6. De RNB levert klantinteractiegegevens
-7. De RDI combineert de metergegevens, klantinteratiegegevens en de aangeslotnegegevens tot meterwisselgegevens
+1. De RDI verzoekt om metergegevens van ouderwetse terugdraaimeter;
+2. De RNB levert metergegevens;
+3. De RDI verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
+4. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens);
+5. De RDI verzoekt om klantinteractiegegevens van deze klanten;
+6. De RNB levert klantinteractiegegevens;
+7. De RDI combineert de metergegevens, klantinteratiegegevens en de aangeslotenegegevens tot meterwisselgegevens.
 
 === Architectuur
 
@@ -300,7 +305,8 @@ classes: {
 
 
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
-2. Aanlevering van de metergegevens, de aangeslotenegegevens en de klantinteractiegegevens geschiedt via JSON-bestanden.
+2. Aanlevering van de metergegevens, de aangeslotenegegevens en de klantinteractiegegevens geschiedt via JSON-bestanden;
+3. Aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
 
 == Dataset
 
@@ -311,7 +317,28 @@ classes: {
 include::partial$four_v.adoc[]
 ====
 
-In centrale dataproduct scenario is er één dataproduct: de meterwisselgegevens. In het decentrale scenario zijn er twee dataproducten: klantinteractie en RDI.
+In het centrale scenario zijn er twee verschillende dataproducten, _Klantinteractie_ en _RDI_, elk met hun eigen dataset en elke dataset heeft haar eigen kenmerken:
+
+==== Dataset Klantinteractie
+
+[cols="1, 3"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Midden
+
+|Velocity
+|Laag
+|===
+
+==== Dataset RDI
 
 [cols="1, 3"]
 |===
@@ -348,10 +375,10 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |EDSN heeft voldoende capaciteit om de benodigde gegevens op te vragen en te integreren 
 
 |Aanname
-|Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de kopelbaarheid met de aansluitingsgegevens van de RNB)
+|Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de koppelbaarheid met de aansluitingsgegevens van de RNB)
 
 |Aanname
-|Aangeslotenegegevens, klantinteractiegegevens en meteregevens kunnen gekoppeld worden
+|Aangeslotenegegevens, klantinteractiegegevens en metergegevens kunnen gekoppeld worden
 
 |Aanname
 |De aansluitingengegevens die de RNB's aanleveren bevatten alleen gegevens van aansluitingen met een  'ouderwetse terugdraaimeter'. Dus niet _verzenden en dan filteren_, maar _filteren en dan verzenden_. Idem voor klantinteractiegegevens en meteringegevens
