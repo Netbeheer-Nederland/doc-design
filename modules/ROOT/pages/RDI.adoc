@@ -139,7 +139,7 @@ Rijksinspectie\nDigitale Infrastructuur -> Rijksinspectie\nDigitale Infrastructu
 Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 
 .Architectuur
-[d2,svg,theme=4, width=100%]
+[d2,svg,theme=4, scaledwidth=100%]
 ----
 vars: {
   d2-config: {
