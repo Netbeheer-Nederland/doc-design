@@ -4,4 +4,4 @@
 * xref::netbewust-laden.adoc[]
 * xref::netcode-h13.adoc[]
 #* xref::nl-profile-group.adoc[]
-* xref::RDI.adoc[]
+* xref::rijksinspectie-data-infrastructuur.adoc[]
