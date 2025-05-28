@@ -13,11 +13,30 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
+Vanuit het kernteam Netdigitalisering is opdracht gegeven voor de start van de
+eerste fase van de projectopdracht. Een eerste deel focust op het leggen van de
+definities voor de samenwerking:
+
+* hoe gaan we de uitwisseling vormgeven?
+* standaardisering van de attribuutdefinities;
+* opstellen informatiemodellen;
+* identificatie van assets in elkaars net;
+* wat gaan we uitwisselen?
+* onderzoeken beschikbaarheid data binnen de organisatie van de DSO en TSO
+zoals beschreven in Netcode 13.
+
+Het op te leveren product is een informatiemodel ten behoeve van de
+uitwisseling van structurele asset data tussen de netbeheerders. Deze dient op
+zo'n manier vorm te zijn gegeven dat zij de basis vormt voor de tweede fase
+waarin de uitwisseling verder wordt vormgegeven.
+
 == Rollen
 
 De dataproducten beschreven in dit ontwerp kennen meerdere stakeholders, elk
 met een eigen verzameling behoeften en wensen. De <<_functionele_eisen>>
 behorend bij elke rol worden in het volgende hoofdstuk beschreven.
+
+#TODO: beheerder gesloten distributiesysteem?#
 
 .Rollen
 [cols="1, 2"]
@@ -71,63 +90,6 @@ Elektriciteit].
 
 |===
 
-== Dataservice
-
-=== Gebruiksscenario
-
-Het volgende gebruiksscenario wordt ondersteund:
-
-.Gebruiksscenario
-[d2,svg,theme=4]
-----
-shape: sequence_diagram
-
-vars: {
-  d2-config: {
-    pad: 20
-  }
-}
-
-----
-
-1. ...
-
-=== Kwaliteitseisen
-
-Kwaliteitseisen (_non functionals_) beschrijven wat een oplossing moet *zijn*.
-Voor dit ontwerp wordt de categorisering vanuit _ISO/IEC 25010_ aangehouden,
-waar van toepassing.
-
-.Kwaliteitseisen
-[cols="1, 1, 1"]
-|===
-|Categorie |Beschrijving |Kwaliteitseisen
-
- |Prestaties
- |Snel en efficiënt functioneren, met minimale laadtijden en schaalbaar
-a|
-
- |Overdraagbaarheid
- |Eenvoudig te verplaatsen of te migreren naar een andere omgeving
-a|
-
- |Gebruiksvriendelijkheid
- |Intuïtief en makkelijk te gebruiken voor de eindgebruiker
-a|
-
- |Betrouwbaarheid
- |Stabiel en foutbestendig, met een hoge beschikbaarheid
-a|* integriteit -> Masterdata Management (MDM)
-
- |Beveiliging
- |Bescherming bieden tegen ongeautoriseerde toegang en datalekken
-a|
-
- |Onderhoudbaarheid
- |Eenvoudig aanpasbaar en uitbreidbaar zijn
-a|
-|===
-
 == Dataset
 
 De oplossing voor de implementatie van Netcode H13 bestaat uit het
@@ -141,12 +103,12 @@ data-uitwisseling op basis van het _Common Information Model_ (CIM). Het CIM is
 een verzameling internationale standaarden die samen een informatiemodel vormen
 voor het beschrijven van het elektriciteitsnet.
 
-Als beginpunt van het beschrijven van de datasets is er gekozen voor de _Common
-Grid Model Exchange Standard_ (CGMES). CGMES is een verzameling *profielen*
-(dataproducten) die meerdere gebruiksscenario's beschrijven, specifiek voor
-Transmission System Operators (TSO). De CGMES is daarmee een specialisatie van
-het CIM, maar niet volledig toepasbaar voor het beschrijven van het
-elektriciteitsnet van de regionale netbeheerder.
+Als beginpunt van het beschrijven van de dataproducten is er gekozen voor de
+_Common Grid Model Exchange Standard_ (CGMES). CGMES is een verzameling
+*profielen* (dataproducten) die meerdere gebruiksscenario's beschrijven,
+specifiek voor Transmission System Operators (TSO). De CGMES is daarmee een
+specialisatie van het CIM, maar niet volledig toepasbaar voor het beschrijven
+van het elektriciteitsnet van de regionale netbeheerder.
 
 De in deze oplossing beschreven dataproducten worden om die reden aangevuld
 vanuit het CIM, daar waar CGMES een functioneel gevraagd gebruiksscenario niet
@@ -199,10 +161,77 @@ Voor alle vijf de profielen gelden dezelfde kenmerken:
 |Gestructureerd
 
 |Veracity
-|Medium, ...
+|Medium, de gegevens zijn bij elke netbeheerder beschikbaar, maar niet elke
+ netbeheerder heeft de volledige dataset tot haar beschikking.
 
 |Velocity
-|Laag, ...
+|Laag, #TODO: hoe vaak worden de datasets uitgewisseld? Maandelijke, kwartaal,
+ jaarlijks?#
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+shape: sequence_diagram
+
+Landelijke\nNetbeheerder -> Landelijke\nNetbeheerder: "1. Verzamel gegevens"
+Landelijke\nNetbeheerder -> Regionale\nNetbeheerder: "2. Lever Equipment Profile"
+
+Regionale\nNetbeheerder -> Regionale\nNetbeheerder: "3. Verwerk koppelpunten"
+Regionale\nNetbeheerder -> Landelijke\nNetbeheerder: "4. Lever Equipment Profile"
+----
+
+1.
+2.
+3.
+4.
+
+=== Kwaliteitseisen
+
+Kwaliteitseisen (_non functionals_) beschrijven wat een oplossing moet *zijn*.
+Voor dit ontwerp wordt de categorisering vanuit _ISO/IEC 25010_ aangehouden,
+waar van toepassing.
+
+.Kwaliteitseisen
+[cols="1, 1, 1"]
+|===
+|Categorie |Beschrijving |Kwaliteitseisen
+
+ |Prestaties
+ |Snel en efficiënt functioneren, met minimale laadtijden en schaalbaar
+a|
+
+ |Overdraagbaarheid
+ |Eenvoudig te verplaatsen of te migreren naar een andere omgeving
+a|
+
+ |Gebruiksvriendelijkheid
+ |Intuïtief en makkelijk te gebruiken voor de eindgebruiker
+a|
+
+ |Betrouwbaarheid
+ |Stabiel en foutbestendig, met een hoge beschikbaarheid
+a|* integriteit -> Masterdata Management (MDM)
+
+ |Beveiliging
+ |Bescherming bieden tegen ongeautoriseerde toegang en datalekken
+a|
+
+ |Onderhoudbaarheid
+ |Eenvoudig aanpasbaar en uitbreidbaar zijn
+a|
 |===
 
 == Voorwaarden
@@ -216,8 +245,8 @@ De waarde van de oplossing wordt beschreven over de as van twee _waardestromen_
 [todo], waarbij de primaire rollen die van de landelijke en regionale
 netbeheerder zijn. Elke stap in de waardestromen wordt uitgesplitst naar
 _bedrijfsfuncties_, iets wat een netbeheerder "kan". Afsluitend worden de
-bedrijfsfuncties samengevoegd tot een bedrijfsprocesoverzicht. De
-Bedrijfsprocessen zijn wat een netbeheerder implementeert (_Build & Run_)
+bedrijfsfuncties uitgewerkt tot een bedrijfsprocesoverzicht. De
+bedrijfsprocessen zijn wat een netbeheerder implementeert (_Build & Run_)
 binnen de eigen organisatie om tot een duurzame ontsluiting van de
 dataproducten te komen.
 
