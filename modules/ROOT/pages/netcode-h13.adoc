@@ -399,4 +399,12 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 |Aanname
 |De _NBNL Data Catalog_ is beschikbaar.
 
+|Beslissing
+|Er wordt afgeweken van de in _NBility_ beschreven waardestromen: _Overeenkomen
+ dataproduct_ wordt gebruikt om dataproducten te realiseren. NBility definieert
+ een complete waardestroom voor het realiseren van nieuwe producten, wat
+ significant meerwerk in scope brengt voor dit ontwerp. Implementerende
+ netbeheerders worden geadviseerd naar waardestroom _I.B Veranderen
+ bedrijfsinrichting_ te kijken voor implementatie van een voortbrengingsproces.
+
 |===
