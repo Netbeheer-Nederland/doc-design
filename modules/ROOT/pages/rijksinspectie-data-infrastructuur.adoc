@@ -92,15 +92,15 @@ EDSN -> RDI:   9. Lever meterwisselgegevens
 
 ----
 
-1. De RDI verzoekt om meterwisselgegevens;
-2. EDSN verzoekt om metergegevens van ouderwetse terugdraaimeter;
-3. De RNB levert metergegevens;
-4. EDSN verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
-5. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens);
-6. EDSN verzoekt om klantinteractiegegevens van deze klanten;
-7. De RNB levert klantinteractiegegevens;
+1. De RDI verzoekt EDSN om meterwisselgegevens;
+2. EDSN verzoekt de RNB om metergegevens van ouderwetse terugdraaimeter;
+3. De RNB levert metergegevens aan EDSN;
+4. EDSN verzoekt het AR om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
+5. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens) aan EDSN;
+6. EDSN verzoekt de RNB om klantinteractiegegevens van deze klanten;
+7. De RNB levert klantinteractiegegevens aan EDSN;
 8. EDSN combineert de metergegevens, klantinteratiegegevens en de aangeslotenegegevens tot meterwisselgegevens;
-9. EDSN levert meterwisselgegevens.
+9. EDSN levert meterwisselgegevens aan de RDI.
 
 
 === Gebruiksscenario: decentraal dataproduct
@@ -130,12 +130,12 @@ RDI -> RDI: 7. Integreer gegevens
 
 ----
 
-1. De RDI verzoekt om metergegevens van ouderwetse terugdraaimeter;
-2. De RNB levert metergegevens;
-3. De RDI verzoekt om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
-4. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens);
-5. De RDI verzoekt om klantinteractiegegevens van deze klanten;
-6. De RNB levert klantinteractiegegevens;
+1. De RDI verzoekt de RNB om metergegevens van ouderwetse terugdraaimeter;
+2. De RNB levert metergegevens aan de RDI;
+3. De RDI verzoekt de AR om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
+4. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens) de RDI;
+5. De RDI verzoekt de RNB om klantinteractiegegevens van deze klanten;
+6. De RNB levert klantinteractiegegevens aan de RDI;
 7. De RDI combineert de metergegevens, klantinteratiegegevens en de aangeslotenegegevens tot meterwisselgegevens.
 
 === Architectuur
