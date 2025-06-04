@@ -53,7 +53,7 @@ dekkingsgebied aan bij _Energie Data Services Nederland_ (EDSN). Hierbij worden
 worden voedingsgebieden -waar mogelijk- gekoppeld aan de voedingsgebieden van
 TenneT
 4. EDSN consolideert de aangeleverde datasets en visualiseert deze op een
-interactive, geografische kaart. De geconsolideerde (uit alle aanleveringen
+interactieve, geografische kaart. De geconsolideerde (uit alle aanleveringen
 samengevoegde) dataset wordt integraal aangeboden als downloadbaar bestand
 (dataproduct)
 5. EDSN bevestigt de ontvangst van de dataset en de publicatie van de kaart

@@ -17,17 +17,15 @@ Vanuit het kernteam Netdigitalisering is opdracht gegeven voor de start van de
 eerste fase van de projectopdracht. Een eerste deel focust op het leggen van de
 definities voor de samenwerking:
 
-* hoe gaan we de uitwisseling vormgeven?
 * standaardisering van de attribuutdefinities;
 * opstellen informatiemodellen;
 * identificatie van assets in elkaars net;
-* wat gaan we uitwisselen?
 * onderzoeken beschikbaarheid data binnen de organisatie van de DSO en TSO
 zoals beschreven in Netcode 13.
 
 Het op te leveren product is een informatiemodel ten behoeve van de
-uitwisseling van structurele asset data tussen de netbeheerders. Deze dient op
-zo'n manier vorm te zijn gegeven dat zij de basis vormt voor de tweede fase
+uitwisseling van structurele _asset_ data tussen de netbeheerders. Deze dient
+op zo'n manier vorm te zijn gegeven dat zij de basis vormt voor de tweede fase
 waarin de uitwisseling verder wordt vormgegeven.
 
 == Rollen
@@ -205,7 +203,7 @@ Voor dit ontwerp wordt de categorisering vanuit _ISO/IEC 25010_ aangehouden,
 waar van toepassing.
 
 .Kwaliteitseisen
-[cols="1, 1, 1"]
+[cols="1, 2, 2"]
 |===
 |Categorie |Beschrijving |Kwaliteitseisen
 
@@ -231,24 +229,29 @@ a|
 
  |Onderhoudbaarheid
  |Eenvoudig aanpasbaar en uitbreidbaar zijn
-a|
+a|* Eén aanspreekpunt (team) per netbeheerder
 |===
 
 == Voorwaarden
 
-De vijf profielen (zie <<_dataset>>) worden als _gesloten data_ aangeboden,
+De vijf profielen (zie <<_dataset>>) worden als _open data_ aangeboden,
 onder de _Grondslag Wettelijke Verplichting_.
 
 == Architectuur
 
-De waarde van de oplossing wordt beschreven over de as van twee _waardestromen_
-[todo], waarbij de primaire rollen die van de landelijke en regionale
-netbeheerder zijn. Elke stap in de waardestromen wordt uitgesplitst naar
-_bedrijfsfuncties_, iets wat een netbeheerder "kan". Afsluitend worden de
-bedrijfsfuncties uitgewerkt tot een bedrijfsprocesoverzicht. De
-bedrijfsprocessen zijn wat een netbeheerder implementeert (_Build & Run_)
-binnen de eigen organisatie om tot een duurzame ontsluiting van de
-dataproducten te komen.
+De oplossing wordt beschreven over de as van twee perspectieven: het produceren
+van de profielen (_Build_) en het uitwisselen van de profielen (_Run_). Beide
+perspectieven worden gestructureerd op basis van het bedrijfsprocesmodel van
+_NBility_ en waar nodig aangevuld. De bedrijfsprocessen zijn wat een
+netbeheerder implementeert binnen de eigen organisatie om tot een duurzame
+ontsluiting van de dataproducten te komen.  Daarnaast vormen de te
+implementeren processen de basis van de _features_ uit te voeren door de
+netbeheerder.
+
+De architectuur is opzettelijk abstract; *elke* netbeheerder wordt geacht een
+eigen, passende invulling te geven aan de processen zoals beschreven in dit
+ontwerp. Voorkeur ligt op het hergebruiken van bestaande faciliteiten binnen de
+netbeheerder.
 
 [NOTE]
 ====
@@ -261,17 +264,103 @@ model].
 ====
 De https://github.com/Netbeheer-Nederland/am-doelarchitectuur-datadelen[Doelarchitectuur
 Datadelen] wordt als basis gebruikt voor de uitwerking van de oplossing.
+Profielen (zie <<_dataset>>) zoals beschreven in dit ontwerp worden als
+dataproduct beschreven en uitgewisseld.
 ====
 
-=== Waardestromen
+=== Beschikbaar stellen van netbeheerdata (Build)
 
-=== Bedrijfsfuncties
+Elke netbeheerder is zowel producent als consument van de profielen. Daarmee
+moet de netbeheerder in staat zijn om profielen te produceren onder de
+_velocity_ die past bij het corresponderende profiel (zie
+<<_volume_variety_veracity_velocity>>). Om dit te faciliteren implementeert de
+netbeheerder onderstaande processen en diensten om de profielen gereed te maken
+voor uitwisseling (zie <<_beschikbaar_stellen_van_netbeheerdata_run>>).
 
-=== Bedrijfsprocessen
+.Beschikbaar stellen van netbeheerdata (Build)
+image::beschikbaar_stellen_van_netbeheerdata_build-20250602.svg[]
+
+[cols="1, 2, 3"]
+|===
+|Type |Naam |Beschrijving
+
+|Proces
+|Vindbaar maken dataproduct
+|Onder de _Doelarchitectuur Datadelen_ is elk profiel FAIR, waarbij dit proces
+ het profiel vindbaar maakt. Vindbaar maken bestaat uit het registeren van het
+ profiel bij de _Data Product Catalog_, samen met het publiceren van locatie van
+ de dataset.
+
+|Proces
+|In behandeling nemen dataproductverzoek
+|Bij implementatie of aanpassen van een profiel dient er aangesloten te worden
+ op het voortbrengingsproces van de netbeheerder. Dit proces faciliteert
+ prioritering van implementatie van het profiel.
+
+|Proces
+|Overeenkomen dataproduct
+|Definitie, _refinement_ en uitvoering van de werkzaamheden om (aanpassingen
+ in) het profiel te realiseren. Werkzaamheden vinden primair plaats in de
+ _dataintegratieomgeving_ van de netbeheerder. Werkzaamheden uitvoerd in dit
+ proces vinden hun uiting in de _Netbeheerderdataverstrekking_.
+
+|Functie
+|Master Data Management
+|Opzetten, verbeteren en instandhouden van Master Data Management (MDM) binnen
+ de netbeheerder. Dit omvat beleid, proces en procedure rondom het consistent
+ en (waar nodig) persistent omgaan met identifiers.
+
+|===
+
+=== Beschikbaar stellen van netbeheerdata (Run)
+
+Het uitwisselen van profielen bestaat uit het technisch ontsluiten van de
+dataservices en datasets, toegangsbeheer, datakwaliteit, afhandelen van vragen
+en het aannemen van -en communiceren over- functionele eisen.
+
+.Beschikbaar stellen van netbeheerdata (Run)
+image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
+
+[cols="1, 2, 3"]
+|===
+|Type |Naam |Beschrijving
+
+|Proces
+|Authenticatie en autorisatie
+|Authenticeren en autoriseren van toegang tot profielen. Dit betreft de
+ technische middelen om toegang te beveiligen, alsmede het beheren van de
+ _identiteit_ van netbeheerders via een _Identity Access Management_-oplossing.
+
+|Proces
+|Leveren dataproduct
+|Het (geautomatiseerd) beschikbaar stellen van de _dataset_ voor profielen, via
+ de corresponderende _dataservice_.
+
+|Functie
+|Datakwaliteit borgen
+|Het controleren en corrigeren van datakwaliteit van de profielen. Dit omhelst
+ (geautomatiseerde) controle van de datasets tot beleid, proces en procedure
+ voor correctie van datasets.
+
+|Proces
+|Behandelen vraag over dataproduct
+|Vragen van afnemers van de profielen beantwoorden. Dit kan gaan om
+ inhoudelijke vragen over gebruik van de profielen, maar ook
+ datakwaliteitgerelateerde zaken. Interactie wordt vastgelegd als _Algemene
+ klantzaak_ in de _Customer Management_-oplossing van de netbeheerder.
+
+|Proces
+|Vaststellen functionele eisen
+|Sommige vragen leveren nieuwe functionele eisen op voor profielen. Dit proces
+ handelt implementatievragen af vanuit _Netbeheer Nederland_ en faciliteert het
+ consolideren van implementatievragen van andere netbeheerders, indien niet
+ direct bij _Netbeheer Nederland_ belegd.
+
+|===
 
 == Beslissingen en aannames
 
-[cols="1, 1"]
+[cols="1, 3"]
 |===
 |Type |Beschrijving
 
@@ -285,6 +374,41 @@ Datadelen] wordt als basis gebruikt voor de uitwerking van de oplossing.
  worden.
 
 |Aanname
-| Zowel landelijke als regionale netbeheerder is als gebruiker van de profielen
- beschikbaar om kwaliteit en toepasbaarheid te testen.
+|Minstens één landelijke en één regionale netbeheerder is als producent en
+ consument van de profielen beschikbaar om kwaliteit en toepasbaarheid te
+ testen.
+
+|Aanname
+|Profielen worden als open data aangeboden. Profielen zijn zuiver
+ netbeheerderdata en daarmee onderhevig aan de _Visie Datadelen_.
+
+|Aanname
+|Netbeheerders factureren niet onderling voor het uitwisselen van de
+ dataproducten.
+
+|Aanname
+|Elke netbeheerder implementeert de architectuur op basis van eigen middelen en
+ invulling. Het ontkoppelpunt tussen netbeheerders zijn de profielen die
+ uitgewisseld worden.
+
+|Aanname
+|Elke netbeheerder publiceert via de eigen
+ dataintegratieomgeving/maatwerkproces decentraal de profielen. #TODO: is er
+ een wens om te centraliseren, b.v. via TenneT of EDSN?#
+
+|Aanname
+|Netbeheerders maken gebruik van decentrale IAM-oplossingen, er wordt geen
+ gefedereerde IAM-oplossing ingezet.
+
+|Aanname
+|De _NBNL Data Catalog_ is beschikbaar.
+
+|Beslissing
+|Er wordt afgeweken van de in _NBility_ beschreven waardestromen: _Overeenkomen
+ dataproduct_ wordt gebruikt om dataproducten te realiseren. NBility definieert
+ een complete waardestroom voor het realiseren van nieuwe producten, wat
+ significant meerwerk in scope brengt voor dit ontwerp. Implementerende
+ netbeheerders worden geadviseerd naar waardestroom _I.B Veranderen
+ bedrijfsinrichting_ te kijken voor implementatie van een voortbrengingsproces.
+
 |===

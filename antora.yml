@@ -1,7 +1,6 @@
 name: doc-design
 title: Design Documentation
 version: true
-prerelease: "-draft"
 start_page: index.adoc
 nav:
 - modules/ROOT/nav.adoc
