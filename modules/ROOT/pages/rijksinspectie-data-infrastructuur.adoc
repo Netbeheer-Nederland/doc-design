@@ -368,8 +368,8 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |===
 |Type |Beschrijving
 
-|Aanname
-|Er is gekozen voor het centrale scenario
+|Beslissing
+|Er is gekozen voor het decentrale scenario
 
 |Aanname
 |EDSN heeft voldoende capaciteit om de benodigde gegevens op te vragen en te integreren 
