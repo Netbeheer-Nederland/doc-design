@@ -16,9 +16,7 @@ include::partial$data_product.adoc[]
 
 Per 1-1-2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een ouderwetse terugdraaimeter hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter hangen met een aparte registratie voor levering en teruglevering. 
 
-De netbeheerders zullen om die reden opnieuw de slimme meter gaan aanbieden bij de aangeslotenen. Wordt de slimme meter geweigerd of lukt het niet om een andere meter te plaatsen dan ontstaat de verplichting dit te melden bij de Rijksinspectie Digitale Infrastructuur (RDI) op basis van informatie over de meter, de aangeslotene en de klantinteractie.
-
-Er lopen nog gesprekken met verschillende partijen over welke informatie exact moet worden aangeleverd en via welke weg, waarbij op dit moment de Gegevensuitwisselingsentiteit (GUE) als belangrijkste kandidaat wordt gezien door onder andere de RDI zelf. *De informatie uitwisseling zal starten per 1-1-2026.*
+Vanaf 1 januari 2026 moeten de netbeheerders daarom binnen 2 jaar al deze meters hebben gewisseld. Hiervoor dienen de netbeheerders deze klanten tweemaal een aanbiedingsbrief te sturen. Indien dit na twee brieven en vervolgens 10 weken niet heeft geresulteerd in een plaatsing, dienen de netbeheerders het dossier over te dragen aan de Rijksinspectie Digitale Infrastructuur (RDI). Deze gaat vervolgens handhaven.
 
 == Functionele eisen
 
@@ -53,18 +51,13 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 == Dataservice
 
-Er moet gekozen worden tussen een tweetal scenario's: _centraal_ en _decentraal_. 
+Er is gekozen voor een decentraal scenario waarbij elke regionale netbeheerder (RNB) zelf de aangeslotene met een ouderwetse terugdraaimeter aanschrijft. Ontbrekende gegevens kan de RNB opvragen bij de Gegevensuitwisselingsentiteit (GUE). De GUE treedt op als intermediair tussen de RNB en het Aangesloteneregister (AR).
 
-1. In het _centrale scenario_ vraagt de Rijksinspectie Digitale Infrastructuur (RDI) aan EDSN om de meterwisselgegevens. De EDSN vraagt de benodigde gegevens op bij de Regionale Netbeheerders (RNBs) en het Aangeslotene Register (AR) om vervolgens deze gegevens te integreren tot één dataset en te geven aan de RDI;
-2. In het _decentrale scenario_ vraagt de RDI de benodigde gegevens zelf op bij elke RNB en bij het AR om vervolgens deze gegevens zelf te integreren tot één dataset.
-
-In beide scenario's gaat het om twee datasets, _klantinteractiegegevens_ en _aangeslotenegegevens_, die geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
-
-Vanuit doelarchitectuur en om de inspanningen van de RNBs te minimaliseren gaat de voorkeur uit naar het _centrale_ scenario waarin EDSN de benodigde gegevens opvraagt, integreert en beschikbaar stelt. Voorwaarde is wel dat EDSN hiervoor voldoende capaciteit beschikbaar kan stellen.
+Het gaat om twee datasets, _klantinteractiegegevens_ en _aangeslotenegegevens_, die geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
 
 === Gebruiksscenario: centraal dataproduct
 
-.Gebruiksscenario centraal dataproduct
+.Gebruiksscenario 
 [d2,svg,theme=4]
 ----
 shape: sequence_diagram
@@ -75,20 +68,21 @@ vars: {
   }
 }
 
-RDI:  "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
-EDSN: " \nEDSN\n \n "
-RNB:  "Regionale\nNetbeheerder\n(RNB)"
-AR:   "Aangeslotene\nRegister\n(AR)"
+RNB: "Regionale\nNetbeheerder\n(RNB)"
+GUE: "Gegevensuit-\nwisselentiteit\n(GUE)"
+AR:  "Aangeslotene\nRegister\n(AR)"
+A:   "Aangeslotene\n(A)\n "
+EL:  "Energieleverancier\n(EL)"
+RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
 
-RDI -> EDSN:   1. Verzoek meterwisselgegevens
-EDSN -> RNB:   2. Verzoek metergegevens
-RNB -> EDSN:   3. Lever metergegevens
-EDSN -> AR:    4. Verzoek aangeslotenegegevens
-AR -> EDSN:    5. Lever aangeslotenegegevens
-EDSN -> RNB:   6. Verzoek klantinteractiegegevens
-RNB -> EDSN:   7. Lever klantinteractiegegevens
-EDSN -> EDSN:  8. Integreer gegevens
-EDSN -> RDI:   9. Lever meterwisselgegevens
+RNB -> GUE:   1. Verzoek additionele gegevens
+GUE -> AR:    2. Verzoek aangeslotenegegevens
+GUE -> EL:    3. Verzoek klantinteractiegegevens
+AR  -> GUE:   3. Lever additionele gegevens
+GUE -> RNB:   4. Verzoek additionele gegevens
+RNB -> A:     5. Stuur aanbiedingsbrief
+A -> RNB:     6. Geen reactie
+RNB -> RDI:   7. Verzoek handhaving
 
 ----
 
@@ -369,7 +363,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Type |Beschrijving
 
 |Beslissing
-|Er is gekozen voor het decentrale scenario
+|Er is gekozen voor het decentrale scenario waarbij elke RNB de benodigde gegevens bij de GUE opvraagt
 
 |Aanname
 |EDSN heeft voldoende capaciteit om de benodigde gegevens op te vragen en te integreren 
