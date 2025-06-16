@@ -14,7 +14,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Per 1-1-2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een ouderwetse terugdraaimeter hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter hangen met een aparte registratie voor levering en teruglevering. 
+Per 1 januari 2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een 'ouderwetse terugdraaimeter' hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter hangen met een aparte registratie voor levering en teruglevering. 
 
 Vanaf 1 januari 2026 moeten de netbeheerders daarom binnen 2 jaar al deze meters hebben gewisseld. Hiervoor dienen de netbeheerders deze klanten tweemaal een aanbiedingsbrief te sturen. Indien dit na twee brieven en vervolgens 10 weken niet heeft geresulteerd in een plaatsing, dienen de netbeheerders het dossier over te dragen aan de Rijksinspectie Digitale Infrastructuur (RDI). Deze gaat vervolgens handhaven.
 
@@ -70,19 +70,24 @@ vars: {
 
 RNB: "Regionale\nNetbeheerder\n(RNB)"
 GUE: "Gegevensuit-\nwisselentiteit\n(GUE)"
+EL:  "Energie-\nleverancier\n(EL)"
 AR:  "Aangeslotene\nRegister\n(AR)"
-A:   "Aangeslotene\n(A)\n "
-EL:  "Energieleverancier\n(EL)"
+A:   "Aangeslotene\n/klant\n(A)"
 RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
 
-RNB -> GUE:   1. Verzoek additionele gegevens
-GUE -> AR:    2. Verzoek aangeslotenegegevens
-GUE -> EL:    3. Verzoek klantinteractiegegevens
-AR  -> GUE:   3. Lever additionele gegevens
-GUE -> RNB:   4. Verzoek additionele gegevens
-RNB -> A:     5. Stuur aanbiedingsbrief
-A -> RNB:     6. Geen reactie
-RNB -> RDI:   7. Verzoek handhaving
+RNB -> GUE:  1. Verzoek om klantcontactgegevens
+GUE -> EL:   2. Verzoek om klantcontactgegevens
+EL -> GUE:   3. Levering klantcontactgegevens
+GUE -> RNB:  4: Levering klantcontactgegevens
+RNB -> GUE:  5. Verzoek aangeslotenegegevens
+GUE -> AR:   6.  Verzoek aangeslotenegegevens
+AR -> GUE:   7. Levering aangeslotenegegevens
+GUE -> RNB:  8. Levering aangeslotenegegevens
+RNB -> RNB:  9. Integreer klantcontact-, aangeslotene- en klantinteractiegegevens
+RNB -> A:   10 Verstuur aanbiedingsbrieven
+A -> RNB:   11. Beantwoord aanbiedingsbrieven
+RNB -> RNB: 12. Maak meterwisseldossier
+RNB -> RDI: 13. Verstuur meterwisseldossier
 
 ----
 
