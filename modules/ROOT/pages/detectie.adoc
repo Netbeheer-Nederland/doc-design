@@ -1,6 +1,6 @@
-= Detectie energie-intensieve apparaten ten behoeve flexoplossingen
+= Detectie van energie-intensieve apparaten ten behoeve flexoplossingen
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _energie-intensieve apparaten_ haar achterliggende architectuur en de gemaakte keuzes. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _energie-intensieve apparaten_, haar achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
 ====
@@ -13,7 +13,7 @@ Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van ap
 
 Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. 
 
-Dit dataproduct draagt bij aan de detectie van energie-intensieve apparaten. Van deze apparaten bevat het het aansluitingsniveau en vermogen.
+Dit dataproduct draagt bij aan de detectie van energie-intensieve apparaten. Van deze apparaten bevat het het aansluitingsniveau (1x10A, 1x25A, 3x25A, ...) en vermogen.
 
 == Functionele eisen
 
@@ -25,18 +25,18 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |Als rol |Wil ik |Want
 
 |Regionale Netbeheerder (RNB)
-|Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
-|Ik wil de aangeslotene een flexoplossing bieden waardoor het net beter benut wordt
-
-|Regionale Netbeheerder (RNB)
 |Een uniform overzicht van aansluitingen en het gedrag van invoeding en afname in de tijd
 |Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vier apparaten bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP) of thuisbatterijen (BESS)
+
+|Regionale Netbeheerder (RNB)
+|Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
+|Ik wil de aangeslotene een flexoplossing bieden waardoor het net beter benut wordt
 
 |===
 
 == Dataservice
 
-Er is gekozen voor een decentraal scenario waarbij een jaar lang de slimme meters van 1.000 medewerkers van de drie grootste RNB's worden uitgelezen. Dit uitlezen gebeurt per RNB (vandaar decentraal)
+Er is gekozen voor een decentraal scenario waarbij een jaar lang de slimme meters van 1.000 medewerkers van de drie grootste RNB's worden uitgelezen. Dit uitlezen gebeurt per RNB (vandaar decentraal).
 
 === Gebruiksscenario
 
@@ -53,10 +53,9 @@ vars: {
 Decentraal scenario: {
 	shape: sequence_diagram
 	RNB: "Regionale\nNetbeheerder\n(RNB)"
-  MDW: "Medewerker\n(MDW)"
+  	MDW: "Medewerker\nRNB\n(MDW)"
 
-  RNB <-> MDW: 1. Lees slimme meter uit
-
+  	RNB <-> MDW: 1. Lees slimme meter uit
 }
 
 ----
@@ -78,64 +77,37 @@ vars: {
 }
 
 grid-rows: 5
-grid-columns: 3
+grid-columns: 4
 
 vertical-gap: 80
 horizontal-gap: 160
 
-1_1.class: empty
-RNB.class: [noun; business]
-RDI.class: [noun; business]
+"Netbeheerder".class: [noun; business]
+Consumer.class: [noun; business]
+1.class: empty
+2.class: empty
 
+3.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-3_1.class: empty
-Datamart: {
-  label: Datamart\n(Meter\nKlantinteractie)
-  class: [noun; application]
-}
-3_3.class: empty
+"HTTP Server".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+4.class: empty
 
-DP_Klantcontact: {
-  label: Dataproduct\nKlantcontact
-  class: [noun; application]
-}
-"File gateway".class: [noun; application]
-DP_Aangeslotene: {
-  label: Dataproduct\nAangeslotene
-  class: [noun; application]
-}
-
-"JSON File1": {
-  label: JSON File\nKlantcontact
-  class: [artifact; technology]
-}
-5_2.class: empty
-"JSON File2": {
-  label: JSON File\nAangeslotene
-  class: [artifact; technology]
-}
-
-RNB -> Extract: "assigned to"
-RNB -> Transform: "assigned to"
-RNB -> Load: "assigned to"
+5.class: empty
+"JSON File".class: [artifact; technology]
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
-Load -> RDI: "serving"
-
-Datamart -> Transform: "serving"
-Datamart -> Load: "serving"
-
-DP_Klantcontact -> Extract: "serving"
-"File gateway" -> DP_Klantcontact: "accesses (read)"
-"File gateway" -> DP_Aangeslotene: "accesses (read)"
-DP_Aangeslotene -> Load: "serving"
-
-"JSON File1" -> DP_Klantcontact: "realises"
-"JSON File2" -> DP_Aangeslotene: "realises"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Consumer -> Extract: "assigned to"
+"JSON File" -> "Data Product": "realises"
+"HTTP Server" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "HTTP Server": "assigned to"
 
 legend: "" {
   style: {
@@ -236,7 +208,7 @@ classes: {
 include::partial$four_v.adoc[]
 ====
 
-==== Dataset _Aangeslotene_
+==== Dataset
 
 [cols="1, 3"]
 |===
@@ -252,7 +224,7 @@ include::partial$four_v.adoc[]
 |Hoog
 
 |Velocity
-|Laag
+|Laag (15 minuten)
 |===
 
 == Voorwaarden
@@ -270,5 +242,14 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 
 |Aanname
 |Het is mogelijk op basis van analyse te bepalen of één van de vier apparaattypes (zonnepaneel, thuislaadpunt, warmtepomp of thuisbatterij) zich achter het aansluitpunt bevindt.
+
+|Aanname
+|Het is mogelijk om middels een enquête 1.000 medewerkers bij de drie grootste RNB's te vinden die willen meedoen
+
+|Aanname
+|Er is behoefte aan 15 minuten waarden
+
+|Aanname
+|De data wordt verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
 
 |===
