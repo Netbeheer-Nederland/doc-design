@@ -51,16 +51,27 @@ vars: {
 }
 
 Decentraal scenario: {
-	shape: sequence_diagram
-	RNB: "Regionale\nNetbeheerder\n(RNB)"
-  	MDW: "Medewerker\nRNB\n(MDW)"
+  shape: sequence_diagram
+  RNB: "Regionale\nNetbeheerder\n(RNB)"
+  MDW: "Medewerker\nRNB\n(MDW)"
+  DS: "Data\nScientist\n(DS)"
 
-  	RNB <-> MDW: 1. Lees slimme meter uit
+  RNB -> MDW: 1. Lees slimme meter uit
+  RNB -> DS: 2. Stuur slimme meter data
+  Analyse: {
+    DS -> DS: 3. Verrijk slimme meter data
+    DS -> DS: 4. Analyseer slimme meter data
+  }
+  DS -> RNB: 5. Stuur gedectecteerde apparaten
 }
 
 ----
 
- 1. Een RNB leest de slimme meter van een deelnemende medewerker uit
+1. Een RNB leest de slimme meter van deelnemende medewerkers uit
+2. De RNB stuurt de slimme meter data naar het analyse team
+3. Het analyse team verrijkt de slimme meter data met bijvoorbeeld meteodata
+4. Het analyse team analyseert de verrijkte data en bouwt een model
+6. Het analyse team stuurt per slimme meter de gedetecteerde energie-intensieve appararaten op aansluitingsniveau inclusief hun (geschatte) vermogen
 
 === Architectuur
 
@@ -83,31 +94,33 @@ vertical-gap: 80
 horizontal-gap: 160
 
 "Netbeheerder".class: [noun; business]
-Consumer.class: [noun; business]
-1.class: empty
-2.class: empty
+1_2.class: empty
+"Data Scientist".class: [noun; business]
+1_4.class: empty
 
-3.class: empty
+3_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"HTTP Server".class: [noun; application]
-"Data Product".class: [noun; application]
-"NBNL Dataportaal".class: [noun; application]
-4.class: empty
+"Slimme Meter Lezer".class: [noun; application]
+"Slimme Meter".class: [noun; application]
+3_3.class: empty
+3_4.class: empty
 
-5.class: empty
-"JSON File".class: [artifact; technology]
+4_1.class: empty
+"JSON File\nSlimme Meter".class: [artifact; technology]
+4_3.class: empty
+4_4.class: empty
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
-"Data Product" -> "Extract": "serves"
-"NBNL Dataportaal" -> "Data Product": "accesses (read)"
-Consumer -> Extract: "assigned to"
-"JSON File" -> "Data Product": "realises"
-"HTTP Server" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "HTTP Server": "assigned to"
+"Slimme Meter" -> "Extract": "serves"
+"Data Scientist" -> Extract: "assigned to"
+"Data Scientist" -> Load: "assigned to"
+"JSON File\nSlimme Meter" -> "Slimme Meter": "realises"
+"Slimme Meter Lezer" -> "Slimme Meter": "accesses (read)"
+"Netbeheerder" -> "Slimme Meter Lezer": "assigned to"
 
 legend: "" {
   style: {
@@ -193,6 +206,7 @@ classes: {
   }
 }
 
+
 ----
 
 
@@ -251,5 +265,14 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 
 |Aanname
 |De data wordt verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
+
+|Aanname
+|De Data Scientist verrijkt zelf de slimme meter data
+
+|Aanname
+|De Data Scientist berekent de waarschijnlijkheid van een energie-intensief apparaat op aansluitniveau inclusief hun geschatte vermogen
+
+|Aanname
+|De Data Scientist berekent niet het gebruiksprofiel van een energie-intensief apparaat
 
 |===
