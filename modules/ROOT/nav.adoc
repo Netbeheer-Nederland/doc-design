@@ -5,3 +5,4 @@
 * xref::netcode-h13.adoc[]
 #* xref::nl-profile-group.adoc[]
 * xref::rijksinspectie-data-infrastructuur.adoc[]
+* xref::detectie.adoc[]
