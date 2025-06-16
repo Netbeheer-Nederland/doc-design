@@ -38,9 +38,9 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 == Dataservice
 
-Er is gekozen voor een decentraal scenario waarbij elke regionale netbeheerder (RNB) zelf de aangeslotene met een ouderwetse terugdraaimeter aanschrijft. Een RNB kan ontbrekende gegevens, zoals klantcontactgegevens en aangeslotenegegevens, opvragen bij de Gegevensuitwisselingsentiteit (GUE). De GUE treedt op als intermediair tussen de RNB en de Energieleverancier (El) en het Aangesloteneregister (AR).
+Er is gekozen voor een decentraal scenario waarbij elke regionale netbeheerder (RNB) zelf de aangeslotene met een ouderwetse terugdraaimeter aanschrijft. Een RNB kan ontbrekende gegevens, zoals klantcontactgegevens en aangeslotenegegevens, opvragen bij de Gegevensuitwisselingsentiteit (GUE). De GUE treedt op als intermediair tussen de RNB en de Energieleverancier (EL) en het Aangesloteneregister (AR).
 
-Het gaat om twee datasets, _klantcontactgegevens_ en _aangeslotenegegevens_, die samen met _klantinteractiegegevens_ geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
+Het gaat om twee datasets, _klantcontactgegevens_ en _aangeslotenegegevens_, die samen met _metergegevens_ en  _klantinteractiegegevens_ geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
 
 
 === Gebruiksscenario
@@ -89,7 +89,7 @@ Decentraal scenario: {
  6. Het GUE verzoekt het Aangeslotene Register om aangeslotenegegevens
  7. Het Aangeslotene Register levert de aangeslotenegegevens aan de GUE
  8. Het GUE levert de aangeslotenegegevens aan de RNB
- 9. De RNB integreert de ontvangen klantcontact- en aangeslotenegegevens met haar eigen klantinteractiegegevens tot meterwisselgegevens
+ 9. De RNB integreert de ontvangen klantcontact- en aangeslotenegegevens met haar eigen metergegevens- en klantinteractiegegevens tot meterwisselgegevens
 10. De RNB verstuurt (tot twee keer toe) aanbiedingsbrieven aan de aangslotene met een ouderwetse terugdraaimeter
 11. De aangesloten reageert op de aanbiedingsbrieven
 12. De RNB maakt een meterwisseldossier
@@ -335,7 +335,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de koppelbaarheid met de aansluitingsgegevens van de RNB)
 
 |Aanname
-|Klantcontactgegevens, aangslotenegegevens en klantinteractiegegevens kunnen gekoppeld worden
+|Klantcontactgegevens, aangslotenegegevens, metergegevens en klantinteractiegegevens kunnen gekoppeld worden
 
 |Aanname
 |De RNB's kunnen de klanten met een 'ouderwetse terugdraaimeter' herkennen, zodat zij alleen van deze klanten gegevens opvragen
