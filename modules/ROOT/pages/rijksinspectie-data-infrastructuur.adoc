@@ -1,11 +1,6 @@
 = Rijksinspectie Data Infrastructuur (RDI)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor de dataproducten _RDI_ en _Klantinteractie_, alsmede hun achterliggende architectuur en de gemaakte keuzes. 
-
-- Dataproduct _RDI_ bevat als dataset klantcontactgegevens en aansluitingsgegevens;
-- Dataproduct _Klantinteractie_ bevat als dataset klantinteractiegegevens en metergegevens. 
-
-
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor de dataproducten _Klantcontact_ en _Aangeslotene_, alsmede hun achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
 ====
@@ -27,25 +22,17 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |===
 |Als rol |Wil ik |Want
 
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht van 'ouderwetse terugdraaimeters' (metergegevens)
-|Deze meters moeten vervangen worden 
+|Regionale Netbeheerder (RNB)
+|Een uniform overzicht van klantcontactgegevens van klanten met een 'ouderwetse terugdraaimeter'
+|Ik moet weten welke klanten ik een aanbiedingsbrief moet sturen
+
+|Regionale Netbeheerder (RNB)
+|Een uniform overzicht van aangslotenegegevens van mijn klanten met een 'ouderwetse terugdraaimeter'
+|Ik moet weten waar ik de aanbiedingsbrief naartoe moet sturen
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht van de klanten die deze meters gebruiken (aangeslotenegegevens)
-|Deze aangeslotenen moeten hun meter laten vervangen
-
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht met contactgegevens van deze aangeslotenen (klantcontactgegevens)
-|Deze aangeslotenen moeten aangeschreven worden
-
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een uniform overzicht van de interactie (communicatie) met deze aangeslotenen (klantinteractiegegevens)
-|Ik wil weten wat de status van de meterwissel is
-
-|Rijksinspectie Digitale Infrastructuur (RDI)
-|Een integratie van metergegevens, aangeslotenegegevens, klantcontactgegevens en klantinteractiegegevens
-|Ik wil de integratie van deze gegevens: meterwisselgegevens
+|Een integratie van klantcontactgegevens, aangeslotenegegevens, metergegevens en klantinteractiegegevens: meterwisseldossier
+|Ik moet handhaven
 
 |===
 
@@ -274,9 +261,9 @@ classes: {
 ----
 
 
-1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_;
-2. Aanlevering van de metergegevens, de aangeslotenegegevens en de klantinteractiegegevens geschiedt via JSON-bestanden;
-3. Aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
+1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
+2. Aanlevering van de klantcontactgegevens en de aangeslotenegegevens geschiedt via JSON-bestanden
+3. Aanlevering van het meterwisseldossier vanuit de netbeheerder naar de RDI geschiedt via JSON-bestand
 
 == Dataset
 
@@ -287,9 +274,9 @@ classes: {
 include::partial$four_v.adoc[]
 ====
 
-In het centrale scenario zijn er twee verschillende dataproducten, _Klantinteractie_ en _RDI_, elk met hun eigen dataset en elke dataset heeft haar eigen kenmerken:
+In scenario zijn er twee verschillende dataproducten, _Klantcontact_ en _Aangeslotene_, elk met hun eigen dataset en elke dataset heeft haar eigen kenmerken:
 
-==== Dataset Klantinteractie
+==== Dataset _Klantcontact_
 
 [cols="1, 3"]
 |===
@@ -308,7 +295,7 @@ In het centrale scenario zijn er twee verschillende dataproducten, _Klantinterac
 |Laag
 |===
 
-==== Dataset RDI
+==== Dataset _Aangeslotene_
 
 [cols="1, 3"]
 |===
@@ -342,15 +329,27 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Er is gekozen voor het decentrale scenario waarbij elke RNB de benodigde gegevens bij de GUE opvraagt
 
 |Aanname
-|EDSN heeft voldoende capaciteit om de benodigde gegevens op te vragen en te integreren 
+|Het GUE regelt (eventuele) autorisatie en authenticatie
 
 |Aanname
 |Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de koppelbaarheid met de aansluitingsgegevens van de RNB)
 
 |Aanname
-|Aangeslotenegegevens, klantinteractiegegevens en metergegevens kunnen gekoppeld worden
+|Klantcontactgegevens, aangslotenegegevens en klantinteractiegegevens kunnen gekoppeld worden
 
 |Aanname
-|De aansluitingengegevens die de RNB's aanleveren bevatten alleen gegevens van aansluitingen met een  'ouderwetse terugdraaimeter'. Dus niet _verzenden en dan filteren_, maar _filteren en dan verzenden_. Idem voor klantinteractiegegevens en meteringegevens
+|De RNB's kunnen de klanten met een 'ouderwetse terugdraaimeter' herkennen, zodat zij alleen van deze klanten gegevens opvragen
+
+|Aanname
+|Het betreft uitsluitend KV-klanten; GV-klanten hebben geen salderingsregeling (maar misschien wel een ouderwetse terugdraaimeter)
+
+|Aanname
+|Een RNB kan meerdere keren aan het GUE vragen om klantcontactgegevens. Zowel van dezelfde klant als van verschillende klanten
+
+|Beslissing
+|Het GUE levert de ontvangen gegevens (klantcontact en aangeslotene) ongewijzigd door aan de RNB
+
+|Aanname
+|De GUE is in staat de gevraagde gegevens tijd te leveren
 
 |===
