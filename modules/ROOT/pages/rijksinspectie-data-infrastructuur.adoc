@@ -51,16 +51,16 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 == Dataservice
 
-Er is gekozen voor een decentraal scenario waarbij elke regionale netbeheerder (RNB) zelf de aangeslotene met een ouderwetse terugdraaimeter aanschrijft. Ontbrekende gegevens kan de RNB opvragen bij de Gegevensuitwisselingsentiteit (GUE). De GUE treedt op als intermediair tussen de RNB en het Aangesloteneregister (AR).
+Er is gekozen voor een decentraal scenario waarbij elke regionale netbeheerder (RNB) zelf de aangeslotene met een ouderwetse terugdraaimeter aanschrijft. Een RNB kan ontbrekende gegevens, zoals klantcontactgegevens en aangeslotenegegevens, opvragen bij de Gegevensuitwisselingsentiteit (GUE). De GUE treedt op als intermediair tussen de RNB en de Energieleverancier (El) en het Aangesloteneregister (AR).
 
-Het gaat om twee datasets, _klantinteractiegegevens_ en _aangeslotenegegevens_, die geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
+Het gaat om twee datasets, _klantcontactgegevens_ en _aangeslotenegegevens_, die samen met _klantinteractiegegevens_ geïntegreerd moeten worden tot één dataset: _meterwisselgegevens_.
 
-=== Gebruiksscenario: centraal dataproduct
+
+=== Gebruiksscenario
 
 .Gebruiksscenario 
 [d2,svg,theme=4]
 ----
-shape: sequence_diagram
 
 vars: {
   d2-config: {
@@ -68,74 +68,45 @@ vars: {
   }
 }
 
-RNB: "Regionale\nNetbeheerder\n(RNB)"
-GUE: "Gegevensuit-\nwisselentiteit\n(GUE)"
-EL:  "Energie-\nleverancier\n(EL)"
-AR:  "Aangeslotene\nRegister\n(AR)"
-A:   "Aangeslotene\n/klant\n(A)"
-RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
+Decentraal scenario: {
+	shape: sequence_diagram
+	RNB: "Regionale\nNetbeheerder\n(RNB)"
+	GUE: "Gegevensuit-\nwisselentiteit\n(GUE)"
+	EL:  "Energie-\nleverancier\n(EL)"
+	AR:  "Aangeslotene\nRegister\n(AR)"
+	A:   "Aangeslotene\n(A)\n "
+	RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
 
-RNB -> GUE:  1. Verzoek om klantcontactgegevens
-GUE -> EL:   2. Verzoek om klantcontactgegevens
-EL -> GUE:   3. Levering klantcontactgegevens
-GUE -> RNB:  4: Levering klantcontactgegevens
-RNB -> GUE:  5. Verzoek aangeslotenegegevens
-GUE -> AR:   6.  Verzoek aangeslotenegegevens
-AR -> GUE:   7. Levering aangeslotenegegevens
-GUE -> RNB:  8. Levering aangeslotenegegevens
-RNB -> RNB:  9. Integreer klantcontact-, aangeslotene- en klantinteractiegegevens
-RNB -> A:   10 Verstuur aanbiedingsbrieven
-A -> RNB:   11. Beantwoord aanbiedingsbrieven
-RNB -> RNB: 12. Maak meterwisseldossier
-RNB -> RDI: 13. Verstuur meterwisseldossier
-
-----
-
-1. De RDI verzoekt EDSN om meterwisselgegevens;
-2. EDSN verzoekt de RNB om metergegevens van ouderwetse terugdraaimeter;
-3. De RNB levert metergegevens aan EDSN;
-4. EDSN verzoekt het AR om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
-5. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens) aan EDSN;
-6. EDSN verzoekt de RNB om klantinteractiegegevens van deze klanten;
-7. De RNB levert klantinteractiegegevens aan EDSN;
-8. EDSN combineert de metergegevens, klantinteratiegegevens en de aangeslotenegegevens tot meterwisselgegevens;
-9. EDSN levert meterwisselgegevens aan de RDI.
-
-
-=== Gebruiksscenario: decentraal dataproduct
-
-.Gebruiksscenario decentraal dataproduct
-[d2,svg,theme=4]
-----
-shape: sequence_diagram
-
-vars: {
-  d2-config: {
-    pad: 20
-  }
+	RNB -> GUE:  1. Verzoek om klantcontactgegevens
+	GUE -> EL:   2. Verzoek om klantcontactgegevens
+	EL -> GUE:   3. Levering klantcontactgegevens
+	GUE -> RNB:  4. Levering klantcontactgegevens
+	RNB -> GUE:  5. Verzoek aangeslotenegegevens
+	GUE -> AR:   6. Verzoek aangeslotenegegevens
+	AR -> GUE:   7. Levering aangeslotenegegevens
+	GUE -> RNB:  8. Levering aangeslotenegegevens
+	RNB -> RNB:  9. Integreer klantcontact-, aangeslotene- en \nklantinteractiegegevens tot meterwisselgegevens
+	RNB -> A:   10. Verstuur aanbiedingsbrieven
+	A -> RNB:   11. Reactie aanbiedingsbrieven
+	RNB -> RNB: 12. Maak meterwisseldossier
+	RNB -> RDI: 13. Verstuur meterwisseldossier
 }
 
-RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
-RNB: "Regionale\nNetbeheerder\n(RNB)"
-AR:  "Aangeslotene\nRegister\n(AR)"
-
-RDI -> RNB: 1. Verzoek metergegevens
-RNB -> RDI: 2. Lever metergegevens
-RDI -> AR:  3. Verzoek aangeslotenegegevens
-AR -> RDI:  4. Lever aangeslotenegegevens
-RDI -> RNB: 5. Verzoek klantinteractiegegevens
-RNB -> RDI: 6. Lever klantinteractiegegevens
-RDI -> RDI: 7. Integreer gegevens
-
 ----
 
-1. De RDI verzoekt de RNB om metergegevens van ouderwetse terugdraaimeter;
-2. De RNB levert metergegevens aan de RDI;
-3. De RDI verzoekt de AR om aangeslotenengegevens (aansluitingsgegevens en klantcontactgegevens) behorende bij deze meters;
-4. Het AR levert aangeslotenegegevens (aansluitingsgegevens en klancontactgegevens) de RDI;
-5. De RDI verzoekt de RNB om klantinteractiegegevens van deze klanten;
-6. De RNB levert klantinteractiegegevens aan de RDI;
-7. De RDI combineert de metergegevens, klantinteratiegegevens en de aangeslotenegegevens tot meterwisselgegevens.
+ 1. Een RNB verzoekt het GUE om contactgegevens van een klant met een ouderwetse terugdraaimeter
+ 2. Het GUE verzoekt de Energieleverancier om de klantcontactgegevens
+ 3. De Energieleverancier levert de klantcontactgegevens aan het GUE
+ 4. Het GUE levert de klantcontactgegevens aan de RNB
+ 5. De RNB weet nu welke klant is aangesloten op de ouderwetse terugdraaimeter en vraagt het GUE om aangeslotenegegevens
+ 6. Het GUE verzoekt het Aangeslotene Register om aangeslotenegegevens
+ 7. Het Aangeslotene Register levert de aangeslotenegegevens aan de GUE
+ 8. Het GUE levert de aangeslotenegegevens aan de RNB
+ 9. De RNB integreert de ontvangen klantcontact- en aangeslotenegegevens met haar eigen klantinteractiegegevens tot meterwisselgegevens
+10. De RNB verstuurt (tot twee keer toe) aanbiedingsbrieven aan de aangslotene met een ouderwetse terugdraaimeter
+11. De aangesloten reageert op de aanbiedingsbrieven
+12. De RNB maakt een meterwisseldossier
+13. De RNB verstuurt het meterwisseldossier naar de RDI zodat deze kan handhaven
 
 === Architectuur
 
