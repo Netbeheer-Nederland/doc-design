@@ -102,6 +102,7 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4]
 ----
+
 vars: {
   d2-config: {
     pad: 20
@@ -109,55 +110,49 @@ vars: {
 }
 
 grid-rows: 5
-grid-columns: 4
+grid-columns: 3
 
 vertical-gap: 80
 horizontal-gap: 160
 
-RNB: {
-  label: Netbeheerder
-  class: [noun; business]
-}
-1_2.class: empty
-EDSN.class: [noun; business]
+1_1.class: empty
+RNB.class: [noun; business]
 RDI.class: [noun; business]
 
-2_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
 3_1.class: empty
-3_2.class: empty
-Datamart.class: [noun; application]
-3_4.class: empty
+Datamart: {
+  label: Datamart\n(Meter\nKlantinteractie)
+  class: [noun; application]
+}
+3_3.class: empty
 
-Maatwerk.class: [noun; application]
-DP_Klantinteractie: {
-  label: Dataproduct\nKlantinteractie
+DP_Klantcontact: {
+  label: Dataproduct\nKlantcontact
   class: [noun; application]
 }
 "File gateway".class: [noun; application]
-DP_RDI: {
-  label: Dataproduct\nRDI
+DP_Aangeslotene: {
+  label: Dataproduct\nAangeslotene
   class: [noun; application]
 }
 
-5_1.class: empty
 "JSON File1": {
-  label: JSON File\nKlantinteractie
+  label: JSON File\nKlantcontact
   class: [artifact; technology]
 }
-5_3.class: empty
+5_2.class: empty
 "JSON File2": {
-  label: JSON File\nRDI
+  label: JSON File\nAangeslotene
   class: [artifact; technology]
 }
 
-RNB -> Maatwerk: "assigned to"
-EDSN -> Extract: "assigned to"
-EDSN -> Transform: "assigned to"
-EDSN -> Load: "assigned to"
+RNB -> Extract: "assigned to"
+RNB -> Transform: "assigned to"
+RNB -> Load: "assigned to"
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
@@ -166,14 +161,13 @@ Load -> RDI: "serving"
 Datamart -> Transform: "serving"
 Datamart -> Load: "serving"
 
-Maatwerk -> DP_Klantinteractie: "accesses (write)"
-DP_Klantinteractie -> Extract: "serving"
-"File gateway" -> DP_Klantinteractie: "accesses (read)"
-"File gateway" -> DP_RDI: "accesses (read)"
-DP_RDI -> Load: "serving"
+DP_Klantcontact -> Extract: "serving"
+"File gateway" -> DP_Klantcontact: "accesses (read)"
+"File gateway" -> DP_Aangeslotene: "accesses (read)"
+DP_Aangeslotene -> Load: "serving"
 
-"JSON File1" -> DP_Klantinteractie: "realises"
-"JSON File2" -> DP_RDI: "realises"
+"JSON File1" -> DP_Klantcontact: "realises"
+"JSON File2" -> DP_Aangeslotene: "realises"
 
 legend: "" {
   style: {
@@ -258,6 +252,7 @@ classes: {
     }
   }
 }
+
 ----
 
 
