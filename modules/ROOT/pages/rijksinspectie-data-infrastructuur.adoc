@@ -11,7 +11,7 @@ include::partial$data_product.adoc[]
 
 Per 1 januari 2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een 'ouderwetse terugdraaimeter' hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter hangen met een aparte registratie voor levering en teruglevering. 
 
-Vanaf 1 januari 2026 moeten de netbeheerders daarom binnen 2 jaar al deze meters hebben gewisseld. Hiervoor dienen de netbeheerders deze klanten tweemaal een aanbiedingsbrief te sturen. Indien dit na twee brieven en vervolgens 10 weken niet heeft geresulteerd in een plaatsing, dienen de netbeheerders het dossier over te dragen aan de Rijksinspectie Digitale Infrastructuur (RDI). Deze gaat vervolgens handhaven.
+Daarom moeten de netbeheerder vanaf 1 januari 2026 binnen 2 jaar al deze meters hebben gewisseld. Hiervoor dienen de netbeheerders deze klanten tweemaal een aanbiedingsbrief te sturen. Indien dit na twee brieven en vervolgens 10 weken niet heeft geresulteerd in een plaatsing, dienen de netbeheerders het dossier over te dragen aan de Rijksinspectie Digitale Infrastructuur (RDI). Deze gaat vervolgens handhaven.
 
 == Functionele eisen
 
@@ -257,8 +257,8 @@ classes: {
 
 
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
-2. Aanlevering van de klantcontactgegevens en de aangeslotenegegevens geschiedt via JSON-bestanden
-3. Aanlevering van het meterwisseldossier vanuit de netbeheerder naar de RDI geschiedt via JSON-bestand
+2. Aanlevering van de klantcontactgegevens en de aangeslotenegegevens geschiedt met JSON-bestanden
+3. Aanlevering van het meterwisseldossier vanuit de netbeheerder naar de RDI geschiedt met JSON-bestand
 
 == Dataset
 
@@ -327,7 +327,10 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Het GUE regelt (eventuele) autorisatie en authenticatie
 
 |Aanname
-|Het Aangeslotene Register kan de aangeslotenegegevens leveren (afhankelijkheid met de energieleverancier voor de klantcontactgegevens en de koppelbaarheid met de aansluitingsgegevens van de RNB)
+|Het Aangeslotene Register kan de aangeslotenegegevens leveren en deze kunnen gekoppeld worden
+
+|Aanname
+|De Energieleverancier kan de klantcontactgegevens leveren en deze kunnen gekoppeld worden
 
 |Aanname
 |Klantcontactgegevens, aangslotenegegevens, metergegevens en klantinteractiegegevens kunnen gekoppeld worden
@@ -346,5 +349,8 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 
 |Aanname
 |De GUE is in staat de gevraagde gegevens tijd te leveren
+
+|Aanname
+|De aangeslotene is de contactpersoon voor de aansluiting behorende bij de ouderwetse terugdraaimeter en kan (laten) beslissen of deze meter vervangen wordt door een slimme meter
 
 |===
