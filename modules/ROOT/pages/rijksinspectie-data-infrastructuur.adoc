@@ -85,7 +85,7 @@ vars: {
   }
 }
 
-grid-rows: 5
+grid-rows: 4
 grid-columns: 4
 
 vertical-gap: 80
@@ -95,62 +95,39 @@ RNB: {
   label: Netbeheerder
   class: [noun; business]
 }
-1_2.class: empty
-EDSN.class: [noun; business]
 RDI.class: [noun; business]
+1_3.class: empty
+1_4.class: empty
 
 2_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-3_1.class: empty
-3_2.class: empty
-Datamart.class: [noun; application]
+Maatwerk.class: [noun; application]
+Dataproduct.class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
 3_4.class: empty
 
-Maatwerk.class: [noun; application]
-DP_Klantinteractie: {
-  label: Dataproduct\nKlantinteractie
-  class: [noun; application]
-}
-"File gateway".class: [noun; application]
-DP_RDI: {
-  label: Dataproduct\nRDI
-  class: [noun; application]
-}
-
-5_1.class: empty
-"JSON File1": {
+4_1.class: empty
+"JSON": {
   label: JSON File\nKlantinteractie
   class: [artifact; technology]
 }
-5_3.class: empty
-"JSON File2": {
-  label: JSON File\nRDI
-  class: [artifact; technology]
-}
+4_3.class: empty
+4_4.class: empty
 
 RNB -> Maatwerk: "assigned to"
-EDSN -> Extract: "assigned to"
-EDSN -> Transform: "assigned to"
-EDSN -> Load: "assigned to"
+RDI -> Extract: "assigned to"
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
-Load -> RDI: "serving"
 
-Datamart -> Transform: "serving"
-Datamart -> Load: "serving"
+Maatwerk -> Dataproduct: "accesses (read)"
+Dataproduct -> Extract: "serving"
+"NBNL Dataportaal" -> Dataproduct: "accesses (read)"
 
-Maatwerk -> DP_Klantinteractie: "accesses (write)"
-DP_Klantinteractie -> Extract: "serving"
-"File gateway" -> DP_Klantinteractie: "accesses (read)"
-"File gateway" -> DP_RDI: "accesses (read)"
-DP_RDI -> Load: "serving"
-
-"JSON File1" -> DP_Klantinteractie: "realises"
-"JSON File2" -> DP_RDI: "realises"
+JSON -> Dataproduct: "realises"
 
 legend: "" {
   style: {
