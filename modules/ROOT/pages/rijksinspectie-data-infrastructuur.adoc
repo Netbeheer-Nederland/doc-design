@@ -66,6 +66,8 @@ Decentraal scenario: {
 1. De RDI stuurt, via de GUE, de sleutel van een klant naar de betreffende RNB met een verzoek om de klantinteractiegegevens van deze klant
 2. De RNB stuurt, via de GUE, de klantinteractiegegevens van een klant
 
+De GUE is gestreept getekent om aan te geven dat het een verzoek _via_ de GUE is.
+
 === Architectuur
 
 Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
@@ -81,49 +83,55 @@ vars: {
 }
 
 grid-rows: 5
-grid-columns: 3
+grid-columns: 4
 
 vertical-gap: 80
 horizontal-gap: 160
 
-1_1.class: empty
-RNB.class: [noun; business]
+RNB: {
+  label: Netbeheerder
+  class: [noun; business]
+}
+1_2.class: empty
+EDSN.class: [noun; business]
 RDI.class: [noun; business]
 
+2_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
 3_1.class: empty
-Datamart: {
-  label: Datamart\n(Meter\nKlantinteractie)
-  class: [noun; application]
-}
-3_3.class: empty
+3_2.class: empty
+Datamart.class: [noun; application]
+3_4.class: empty
 
-DP_Klantcontact: {
-  label: Dataproduct\nKlantcontact
+Maatwerk.class: [noun; application]
+DP_Klantinteractie: {
+  label: Dataproduct\nKlantinteractie
   class: [noun; application]
 }
 "File gateway".class: [noun; application]
-DP_Aangeslotene: {
-  label: Dataproduct\nAangeslotene
+DP_RDI: {
+  label: Dataproduct\nRDI
   class: [noun; application]
 }
 
+5_1.class: empty
 "JSON File1": {
-  label: JSON File\nKlantcontact
+  label: JSON File\nKlantinteractie
   class: [artifact; technology]
 }
-5_2.class: empty
+5_3.class: empty
 "JSON File2": {
-  label: JSON File\nAangeslotene
+  label: JSON File\nRDI
   class: [artifact; technology]
 }
 
-RNB -> Extract: "assigned to"
-RNB -> Transform: "assigned to"
-RNB -> Load: "assigned to"
+RNB -> Maatwerk: "assigned to"
+EDSN -> Extract: "assigned to"
+EDSN -> Transform: "assigned to"
+EDSN -> Load: "assigned to"
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
@@ -132,13 +140,14 @@ Load -> RDI: "serving"
 Datamart -> Transform: "serving"
 Datamart -> Load: "serving"
 
-DP_Klantcontact -> Extract: "serving"
-"File gateway" -> DP_Klantcontact: "accesses (read)"
-"File gateway" -> DP_Aangeslotene: "accesses (read)"
-DP_Aangeslotene -> Load: "serving"
+Maatwerk -> DP_Klantinteractie: "accesses (write)"
+DP_Klantinteractie -> Extract: "serving"
+"File gateway" -> DP_Klantinteractie: "accesses (read)"
+"File gateway" -> DP_RDI: "accesses (read)"
+DP_RDI -> Load: "serving"
 
-"JSON File1" -> DP_Klantcontact: "realises"
-"JSON File2" -> DP_Aangeslotene: "realises"
+"JSON File1" -> DP_Klantinteractie: "realises"
+"JSON File2" -> DP_RDI: "realises"
 
 legend: "" {
   style: {
@@ -224,6 +233,7 @@ classes: {
   }
 }
 
+
 ----
 
 
@@ -240,9 +250,7 @@ classes: {
 include::partial$four_v.adoc[]
 ====
 
-In scenario zijn er twee verschillende dataproducten, _Klantcontact_ en _Aangeslotene_, elk met hun eigen dataset en elke dataset heeft haar eigen kenmerken:
-
-==== Dataset _Klantcontact_
+==== Dataset 
 
 [cols="1, 3"]
 |===
@@ -258,26 +266,7 @@ In scenario zijn er twee verschillende dataproducten, _Klantcontact_ en _Aangesl
 |Midden
 
 |Velocity
-|Laag
-|===
-
-==== Dataset _Aangeslotene_
-
-[cols="1, 3"]
-|===
-|Type |Beschrijving
-
-|Volume
-|Laag, < 100MB (ongecomprimeerd)
-
-|Variety
-|Gestructureerd
-
-|Veracity
-|Hoog
-
-|Velocity
-|Laag
+|Laag, op aanvraag
 |===
 
 == Voorwaarden
@@ -292,36 +281,27 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Type |Beschrijving
 
 |Beslissing
-|Er is gekozen voor het decentrale scenario waarbij elke RNB de benodigde gegevens bij de GUE opvraagt
+|Er is gekozen voor een decentraal scenario waarbij de RDI de klantinteractiegegevens opvraagt bij de RNB _via_ de GUE
 
 |Aanname
 |Het GUE regelt (eventuele) autorisatie en authenticatie
 
 |Aanname
-|Het Aangeslotene Register kan de aangeslotenegegevens leveren en deze kunnen gekoppeld worden
-
-|Aanname
-|De Energieleverancier kan de klantcontactgegevens leveren en deze kunnen gekoppeld worden
-
-|Aanname
-|Klantcontactgegevens, aangslotenegegevens, metergegevens en klantinteractiegegevens kunnen gekoppeld worden
-
-|Aanname
-|De RNB's kunnen de klanten met een 'ouderwetse terugdraaimeter' herkennen, zodat zij alleen van deze klanten gegevens opvragen
-
-|Aanname
 |Het betreft uitsluitend KV-klanten; GV-klanten hebben geen salderingsregeling (maar misschien wel een ouderwetse terugdraaimeter)
-
-|Aanname
-|Een RNB kan meerdere keren aan het GUE vragen om klantcontactgegevens. Zowel van dezelfde klant als van verschillende klanten
-
-|Beslissing
-|Het GUE levert de ontvangen gegevens (klantcontact en aangeslotene) ongewijzigd door aan de RNB
 
 |Aanname
 |De GUE is in staat de gevraagde gegevens tijdig te leveren
 
+|Beslissing
+|RDI vraagt alleen klantinteractiegegevens (procesdata) uit bij de RNB's
+
+|Beslissing
+|Dossiervorming en dossierhouderschap liggen volledig bij de RDI
+
+|Beslissing
+|Er wordt gewerkt op basis van een pullmechanisme: De RDI _vraagt_ om klantinteractiegegevens. Het is _niet_ zo dat een RNB deze gegevens uit zichzelf aanbiedt
+
 |Aanname
-|De aangeslotene is de contactpersoon voor de aansluiting behorende bij de ouderwetse terugdraaimeter en kan (laten) beslissen of deze meter vervangen wordt door een slimme meter
+|De RNB's leveren de klantinteractiegegevens onbewerkt op, dat wil zeggen zonder verrijkingen of andere bewerkingen
 
 |===
