@@ -85,17 +85,25 @@ vars: {
   }
 }
 
-grid-rows: 4
+grid-rows: 5
 grid-columns: 4
 
 vertical-gap: 80
 horizontal-gap: 160
 
-RNB: {
-  label: Netbeheerder
+0_1.class: empty
+RDI: "RDI" {
   class: [noun; business]
 }
-RDI.class: [noun; business]
+0_3.class: empty
+0_4.class: empty
+
+RNB: "Netbeheerder\n(RNB)" {
+  class: [noun; business]
+}
+GUE: "Broker\n(GUE)" {
+  class: [noun; business]
+}
 1_3.class: empty
 1_4.class: empty
 
@@ -106,7 +114,7 @@ Load.class: [verb; business]
 
 Maatwerk.class: [noun; application]
 Dataproduct.class: [noun; application]
-"NBNL Dataportaal".class: [noun; application]
+3_3.class: empty
 3_4.class: empty
 
 4_1.class: empty
@@ -117,15 +125,16 @@ Dataproduct.class: [noun; application]
 4_3.class: empty
 4_4.class: empty
 
+RDI -> GUE: "assigned to"
+
 RNB -> Maatwerk: "assigned to"
-RDI -> Extract: "assigned to"
+GUE -> Extract: "assigned to"
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 
-Maatwerk -> Dataproduct: "accesses (read)"
+Maatwerk -> Dataproduct: "accesses (write)"
 Dataproduct -> Extract: "serving"
-"NBNL Dataportaal" -> Dataproduct: "accesses (read)"
 
 JSON -> Dataproduct: "realises"
 
@@ -212,7 +221,6 @@ classes: {
     }
   }
 }
-
 
 ----
 
