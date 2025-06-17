@@ -21,16 +21,12 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |Als rol |Wil ik |Want
 
 |Regionale Netbeheerder (RNB)
-|Een uniform overzicht van klantcontactgegevens van klanten met een 'ouderwetse terugdraaimeter'
-|Ik moet weten welke klanten ik een aanbiedingsbrief moet sturen
-
-|Regionale Netbeheerder (RNB)
-|Een uniform overzicht van aangslotenegegevens van mijn klanten met een 'ouderwetse terugdraaimeter'
-|Ik moet weten waar ik de aanbiedingsbrief naartoe moet sturen
+|Een verzoek om klantinteractiegegevens krijgen met een sleutel waarmee ik de klant kan identificeren
+|Het leveren van klantinteractiegegevens gaat op verzoek
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
-|Een integratie van klantcontactgegevens, aangeslotenegegevens, metergegevens en klantinteractiegegevens: meterwisseldossier
-|Ik moet handhaven
+|Klantinteractiegegevens van klanten waarvoor ik moet handhaven
+|Deze gegevens heb ik nodig om een dossier op te bouwen
 
 |===
 
