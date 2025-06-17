@@ -226,8 +226,7 @@ classes: {
 
 
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
-2. Aanlevering van de klantcontactgegevens en de aangeslotenegegevens geschiedt met JSON-bestanden
-3. Aanlevering van het meterwisseldossier vanuit de netbeheerder naar de RDI geschiedt met JSON-bestand
+2. Aanlevering van de klantinteractiegegevens geschiedt met JSON-bestanden
 
 == Dataset
 
