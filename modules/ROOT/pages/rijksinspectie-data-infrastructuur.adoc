@@ -348,7 +348,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Het GUE levert de ontvangen gegevens (klantcontact en aangeslotene) ongewijzigd door aan de RNB
 
 |Aanname
-|De GUE is in staat de gevraagde gegevens tijd te leveren
+|De GUE is in staat de gevraagde gegevens tijdig te leveren
 
 |Aanname
 |De aangeslotene is de contactpersoon voor de aansluiting behorende bij de ouderwetse terugdraaimeter en kan (laten) beslissen of deze meter vervangen wordt door een slimme meter
