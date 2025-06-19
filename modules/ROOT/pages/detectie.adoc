@@ -252,7 +252,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |Type |Beschrijving
 
 |Aanname
-|Het is mogelijk om de data uit het dataproduct te verrrijken met gegevens die relevant zin voor de analyse zoals weergegevens
+|Het is mogelijk om de data uit het dataproduct te verrijken met gegevens die relevant zin voor de analyse zoals weergegevens
 
 |Aanname
 |Het is mogelijk op basis van analyse te bepalen of één van de vier apparaattypes (zonnepaneel, thuislaadpunt, warmtepomp of thuisbatterij) zich achter het aansluitpunt bevindt.
