@@ -36,7 +36,7 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 == Dataservice
 
-Er is gekozen voor een decentraal scenario waarbij een jaar lang de slimme meters van 1.000 medewerkers van de drie grootste RNB's worden uitgelezen. Dit uitlezen gebeurt per RNB (vandaar decentraal).
+Er is gekozen voor een centraal scenario waarbij een jaar lang de slimme meters van 1.000 medewerkers van de drie grootste RNB's opgevraagd kunnen worden bij C-ARM.
 
 === Gebruiksscenario
 
