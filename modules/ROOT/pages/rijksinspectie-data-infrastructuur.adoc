@@ -1,6 +1,6 @@
 = Rijksinspectie Data Infrastructuur (RDI)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario van dataproduct _RDI_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB), ook wel Distributiesysteembeheerder (DSB) genoemd. Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven. Die informatie is _informatief_ niet _normatief_; ze valt buiten scope en er kunnen geen rechten aan worden ontleend.
+Dit ontwerp beschrijft het beoogde gebruiksscenario van dataproduct _RDI_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB), ook wel Distributiesysteembeheerder (DSB) genoemd. Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven.
 
 [NOTE]
 ====
@@ -21,7 +21,7 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |Als rol |Wil ik |Want
 
 |Regionale Netbeheerder (RNB)
-|Een verzoek om klantinteractiegegevens krijgen met een sleutel waarmee ik de klant kan identificeren
+|Een verzoek om klantinteractiegegevens krijgen met een sleutel waarmee ik de klant kan identificeren (EAN)
 |Het leveren van klantinteractiegegevens gaat op verzoek
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
@@ -50,12 +50,6 @@ Decentraal scenario: {
   shape: sequence_diagram
 
   RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
-  GUE: "Gegevensuit-\nwisselentiteit\n(GUE)" {
-    style: {
-      stroke-dash: 1
-      stroke: black
-    }
-  }
   RNB: "Regionale\nNetbeheerder\n(RNB)"
 
   RDI -> RNB: 1. Verzoek interactiegegevens van klant
@@ -64,10 +58,8 @@ Decentraal scenario: {
 
 ----
 
-1. De RDI stuurt, via de GUE, de sleutel van een klant naar de betreffende RNB met een verzoek om de klantinteractiegegevens van deze klant
+1. De RDI stuurt, via de GUE, de sleutel van een klant (EAN) naar de betreffende RNB met een verzoek om de klantinteractiegegevens van deze klant
 2. De RNB stuurt, via de GUE, de klantinteractiegegevens van een klant
-
-De GUE is gestippeld getekend om aan te geven dat het een verzoek _via_ de GUE is.
 
 === Architectuur
 
@@ -288,5 +280,17 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 
 |Aanname
 |De RNB's leveren de klantinteractiegegevens onbewerkt op, dat wil zeggen zonder verrijkingen of andere bewerkingen
+
+|Beslissing
+|Data zal vanuit de DSB’s/EDSN gedeeld worden met de RDI via de GUE
+
+|Beslissing
+|EAN code is leidend voor de vragen die gesteld worden door de RDI
+
+|Beslissing
+|Er gaat gewerkt worden met delta bestanden. Dus de RDI vraagt om verschillen op bepaalde ean codes tov datum X
+
+
+
 
 |===
