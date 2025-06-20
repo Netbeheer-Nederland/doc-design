@@ -111,7 +111,7 @@ Load.class: [verb; business]
 3_4.class: empty
 
 4_1.class: empty
-"JSON File\nSlimme Meter".class: [artifact; technology]
+"C-ARM".class: [artifact; technology]
 4_3.class: empty
 4_4.class: empty
 
@@ -120,7 +120,7 @@ Transform -> Load: "triggers"
 "Slimme Meter" -> "Extract": "serves"
 "Data Scientist" -> Extract: "assigned to"
 "Data Scientist" -> Load: "assigned to"
-"JSON File\nSlimme Meter" -> "Slimme Meter": "realises"
+"C-ARM" -> "Slimme Meter": "realises"
 "Slimme Meter Lezer" -> "Slimme Meter": "accesses (read)"
 "Netbeheerder" -> "Slimme Meter Lezer": "assigned to"
 
@@ -207,7 +207,6 @@ classes: {
     }
   }
 }
-
 
 ----
 
