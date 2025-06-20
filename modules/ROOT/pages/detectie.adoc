@@ -1,6 +1,6 @@
 = Detectie van energie-intensieve apparaten ten behoeve flexoplossingen
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _energie-intensieve apparaten_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB). Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven. Die informatie is _informatief_ niet _normatief_; ze valt buiten scope en er kunnen geen rechten aan worden ontleend.
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _energie-intensieve apparaten_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB). Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven. 
 
 [NOTE]
 ====
@@ -9,7 +9,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie (zoals: zonnepanelen, thuislaadpunten, warmtepompen en thuisbatterijen) zijn hierbij van belang. 
+Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie (zoals: zonnepanelen, thuislaadpunten, warmtepompen, thuisbatterijen en apparaten ten behoeve van elektrisch koken) zijn hierbij van belang. 
 
 Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. 
 
@@ -26,7 +26,7 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 |Regionale Netbeheerder (RNB)
 |Een uniform overzicht van aansluitingen en het gedrag van invoeding en afname in de tijd
-|Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vier apparaten bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP) of thuisbatterijen (BESS)
+|Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vijf apparaattypes bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP),  thuisbatterijen (BESS) of apparaten tbv elektrisch koken
 
 |Regionale Netbeheerder (RNB)
 |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
@@ -50,28 +50,30 @@ vars: {
   }
 }
 
-Decentraal scenario: {
+Scenario: {
   shape: sequence_diagram
-  RNB: "Regionale\nNetbeheerder\n(RNB)"
-  MDW: "Medewerker\nRNB\n(MDW)"
-  DS: "Data\nScientist\n(DS)"
 
-  RNB -> MDW: 1. Lees slimme meter uit
-  RNB -> DS: 2. Stuur slimme meter data
+  CARM: " \nC-ARM\n "
+  DST: "Data Scientist\nTeam\n(DS)"
+  RNB: "Regionale\nNetbeheerder\n(RNB)"
+
+  DST -> CARM: 1. Vraag kwartierwaarden op
+  CARM -> DST: 2. Lever kwartierwaarden
   Analyse: {
-    DS -> DS: 3. Verrijk slimme meter data
-    DS -> DS: 4. Analyseer slimme meter data
+    DST -> DST: 3. Verrijk de kwartierwaarden
+    DST -> DST: 4. Maak en train model
   }
-  DS -> RNB: 5. Stuur gedectecteerde apparaten
+  DST -> RNB: 5. Stuur model
 }
+
 
 ----
 
-1. Een RNB leest de slimme meter van deelnemende medewerkers uit
-2. De RNB stuurt de slimme meter data naar het analyse team
-3. Het analyse team verrijkt de slimme meter data met bijvoorbeeld meteodata
-4. Het analyse team analyseert de verrijkte data en bouwt een model
-6. Het analyse team stuurt per slimme meter de gedetecteerde energie-intensieve appararaten op aansluitingsniveau inclusief hun (geschatte) vermogen
+1. Een Data Scientists Team vragen de kwartierwaarden op bij C-ARM
+2. C-ARM levert de kwartierwaarden aan de het Data Scientist Team
+3. Het Data Scientist Team verrijkt de kwartierwaarden. Bijvoorbeeld met locatie- en meteogegevens
+4. Het Data Scientist Team maakt en traint het model
+5. Het Data Scientist Team stuurt het model naar de Regionale Netbeheerder
 
 === Architectuur
 
@@ -260,8 +262,8 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |Aanname
 |Het is mogelijk om middels een enquête 1.000 medewerkers bij de drie grootste RNB's te vinden die willen meedoen
 
-|Aanname
-|Er is behoefte aan 15 minuten waarden
+|Beslissing
+|Er is behoefte aan 15 minuten waarden (kwartierstanden )
 
 |Aanname
 |De data wordt verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
@@ -270,9 +272,26 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |De Data Scientist verrijkt zelf de slimme meter data
 
 |Aanname
-|De Data Scientist berekent de waarschijnlijkheid van een energie-intensief apparaat op aansluitniveau inclusief hun geschatte vermogen
-
-|Aanname
 |De Data Scientist berekent niet het gebruiksprofiel van een energie-intensief apparaat
 
+|Beslissing
+|De kwartierwaarden komen uit een database
+
+|Aanname
+|De kwartierwaarden komen uit C-ARM (Centrale Allocatie en Reconciliatie Meetdata)
+
+|Beslissing
+|Enexis, Stedin en Alliander hebben elk hun eigen team met Data Scientists
+
+|Beslissing
+|Elk Data Scientist team krijgt dezelfde data
+
+|Beslissing
+|Voor elk apparaattype is er een Data Scientist team dat een model maak om haar aanwezigheid te voorspellen inclusief hun geschatte vermogen
+
+|Beslissing
+|Elke Data Scientist team maakt een eigen model om de aanwezigheid één of meerdere apparaattypes te voorspellen inclusief hun geschatte vermogen
+
+|Beslissing
+|De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 danwel MS/LS-trafo)
 |===
