@@ -69,6 +69,19 @@ Elektriciteit].
 |ID |Als Rol |Wil ik |Want |NC13
 
 |{counter:fr}
+|RNB
+|Inzicht in alle onderstations in het landelijk hoogspanningsnet
+|Ik heb behoefte aan inzicht in de koppeling tussen landelijk en regionaal net.
+|§13.5.5
+
+|{counter:fr}
+|RNB
+|Inzicht in alle voor mij relevante koppelpunten met het landelijk
+ hoogspanningsnet
+|Ik heb behoefte aan inzicht in de koppeling tussen landelijk en regionaal net.
+|§13.5.5
+
+|{counter:fr}
 |LNB
 |Inzicht in de structurele gegevens van elk afzonderlijk station van de RNB dat
  direct gekoppeld is aan het landelijk hoogspanningsnet
@@ -89,6 +102,7 @@ Elektriciteit].
  distributiesysteem_ aangesloten op het landelijk hoogspanningsnet
 |
 |§13.5.5
+
 |===
 
 == Dataset
@@ -130,6 +144,9 @@ nodig om de informatievraag in te vullen:
 |Operation (OP)
 |Operationele meetwaarden, discreet en analoog. Meetwaarden zijn gemeten,
  berekend of geschat.
+
+|Geo Location (GL)
+|Fysieke ligging van assets/netfuncties.
 
 |Steady State Hypothesis (SSH)
 |Stabiele toestand van het elektriciteitsnet
@@ -402,11 +419,16 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 |Beslissing
 |Voor de gegevensuitwisseling tussen netbeheerders wordt gekozen voor een
  invulling op basis van NBility waardestroom _P.H Beschikbaar stellen van
- netbeheerdata_. Binnen deze waardestroom zijn geen specifieke voorzieningen
- voor het uitwisselen van gegevens tussen netbeheerders, enkel tussen
- netbeheerder en derde. Toch wordt deze waardestroom gekozen, om hergebruik van
- de _Visie Datadelen_, _Doelarchitectuur Datadelen_ en aansluiting op al
- bestaande processen mogelijk te maken.
+ netbeheerdata_. Deze waardestoom voorziet in het uitwisselen van dataproducten
+ tussen netbeheerders en derden, en bevat meer dan nodig voor uitwisseling
+ tussen netbeheerders. Voor dit ontwerp zijn alleen de datasets en dataservices
+ nodig om de oplossing te realiseren. Echter, met het oog op hergebruik wordt
+ al voorgesorteerd op het kunnen uitwisselen van de dataproducten met derden.
+
+|Beslissing
+|_Use cases_ worden incrementeel opgesteld, waarbij het ontwerp bij nieuwe use
+ cases wordt aangepast. Dit houdt in dat er over de tijd meer NBility
+ waardestromen in scope worden gebracht.
 
 |Beslissing
 |Voor het beschrijven van de dataproducten wordt CGMES gebruikt, aangevuld
@@ -432,8 +454,8 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 
 |Aanname
 |Elke netbeheerder implementeert de architectuur op basis van eigen middelen en
- invulling. Het ontkoppelpunt tussen netbeheerders zijn de profielen die
- uitgewisseld worden.
+ invulling. Het ontkoppelpunt tussen netbeheerders zijn de
+ profielen/dataproducten die uitgewisseld worden.
 
 |Aanname
 |Elke netbeheerder publiceert via de eigen
