@@ -2,6 +2,7 @@
 * xref::capaciteitskaart.adoc[]
 * xref::meetdata.adoc[]
 * xref::netbewust-laden.adoc[]
+* xref::netburen.adoc[]
 * xref::netcode-h13.adoc[]
 #* xref::nl-profile-group.adoc[]
 * xref::rijksinspectie-data-infrastructuur.adoc[]
