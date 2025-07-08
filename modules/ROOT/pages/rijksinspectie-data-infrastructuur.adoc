@@ -1,6 +1,6 @@
 = Rijksinspectie Data Infrastructuur (RDI)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario van dataproduct _RDI_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB), ook wel Distributiesysteembeheerder (DSB) genoemd. Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven.
+Dit ontwerp beschrijft het beoogde gebruiksscenario van dataproduct _RDI_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Distributiesysteembeheerder (DSB), ook wel Regionale Netbeheerder (RNB) genoemd. Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven.
 
 [NOTE]
 ====
@@ -9,7 +9,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Per 1 januari 2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een 'ouderwetse terugdraaimeter' hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter geplaatst worden met een aparte registratie voor levering (afname) en teruglevering (invoeding). Hiervoor dienen de netbeheerders een aanbiedingsbrief te sturen. Indien dit niet resulteert in een plaatsing dan zal de Rijksinspectie Digitale Infrastructuur (RDI) overgaan tot handhaving. Daarvoor zal de RDI klantinteractiegegevens (procesdata) opvragen bij de RNB's: het dataproduct _RDI_.
+Per 1 januari 2027 wordt de salderingsregeling afgeschaft. Klanten die op dat moment nog een 'ouderwetse terugdraaimeter' hebben kunnen dan nog altijd salderen en dat brengt rechtsongelijkheid. Om die reden worden de ouderwetse terugdraaimeters verboden en moet overal een meter geplaatst worden met een aparte registratie voor levering (afname) en teruglevering (invoeding). Hiervoor dienen de netbeheerders een aanbiedingsbrief te sturen. Indien dit niet resulteert in een plaatsing dan zal de Rijksinspectie Digitale Infrastructuur (RDI) overgaan tot handhaving. Daarvoor zal de RDI procesdata (klantinteractiegegevens) opvragen bij de DSB's: het dataproduct _RDI_.
 
 == Functionele eisen
 
@@ -20,19 +20,19 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |===
 |Als rol |Wil ik |Want
 
-|Regionale Netbeheerder (RNB)
-|Een verzoek om klantinteractiegegevens krijgen met een sleutel waarmee ik de klant kan identificeren (EAN)
-|Het leveren van klantinteractiegegevens gaat op verzoek
+|Distributiesysteembeheerder (DSB)
+|Een verzoek om procesdata krijgen met een sleutel waarmee ik de klant kan identificeren (EAN)
+|Het leveren van procesdata gaat op verzoek
 
 |Rijksinspectie Digitale Infrastructuur (RDI)
-|Klantinteractiegegevens van klanten waarvoor ik moet handhaven
+|Procesdata van klanten waarvoor ik moet handhaven
 |Deze gegevens heb ik nodig om een dossier op te bouwen en te kunnen handhaven
 
 |===
 
 == Dataservice
 
-Er is gekozen voor een decentraal scenario waarbij de Rijksinspectie Digitale Infrastructuur (RDI) de Regionale Netbeheerds (RNB's) bevraagt _via_ de Gegevensuitwisselingsentiteit (GUE). 
+Er is gekozen voor een decentraal scenario waarbij de Rijksinspectie Digitale Infrastructuur (RDI) de Distributiesysteembeheerder (DSB's) bevraagt _via_ de Gegevensuitwisselingsentiteit (GUE). 
 
 === Gebruiksscenario
 
@@ -50,16 +50,16 @@ Decentraal scenario: {
   shape: sequence_diagram
 
   RDI: "Rijksinspectie\nDigitale Infrastructuur\n(RDI)"
-  RNB: "Regionale\nNetbeheerder\n(RNB)"
+  DSB: "Distributie-\nsysteembeheerder\n(DSB)"
 
-  RDI -> RNB: 1. Verzoek interactiegegevens van klant
-  RNB -> RDI: 2. Levering klantinteractiegegevens
+  RDI -> DSB: 1. Verzoek procesdata van klant
+  DSB -> RDI: 2. Levering procesdata
 }
 
 ----
 
-1. De RDI stuurt, via de GUE, de sleutel van een klant (EAN) naar de betreffende RNB met een verzoek om de klantinteractiegegevens van deze klant
-2. De RNB stuurt, via de GUE, de klantinteractiegegevens van een klant
+1. De RDI stuurt, via de GUE, de sleutel van een klant (EAN) naar de betreffende DSB met een verzoek om de procesdata van deze klant
+2. De RNB stuurt, via de GUE, de procesdata van een klant
 
 === Architectuur
 
@@ -88,7 +88,7 @@ RDI: "RDI" {
 0_3.class: empty
 0_4.class: empty
 
-RNB: "Netbeheerder\n(RNB)" {
+DSB: "Distributiesysteem-\nbeheerder\n(DSB)" {
   class: [noun; business]
 }
 GUE: "Broker\n(GUE)" {
@@ -109,7 +109,7 @@ Dataproduct.class: [noun; application]
 
 4_1.class: empty
 "JSON": {
-  label: JSON File\nKlantinteractie
+  label: JSON File\nProcesdata
   class: [artifact; technology]
 }
 4_3.class: empty
@@ -117,7 +117,7 @@ Dataproduct.class: [noun; application]
 
 RDI -> GUE: "assigned to"
 
-RNB -> Maatwerk: "assigned to"
+DSB -> Maatwerk: "assigned to"
 GUE -> Extract: "assigned to"
 
 Extract -> Transform: "triggers"
@@ -216,7 +216,7 @@ classes: {
 
 
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
-2. Aanlevering van de klantinteractiegegevens geschiedt met JSON-bestanden
+2. Aanlevering van de procesdata geschiedt met JSON-bestanden
 
 == Dataset
 
@@ -258,7 +258,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Type |Beschrijving
 
 |Beslissing
-|Er is gekozen voor een decentraal scenario waarbij de RDI de klantinteractiegegevens opvraagt bij de RNB _via_ de GUE
+|Er is gekozen voor een decentraal scenario waarbij de RDI de procesdata opvraagt bij de DSB _via_ de GUE
 
 |Aanname
 |Het GUE regelt (eventuele) autorisatie en authenticatie
@@ -270,16 +270,16 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |De GUE is in staat de gevraagde gegevens tijdig te leveren
 
 |Beslissing
-|RDI vraagt alleen klantinteractiegegevens (procesdata) uit bij de RNB's
+|RDI vraagt alleen procesdata (klantinteractiegegevens) uit bij de DSB's
 
 |Beslissing
 |Dossiervorming en dossierhouderschap liggen volledig bij de RDI
 
 |Beslissing
-|Er wordt gewerkt op basis van een pullmechanisme: De RDI _vraagt_ om klantinteractiegegevens. Het is _niet_ zo dat een RNB deze gegevens uit zichzelf aanbiedt
+|Er wordt gewerkt op basis van een pullmechanisme: De RDI _vraagt_ om procesdata. Het is _niet_ zo dat een DSB deze gegevens uit zichzelf aanbiedt
 
 |Aanname
-|De RNB's leveren de klantinteractiegegevens onbewerkt op, dat wil zeggen zonder verrijkingen of andere bewerkingen
+|De DSB's leveren de procesdata onbewerkt op, dat wil zeggen zonder verrijkingen of andere bewerkingen
 
 |Beslissing
 |Data zal vanuit de DSB’s/EDSN gedeeld worden met de RDI via de GUE
@@ -289,8 +289,5 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 
 |Beslissing
 |Er gaat gewerkt worden met delta bestanden. Dus de RDI vraagt om verschillen op bepaalde ean codes tov datum X
-
-
-
 
 |===
