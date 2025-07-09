@@ -1,7 +1,7 @@
 = Netburen
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
-_Groengascapaciteitskaart_, alsmede de achterliggende architectuur en gemaakte keuzes.
+_Netburen_, alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====
@@ -21,16 +21,22 @@ Energiehub, maar deze toepassingen zijn niet in scope voor dit dataproduct.
 |Rol |Beschrijving
 
 |Netbeheerder
-|
+|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of
+ meer energienetten, niet zijnde gesloten distributiesystemen
 
 |GV-klant
-|
+|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80
+ Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op
+ een gesloten distributiesysteem, of een aansluiting van een afnemer zoals
+ bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998
 
 |Technisch adviseur
-|
+|Een organisatie of persoon die faciliteert bij het opzetten van een
+ Energiehub.
 
 |Marktpartij
-|
+|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt
+ vanuit dit dataproduct.
 
 |===
 
@@ -111,9 +117,41 @@ vars: {
   }
 }
 
+"GV-klant": "GV-klant"
+"Netbeheerder"
+"Aangeslotene"
+
+"GV-klant" -> "Netbeheerder": "1. Vraag netburen"
+"Netbeheerder" -> "Netbeheerder": "2. Toestemming verleend?"
+"Vraag toestemming": {
+  "Netbeheerder" -> "Aangeslotene": "3. Toestemming verleend?"
+  "Aangeslotene" -> "Netbeheerder": "4. Toestemming verleend"
+}
+"Netbeheerder" -> "GV-klant": "5. Lever netburen"
 ----
 
-1. ...
+1. een _GV-klant_ vraagt de potentiële deelnemers voor een _Energiehub_
+(netburen), bijbehorende nettopologie en capaciteit & belasting op voor één of
+meerdere aansluitingen bij de netbeheerder. GV-klanten vragen netburen op voor
+eigen aansluiting(en);
+2. de netbeheerder toetst of er toestemming is verleend voor de combinatie
+derde/aansluiting. Indien de GV-klant netburen voor eigen aansluiting(en)
+aanvraagt is toestemming niet vereist en worden de netburen geleverd (stap 5);
+3. indien er geen toestemming is voor opvragen van de netburen wordt de
+_aangeslotene_ gevraagd deze te verlenen. Voor GV-klanten is de aangeslotene de
+GV-klant zelf en bestaat de toestemming uit de authenticatie en autorisatie van
+de netbeheerder;
+4. de verleende toestemming wordt vastgelegd in de administratie van de
+netbeheerder;
+5. de netbeheerder levert de netburen, onder het _uniforme
+informatiemodel_.
+
+Het beschreven scenario kent een aantal varianten voor implementatie:
+
+* de netbeheerder levert netburen als voor de _GV-klant_ vanuit de
+_Mijn-omgeving_;
+* de netbeheerder levert netburen als _maatwerkverzoek_ vanuit de eigen
+_service desk_, of gedelegeerd naar _Partners in Energie_.
 
 === Architectuur
 
@@ -134,32 +172,32 @@ grid-columns: 4
 vertical-gap: 80
 horizontal-gap: 160
 
-"Netbeheerder".class: [noun; business]
+Netbeheerder.class: [noun; business]
 Consumer.class: [noun; business]
-1.class: empty
-2.class: empty
+4.class: empty
+5.class: empty
 
-3.class: empty
+6.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"HTTP Server".class: [noun; application]
+"MijnOmgeving/Maatwerk".class: [noun; application]
 "Data Product".class: [noun; application]
 "NBNL Dataportaal".class: [noun; application]
-4.class: empty
+7.class: empty
 
-5.class: empty
+8.class: empty
 "JSON File".class: [artifact; technology]
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
 "NBNL Dataportaal" -> "Data Product": "accesses (read)"
-Consumer -> Extract: "assigned to"
+Extract -> Consumer: "serves"
 "JSON File" -> "Data Product": "realises"
-"HTTP Server" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "HTTP Server": "assigned to"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
 legend: "" {
   style: {
@@ -247,11 +285,17 @@ classes: {
 
 ----
 
-* ...
+* de structuur
+  (https://netbeheer-nederland.github.io/docs-dev/dp-netburen/latest/index.html[informatiemodel])
+  van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common
+  Information Model_;
+* aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
+* het dataproduct is vindbaar via het NBNL Dataportaal.
 
 == Dataset
 
-De dataset beschrijft ...
+De dataset beschrijft de potentiële deelnemers aan een _Energiehub_, inclusief
+relevante nettopologie en capaciteit & belasting.
 
 === Volume, variety, veracity, velocity
 
@@ -271,15 +315,20 @@ include::partial$four_v.adoc[]
 |Gestructureerd
 
 |Veracity
-|Medium, ...
+|Midden, de dataset wordt op basis van verschillende interne bronnen van de
+ netbeheerder samengesteld
 
 |Velocity
-|Laag, ...
+|Laag, datasets worden op verzoek samengesteld
+
 |===
 
 == Voorwaarden
 
-Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag ...
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag
+Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen
+aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de
+netbeheerder.
 
 == Beslissingen en aannames
 
