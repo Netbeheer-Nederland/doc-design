@@ -13,7 +13,25 @@ Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van ap
 
 Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. 
 
-Dit dataproduct draagt bij aan de detectie van energie-intensieve apparaten. Van deze apparaten bevat het het aansluitingsniveau (1x10A, 1x25A, 3x25A, ...) en vermogen.
+Dit dataproduct draagt bij aan de detectie van energie-intensieve apparaten. De epic bestaat uit twee fasen, een pilot fase en een landelijke fase. 
+
+=== Pilot fase
+
+In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 1.000 medewerkers van de drie grootste RNB's gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
+
+=== Landelijke fase
+In de landelijke fase wordt het statistische model landelijk toegepast op alle (goedgekeurde) aansluitingen. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Het resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kW(p)) een bijbehorende betrouwbaarheid (Confidence). Deze informatie is _niet_ per EAN, maar geaggreerd op middenspanningsruimte ( MS/LS trafo) danwel postcode6 niveau:
+
+.Voorbeeld eindresultaat geaggregeerd op trafo)
+[cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
+|===
+|Trafo |PV |Confidence |EV |Confidence |WP |Confidence |BESS |Confidence
+
+|123 |0 |100 |0 |90 |5kW |80 |0 |100
+|345 |3kWp |90 |22kW |95 |5kW |70 |4kW |70
+
+|===
+
 
 == Functionele eisen
 
@@ -30,13 +48,19 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 |Regionale Netbeheerder (RNB)
 |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
-|Ik wil de aangeslotene een flexoplossing bieden waardoor het net beter benut wordt
+|Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
 
 |===
 
 == Dataservice
 
-Er is gekozen voor een centraal scenario waarbij een jaar lang de slimme meters van 1.000 medewerkers van de drie grootste RNB's opgevraagd kunnen worden bij C-ARM.
+=== Pilot fase
+
+In de pilot fase is gekozen voor een decentraal scenario waarbij de verbruiksdata van de slimme meters van de 1.000 medewerkers van de drie grootste RNB's door de RNB's met elkaar gedeeld wordt.
+
+=== Landelijke fase
+
+Er is gekozen voor een centraal scenario waarbij de geregistreerde verbruiksdata van de slimme meters centraal beschikbaar wordt gesteld aan deelnemende RNB's.
 
 === Gebruiksscenario
 
