@@ -65,15 +65,49 @@ de dataproducten en onderliggende oplossing moeten beantwoorden.
 
 |{counter:fr}
 |Technisch adviseur
+|Inzicht in aansluitingen gegroepeerd per transformator, per veld en per
+ MS-route.
+|Ik wil inzicht in de groepsamenstelling.
+
+|{counter:fr}
+|Technisch adviseur
 |Inzicht in netburen en historische verbruiksgegevens (kwartierwaardes) van de
  potentiële deelnemers aan de Energiehub.
 |Ondersteunen bij het _optimaliseren achter de meter_.
 
 |{counter:fr}
-|Marktpartij
-|Inzicht in nettopologie van netstation tot aan individueel aangesloten
- GV-klant (_aansluiting_).
-|Ik wil inzicht in hoe relevante netfuncties invloed op elkaar uitoefenen.
+|Technisch adviseur
+|Inzicht in het gecontracteerd vermogen (GTV voor LTN/ODN).
+|Ik wil de onbenutte ruimte uit het bestaande contract meenemen in de
+ GroepsTransportOvereenkomst (GTO).
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de aansluitcategorie van de aansluiting.
+|Ik moet onderscheid maken in aansluitingen die mee mogen doen.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de (technische) zekeringswaarde van het overdrachtspunt.
+|Ik wil inzicht in de bandbreedte van energieverbruik.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de kabels en of deze onder congestie (afname & invoeding) liggen.
+|Ik moet aansluitingen op deze kabels uitsluiten van deelname aan een
+ Energiehub>
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de individuele capaciteit van kabels.
+|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een Energiehub
+ toetsen/doorrekenen.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de wachtrij (gevraagd vermogen).
+|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt
+ (kabel) onderdeel te maken van een Energiehub.
 
 |{counter:fr}
 |Marktpartij
@@ -82,21 +116,11 @@ secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
 |#TODO: ?#
 
 |{counter:fr}
-|Technisch adviseur
+|Marktpartij
 |Inzicht in de belasting op veldniveau en secundaire zijde(s) van de relevante
  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &
  afname (gesplitst).
 |#TODO: ?#
-
-|{counter:fr}
-|Technisch adviseur
-|GV-klanten ondersteunen bij het opzetten van een GTO.
-|#TODO: ?#
-
-|{counter:fr}
-|Technisch adviseur
-|Inzicht in de gelijktijdige kWmax (piek)
-|Input voor het opzetten van GTO
 
 |===
 
@@ -344,9 +368,6 @@ netbeheerder.
 |Lokale overheden zijn geen stakeholders binnen deze oplossing.
 
 |Aanname
-|Energiehubregisseur is onderdeel van de rol van Technisch adviseur.
-
-|Aanname
 |Het proces behorende bij _optimaliseren achter de meter_ ligt in het domein
  van de Technisch adviseur en is daarmee out-of-scope voor het ontwerp.
 
@@ -378,5 +399,13 @@ geabstraheerd als onderdeel van de nettopologie.
 |Aanname
 |Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd,
  capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd.
+
+|Beslissing
+|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en
+ belasting binnen de nettopologie.
+
+|Beslissing
+|De technisch adviseur heeft heeft behoefte aan de kWmax piek voor elke
+ aansluiting, maar berekent deze zelf op basis van de verbruiksgegevens.
 
 |===
