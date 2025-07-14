@@ -434,19 +434,21 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 |Voor het beschrijven van de dataproducten wordt CGMES gebruikt, aangevuld
  vanuit het CIM.
 
-|Aanname
+|Beslissing
 |_CGMES-interop_ is geen doel van de oplossing, door de uitbreiding nodig voor
  de regionale netbeheerder kan interoperabiliteit met CGMES niet gerealiseerd
  worden.
 
-|Aanname
+|Beslissing
 |Minstens één landelijke en één regionale netbeheerder is als producent en
  consument van de profielen beschikbaar om kwaliteit en toepasbaarheid te
  testen.
 
 |Aanname
-|Profielen worden als open data aangeboden. Profielen zijn zuiver
- netbeheerderdata en daarmee onderhevig aan de _Visie Datadelen_.
+|Profielen (alle data die onder Netcode H13 wordt uitgewisseld) worden als open
+ data aangeboden. Profielen zijn zuiver netbeheerderdata en daarmee onderhevig
+ aan de _Visie Datadelen_. Deze aanname is alleen van toepassing indien de
+ profielen ook als dataproducten aan derden worden verstrekt.
 
 |Aanname
 |Netbeheerders factureren *niet* onderling voor het uitwisselen van de
