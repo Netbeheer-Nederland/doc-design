@@ -126,41 +126,31 @@ vars: {
   }
 }
 
-"GV-klant": "GV-klant"
-"Netbeheerder"
-"Aangeslotene"
+"TA": "Technisch\nAdviseur"
+"GV-klant": "GV\nklant"
+"NB": "Netbe-\nheerder"
 
-"GV-klant" -> "Netbeheerder": "1. Vraag netburen"
-"Netbeheerder" -> "Netbeheerder": "2. Toestemming verleend?"
-"Vraag toestemming": {
-  "Netbeheerder" -> "Aangeslotene": "3. Toestemming verleend?"
-  "Aangeslotene" -> "Netbeheerder": "4. Toestemming verleend"
-}
-"Netbeheerder" -> "GV-klant": "5. Lever netburen"
+"TA" -> "GV-klant": "1. Verzoekt om NBC tbv advies"
+"GV-klant" -> "NB": "2. Verzoekt om NBC"
+"NB" -> "GV-klant": "3. Verzoekt om authenticatie + welke EAN"
+"GV-klant" -> "NB": "4. Authenticeert en levert EAN"
+"NB" -> "NB": "5. Bepaalt NBC op basis van EAN voor afgaand veld + station"
+"NB" -> "GV-klant": "6. Levert NBC-gegevens"
+"GV-klant" -> "TA": "7. Levert NBC-gegevens"
+"TA" -> "TA": "8. Maakt advies"
+"TA" -> "GV-klant": "9. Geef advies"
+
 ----
 
-1. een _GV-klant_ vraagt de potentiële deelnemers voor een _Energiehub_
-(netburen), bijbehorende nettopologie en capaciteit & belasting op voor één of
-meerdere aansluitingen bij de netbeheerder. GV-klanten vragen netburen op voor
-eigen aansluiting(en);
-2. de netbeheerder toetst of er toestemming is verleend voor de combinatie
-derde/aansluiting. Indien de GV-klant netburen voor eigen aansluiting(en)
-aanvraagt is toestemming niet vereist en worden de netburen geleverd (stap 5);
-3. indien er geen toestemming is voor opvragen van de netburen wordt de
-_aangeslotene_ gevraagd deze te verlenen. Voor GV-klanten is de aangeslotene de
-GV-klant zelf en bestaat de toestemming uit de authenticatie en autorisatie van
-de netbeheerder;
-4. de verleende toestemming wordt vastgelegd in de administratie van de
-netbeheerder;
-5. de netbeheerder levert de netburen, onder het _uniforme
-informatiemodel_.
-
-Het beschreven scenario kent een aantal varianten voor implementatie:
-
-* de netbeheerder levert netburen als voor de _GV-klant_ vanuit de
-_Mijn-omgeving_;
-* de netbeheerder levert netburen als _maatwerkverzoek_ vanuit de eigen
-_service desk_, of gedelegeerd naar _Partners in Energie_.
+1. Verzoekt om NBC tbv advies: Technisch adviseur verzoekt de GV-klant om NBC-gegevens die hij nodig heeft voor zijn advies;
+2. Verzoekt om NBC: De GV-klant vraagt zijn netbeheerder om NBC-gegevens;
+3. Verzoekt om authenticatie + welke EAN: De netbeheerder authenticeert de GV-klant en verzoekt om de betreffende EAN;
+4. Authenticeert en levert EAN: De GV-klant authenticeert zich bij de netbeheerder en levert de betreffende EAN;
+5. Bepaalt NBC op basis van EAN voor afgaand veld + station: De netbeheerder bepaalt het afgaande veld en bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens;
+6. Levert NBC-gegevens: De netbeheerder levert de gevraagde NBC-gegevens aan de GV-klant;
+7. Levert NBC-gegevens: De GV-klant levert de NBC-gegevens aan de Technische Adviseur; 
+8. Maakt advies: De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
+9. Geef advies: De Technische Adviseur geeft zijn advies aan de GV-klant.
 
 === Architectuur
 
