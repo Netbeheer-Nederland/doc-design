@@ -7,3 +7,4 @@
 #* xref::nl-profile-group.adoc[]
 * xref::rijksinspectie-data-infrastructuur.adoc[]
 * xref::detectie.adoc[]
+* xref::nettopologie-belasting-capaciteit.adoc[]
