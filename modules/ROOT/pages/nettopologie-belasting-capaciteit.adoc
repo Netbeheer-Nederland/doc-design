@@ -1,7 +1,6 @@
 = Nettopologie, belasting en capaciteit (NBC)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
-_NBC_, alsmede de achterliggende architectuur en gemaakte keuzes.
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _NBC_ (nettopologie, belasting en capaciteit), alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====
@@ -284,13 +283,6 @@ classes: {
 
 ----
 
-* de structuur
-  (https://netbeheer-nederland.github.io/docs-dev/dp-netburen/latest/index.html[informatiemodel])
-  van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common
-  Information Model_;
-* aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-bestand.
-* het dataproduct is vindbaar via het NBNL Dataportaal.
-
 == Dataset
 
 De dataset beschrijft de potentiële deelnemers aan een _Energiehub_, inclusief
@@ -314,8 +306,7 @@ include::partial$four_v.adoc[]
 |Gestructureerd
 
 |Veracity
-|Midden, de dataset wordt op basis van verschillende interne bronnen van de
- netbeheerder samengesteld
+|Midden
 
 |Velocity
 |Laag, datasets worden op verzoek samengesteld
@@ -371,82 +362,55 @@ netbeheerder.
 |Aanname
 |De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor deze dataproducten (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken.
 
-|DeepDive
-|kVA? Of alleen werkelijk vermogen?
+|Aanname
+|kVA in plaats van werkelijk vermogen en cos(phi) (1 of 0,85).
 
-|DeepDive
-|Bedrijfszeker installatie vermogen (BZIV) of ook additionele niet redundante vermogen (ANRV)?
-
-|DeepDive
-|N-1?
-
-|DeepDive
-|Tot welk detailniveau? Route / kabel tussen aangeslotenen, etc.?
-
-|DeepDive
-|Levering/teruglevering?
-
-|Deepdive
+|Aaname
 |Als we capaciteit in kVa doen; hoe gaan we dan om met verschil in eenheid?
 
 |Aanname
-|Nettopologie, belasting en capaciteit in één dataproduct
+|Er is besloten om de capaciteit (operationele limiet) van de tranformator te gebruiken en niet Bedrijfszeker installatie vermogen (BZIV) of additionele niet redundante vermogen (ANRV).
+
+|Aanname
+|We gaan uit van de normaalstand van de schakelaars; de door de netarchitecten berkende situatie.
+
+|Aanname
+|De belastingsdata kan, als gevolg van onderhoud en/of storing, afwijken van de normaalstand.
+
+|Aanname
+|Meetgegevens voor veld en transformator zijn enkel geldig binnen de  normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode  zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*  gecommuniceerd.
+
+|Aanname
+|Er is besloten rekening te houden met N-1; op basis van de normaalstand dus de operationele limiet van de transformator.
 
 |Aanname
 |Geen gegevens over kabels
 
-|Aaname
-|Geolocatie alleen over stations
-
-|Hieronder
-|Netburen
+|Aanname
+|Omdat de capaciteit van de kabelsegmenten niet worden gedeeld, worden de geografische en de assetgegevens van de kabels ook niet gedeeld.
 
 |Aanname
-|De oplossing heeft als reikwijdte *enkel* het ondersteunen van de verkennende
- fase van een Energiehub.
+|Zowel levering als teruglevering moet ondersteund worden, exclusief kabels.
 
 |Aanname
-|Lokale overheden zijn geen stakeholders binnen deze oplossing.
+|Nettopologie, belasting en capaciteit in één dataproduct.
 
 |Aanname
-|Het proces behorende bij _optimaliseren achter de meter_ ligt in het domein
- van de Technisch adviseur en is daarmee out-of-scope voor het ontwerp.
+|Geolocatie alleen over stations.
 
 |Aanname
-|Het combineren van datasets levert mogelijk meer informatie ...
+|Het combineren van datasets levert mogelijk meer informatie.
 
-|Beslissing
-|Kabelinformatie is out-of-scope voor het ontwerp.
-
-|Aanname
-|Voor nettopologie wordt uitgegaan van de normaalstand van het net.
-
-|Aanname
-|Meetgegevens voor veld en transformator zijn enkel geldig binnen de
- normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode
- zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*
- gecommuniceerd.
-
-|Aanname
-|Er worden geen geocoördinaten in het informatiemodel opgenomen.
-
-|Aanname
-|Er wordt geen informatie gecommuniceerd over netbeveiliging, _n-1_ wordt
-geabstraheerd als onderdeel van de nettopologie.
+|Aanname #TODO: ?#
+|Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie. 
 
 |Aanname
 |Er wordt geen informatie gecommuniceerd over wachtrijen en kortsluitstromen.
 
 |Aanname
-|Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd,
- capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd.
+|Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd, capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd.
 
-|Beslissing
-|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en
- belasting binnen de nettopologie.
-
-|Beslissing
-|De technisch adviseur heeft heeft behoefte aan de kWmax piek voor elke
- aansluiting, maar berekent deze zelf op basis van de verbruiksgegevens.
+|Aanname
+|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energyhub.
 
 |===
