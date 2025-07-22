@@ -1,7 +1,7 @@
-= Netburen
+= Nettopologie, belasting en capaciteit (NBC)
 
 Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct
-_Netburen_, alsmede de achterliggende architectuur en gemaakte keuzes.
+_NBC_, alsmede de achterliggende architectuur en gemaakte keuzes.
 
 [NOTE]
 ====
@@ -10,10 +10,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Het doel van de oplossing is het ondersteunen van de verkennende fase van het
-vormen van een Energiehub. Bijbehorende dataproducten zijn mogelijk breder
-inzetbaar, zoals voor andere toepassingen of de ontwerpende fase van een
-Energiehub, maar deze toepassingen zijn niet in scope voor dit dataproduct.
+Het doel is om marktpartijen voldoende informatie over het net te geven waarmee ze in staat zijn om gerichte individuele of collectieve voorstellen voor gv-klanten te doen, waardoor het net beter wordt benut.
 
 .Rollen
 [cols="1, 2"]
@@ -21,22 +18,16 @@ Energiehub, maar deze toepassingen zijn niet in scope voor dit dataproduct.
 |Rol |Beschrijving
 
 |Netbeheerder
-|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of
- meer energienetten, niet zijnde gesloten distributiesystemen
+|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of  meer energienetten, niet zijnde gesloten distributiesystemen
 
 |GV-klant
-|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80
- Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op
- een gesloten distributiesysteem, of een aansluiting van een afnemer zoals
- bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998
+|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals  bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998
 
 |Technisch adviseur
-|Een organisatie of persoon die faciliteert bij het opzetten van een
- Energiehub.
+|Een organisatie of persoon die faciliteert bij het opzetten van een  Energiehub.
 
 |Marktpartij
-|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt
- vanuit dit dataproduct.
+|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt  vanuit dit dataproduct.
 
 |===
 
@@ -50,6 +41,41 @@ de dataproducten en onderliggende oplossing moeten beantwoorden.
 [cols="1, 1, 3, 3"]
 |===
 |ID |Als Rol |Wil ik |Want
+
+|{counter:fr}
+|Als energie(hub)adviseur 
+|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Ik wil op basis hiervan een gedetailleerd beeld krijgen van de vrije ruimte en schaarste (_speelruimte_)
+
+|{counter:fr}
+|Als energie(hub)adviseur 
+|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Individuele en collectieve oplossingen verkennen en adequate voorstellen doen richting netbeheerder
+
+|{counter:fr}
+|Als energie(hub)adviseur 
+|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) capaciteit kunnen krijgen
+
+|{counter:fr}
+|Energie(hub)adviseur 
+|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Zo kan ik potentiële kandidaten voor een ehub identificeren (netburen)
+
+|{counter:fr}
+|Energie(hub)adviseur 
+|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik kan dan bepalen hoe de aansluitingen, verbindingen en stations onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
+
+|{counter:fr}
+|Energie(hub)adviseur
+|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik krijg dan handelingsperspectief om met slimme oplossingen te komen om het net beter te benutten
+
+|{counter:fr}
+|Hieronder
+|Staat
+|Netburen
 
 |{counter:fr}
 |Netbeheerder
@@ -348,6 +374,24 @@ include::partial$four_v.adoc[]
 |===
 
 == Voorwaarden
+De lijst van grondslagen is te vinden op: https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/avg-algemeen/grondslagen-avg-uitgelegd.
+
+De grondslagen zijn:
+
+- Toestemming
+
+- Overeenkomst
+
+- Wettelijke verplichting
+
+- Vitaal belang
+
+- Taak van algemeen belang of
+
+- uitoefening van openbaar gezag
+
+- Gerechtvaardigd belang
+
 
 Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag
 Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen
@@ -359,6 +403,27 @@ netbeheerder.
 [cols="1, 1"]
 |===
 |Type |Beschrijving
+
+|DeepDive
+|kVA? Of alleen werkelijk vermogen?
+
+|DeepDive
+|Bedrijfszeker installatie vermogen (BZIV) of ook additionele niet redundante vermogen (ANRV)?
+
+|DeepDive
+|N-1?
+
+|DeepDive
+|Tot welk detailniveau? Route / kabel tussen aangeslotenen, etc.?
+
+|DeepDive
+|Levering/teruglevering?
+
+|Deepdive
+|Als we capaciteit in kVa doen; hoe gaan we dan om met verschil in eenheid?
+
+|Hieronder
+|Netburen
 
 |Aanname
 |De oplossing heeft als reikwijdte *enkel* het ondersteunen van de verkennende
