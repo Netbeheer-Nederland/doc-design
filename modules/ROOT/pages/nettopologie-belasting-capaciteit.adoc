@@ -73,44 +73,9 @@ de dataproducten en onderliggende oplossing moeten beantwoorden.
 |Ik krijg dan handelingsperspectief om met slimme oplossingen te komen om het net beter te benutten
 
 |{counter:fr}
-|Hieronder
-|Staat
-|Netburen
-
-|{counter:fr}
 |Netbeheerder
 |Enkel inzicht verstrekken vanuit *use case*-perspectief.
-|Ik moet voldoen aan beleid rondom het communiceren van nettopologie van de
- netbeheerder.
-
-|{counter:fr}
-|Technisch adviseur
-|Inzicht in de aansluitingen die samen een (potentiële) Energiehub kunnen
- vormen.
-|ik wil inzicht in welke GV-klanten te benaderen.
-
-|{counter:fr}
-|Technisch adviseur
-|Inzicht in aansluitingen gegroepeerd per transformator, per veld en per
- MS-route.
-|Ik wil inzicht in de groepsamenstelling.
-
-|{counter:fr}
-|Technisch adviseur
-|Inzicht in netburen en historische verbruiksgegevens (kwartierwaardes) van de
- potentiële deelnemers aan de Energiehub.
-|Ondersteunen bij het _optimaliseren achter de meter_.
-
-|{counter:fr}
-|Technisch adviseur
-|Inzicht in het gecontracteerd vermogen (GTV voor LTN/ODN).
-|Ik wil de onbenutte ruimte uit het bestaande contract meenemen in de
- GroepsTransportOvereenkomst (GTO).
-
-|{counter:fr}
-|Technisch adviseur
-|Inzicht in de aansluitcategorie van de aansluiting.
-|Ik moet onderscheid maken in aansluitingen die mee mogen doen.
+|Ik moet voldoen aan beleid rondom het communiceren van nettopologie van de netbeheerder.
 
 |{counter:fr}
 |Technisch adviseur
@@ -120,33 +85,27 @@ de dataproducten en onderliggende oplossing moeten beantwoorden.
 |{counter:fr}
 |Technisch adviseur
 |Inzicht in de kabels en of deze onder congestie (afname & invoeding) liggen.
-|Ik moet aansluitingen op deze kabels uitsluiten van deelname aan een
- Energiehub>
+|Ik moet aansluitingen op deze kabels uitsluiten van deelname aan een Energiehub
 
 |{counter:fr}
 |Technisch adviseur
 |Inzicht in de individuele capaciteit van kabels.
-|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een Energiehub
- toetsen/doorrekenen.
+|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een Energiehub toetsen/doorrekenen.
+
+|{counter:fr}
+|Marktpartij
+|Inzicht in de capaciteit en restcapaciteit (vrije ruimte) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
+|Dit geeft inzicht in de capaciteit
+
+|{counter:fr}
+|Marktpartij
+|Inzicht in de belasting op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
+|#TODO: ?#
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de wachtrij (gevraagd vermogen).
-|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt
- (kabel) onderdeel te maken van een Energiehub.
-
-|{counter:fr}
-|Marktpartij
-|Inzicht in de capaciteit en restcapaciteit (vrije ruimte) op veldniveau en
-secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
-|#TODO: ?#
-
-|{counter:fr}
-|Marktpartij
-|Inzicht in de belasting op veldniveau en secundaire zijde(s) van de relevante
- transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &
- afname (gesplitst).
-|#TODO: ?#
+|Inzicht in de wachtrij (gevraagd vermogen) ?
+|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt  (kabel) onderdeel te maken van een Energiehub.
 
 |===
 
@@ -404,6 +363,24 @@ netbeheerder.
 |===
 |Type |Beschrijving
 
+|Aanname
+|Nettopologie, belasting en capaciteit in één dataproduct
+
+|Aanname
+|Nettopologie is open data (GEMS)
+
+|Aanname
+|GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt.
+
+|Aanname
+|GEMS heeft geen problemen met het delen van capaciteit (operationele limiet)
+
+|Beslissing
+|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming. 
+
+|Aanname
+|De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor deze dataproducten (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken.
+
 |DeepDive
 |kVA? Of alleen werkelijk vermogen?
 
@@ -421,6 +398,15 @@ netbeheerder.
 
 |Deepdive
 |Als we capaciteit in kVa doen; hoe gaan we dan om met verschil in eenheid?
+
+|Aanname
+|Nettopologie, belasting en capaciteit in één dataproduct
+
+|Aanname
+|Geen gegevens over kabels
+
+|Aaname
+|Geolocatie alleen over stations
 
 |Hieronder
 |Netburen
