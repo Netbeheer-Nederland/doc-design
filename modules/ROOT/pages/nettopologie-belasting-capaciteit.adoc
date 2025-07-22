@@ -149,7 +149,7 @@ vars: {
 8. De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
 9. De Technische Adviseur geeft zijn advies aan de GV-klant.
 
-=== Architectuur
+=== Architectuur #TODO: ?#
 
 Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 
