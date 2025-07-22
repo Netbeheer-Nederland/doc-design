@@ -9,7 +9,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Het doel is om marktpartijen voldoende informatie over het net te geven waarmee ze in staat zijn om gerichte individuele of collectieve voorstellen voor gv-klanten te doen, waardoor het net beter wordt benut.
+Het doel is om marktpartijen voldoende informatie over het net te geven waarmee ze in staat zijn om gerichte individuele of collectieve voorstellen voor GV-klanten te doen, waardoor het net beter wordt benut.
 
 .Rollen
 [cols="1, 2"]
@@ -23,18 +23,16 @@ Het doel is om marktpartijen voldoende informatie over het net te geven waarmee 
 |Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals  bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998
 
 |Technisch adviseur
-|Een organisatie of persoon die faciliteert bij het opzetten van een  Energiehub.
+|Een organisatie of persoon die faciliteert bij het opzetten van een  Energiehub. Ook wel energie(hub)adviseur genoemd.
 
 |Marktpartij
 |Derden die vanuit overige use cases belang hebben bij de informatie verstrekt  vanuit dit dataproduct.
 
 |===
 
-
 == Functionele eisen
 
-De dataproducten zijn onderheving aan functionele eisen: de informatievraag die
-de dataproducten en onderliggende oplossing moeten beantwoorden.
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
 
 .Functionele eisen
 [cols="1, 1, 3, 3"]
@@ -131,9 +129,9 @@ vars: {
 
 "TA" -> "GV-klant": "1. Verzoekt om NBC tbv advies"
 "GV-klant" -> "NB": "2. Verzoekt om NBC"
-"NB" -> "GV-klant": "3. Verzoekt om authenticatie + welke EAN"
+"NB" -> "GV-klant": "3. Verzoekt om authenticatie \nen welke EAN"
 "GV-klant" -> "NB": "4. Authenticeert en levert EAN"
-"NB" -> "NB": "5. Bepaalt NBC op basis van EAN voor afgaand veld + station"
+"NB" -> "NB": "5. Bepaalt NBC op basis van EAN\nvoor afgaand veld + station"
 "NB" -> "GV-klant": "6. Levert NBC-gegevens"
 "GV-klant" -> "TA": "7. Levert NBC-gegevens"
 "TA" -> "TA": "8. Maakt advies"
@@ -141,15 +139,15 @@ vars: {
 
 ----
 
-1. Verzoekt om NBC tbv advies: Technisch adviseur verzoekt de GV-klant om NBC-gegevens die hij nodig heeft voor zijn advies;
-2. Verzoekt om NBC: De GV-klant vraagt zijn netbeheerder om NBC-gegevens;
-3. Verzoekt om authenticatie + welke EAN: De netbeheerder authenticeert de GV-klant en verzoekt om de betreffende EAN;
-4. Authenticeert en levert EAN: De GV-klant authenticeert zich bij de netbeheerder en levert de betreffende EAN;
-5. Bepaalt NBC op basis van EAN voor afgaand veld + station: De netbeheerder bepaalt het afgaande veld en bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens;
-6. Levert NBC-gegevens: De netbeheerder levert de gevraagde NBC-gegevens aan de GV-klant;
-7. Levert NBC-gegevens: De GV-klant levert de NBC-gegevens aan de Technische Adviseur; 
-8. Maakt advies: De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
-9. Geef advies: De Technische Adviseur geeft zijn advies aan de GV-klant.
+1. De Technisch Adviseur verzoekt de GV-klant om NBC-gegevens die hij nodig heeft voor zijn advies;
+2. De GV-klant vraagt zijn netbeheerder om NBC-gegevens;
+3. De netbeheerder authenticeert de GV-klant en verzoekt om de betreffende EAN;
+4. De GV-klant authenticeert zich bij de netbeheerder en levert de betreffende EAN;
+5. De netbeheerder bepaalt het afgaande veld en het bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens;
+6. De netbeheerder levert de gevraagde NBC-gegevens aan de GV-klant;
+7. De GV-klant levert de NBC-gegevens aan de Technische Adviseur; 
+8. De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
+9. De Technische Adviseur geeft zijn advies aan de GV-klant.
 
 === Architectuur
 
@@ -285,8 +283,7 @@ classes: {
 
 == Dataset
 
-De dataset beschrijft de potentiële deelnemers aan een _Energiehub_, inclusief
-relevante nettopologie en capaciteit & belasting.
+De dataset beschrijft van een EAN de nettopologie, de belasting en de capaciteit (operationele limiet) van het afgaande veld dat bij deze EAN hoort en haar transformator.
 
 === Volume, variety, veracity, velocity
 
@@ -313,7 +310,7 @@ include::partial$four_v.adoc[]
 
 |===
 
-== Voorwaarden
+== Voorwaarden #TODO: ?#
 De lijst van grondslagen is te vinden op: https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/avg-algemeen/grondslagen-avg-uitgelegd.
 
 De grondslagen zijn:
@@ -326,17 +323,12 @@ De grondslagen zijn:
 
 - Vitaal belang
 
-- Taak van algemeen belang of
-
-- uitoefening van openbaar gezag
+- Taak van algemeen belang of uitoefening van openbaar gezag
 
 - Gerechtvaardigd belang
 
 
-Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag
-Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen
-aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de
-netbeheerder.
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de netbeheerder.
 
 == Beslissingen en aannames
 
@@ -351,66 +343,66 @@ netbeheerder.
 |Nettopologie is open data (GEMS)
 
 |Aanname
-|GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt.
+|GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt
 
 |Aanname
 |GEMS heeft geen problemen met het delen van capaciteit (operationele limiet)
 
 |Beslissing
-|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming. 
+|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming
 
 |Aanname
-|De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor deze dataproducten (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken.
+|De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor dit dataproduct (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken
 
 |Aanname
-|kVA in plaats van werkelijk vermogen en cos(phi) (1 of 0,85).
+|kVA in plaats van werkelijk vermogen en cos(phi) (1 of 0,85)
 
 |Aaname
 |Als we capaciteit in kVa doen; hoe gaan we dan om met verschil in eenheid?
 
 |Aanname
-|Er is besloten om de capaciteit (operationele limiet) van de tranformator te gebruiken en niet Bedrijfszeker installatie vermogen (BZIV) of additionele niet redundante vermogen (ANRV).
+|Er is besloten om de capaciteit (operationele limiet) van de tranformator te gebruiken en niet Bedrijfszeker installatie vermogen (BZIV) of additionele niet redundante vermogen (ANRV)
 
 |Aanname
-|We gaan uit van de normaalstand van de schakelaars; de door de netarchitecten berkende situatie.
+|We gaan uit van de normaalstand van de schakelaars; de door de netarchitecten berkende situatie
 
 |Aanname
-|De belastingsdata kan, als gevolg van onderhoud en/of storing, afwijken van de normaalstand.
+|De belastingsdata kan als gevolg van onderhoud en/of storing afwijken van de normaalstand
 
 |Aanname
-|Meetgegevens voor veld en transformator zijn enkel geldig binnen de  normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode  zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*  gecommuniceerd.
+|Meetgegevens voor veld en transformator zijn enkel geldig binnen de  normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode  zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*  gecommuniceerd
 
 |Aanname
-|Er is besloten rekening te houden met N-1; op basis van de normaalstand dus de operationele limiet van de transformator.
+|Er is besloten rekening te houden met _N-1_; op basis van de normaalstand dus de operationele limiet van de transformator.
 
 |Aanname
 |Geen gegevens over kabels
 
 |Aanname
-|Omdat de capaciteit van de kabelsegmenten niet worden gedeeld, worden de geografische en de assetgegevens van de kabels ook niet gedeeld.
+|Omdat de capaciteit van de kabelsegmenten niet worden gedeeld, worden de geografische en de assetgegevens van de kabels ook niet gedeeld
 
 |Aanname
-|Zowel levering als teruglevering moet ondersteund worden, exclusief kabels.
+|Zowel levering als teruglevering moet ondersteund worden, exclusief kabels
 
 |Aanname
-|Nettopologie, belasting en capaciteit in één dataproduct.
+|Nettopologie, belasting en capaciteit in één dataproduct
 
 |Aanname
-|Geolocatie alleen over stations.
+|Geolocatie alleen over stations
 
 |Aanname
-|Het combineren van datasets levert mogelijk meer informatie.
+|Het combineren van datasets levert mogelijk meer informatie
 
 |Aanname #TODO: ?#
-|Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie. 
+|Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie
 
 |Aanname
-|Er wordt geen informatie gecommuniceerd over wachtrijen en kortsluitstromen.
+|Er wordt geen informatie gecommuniceerd over wachtrijen en kortsluitstromen
 
 |Aanname
-|Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd, capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd.
+|Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd, capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd
 
 |Aanname
-|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energyhub.
+|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energiehub
 
 |===
