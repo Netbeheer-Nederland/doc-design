@@ -336,72 +336,95 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |===
 |Type |Beschrijving
 
+|{counter:fr}
 |Aanname
 |Nettopologie, belasting en capaciteit in één dataproduct
 
+|{counter:fr}
 |Aanname
 |Nettopologie is open data (GEMS)
 
+|{counter:fr}
 |Aanname
 |GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt
 
+|{counter:fr}
 |Aanname
 |GEMS heeft geen problemen met het delen van capaciteit (operationele limiet)
 
+|{counter:fr}
 |Beslissing
 |Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming
 
+|{counter:fr}
 |Aanname
 |De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor dit dataproduct (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken
 
+|{counter:fr}
 |Aanname
 |kVA in plaats van werkelijk vermogen en cos(phi) (1 of 0,85)
 
+|{counter:fr}
 |Aaname
 |Als we capaciteit in kVa doen; hoe gaan we dan om met verschil in eenheid?
 
+|{counter:fr}
 |Aanname
 |Er is besloten om de capaciteit (operationele limiet) van de tranformator te gebruiken en niet Bedrijfszeker installatie vermogen (BZIV) of additionele niet redundante vermogen (ANRV)
 
+|{counter:fr}
 |Aanname
 |We gaan uit van de normaalstand van de schakelaars; de door de netarchitecten berkende situatie
 
+|{counter:fr}
 |Aanname
 |De belastingsdata kan als gevolg van onderhoud en/of storing afwijken van de normaalstand
 
+|{counter:fr}
 |Aanname
 |Meetgegevens voor veld en transformator zijn enkel geldig binnen de  normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode  zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*  gecommuniceerd
 
+|{counter:fr}
 |Aanname
 |Er is besloten rekening te houden met _N-1_; op basis van de normaalstand dus de operationele limiet van de transformator.
 
+|{counter:fr}
 |Aanname
 |Geen gegevens over kabels
 
+|{counter:fr}
 |Aanname
 |Omdat de capaciteit van de kabelsegmenten niet worden gedeeld, worden de geografische en de assetgegevens van de kabels ook niet gedeeld
 
+|{counter:fr}
 |Aanname
 |Zowel levering als teruglevering moet ondersteund worden, exclusief kabels
 
+|{counter:fr}
 |Aanname
 |Nettopologie, belasting en capaciteit in één dataproduct
 
+|{counter:fr}
 |Aanname
 |Geolocatie alleen over stations
 
+|{counter:fr}
 |Aanname
 |Het combineren van datasets levert mogelijk meer informatie
 
+|{counter:fr}
 |Aanname #TODO: ?#
 |Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie
 
+|{counter:fr}
 |Aanname
 |Er wordt geen informatie gecommuniceerd over wachtrijen en kortsluitstromen
 
+|{counter:fr}
 |Aanname
 |Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd, capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd
 
+|{counter:fr}
 |Aanname
 |De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energiehub
 
