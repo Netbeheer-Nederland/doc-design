@@ -362,11 +362,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 
 |{counter:ba}
 |Aanname
-|kVA in plaats van werkelijk vermogen en cos(phi) (1 of 0,85)
-
-|{counter:ba}
-|Aaname
-|Als we capaciteit in kVa doen; hoe gaan we dan om met verschil in eenheid?
+|Capaciteit in kVA in plaats van werkelijk vermogen, hanteren we dan een cos(phi) van 1 of bijv 0,85
 
 |{counter:ba}
 |Aanname
