@@ -40,32 +40,32 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |ID |Als Rol |Wil ik |Want
 
 |{counter:fr}
-|Als energie(hub)adviseur 
+|Technisch adviseur
 |Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Ik wil op basis hiervan een gedetailleerd beeld krijgen van de vrije ruimte en schaarste (_speelruimte_)
 
 |{counter:fr}
-|Als energie(hub)adviseur 
+|Technisch adviseur
 |Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Individuele en collectieve oplossingen verkennen en adequate voorstellen doen richting netbeheerder
 
 |{counter:fr}
-|Als energie(hub)adviseur 
+|Technisch adviseur
 |Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) capaciteit kunnen krijgen
 
 |{counter:fr}
-|Energie(hub)adviseur 
+|Technisch adviseur
 |Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Zo kan ik potentiële kandidaten voor een ehub identificeren (netburen)
 
 |{counter:fr}
-|Energie(hub)adviseur 
+|Technisch adviseur
 |Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Ik kan dan bepalen hoe de aansluitingen, verbindingen en stations onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
 
 |{counter:fr}
-|Energie(hub)adviseur
+|Technisch adviseur
 |Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Ik krijg dan handelingsperspectief om met slimme oplossingen te komen om het net beter te benutten
 
@@ -140,10 +140,10 @@ vars: {
 ----
 
 1. De Technisch Adviseur verzoekt de GV-klant om NBC-gegevens die hij nodig heeft voor zijn advies;
-2. De GV-klant vraagt zijn netbeheerder om NBC-gegevens;
+2. De GV-klant vraagt zijn netbeheerder om NBC-gegevens van een specifiek gebied;
 3. De netbeheerder authenticeert de GV-klant en verzoekt om de betreffende EAN;
 4. De GV-klant authenticeert zich bij de netbeheerder en levert de betreffende EAN;
-5. De netbeheerder bepaalt het afgaande veld en het bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens;
+5. De netbeheerder bepaalt het afgaande veld en het bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens van een specifiek gebied behorende bij dit station;
 6. De netbeheerder levert de gevraagde NBC-gegevens aan de GV-klant;
 7. De GV-klant levert de NBC-gegevens aan de Technische Adviseur; 
 8. De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
@@ -423,5 +423,9 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |{counter:ba}
 |Aanname
 |De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energiehub
+
+|{counter:ba}
+|Beslissing
+|Met specifiek gebied wordt bedoeld de afbakening van station met afgaande velden tot en met GV-aansluitadressen. De aanvrager kan dit aanvragen op basis van een bepaalde EAN uit dat gebied of op basis van een bepaald adres uit dat gebied of op basis van de routenaam/stationsnaam. Dit laatste is alleen mogelijk als de desbetreffende partij ook al in bezit is van netburen, nettopologie of in geval van Liander de EBS. 
 
 |===
