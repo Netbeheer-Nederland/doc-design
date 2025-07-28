@@ -17,16 +17,16 @@ Het doel is om marktpartijen voldoende informatie over het net te geven waarmee 
 |Rol |Beschrijving
 
 |Netbeheerder
-|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of  meer energienetten, niet zijnde gesloten distributiesystemen
+|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of  meer energienetten, niet zijnde gesloten distributiesystemen.
 
 |GV-klant
-|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals  bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998
+|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998.
 
 |Technisch adviseur
-|Een organisatie of persoon die faciliteert bij het opzetten van een  Energiehub. Ook wel energie(hub)adviseur genoemd.
+|Een organisatie of persoon die faciliteert bij het zoeken naar oplossingen voor congestieproblematiek door energie-advies te geven.
 
-|Marktpartij
-|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt  vanuit dit dataproduct.
+|Derden
+|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt vanuit dit dataproduct.
 
 |===
 
@@ -90,12 +90,12 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een Energiehub toetsen/doorrekenen.
 
 |{counter:fr}
-|Marktpartij
+|Derde
 |Inzicht in de capaciteit en restcapaciteit (vrije ruimte) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
 |Dit geeft inzicht in de capaciteit
 
 |{counter:fr}
-|Marktpartij
+|Derde
 |Inzicht in de belasting op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
 |#TODO: ?#
 
