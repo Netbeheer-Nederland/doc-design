@@ -104,6 +104,21 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |Inzicht in de wachtrij (gevraagd vermogen) ?
 |Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt  (kabel) onderdeel te maken van een Energiehub.
 
+|{counter:fr}
+|Technisch adviseur
+|Inzicht inde nettopologie, de capaciteit en de belasting van stations en verbindingen
+|Als de RNB een CBC (Capaciteitsbeperkings Contract) afkeurt zonder alternatief te bieden dan wil ik de zaken zelf doorrekenen.
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil graag de nettopologie, de vrije ruimte op een station en de verbindingen weten.
+|Ik wil een zo relevant mogelijk voorstel doen aan de netbeheerder en dit binnen een zo kort mogelijke doorlooptijd emet met een concrete aanbeveling naar de klant (de aangeslotene)
+
+|{counter:fr}
+|Technisch adviseur
+|Informatie over capaciteit en belasting van verbindingen en stations die een netrekenaar gebruikt en die ik kan gebruiken zonder netreken capaciteiten.
+|Ik wil geen netrekencapaciteiten ontwikkelen.
+
 |===
 
 == Dataservice
