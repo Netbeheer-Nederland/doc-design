@@ -17,6 +17,59 @@ gezamelijke netbeheerders (TSO & DSO) van Nederland. Hiervoor levert elke
 netbeheerder een overzicht van voedingsgebieden en corresponderende
 capaciteits- en projectinformatie.
 
+== Functionele eisen
+
+Dit dataproduct is onderheving aan functionele eisen: de informatievraag die
+het dataproduct en onderliggende oplossing moet beantwoorden.
+
+.Functionele eisen
+[cols="1, 1, 3, 3"]
+|===
+|ID |Als Rol |Wil ik |Want
+
+|{counter:fr}
+|RNB
+|inzicht in de schaarstekleur van een MS/LS trafo
+|
+
+|{counter:fr}
+|RNB
+|inzicht in welke postcodes worden bediend door een specifieke MS/LS trafo
+|
+
+|{counter:fr}
+|RNB
+|inzicht in welke buurten er door één of meerdere MS/LS trafo(s) worden bediend
+|
+
+|{counter:fr}
+|RNB
+|inzicht in welke MS-route de MS/LS trafo wordt bediend
+|
+
+|{counter:fr}
+|RNB
+|inzicht of er hoger in het net schaarste van toepassing is
+|
+
+|{counter:fr}
+|RNB
+|inzicht in welke projecten er zijn gepland voor een MS/LS trafo (en een buurt)
+ om capaciteitsknelpunten op te lossen
+|
+
+|{counter:fr}
+|RNB
+|inzicht in de geplande bedrijfsname van een project
+|
+
+|{counter:fr}
+|RNB
+|inzicht in de eigenaar (netbeheerder) van de MS/LS trafo
+|
+
+|===
+
 == Dataservice
 
 === Gebruiksscenario
