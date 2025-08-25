@@ -4,7 +4,6 @@
 * xref::netbewust-laden.adoc[]
 * xref::netburen.adoc[]
 * xref::netcode-h13.adoc[]
-#* xref::nl-profile-group.adoc[]
 * xref::rijksinspectie-data-infrastructuur.adoc[]
 * xref::detectie.adoc[]
 * xref::nettopologie-belasting-capaciteit.adoc[]
