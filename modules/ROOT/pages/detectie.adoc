@@ -9,20 +9,20 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie (zoals: zonnepanelen, thuislaadpunten, warmtepompen, thuisbatterijen en apparaten ten behoeve van elektrisch koken) zijn hierbij van belang. 
+Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie zijn hierbij van belang. Denk hierbij aan zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP), thuisbatterijen (BESS) en apparaten ten behoeve van elektrisch koken. 
 
-Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. 
+Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. Data Scientist teams bij de RNB's werken samen om statistische modellen te maken die dit inzicht kunnen geven.
 
-Dit dataproduct draagt bij aan de detectie van energie-intensieve apparaten. De epic bestaat uit twee fasen, een pilot fase en een landelijke fase. 
+De epic bestaat uit twee fasen, een pilot fase en een landelijke fase. 
 
 === Pilot fase
 
 In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 1.000 medewerkers van de drie grootste RNB's gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
 === Landelijke fase
-In de landelijke fase wordt het statistische model landelijk toegepast op alle (goedgekeurde) aansluitingen. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Het resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kW(p)) een bijbehorende betrouwbaarheid (Confidence). Deze informatie is _niet_ per EAN, maar geaggreerd op middenspanningsruimte ( MS/LS trafo) danwel postcode6 niveau:
+In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kW(p)) met een bijbehorende betrouwbaarheid (Confidence). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS trafo) niveau:
 
-.Voorbeeld eindresultaat geaggregeerd op trafo)
+.Voorbeeld eindresultaat (geaggregeerd op trafo)
 [cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
 |===
 |Trafo |PV |Confidence |EV |Confidence |WP |Confidence |BESS |Confidence
@@ -56,11 +56,11 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 === Pilot fase
 
-In de pilot fase is gekozen voor een decentraal scenario waarbij de verbruiksdata van de slimme meters van de 1.000 medewerkers van de drie grootste RNB's door de RNB's met elkaar gedeeld wordt.
+In de pilot fase is gekozen voor een decentraal scenario waarbij de verbruiksdata van de slimme meters van de 1.000 medewerkers van de drie grootste RNB's door de data science teams van de deelnemende RNB's met elkaar gedeeld wordt.
 
 === Landelijke fase
 
-Er is gekozen voor een centraal scenario waarbij de geregistreerde verbruiksdata van de slimme meters centraal beschikbaar wordt gesteld aan deelnemende RNB's.
+Er is gekozen voor een centraal scenario waarbij de geregistreerde verbruiksdata van de slimme meters centraal beschikbaar wordt gesteld aan de data science teams van de deelnemende RNB's.
 
 === Gebruiksscenario
 
@@ -236,7 +236,6 @@ classes: {
 
 
 1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
-2. Aanlevering van de klantcontactgegevens en de aangeslotenegegevens geschiedt via JSON-bestanden
 
 == Dataset
 
@@ -286,10 +285,10 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |Het is mogelijk om middels een enquête 1.000 medewerkers bij de drie grootste RNB's te vinden die willen meedoen
 
 |Beslissing
-|Er is behoefte aan 15 minuten waarden (kwartierstanden )
+|Zowel in de pilot fase als in de landelijke fase is er behoefte aan 15 minuten waarden (kwartierstanden)
 
 |Aanname
-|De data wordt verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
+|In de pilot foas wordt de data verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
 
 |Aanname
 |De Data Scientist verrijkt zelf de slimme meter data
@@ -298,23 +297,29 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |De Data Scientist berekent niet het gebruiksprofiel van een energie-intensief apparaat
 
 |Beslissing
-|De kwartierwaarden komen uit een database
-
-|Aanname
-|De kwartierwaarden komen uit C-ARM (Centrale Allocatie en Reconciliatie Meetdata)
+|In de landelijke fase komen de kwartierwaarden uit een database
 
 |Beslissing
 |Enexis, Stedin en Alliander hebben elk hun eigen team met Data Scientists
 
+|Aanname
+|Enexis, Steden en Alliander zijn de enige deelnemende RNB's
+
 |Beslissing
 |Elk Data Scientist team krijgt dezelfde data
+
+|Aanname
+|In de pilot fase ontvangt elke Data Scientist team van elke deelnemende RNB de verbruiksdata van de slimme meter van deze RNB en deelt deze met de Data Scientist teams van de andere deelenmende RNB's
 
 |Beslissing
 |Voor elk apparaattype is er een Data Scientist team dat een model maak om haar aanwezigheid te voorspellen inclusief hun geschatte vermogen
 
 |Beslissing
-|Elke Data Scientist team maakt een eigen model om de aanwezigheid één of meerdere apparaattypes te voorspellen inclusief hun geschatte vermogen
+|Elk Data Scientist team maakt een eigen model om de aanwezigheid één of meerdere apparaattypes te voorspellen inclusief hun geschatte vermogen
 
 |Beslissing
 |De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 danwel MS/LS-trafo)
+
+|Aanname
+|Aggregatie in de landelijke fase gebeurt op connectiviteit (je wilt netburen aggregeren)
 |===

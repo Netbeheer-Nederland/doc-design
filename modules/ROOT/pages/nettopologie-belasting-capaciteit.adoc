@@ -1,0 +1,446 @@
+= Nettopologie, belasting en capaciteit (NBC)
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _NBC_ (nettopologie, belasting en capaciteit), alsmede de achterliggende architectuur en gemaakte keuzes.
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Het doel is om belanghebbende (Technische Adviseurs en Derden) voldoende informatie over het net te geven waarmee ze in staat zijn om gerichte individuele of collectieve voorstellen voor GV-klanten te doen, waardoor het net beter wordt benut.
+
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|Netbeheerder
+|Vennootschap die op grond van de wet is aangewezen voor het beheer van een of  meer energienetten, niet zijnde gesloten distributiesystemen.
+
+|GV-klant
+|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998.
+
+|Technisch adviseur
+|Een organisatie of persoon die faciliteert bij het zoeken naar oplossingen voor congestieproblematiek door energie-advies te geven.
+
+|Derden
+|Derden die vanuit overige use cases belang hebben bij de informatie verstrekt vanuit dit dataproduct.
+
+|===
+
+== Functionele eisen
+
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
+
+.Functionele eisen
+[cols="1, 1, 3, 3"]
+|===
+|ID |Als Rol |Wil ik |Want
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Ik wil op basis hiervan een gedetailleerd beeld krijgen van de vrije ruimte en schaarste (_speelruimte_)
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Individuele en collectieve oplossingen verkennen en adequate voorstellen doen richting netbeheerder
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) capaciteit kunnen krijgen
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Zo kan ik potentiële kandidaten voor een ehub identificeren (netburen)
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik kan dan bepalen hoe de aansluitingen, verbindingen en stations onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik krijg dan handelingsperspectief om met slimme oplossingen te komen om het net beter te benutten
+
+|{counter:fr}
+|Netbeheerder
+|Enkel inzicht verstrekken vanuit *use case*-perspectief.
+|Ik moet voldoen aan beleid rondom het communiceren van nettopologie van de netbeheerder.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de (technische) zekeringswaarde van het overdrachtspunt.
+|Ik wil inzicht in de bandbreedte van energieverbruik.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de kabels en of deze onder congestie (afname & invoeding) liggen.
+|Ik moet aansluitingen op deze kabels uitsluiten van deelname aan een Energiehub
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de individuele capaciteit van kabels.
+|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een Energiehub toetsen/doorrekenen.
+
+|{counter:fr}
+|Derde
+|Inzicht in de capaciteit en restcapaciteit (vrije ruimte) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
+|Dit geeft inzicht in de capaciteit
+
+|{counter:fr}
+|Derde
+|Inzicht in de belasting op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
+|#TODO: ?#
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht in de wachtrij (gevraagd vermogen) ?
+|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt  (kabel) onderdeel te maken van een Energiehub.
+
+|{counter:fr}
+|Technisch adviseur
+|Inzicht inde nettopologie, de capaciteit en de belasting van stations en verbindingen
+|Als de RNB een CBC (Capaciteitsbeperkings Contract) afkeurt zonder alternatief te bieden dan wil ik de zaken zelf doorrekenen.
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil graag de nettopologie, de vrije ruimte op een station en de verbindingen weten.
+|Ik wil een zo relevant mogelijk voorstel doen aan de netbeheerder en dit binnen een zo kort mogelijke doorlooptijd emet met een concrete aanbeveling naar de klant (de aangeslotene)
+
+|{counter:fr}
+|Technisch adviseur
+|Informatie over capaciteit en belasting van verbindingen en stations die een netrekenaar gebruikt en die ik kan gebruiken zonder netreken capaciteiten.
+|Ik wil geen netrekencapaciteiten ontwikkelen.
+
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"TA": "Technisch\nAdviseur"
+"GV-klant": "GV\nklant"
+"NB": "Netbe-\nheerder"
+
+"TA" -> "GV-klant": "1. Verzoekt om NBC tbv advies"
+"GV-klant" -> "NB": "2. Verzoekt om NBC"
+"NB" -> "GV-klant": "3. Verzoekt om authenticatie \nen welke EAN"
+"GV-klant" -> "NB": "4. Authenticeert en levert EAN"
+"NB" -> "NB": "5. Bepaalt NBC op basis van EAN\nvoor afgaand veld + station"
+"NB" -> "GV-klant": "6. Levert NBC-gegevens"
+"GV-klant" -> "TA": "7. Levert NBC-gegevens"
+"TA" -> "TA": "8. Maakt advies"
+"TA" -> "GV-klant": "9. Geef advies"
+
+----
+
+1. De Technisch Adviseur verzoekt de GV-klant om NBC-gegevens die hij nodig heeft voor zijn advies;
+2. De GV-klant vraagt zijn netbeheerder om NBC-gegevens van een specifiek gebied;
+3. De netbeheerder authenticeert de GV-klant en verzoekt om de betreffende EAN;
+4. De GV-klant authenticeert zich bij de netbeheerder en levert de betreffende EAN;
+5. De netbeheerder bepaalt het afgaande veld en het bijbehorende station horende bij dit EAN en vervolgens de NBC-gegevens van een specifiek gebied behorende bij dit station;
+6. De netbeheerder levert de gevraagde NBC-gegevens aan de GV-klant;
+7. De GV-klant levert de NBC-gegevens aan de Technische Adviseur; 
+8. De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
+9. De Technische Adviseur geeft zijn advies aan de GV-klant.
+
+=== Architectuur #TODO: ?#
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+Netbeheerder.class: [noun; business]
+Consumer.class: [noun; business]
+4.class: empty
+5.class: empty
+
+6.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
+
+"MijnOmgeving/Maatwerk".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+7.class: empty
+
+8.class: empty
+"JSON File".class: [artifact; technology]
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Extract -> Consumer: "serves"
+"JSON File" -> "Data Product": "realises"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+== Dataset
+
+De dataset beschrijft van een EAN de nettopologie, de belasting en de capaciteit (operationele limiet) van het afgaande veld dat bij deze EAN hoort en haar transformator.
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Midden
+
+|Velocity
+|Laag, datasets worden op verzoek samengesteld
+
+|===
+
+== Voorwaarden #TODO: ?#
+De lijst van grondslagen is te vinden op: https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/avg-algemeen/grondslagen-avg-uitgelegd.
+
+De grondslagen zijn:
+
+- Toestemming
+
+- Overeenkomst
+
+- Wettelijke verplichting
+
+- Vitaal belang
+
+- Taak van algemeen belang of uitoefening van openbaar gezag
+
+- Gerechtvaardigd belang
+
+
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de netbeheerder.
+
+== Beslissingen en aannames
+
+[cols="1, 3, 6"]
+|===
+|Id |Type |Beschrijving
+
+|{counter:ba}
+|Aanname
+|Nettopologie, belasting en capaciteit in één dataproduct
+
+|{counter:ba}
+|Aanname
+|Nettopologie is open data (GEMS)
+
+|{counter:ba}
+|Aanname
+|GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt
+
+|{counter:ba}
+|Aanname
+|GEMS heeft geen problemen met het delen van capaciteit (operationele limiet)
+
+|{counter:ba}
+|Beslissing
+|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming
+
+|{counter:ba}
+|Aanname
+|De processen voor de uitlevering van netburen is reeds ingericht; we kunnen voor dit dataproduct (nettopologie, belasting en capaciteit) hier efficiënt gebruik van maken
+
+|{counter:ba}
+|Aanname
+|Capaciteit in kVA in plaats van werkelijk vermogen, hanteren we dan een cos(phi) van 1 of bijv 0,85
+
+|{counter:ba}
+|Aanname
+|Er is besloten om de capaciteit (operationele limiet) van de tranformator te gebruiken en niet Bedrijfszeker installatie vermogen (BZIV) of additionele niet redundante vermogen (ANRV)
+
+|{counter:ba}
+|Aanname
+|We gaan uit van de normaalstand van de schakelaars; de door de netarchitecten berkende situatie
+
+|{counter:ba}
+|Aanname
+|De belastingsdata kan als gevolg van onderhoud en/of storing afwijken van de normaalstand
+
+|{counter:ba}
+|Aanname
+|Meetgegevens voor veld en transformator zijn enkel geldig binnen de  normaalstand. Indien de normaalstand gewijzigd is binnen de historische periode  zijn de meetwaardes gedaan voor de wijziging niet geldig en worden *niet*  gecommuniceerd
+
+|{counter:ba}
+|Aanname
+|Er is besloten rekening te houden met _N-1_; op basis van de normaalstand dus de operationele limiet van de transformator.
+
+|{counter:ba}
+|Aanname
+|Geen gegevens over kabels
+
+|{counter:ba}
+|Aanname
+|Omdat de capaciteit van de kabelsegmenten niet worden gedeeld, worden de geografische en de assetgegevens van de kabels ook niet gedeeld
+
+|{counter:ba}
+|Aanname
+|Zowel levering als teruglevering moet ondersteund worden, exclusief kabels
+
+|{counter:ba}
+|Aanname
+|Nettopologie, belasting en capaciteit in één dataproduct
+
+|{counter:ba}
+|Aanname
+|Geolocatie alleen over stations
+
+|{counter:ba}
+|Aanname
+|Het combineren van datasets levert mogelijk meer informatie
+
+|{counter:ba}
+|Aanname #TODO: ?#
+|Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie
+
+|{counter:ba}
+|Aanname
+|Er wordt geen informatie gecommuniceerd over wachtrijen en kortsluitstromen
+
+|{counter:ba}
+|Aanname
+|Belasting wordt voor de afgelopen twee jaar in kwartierwaardes gecommuniceerd, capaciteit wordt op basis van een enkele operationele limiet gecommuniceerd
+
+|{counter:ba}
+|Aanname
+|De technisch adviseur heeft geen behoefte aan inzicht in capaciteit en belasting ten behoeve van een energiehub
+
+|{counter:ba}
+|Beslissing
+|Met specifiek gebied wordt bedoeld de afbakening van station met afgaande velden tot en met GV-aansluitadressen. De aanvrager kan dit aanvragen op basis van een bepaalde EAN uit dat gebied of op basis van een bepaald adres uit dat gebied of op basis van de routenaam/stationsnaam. Dit laatste is alleen mogelijk als de desbetreffende partij ook al in bezit is van netburen, nettopologie of in geval van Liander de EBS. 
+
+|===
