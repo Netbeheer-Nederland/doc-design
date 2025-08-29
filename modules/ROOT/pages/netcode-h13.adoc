@@ -138,7 +138,7 @@ nodig om de informatievraag in te vullen:
 |===
 |Profiel |Beschrijving
 
-|https://netbeheer-nederland.github.io/docs-dev/im-nbnl-equipment/latest/index.html[Equipment (EQ)]
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/index.html[Equipment (EQ)]
 |Eigenschappen van *netfuncties*, de connectiviteit van het elektriciteitsnet
 
 |Operation (OP)
