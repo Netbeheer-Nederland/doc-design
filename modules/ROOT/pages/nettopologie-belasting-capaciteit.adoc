@@ -155,13 +155,6 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 
 // Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
 
-|{counter:fr}
-|Technisch adviseur
-|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
-|
-
-// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
-
 |===
 
 == Dataservice
