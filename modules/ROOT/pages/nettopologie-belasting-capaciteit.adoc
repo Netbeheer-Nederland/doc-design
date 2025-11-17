@@ -41,82 +41,82 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Ik wil op basis hiervan een gedetailleerd beeld krijgen van de vrije ruimte en schaarste (_speelruimte_)
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Individuele en collectieve oplossingen verkennen en adequate voorstellen doen richting netbeheerder
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de operationele limiet en belasting in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
-|Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) capaciteit kunnen krijgen
+|Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
+|Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) _capaciteit_ kunnen krijgen
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Zo kan ik potentiële kandidaten voor een ehub identificeren (netburen)
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
-|Ik kan dan bepalen hoe de aansluitingen, verbindingen en stations onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
+|Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik kan dan bepalen hoe de _aansluitingen_, _verbindingen_ en _stations_ onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht de nettopologie van het gebied waar ik me op richt, samen met het hoger liggende gebied
-|Ik krijg dan handelingsperspectief om met slimme oplossingen te komen om het net beter te benutten
+|Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
+|Ik krijg dan _handelingsperspectief_ om met slimme oplossingen te komen om het net beter te benutten
 
 |{counter:fr}
 |Netbeheerder
 |Enkel inzicht verstrekken vanuit *use case*-perspectief.
-|Ik moet voldoen aan beleid rondom het communiceren van nettopologie van de netbeheerder.
+|Ik moet voldoen aan beleid rondom het communiceren van _nettopologie_ van de netbeheerder.
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de (technische) zekeringswaarde van het overdrachtspunt.
+|Inzicht in de (technische) _zekeringswaarde_ van het overdrachtspunt.
 |Ik wil inzicht in de bandbreedte van energieverbruik.
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de kabels en of deze onder congestie (afname & invoeding) liggen.
-|Ik moet aansluitingen op deze kabels uitsluiten van deelname aan een Energiehub
+|Inzicht in de kabels en of deze onder _congestie_ (afname & invoeding) liggen.
+|Ik moet _aansluitingen_ op deze kabels uitsluiten van deelname aan een _energiehub_
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht in de individuele capaciteit van kabels.
-|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een Energiehub toetsen/doorrekenen.
+|Inzicht in de individuele _capaciteit_ van kabels.
+|Ik wil onderlinge energie-uitwisseling tussen deelnemers aan een _energiehub_ toetsen/doorrekenen.
 
 |{counter:fr}
 |Derde
-|Inzicht in de capaciteit en restcapaciteit (vrije ruimte) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
-|Dit geeft inzicht in de capaciteit
+|Inzicht in de_ capaciteit_ en _restcapaciteit_ (_vrije ruimte_) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
+|Dit geeft inzicht in de _capaciteit_
 
 |{counter:fr}
 |Derde
-|Inzicht in de belasting op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
+|Inzicht in de _belasting_ op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
 |#TODO: ?#
 
 |{counter:fr}
 |Technisch adviseur
 |Inzicht in de wachtrij (gevraagd vermogen) ?
-|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt  (kabel) onderdeel te maken van een Energiehub.
+|Ik wil de wachtrij vrijmaken door deelnemers aangesloten op een knelpunt  (kabel) onderdeel te maken van een _energiehub_.
 
 |{counter:fr}
 |Technisch adviseur
-|Inzicht inde nettopologie, de capaciteit en de belasting van stations en verbindingen
+|Inzicht in de _nettopologie_, de _capaciteit_ en de _belasting_ van _stations_ en _verbindingen_
 |Als de RNB een CBC (Capaciteitsbeperkings Contract) afkeurt zonder alternatief te bieden dan wil ik de zaken zelf doorrekenen.
 
 |{counter:fr}
 |Technisch adviseur
-|Ik wil graag de nettopologie, de vrije ruimte op een station en de verbindingen weten.
+|Ik wil graag de _nettopologie_, de _vrije ruimte_ op een _station_ en de _verbindingen_ weten.
 |Ik wil een zo relevant mogelijk voorstel doen aan de netbeheerder en dit binnen een zo kort mogelijke doorlooptijd emet met een concrete aanbeveling naar de klant (de aangeslotene)
 
 |{counter:fr}
 |Technisch adviseur
-|Informatie over capaciteit en belasting van verbindingen en stations die een netrekenaar gebruikt en die ik kan gebruiken zonder netreken capaciteiten.
+|Informatie over _capaciteit_ en _belasting_ van _verbindingen_ en _stations_ die een netrekenaar gebruikt en die ik kan gebruiken zonder netreken capaciteiten.
 |Ik wil geen netrekencapaciteiten ontwikkelen.
 
 |===
