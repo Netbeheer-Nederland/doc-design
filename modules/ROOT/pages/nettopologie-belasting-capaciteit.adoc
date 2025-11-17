@@ -352,20 +352,26 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |Id |Type |Beschrijving
 
 |{counter:ba}
-|Aanname
-|Nettopologie, belasting en capaciteit in één dataproduct
+|Beslissing
+|Nettopologie, belasting en capaciteit worden drie dataproducten. 
+
+// Bron: Petra Barelds, mail "Belangrijke updates en acties over de specificatie en realisatie van de dataproducten nettopologie, capaciteit en belasting", vr 4-7-2025 15:25
 
 |{counter:ba}
-|Aanname
-|Nettopologie is open data (GEMS)
+|Beslissing
+|Nettopologie mag niet als open data gepubliceerd worden, maar uitsluitend aangeboden worden per gebied per use case.
+
+// Bron: Petra Barelds, mail "Belangrijke updates en acties over de specificatie en realisatie van de dataproducten nettopologie, capaciteit en belasting", vr 4-7-2025 15:25
 
 |{counter:ba}
 |Aanname
 |GEMS beslist dat assetbelastingsdata van het afgaande veld gedeeld mag worden. Zelfs wanneer hierdoor de belasting van individuele GV- of KV-aansluitingen afleidbaar wordt
 
 |{counter:ba}
-|Aanname
-|GEMS heeft geen problemen met het delen van capaciteit (operationele limiet)
+|Beslissing
+|Capaciteit (operationele limiet) mag niet als open data gepubliceerd worden, maar uitsluitend aangeboden worden per gebied per use case.
+
+// Bron: Petra Barelds, mail "Belangrijke updates en acties over de specificatie en realisatie van de dataproducten nettopologie, capaciteit en belasting", vr 4-7-2025 15:25
 
 |{counter:ba}
 |Beslissing
@@ -410,10 +416,6 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |{counter:ba}
 |Aanname
 |Zowel levering als teruglevering moet ondersteund worden, exclusief kabels
-
-|{counter:ba}
-|Aanname
-|Nettopologie, belasting en capaciteit in één dataproduct
 
 |{counter:ba}
 |Aanname
