@@ -1,6 +1,6 @@
 = Nettopologie, belasting en capaciteit (NBC)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _NBC_ (nettopologie, belasting en capaciteit), alsmede de achterliggende architectuur en gemaakte keuzes.
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _NBC_ (nettopologie, belasting en capaciteit), alsmede de achterliggende architectuur en gemaakte keuzes. 
 
 [NOTE]
 ====
@@ -442,5 +442,29 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |{counter:ba}
 |Beslissing
 |Met specifiek gebied wordt bedoeld de afbakening van station met afgaande velden tot en met GV-aansluitadressen. De aanvrager kan dit aanvragen op basis van een bepaalde EAN uit dat gebied of op basis van een bepaald adres uit dat gebied of op basis van de routenaam/stationsnaam. Dit laatste is alleen mogelijk als de desbetreffende partij ook al in bezit is van netburen, nettopologie of in geval van Liander de EBS. 
+
+|===
+
+== Gebruikte begrippen
+
+In dit ontwerp worden een aantal begrippen gebruikt zonder dat zij gedefinieerd of toegelicht worden. De formele definitie staat in het begrippenmodel. Hieronder volgt een korte toelichting hoe deze begrippen bedoeld zijn.
+
+[cols="2, 8"]
+|===
+|Begrip |Toelichting
+
+|Aansluiting |Toelichting
+|Belasting |Toelichting
+|Capaciteit |Toelichting
+|Congestie |Toelichting
+|Energiehub |Toelichting
+|Handelingsperspectief |Toelichting
+|Nettopologie |Toelichting
+|Operationele limiet |Toelichting
+|Overdrachtspunt |Toelichting
+|Restcapaciteit |Toelichting
+|Verbinding |Toelichting
+|Vrije ruimte |Toelichting
+|Zekeringswaarde |Toelichting
 
 |===
