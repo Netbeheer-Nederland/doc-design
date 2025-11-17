@@ -11,6 +11,8 @@ include::partial$data_product.adoc[]
 
 Het doel is om belanghebbende (Technische Adviseurs en Derden) voldoende informatie over het net te geven waarmee ze in staat zijn om gerichte individuele of collectieve voorstellen voor GV-klanten te doen, waardoor het net beter wordt benut.
 
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 21
+
 .Rollen
 [cols="1, 2"]
 |===
@@ -44,30 +46,43 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Ik wil op basis hiervan een gedetailleerd beeld krijgen van de vrije ruimte en schaarste (_speelruimte_)
 
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 12
+
 |{counter:fr}
 |Technisch adviseur
 |Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Individuele en collectieve oplossingen verkennen en adequate voorstellen doen richting netbeheerder
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 12
 
 |{counter:fr}
 |Technisch adviseur
 |Inzicht in de operationele limiet en _belasting_ in de voor mij relevante netfuncties (assets) over de dag heen gedurende het jaar, zowel van de huidige als de toekomstige situatie
 |Bijdragen aan beter benutten van het net en hiermee GV-klanten helpen die geen (extra) _capaciteit_ kunnen krijgen
 
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 12
+
 |{counter:fr}
 |Technisch adviseur
 |Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Zo kan ik potentiële kandidaten voor een ehub identificeren (netburen)
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 14
+
 
 |{counter:fr}
 |Technisch adviseur
 |Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Ik kan dan bepalen hoe de _aansluitingen_, _verbindingen_ en _stations_ onderling invloed op elkaar uitoefenen én hier de juiste specificaties aan kan koppelen om mee door te rekenen
 
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 14
+
 |{counter:fr}
 |Technisch adviseur
 |Inzicht de _nettopologie_ van het gebied waar ik me op richt, samen met het hoger liggende gebied
 |Ik krijg dan _handelingsperspectief_ om met slimme oplossingen te komen om het net beter te benutten
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 14
 
 |{counter:fr}
 |Netbeheerder
@@ -118,6 +133,34 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |Technisch adviseur
 |Informatie over _capaciteit_ en _belasting_ van _verbindingen_ en _stations_ die een netrekenaar gebruikt en die ik kan gebruiken zonder netreken capaciteiten.
 |Ik wil geen netrekencapaciteiten ontwikkelen.
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|Ik weet hiermee wat er wanneer mogelijkerwijs nog wel kan
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|Ik kan hiermee een (grove) business case maken voor individuele en collectieve oplosingen en de inzet van energieassets 
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|Ik kan hiermee gericht een voorstel doen richting netbeheerders die bijdraagt aan het beter benutten van het net en hiermee GV-klanten helpen die geen extra capaciteit kunnen krijgen
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
+
+|{counter:fr}
+|Technisch adviseur
+|Ik wil inzicht in op welke momenten er nog hoeveel ruimte is op de voor mij relevante netfuncties (assets) is, zowel nu als in de toekomst
+|
+
+// Bron: Deepdives nettopologie capaciteit belasting_v0.2.pdf, pagina 13
 
 |===
 
@@ -395,16 +438,20 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |Geen gegevens over kabels
 
 |{counter:ba}
-|Aanname
-|Omdat de capaciteit van de kabelsegmenten niet worden gedeeld, worden de geografische en de assetgegevens van de kabels ook niet gedeeld
+|Beslissing
+|Het delen van de netfuncties en de geografische ligging ervan is een risico vanuit de bescherming van informatie over ons net. Liggingsdata kan misbruikt worden voor sabotage of fysieke aanvallen. Daarom wordt deze data niet als open dataproduct beschouwt, zij kan passief openbaar gemaakt worden.
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 3
 
 |{counter:ba}
 |Aanname
 |Zowel levering als teruglevering moet ondersteund worden, exclusief kabels
 
 |{counter:ba}
-|Aanname
-|Geolocatie alleen over stations
+|Beslissing
+|Geolocatie ook niet over stations. Het delen van de netfuncties en de geografische ligging ervan is een risico vanuit de bescherming van informatie over ons net. Liggingsdata kan misbruikt worden voor sabotage of fysieke aanvallen. Daarom wordt deze data niet als open dataproduct beschouwt, zij kan passief openbaar gemaakt worden.
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 3
 
 |{counter:ba}
 |Aanname
@@ -442,6 +489,17 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 
 // Bron: Koen de Natris, mail "Dataproducten EBS vs Sector", dinsdag 29 juli 2025 14:20
 
+|{counter:ba}
+|Beslissing
+|Het delen van belastingsdata mag niet indien dat herleidbaar is naar individuele energiedata
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 3
+
+|{counter:ba}
+|Beslissing
+|Er is voor al deze dataproducten een risico op fouten in de data, misinterpretaties van de data en verkeerde aannames o.b.v. deze data, die leiden tot verkeerde adviezen of investeringen. Dit risico moet gemitigeerd worden door een disclaimer op te nemen waarin het voorbehoud staat van fouten en wijzigingen
+
+// Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 4
 |===
 
 == Technische en ambigue begrippen
