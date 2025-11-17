@@ -20,7 +20,7 @@ Het doel is om belanghebbende (Technische Adviseurs en Derden) voldoende informa
 |Vennootschap die op grond van de wet is aangewezen voor het beheer van een of  meer energienetten, niet zijnde gesloten distributiesystemen.
 
 |GV-klant
-|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m3(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998.
+|Afnemer met een aansluiting met een totale maximale capaciteit groter dan 3x80  Ampère voor elektriciteit of 40 m^3^(n) per uur voor gas, of een aansluiting op een gesloten distributiesysteem, of een aansluiting van een afnemer zoals bedoeld in artikel 1, tweede of derde lid, van de Elektriciteitswet 1998.
 
 |Technisch adviseur
 |Een organisatie of persoon die faciliteert bij het zoeken naar oplossingen voor congestieproblematiek door energie-advies te geven.
@@ -375,7 +375,9 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 
 |{counter:ba}
 |Beslissing
-|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming
+|Uitlevering van de MVP huidige belasting, capaciteit en nettopologie zal in Q4 nog via de decentrale processen plaatsvinden. Het is namelijk niet haalbaar voor EDSN om voor kerst 2025 een proces te realiseren via het centraal dataportaal o.b.v. toestemming. In 2026 gaan we toewerken naar centrale uitlevering
+
+// Bron: Petra Barelds, mail "Notities 15 juli - Specificatie/realisatie nettopologie, operationele limiet en belasting", di 15-7-2025 17:24
 
 |{counter:ba}
 |Aanname
@@ -444,6 +446,12 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |{counter:ba}
 |Beslissing
 |Met specifiek gebied wordt bedoeld de afbakening van station met afgaande velden tot en met GV-aansluitadressen. De aanvrager kan dit aanvragen op basis van een bepaalde EAN uit dat gebied of op basis van een bepaald adres uit dat gebied of op basis van de routenaam/stationsnaam. Dit laatste is alleen mogelijk als de desbetreffende partij ook al in bezit is van netburen, nettopologie of in geval van Liander de EBS. 
+
+|{counter:ba}
+|Beslissing
+|We delen de waarde (capaciteit en belasting)  waar de netbeheerder vanuit gaat. Aangezien het beleid verschilt per netbeheerder kan de opbouw van de data dus ook van elkaar verschillen. Het is niet aan ons om die beleidsregels te uniformeren. Voorbeeld is dat Liander corrigeert t.o.v. de normaalstand en andere netbeheerders mogelijk (nog) niet. 
+
+// Bron: Petra Barelds, mail "Notities voortgangsoverleg 19 aug nettopologie, capaciteit en belasting", vr 22-8-2025 17:06
 
 |===
 
