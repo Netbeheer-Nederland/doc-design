@@ -94,10 +94,10 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |Inzicht in de_ capaciteit_ en _restcapaciteit_ (_vrije ruimte_) op veldniveau en secundaire zijde(s) van de relevante transformatoren, als _operationele limiet_.
 |Dit geeft inzicht in de _capaciteit_
 
-|{counter:fr}
-|Derde
-|Inzicht in de _belasting_ op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
-|#TODO: ?#
+// |{counter:fr}
+// |Derde
+// |Inzicht in de _belasting_ op veldniveau en secundaire zijde(s) van de relevante  transformatoren; 2 jaar historische kwartierwaardes (gemeten) voor invoeding &  afname (gesplitst).
+// |#TODO: ?#
 
 |{counter:fr}
 |Technisch adviseur
@@ -164,7 +164,7 @@ vars: {
 8. De Technische Adviseur gebruikt de NBC-gegevens om een advies te maken voor de EAN van de GV-klant;
 9. De Technische Adviseur geeft zijn advies aan de GV-klant.
 
-=== Architectuur #TODO: ?#
+=== Architectuur
 
 Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 
@@ -325,25 +325,8 @@ include::partial$four_v.adoc[]
 
 |===
 
-== Voorwaarden #TODO: ?#
-De lijst van grondslagen is te vinden op: https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/avg-algemeen/grondslagen-avg-uitgelegd.
-
-De grondslagen zijn:
-
-- Toestemming
-
-- Overeenkomst
-
-- Wettelijke verplichting
-
-- Vitaal belang
-
-- Taak van algemeen belang of uitoefening van openbaar gezag
-
-- Gerechtvaardigd belang
-
-
-Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de netbeheerder.
+== Voorwaarden
+Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toestemming_. Voor een GV-klant is toestemming impliciet verleend voor eigen aansluiting(en) vanuit de authenticatie en autorisatie van de GV-klant door de netbeheerder. 
 
 == Beslissingen en aannames
 
@@ -428,7 +411,7 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 |Het combineren van datasets levert mogelijk meer informatie
 
 |{counter:ba}
-|Aanname #TODO: ?#
+|Aanname
 |Er wordt geen informatie gecommuniceerd over netbeveiliging, _N-1_ wordt geabstraheerd als onderdeel van de nettopologie
 
 |{counter:ba}
@@ -453,28 +436,34 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 
 // Bron: Petra Barelds, mail "Notities voortgangsoverleg 19 aug nettopologie, capaciteit en belasting", vr 22-8-2025 17:06
 
+|{counter:ba}
+|Beslissing
+|Data wordt gemaskeerd bij minder dan vijf (5) GV-aansluitingen. Hiermee voldoende de anonimiteit van de bedrijven wordt gewaarborgd. Voor gegevens van personen wordt 10 gehanteerd. Dit aantal is voor bedrijven vaak niet haalbaar. Overigens geldt wel dat als één bedrijf de uitkomst van het gemiddelde zodanig beïnvloedt dat de gegevens alsnog tot dat ene bedrijf te herleiden zijn, er ook niets gedeeld mag worden. 
+
+// Bron: Koen de Natris, mail "Dataproducten EBS vs Sector", dinsdag 29 juli 2025 14:20
+
 |===
 
-== Gebruikte begrippen
+== Technische en ambigue begrippen
 
-In dit ontwerp worden een aantal begrippen gebruikt zonder dat zij gedefinieerd of toegelicht worden. De formele definitie staat in het begrippenmodel. Hieronder volgt een korte toelichting hoe deze begrippen bedoeld zijn.
+In dit ontwerp worden een aantal technische of ambigue begrippen gebruikt. Hun formele definitie staat in het begrippenmodel. Vaak is zo'n definitie echter te complex of te abstract voor spreektaal. Daarom volgt hieronder een informele definitie in spreektaal.
 
 [cols="2, 8"]
 |===
-|Begrip |Toelichting
+|Begrip |Informele definitie
 
-|Aansluiting |Toelichting
-|Belasting |Toelichting
-|Capaciteit |Toelichting
-|Congestie |Toelichting
-|Energiehub |Toelichting
-|Handelingsperspectief |Toelichting
-|Nettopologie |Toelichting
-|Operationele limiet |Toelichting
-|Overdrachtspunt |Toelichting
-|Restcapaciteit |Toelichting
-|Verbinding |Toelichting
-|Vrije ruimte |Toelichting
-|Zekeringswaarde |Toelichting
+|Aansluiting |Recht op gebruik van een verbinding
+|Belasting |Een waarde die aangeeft welk deel van de capaciteit benut wordt
+|Capaciteit |Een waarde die aangeeft wat een elektrische geleider zou kunnen
+|Congestie |Een afname of invoeding die de capaciteit van een elektrische geleider overtreft
+|Energiehub |Een samenwerking tussen bedrijven en organisaties om hun lokale energievoorziening te organiseren
+|Handelingsperspectief |Het hebben van mogelijkheden om in moeilijke situaties toch te kunnen handelen 
+|Nettopologie |Het netwerk op een gegeven moment in de tijd
+|Operationele limiet |De hoogste waarde die tijdens de uitvoering toegestaan kan worden. Verwant aan zekeringswaarde, maar niet altijd daaraan gelijk
+|Overdrachtspunt |De overeengekomen grens waarop de verantwoordelijkheid overgaat van het energienet van de netbeheerder naar de installatie van de aangeslotene, of tussen twee energienetten
+|Restcapaciteit |Dat deel van capaciteit dat niet benut wordt. Verwant aan vrije ruimte, maar niet altijd daaraan gelijk 
+|Verbinding |Object waar energie door getransporteerd wordt
+|Vrije ruimte |Dat deel van capaciteit dat niet benut wordt. Verwant aan restcapaciteit, maar niet altijd daaraan gelijk 
+|Zekeringswaarde |Waarde die aangeeft hoe zwaar een zekering moet zijn om een elektrisch circuit te beschermen tegen overbelasting en kortsluiting. Verwant aan operationele limiet, maar niet altijd daaraan gelijk
 
 |===
