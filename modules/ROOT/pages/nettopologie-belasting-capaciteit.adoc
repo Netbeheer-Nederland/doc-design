@@ -495,26 +495,26 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 // Bron: GEMS-adviesaanvraag_nettopologie belasting capaciteit_def.pdf, pagina 4
 |===
 
-== Technische en ambigue begrippen
-
-In dit ontwerp worden een aantal technische of ambigue begrippen gebruikt. Hun formele definitie staat in het begrippenmodel. Vaak is zo'n definitie echter te complex of te abstract voor spreektaal. Daarom volgt hieronder een informele definitie (interpretatie) in spreektaal.
-
-[cols="2, 8"]
-|===
-|Begrip |Informele definitie (interpretatie)
-
-|Aansluiting |Recht op gebruik van een verbinding
-|Belasting |Een waarde die aangeeft welk deel van de capaciteit benut wordt
-|Capaciteit |Een waarde die aangeeft wat een elektrische geleider zou kunnen
-|Congestie |Een afname of invoeding die de capaciteit van een elektrische geleider overtreft
-|Energiehub |Een samenwerking tussen bedrijven en organisaties om hun lokale energievoorziening te organiseren
-|Handelingsperspectief |Het hebben van mogelijkheden om in moeilijke situaties toch te kunnen handelen 
-|Nettopologie |Het netwerk op een gegeven moment in de tijd
-|Operationele limiet |De hoogste waarde die tijdens de uitvoering toegestaan kan worden. Verwant aan zekeringswaarde, maar niet altijd daaraan gelijk
-|Overdrachtspunt |De overeengekomen grens waarop de verantwoordelijkheid overgaat van het energienet van de netbeheerder naar de installatie van de aangeslotene, of tussen twee energienetten
-|Restcapaciteit |Dat deel van capaciteit dat niet benut wordt. Verwant aan vrije ruimte, maar niet altijd daaraan gelijk 
-|Verbinding |Object waar energie door getransporteerd wordt
-|Vrije ruimte |Dat deel van capaciteit dat niet benut wordt. Verwant aan restcapaciteit, maar niet altijd daaraan gelijk 
-|Zekeringswaarde |Waarde die aangeeft hoe zwaar een zekering moet zijn om een elektrisch circuit te beschermen tegen overbelasting en kortsluiting. Verwant aan operationele limiet, maar niet altijd daaraan gelijk
-
-|===
+// == Technische en ambigue begrippen
+// 
+// In dit ontwerp worden een aantal technische of ambigue begrippen gebruikt. Hun formele definitie staat in het begrippenmodel. Vaak is zo'n definitie echter te complex of te abstract voor spreektaal. Daarom volgt hieronder een informele definitie (interpretatie) in spreektaal.
+// 
+// [cols="2, 8"]
+// |===
+// |Begrip |Informele definitie (interpretatie)
+// 
+// |Aansluiting |Recht op gebruik van een verbinding
+// |Belasting |Een waarde die aangeeft welk deel van de capaciteit benut wordt
+// |Capaciteit |Een waarde die aangeeft wat een elektrische geleider zou kunnen
+// |Congestie |Een afname of invoeding die de capaciteit van een elektrische geleider overtreft
+// |Energiehub |Een samenwerking tussen bedrijven en organisaties om hun lokale energievoorziening te organiseren
+// |Handelingsperspectief |Het hebben van mogelijkheden om in moeilijke situaties toch te kunnen handelen 
+// |Nettopologie |Het netwerk op een gegeven moment in de tijd
+// |Operationele limiet |De hoogste waarde die tijdens de uitvoering toegestaan kan worden. Verwant aan zekeringswaarde, maar niet altijd daaraan gelijk
+// |Overdrachtspunt |De overeengekomen grens waarop de verantwoordelijkheid overgaat van het energienet van de netbeheerder naar de installatie van de aangeslotene, of tussen twee energienetten
+// |Restcapaciteit |Dat deel van capaciteit dat niet benut wordt. Verwant aan vrije ruimte, maar niet altijd daaraan gelijk 
+// |Verbinding |Object waar energie door getransporteerd wordt
+// |Vrije ruimte |Dat deel van capaciteit dat niet benut wordt. Verwant aan restcapaciteit, maar niet altijd daaraan gelijk 
+// |Zekeringswaarde |Waarde die aangeeft hoe zwaar een zekering moet zijn om een elektrisch circuit te beschermen tegen overbelasting en kortsluiting. Verwant aan operationele limiet, maar niet altijd daaraan gelijk
+// 
+// |===
