@@ -497,11 +497,11 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de _Grondslag Toeste
 
 == Technische en ambigue begrippen
 
-In dit ontwerp worden een aantal technische of ambigue begrippen gebruikt. Hun formele definitie staat in het begrippenmodel. Vaak is zo'n definitie echter te complex of te abstract voor spreektaal. Daarom volgt hieronder een informele definitie in spreektaal.
+In dit ontwerp worden een aantal technische of ambigue begrippen gebruikt. Hun formele definitie staat in het begrippenmodel. Vaak is zo'n definitie echter te complex of te abstract voor spreektaal. Daarom volgt hieronder een informele definitie (interpretatie) in spreektaal.
 
 [cols="2, 8"]
 |===
-|Begrip |Informele definitie
+|Begrip |Informele definitie (interpretatie)
 
 |Aansluiting |Recht op gebruik van een verbinding
 |Belasting |Een waarde die aangeeft welk deel van de capaciteit benut wordt
