@@ -1,0 +1,239 @@
+= Gebiedsprofielen
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _Gebiedsprofielen_, alsmede de achterliggende architectuur en gemaakte keuzes. 
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+====
+
+== Reikwijdte
+
+Het doel is om 
+
+// Bron: 
+
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|Rol
+|Beschrijving
+
+
+|===
+
+== Functionele eisen
+
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
+
+.Functionele eisen
+[cols="1, 1, 3, 3"]
+|===
+|ID |Als Rol |Wil ik |Want
+
+|{counter:fr}
+|Als rol
+|Wil ik
+|Want
+
+// Bron: 
+
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"Rol: Rol
+
+----
+
+1. Rol
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+== Dataset
+
+De dataset beschrijft van een EAN de nettopologie, de belasting en de capaciteit (operationele limiet) van het afgaande veld dat bij deze EAN hoort en haar transformator.
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Laag, < 100MB (ongecomprimeerd)
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Midden
+
+|Velocity
+|Laag, datasets worden op verzoek samengesteld
+
+|===
+
+== Voorwaarden
+Dit dataproduct wordt als open/gesloten data aangeboden, onder de volgende grondslag(en) 
+
+De lijst van grondslagen is te vinden op: https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/avg-algemeen/grondslagen-avg-uitgelegd.
+
+De grondslagen zijn:
+
+- Toestemming
+
+- Overeenkomst
+
+- Wettelijke verplichting
+
+- Vitaal belang
+
+- Taak van algemeen belang of uitoefening van openbaar gezag
+
+- Gerechtvaardigd belang
+
+== Beslissingen en aannames
+
+[cols="1, 3, 6"]
+|===
+|Id |Type |Beschrijving
+
+|{counter:bea}
+|Beslissing
+|Besloten
+
+// Bron: 
+
+|===
+
+== Interpretaties
+
+In dit ontwerp worden een aantal begrippen gebruikt die ambigu zijn waardoor ze verkeerd geïnterpreteerd kunnen worden. Daarom volgt hier hun interpretatie (hoe ze bedoeld zijn). Dit zijn dus _géén_ definities.
