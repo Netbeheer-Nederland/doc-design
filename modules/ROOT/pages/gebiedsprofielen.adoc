@@ -202,7 +202,7 @@ classes: {
 
 == Dataset
 
-De dataset beschrijft van een EAN de nettopologie, de belasting en de capaciteit (operationele limiet) van het afgaande veld dat bij deze EAN hoort en haar transformator.
+De dataset beschrijft per gebied (postcode, SBI) en per gebruik (KV, GV) de profielen.
 
 === Volume, variety, veracity, velocity
 
@@ -216,7 +216,7 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|Laag, < 100MB (ongecomprimeerd)
+|Laag
 
 |Variety
 |Gestructureerd
@@ -225,7 +225,7 @@ include::partial$four_v.adoc[]
 |Midden
 
 |Velocity
-|Laag, datasets worden op verzoek samengesteld
+|Laag
 
 |===
 
