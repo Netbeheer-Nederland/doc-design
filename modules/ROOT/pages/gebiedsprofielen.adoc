@@ -9,9 +9,9 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Het doel is om 
+Het doel is een open dataset van profielen die per gebeid gegroepeerd zijn. De prioriteit van de profielen is: Eerst GV (grootverbruik) dan KV (kleinverbruik) en tot slot SBI (de standaard bedrijfsindeling van de het CBS op bais van de KvK).
 
-// Bron: 
+// Bron: Mail, Robbert Hardin, Aantekeningen Afstemmen gebiedsprofielen, di 18-11-2025 11:09
 
 .Rollen
 [cols="1, 2"]
@@ -33,12 +33,40 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |===
 |ID |Als Rol |Wil ik |Want
 
-|{counter:fr}
-|Als rol
-|Wil ik
-|Want
+|{counter:fe}
+|Ingenieursbureau
+|Ik wil meer inzicht krijgen in Energieverbruik in bepaalde buurten/gebieden
+|Ik wil betere technisch-economische haalbaarheidsanalyses van duurzame lokale energiesystemen kunnen uitvoeren 
 
-// Bron: 
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:fe}
+|Nationaal Programma Regionale EnergieStrategie (NPRES)
+|Ik wil gebiedsprofielen
+|Ik wil vraag en aanbod van energie afstemmen met een gebiedsgerichte aanpak.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:fe}
+|Woningcorporatie
+|Ik wil meer inzicht in energiegebruik van mijn woningportfolio
+|Ik wil betere prioriteiten stellen met betrekking tot het verduurzamen van mijn woningportfolio
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:fe}
+|Ministerie Klimaat en Groene Groei (KGG)
+|Ik wil inzicht in de ontwikkeling van de energietransitie op nationaal en regionaal niveau
+|Ik wil beleid voeren op de energietransitie en de voortgang ervan monitoren 
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
+
+|{counter:fe}
+|Provincie en gemeente
+|Ik wil gebiedsprofielen
+|Ik wil met de gebiedsprofielen de energietransitie monitoren en ik wil met de gebiedsprofielen gebruken om prioriteiten te stellen en focus aan te brengen
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
 
 |===
 
@@ -226,9 +254,13 @@ De grondslagen zijn:
 |===
 |Id |Type |Beschrijving
 
-|{counter:bea}
-|Beslissing
-|Besloten
+|{counter:bea} |Aanname |Het wordt één dataproduct dat alledrie de profielen (KV, GV en SBI) kan bevatten.
+
+|{counter:bea} |Aanname |Per gebied wordt het één dataproduct
+
+|{counter:bea} |Aanname |Groepering op postcode gaat op PC4 of PC5
+
+|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid 
 
 // Bron: 
 
