@@ -1,6 +1,6 @@
-= Gebiedsprofielen
+= Energieprofielen
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _Gebiedsprofielen_, alsmede de achterliggende architectuur en gemaakte keuzes. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _Energieprofielen_, alsmede de achterliggende architectuur en gemaakte keuzes. 
 
 [NOTE]
 ====
