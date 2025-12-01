@@ -325,4 +325,9 @@ c) legt beperkingen op de gebruikers van het dataproduct.
 |In het decentrale scenario zijn netbeheerders individueel bereid de
 faciliteiten voor het leveren van de dataset te bouwen en beheren
 
+|Aanname
+|De gevraagde informatie wordt als los dataproduct aangeboden. Het lopende
+initiatief rondom de _bouwblokken_ maakt het mogelijk om de topologie
+herbruikbaar vanuit een bouwblok beschikbaar te maken. Deze keuze creëert een
+afhankelijkheid op de implementatie van de bouwblokken.
 |===
