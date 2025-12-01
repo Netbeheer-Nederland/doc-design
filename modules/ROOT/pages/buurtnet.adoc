@@ -12,7 +12,11 @@ include::partial$data_product.adoc[]
 
 Dit dataproduct verstrekt de informatie voor de volgende gebruikersscenario's:
 
-1. Wijkbewoners activeren om hun energie-gebruik en -opwek in balans te brengen op basis van beschikbare data, zodat de MSR (trafostation) niet uitvalt. Door het aanjagen van zelforganisatie en gedragsverandering hopen we piekbelasting te reduceren en spanningsklachten te verminderen waarmee de wachttijd voor wijkgerichte verzwaring wordt overbrugd;
+1. Wijkbewoners activeren om hun energie-gebruik en -opwek in balans te brengen
+op basis van beschikbare data, zodat de MSR (trafostation) niet uitvalt. Door
+het aanjagen van zelforganisatie en gedragsverandering hopen we piekbelasting
+te reduceren en spanningsklachten te verminderen waarmee de wachttijd voor
+wijkgerichte verzwaring wordt overbrugd;
 2. Klanten in kritieke wijken inzicht en handelingsperspectief bieden.
 
 == Functionele eisen
@@ -26,22 +30,29 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
 |Als Rol |Wil ik |Want
 
 |Gebruiker
-|De belasting van de transformatoren in de MSR in mijn wijk inzien (24 uren historisch, 24 uren geprognotiseerd en actueel)
-|Dan krijg ik inzicht in de momenten van overbelasting en kan ik mijn gedrag daarop kan aanpassen.
+|De belasting van de transformatoren in de MSR in mijn wijk inzien (24 uren
+historisch, 24 uren geprognotiseerd en actueel)
+|Dan krijg ik inzicht in de momenten van overbelasting en kan ik mijn gedrag
+daarop kan aanpassen.
 
-|Gebruiker 
+|Gebruiker
 |Meldingen van momenten waarop overbelasting wordt verwacht ontvangen
-|Dan kan ik mijn gedrag hierop aanpassen en helpen de overbelasting te voorkomen.
+|Dan kan ik mijn gedrag hierop aanpassen en helpen de overbelasting te
+voorkomen.
 
 |===
 
 == Dataservice
 
-=== Gebruiksscenario
+Het volgende twee gebruiksscenarios worden ondersteund: centrale ontsluiting
+via EDSN en decentrale ontsluiting vanuit de netbeheerders.
 
-Het volgende gebruiksscenario wordt ondersteund:
+De gebruiksscenario's beschrijven niet het uitvalproces (_happy flow_), deze
+stappen dienen apart beschreven en geïmplementeerd te worden.
 
-.Gebruiksscenario
+=== Gebruiksscenario: centraal dataproduct
+
+.Gebruiksscenario: centraal dataproduct
 [d2,svg,theme=4]
 ----
 shape: sequence_diagram
@@ -52,34 +63,46 @@ vars: {
   }
 }
 
-Gebruiker -> "App Store": "1. Downloaden app"
-"App Store" -> Gebruiker: "2. Installeren app"
-Gebruiker -> "BuurtnetApp": "3. Aanmelden"
+Netbeheerder -> EDSN: "1. Lever topologie, capaciteit & belasting"
+EDSN -> EDSN: "2. Extract, transform & load"
+EDSN -> Netbeheerder: "3. Bevestig levering"
 
-Netbeheerder -> BuurtnetApp: "4. Capaciteit & belasting"
-
-"Gebruiker vraagt op": {
-  Gebruiker -> "BuurtnetApp": "5. Opvragen capaciteit & belasting"
-  "BuurtnetApp" -> Gebruiker: "6. Capaciteit & belasting"
-}
-
-"BuurtnetApp stuurt melding": {
-  "BuurtnetApp" -> Gebruiker: "7. Melding over capaciteit & belasting"
-  "BuurtnetApp" -> Gebruiker: "8. Capaciteit & belasting"
-}
-
-Gebruiker -> Gebruiker: "9. Gedrag aanpassen"
+Klant -> EDSN: "4. Vraag topologie, capaciteit & belasting"
+EDSN -> Klant: "5. Lever topologie, capaciteit & belasting"
 ----
 
-1. De gebruiker downloadt de BuurtnetApp;
-2. De gebruiker installeert de BuurtnetApp;
-3. De gebruiker meldt zich aan bij de BuurtnetApp met haar Postcode6;
-4. De netbeheerder levert capaciteit en belasting naar de BuurtnetApp;
-5. De gebruiker vraagt de capaciteit en belasting van haar MSR op;
-6. De gebruiker krijgt de capaciteit en belasting van haar MSR terug;
-7. De gebruiker krijgt een melding over de capaciteit en belasting van haar MSR;
-8. De gebruiker ontvangt capaciteit en belasting van de BuurtnetApp
-9. De gebruiker past haar gedrag aan op basis van de capaciteit en belasting van haar MSR.
+1. Elke netbeheerder levert een dataset aan EDSN met topologie, capaciteit &
+belasting voor het LS-net binnen het dekkingsgebied van de netbeheerder;
+2. EDSN verwerkt de dataset en stelt deze beschikbaar onder het uniforme
+schema. EDSN consolideert de aangeleverde datasets van de verschillende
+netbeheerders voor centrale ontsluting;
+3. EDSN bevestigt ontvangst en verwerking van de dataset;
+4. Een klant vraagt de geconsolideerde dataset op bij EDSN;
+5. EDSN levert de geconsolideerde dataset.
+
+=== Gebruikersscenario: decentraal dataproduct
+
+.Gebruiksscenario: decentraal dataproduct
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+Klant -> Netbeheerder: "1. Vraag topologie, capaciteit & belasting"
+Netbeheerder -> Klant: "2. Lever topologie, capaciteit & belasting"
+----
+
+1. Een klant vraagt de geconsolideerde dataset op bij de regionale
+netbeheerder;
+2. De regionale netbeheerder levert de geconsolideerde dataset.
+
+Dit scenario vereist dat elke netbeheerder zelf de
+MijnOmgeving/maatwerkprocessen inricht voor het ontsluiten van de dataset.
 
 === Architectuur
 
@@ -88,7 +111,6 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4,scaledwidth=100%]
 ----
-
 vars: {
   d2-config: {
     pad: 20
@@ -101,32 +123,39 @@ grid-columns: 4
 vertical-gap: 80
 horizontal-gap: 160
 
-"Netbeheerder".class: [noun; business]
-BuurtnetApp.class: [noun; business]
 1.class: empty
+EDSN.class: [noun; business]
 2.class: empty
-
 3.class: empty
+
+Netbeheerder.class: [noun; business]
+Broker.class: [noun; business]
+Consumer.class: [noun; business]
+4.class: empty
+
+5.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"HTTP Server".class: [noun; application]
+"MijnOmgeving/Maatwerk".class: [noun; application]
 "Data Product".class: [noun; application]
 "NBNL Dataportaal".class: [noun; application]
-4.class: empty
+6.class: empty
 
-5.class: empty
-"Excel File".class: [artifact; technology]
+7.class: empty
+"JSON File".class: [artifact; technology]
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
 "NBNL Dataportaal" -> "Data Product": "accesses (read)"
-BuurtnetApp -> Extract: "assigned to"
-"Excel File" -> "Data Product": "realises"
-"HTTP Server" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "HTTP Server": "assigned to"
+Extract -> Consumer: "serves"
+EDSN -> Broker: "assigned to"
+Broker -> Extract: "assigned to"
+"JSON File" -> "Data Product": "realises"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses\n(read/write)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
 legend: "" {
   style: {
@@ -211,17 +240,21 @@ classes: {
     }
   }
 }
-
 ----
 
-* de structuur (logisch model) van de dataset behorende bij het dataproduct is gebaseerd op het conceptuele model _Begrippenmodel NBNL_ en het _Common Information Model_ ; 
-* aanlevering van de dataset vanuit de netbeheerder geschiedt via Excel-bestand;
-* netbeheerders leveren de dataset aan via een eigen bestandslocatie;
-* het dataproduct _Buurtnet App_ is vindbaar via het NBNL Dataportaal.
+* de structuur van de dataset behorende bij het dataproduct is
+gebaseerd op het conceptuele model _Begrippenmodel NBNL_ en het _Common
+Information Model_ ;
+* aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-LD
+bestand;
+* netbeheerders leveren de dataset aan via een eigen faciliteit in het
+decentrale scenario;
+* het dataproduct is vindbaar via het NBNL Dataportaal.
 
 == Dataset
 
-De dataset beschrijft de capaciteit en belasting van een MSR: 24 uren historisch, 24 uren geprognotiseerd en actueel.
+De dataset beschrijft de capaciteit en belasting van een MSR: 24 uren
+historisch, 24 uren geprognotiseerd en actueel.
 
 === Volume, variety, veracity, velocity
 
@@ -241,19 +274,28 @@ include::partial$four_v.adoc[]
 |Gestructureerd
 
 |Veracity
-|Midden, de dataset wordt samengesteld uit gegevens voor connectiviteit en aansluitingen. Beiden zijn zeer betrouwbaar, maar de koppeling tussen beiden is minder betrouwbaar
+|Midden, de dataset wordt samengesteld uit gegevens voor connectiviteit en
+aansluitingen. Beiden zijn zeer betrouwbaar, maar de koppeling tussen beiden is
+minder betrouwbaar
 
 |Velocity
-|Midden, minimaal één maal per 24 uur (zie functionele eisen)
+|Hoog, minimaal één maal per 24 uur (zie functionele eisen)
 |===
 
 == Voorwaarden
 
 Dit dataproduct wordt als _open data_ aangeboden.
-Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd: 
+Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 
-1. Als gesloten data. Hierbij wordt een aansluiting direct gekoppeld aan een transformator. Hierdoor is er een directe koppeling tussen invoeding en afname van een specifieke aansluiting en de bijdrage die de aansluiting heeft in de belasting van de transformator. Hiervoor wordt de EAN-code van de aansluiting gecommuniceerd in de dataset. De EAN-code is privacygevoelig.
-2. Als open data. Hierbij wordt invoeding en afname geaggregeerd per postcode6 en wordt postcode6 gekoppeld aan een transformator. Hiervoor wordt geen EAN-code gecommuniceerd in de dataset. De gebruiker moet zelf aangeven voor welke postcode6 er capaciteit en belasting gevraagd wordt.
+1. Als gesloten data. Hierbij wordt een aansluiting direct gekoppeld aan een
+transformator. Hierdoor is er een directe koppeling tussen invoeding en afname
+van een specifieke aansluiting en de bijdrage die de aansluiting heeft in de
+belasting van de transformator. Hiervoor wordt de EAN-code van de aansluiting
+gecommuniceerd in de dataset. De EAN-code is privacygevoelig.
+2. Als open data. Hierbij wordt invoeding en afname geaggregeerd per postcode6
+en wordt postcode6 gekoppeld aan een transformator. Hiervoor wordt geen
+EAN-code gecommuniceerd in de dataset. De gebruiker moet zelf aangeven/opzoeken
+voor welke postcode6 er capaciteit en belasting gevraagd wordt.
 
 == Beslissingen en aannames
 
@@ -261,25 +303,26 @@ Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
 |===
 |Type |Beschrijving
 
-|Aanname
-|BuurtnetApp bestaat uit een frontend en een backend. Datasets worden vanuit de backend van de BuurtnetApp opgehaald bij de netbeheerder
-
-|Aanname
-|BuurtnetApp kan onderscheid maken tussen beleidskeuze om trafo boven limiet te belasten versus overbelasting vanuit het ondergelegen net
+|Beslissing
+|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in
+een Excel-bestand. Voor de tweede fase is er gekozen voor het
+bulk-integratiepatroon, ontsluiting via JSON-LD bestand
 
 |Beslissing
-|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in een Excel-bestand. Voor de tweede fase is er nog niet gekozen voor een integratiepatroon
-
-|Beslissing
-|Er is besloten voor een open dataproduct in fase 1. 
+|Er is gekozen voor een open dataproduct in fase 1.
 
 |Aanname
-|Er wordt in fase 2 gekozen voor een open dataproduct. Dit houdt in dat er in dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om een gesloten dataproduct te ontsluiten. De impact van een gesloten dataproduct ligt vooral op 
+|Er wordt in fase 2 gekozen voor een open dataproduct. Dit houdt in dat er in
+dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn
+om een gesloten dataproduct te ontsluiten. De impact van een gesloten
+dataproduct ligt vooral op:
 
 a) het inrichten van authenticatie en autorisatie bij elke netbeheerder;
-
-b) beperkt de herbruikbaarheid voor andere toepassingen en 
-
+b) beperkt de herbruikbaarheid voor andere toepassingen en
 c) legt beperkingen op de gebruikers van het dataproduct.
+
+|Aanname
+|In het decentrale scenario zijn netbeheerders individueel bereid de
+faciliteiten voor het leveren van de dataset te bouwen en beheren
 
 |===
