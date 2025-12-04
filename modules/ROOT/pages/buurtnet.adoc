@@ -44,15 +44,14 @@ voorkomen.
 
 == Dataservice
 
-Het volgende twee gebruiksscenarios worden ondersteund: centrale ontsluiting
-via EDSN en decentrale ontsluiting vanuit de netbeheerders.
-
 De gebruiksscenario's beschrijven niet het uitvalproces (_happy flow_), deze
 stappen dienen apart beschreven en geïmplementeerd te worden.
 
-=== Gebruiksscenario: centraal dataproduct
+=== Gebruiksscenario
 
-.Gebruiksscenario: centraal dataproduct
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
 [d2,svg,theme=4]
 ----
 shape: sequence_diagram
@@ -63,46 +62,22 @@ vars: {
   }
 }
 
-Netbeheerder -> EDSN: "1. Lever topologie, capaciteit & belasting"
+Netbeheerder -> EDSN: "1. Lever connectiviteit & belasting"
 EDSN -> EDSN: "2. Extract, transform & load"
 EDSN -> Netbeheerder: "3. Bevestig levering"
 
-Klant -> EDSN: "4. Vraag topologie, capaciteit & belasting"
-EDSN -> Klant: "5. Lever topologie, capaciteit & belasting"
+Klant -> EDSN: "4. Vraag connectiviteit & belasting"
+EDSN -> Klant: "5. Lever connectiviteit & belasting"
 ----
 
-1. Elke netbeheerder levert een dataset aan EDSN met topologie, capaciteit &
+1. Elke netbeheerder levert twee datasets aan EDSN met connectiviteit &
 belasting voor het LS-net binnen het dekkingsgebied van de netbeheerder;
-2. EDSN verwerkt de dataset en stelt deze beschikbaar onder het uniforme
-schema. EDSN consolideert de aangeleverde datasets van de verschillende
-netbeheerders voor centrale ontsluting;
-3. EDSN bevestigt ontvangst en verwerking van de dataset;
-4. Een klant vraagt de geconsolideerde dataset op bij EDSN;
-5. EDSN levert de geconsolideerde dataset.
-
-=== Gebruikersscenario: decentraal dataproduct
-
-.Gebruiksscenario: decentraal dataproduct
-[d2,svg,theme=4]
-----
-shape: sequence_diagram
-
-vars: {
-  d2-config: {
-    pad: 20
-  }
-}
-
-Klant -> Netbeheerder: "1. Vraag topologie, capaciteit & belasting"
-Netbeheerder -> Klant: "2. Lever topologie, capaciteit & belasting"
-----
-
-1. Een klant vraagt de geconsolideerde dataset op bij de regionale
-netbeheerder;
-2. De regionale netbeheerder levert de geconsolideerde dataset.
-
-Dit scenario vereist dat elke netbeheerder zelf de
-MijnOmgeving/maatwerkprocessen inricht voor het ontsluiten van de dataset.
+2. EDSN verwerkt de datasets en stelt deze beschikbaar aan afnemers. Hiervoor
+_consolideert_ EDSN de aangeleverde datasets van de verschillende netbeheerders
+voor centrale ontsluiting;
+3. EDSN bevestigt ontvangst en verwerking van de datasets aan de netbeheerder;
+4. Een klant vraagt de geconsolideerde datasets op bij EDSN;
+5. EDSN levert de geconsolideerde datasets.
 
 === Architectuur
 
@@ -118,44 +93,85 @@ vars: {
 }
 
 grid-rows: 5
-grid-columns: 4
+grid-columns: 5
 
 vertical-gap: 80
 horizontal-gap: 160
 
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+Netbeheerder.class: [noun; business]
 1.class: empty
 EDSN.class: [noun; business]
 2.class: empty
-3.class: empty
-
-Netbeheerder.class: [noun; business]
-Broker.class: [noun; business]
 Consumer.class: [noun; business]
-4.class: empty
 
+3.class: empty
+4.class: empty
+Broker.class: [noun; business]
 5.class: empty
+6.class: empty
+
+7.class: empty
+8.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"MijnOmgeving/Maatwerk".class: [noun; application]
-"Data Product".class: [noun; application]
-"NBNL Dataportaal".class: [noun; application]
-6.class: empty
+"Dataloket".class: [verb; application]
+"Data Product".class: [artifact; application]
+"File Gateway".class: [verb; application]
+10.class: empty
+11.class: empty
 
-7.class: empty
-"JSON File".class: [artifact; technology]
+12.class: empty
+"JSON-LD".class: [artifact; technology]
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
-"Data Product" -> "Extract": "serves"
-"NBNL Dataportaal" -> "Data Product": "accesses (read)"
-Extract -> Consumer: "serves"
+"File Gateway" -> "Extract": "serves"
+"File Gateway" -> "Data Product": "accesses\n(read)"
+Load -> Consumer: "serves"
 EDSN -> Broker: "assigned to"
 Broker -> Extract: "assigned to"
-"JSON File" -> "Data Product": "realises"
-"MijnOmgeving/Maatwerk" -> "Data Product": "accesses\n(read/write)"
-"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
+"JSON-LD" -> "Data Product": "realises"
+"Dataloket" -> "Data Product": "accesses\n(write)"
+"Netbeheerder" -> "Dataloket": "assigned to"
 
 legend: "" {
   style: {
@@ -203,58 +219,26 @@ legend: "" {
     shape: text
   }
 }
-
-classes: {
-  *: {
-    style: {
-      shadow: true
-    }
-  }
-  empty: {
-    label: ""
-    style: {
-      fill: transparent
-      stroke-width: 0
-    }
-  }
-  verb: {
-    style: {border-radius: 30}
-  }
-  noun: {
-    style: {border-radius: 4}
-  }
-  artifact: {shape: page}
-  business: {
-    style: {
-      fill: "#ffffaf"
-    }
-  }
-  application: {
-    style: {
-      fill: "#afffff"
-    }
-  }
-  technology: {
-    style: {
-      fill: "#afffaf"
-    }
-  }
-}
 ----
 
 * de structuur van de dataset behorende bij het dataproduct is
-gebaseerd op het conceptuele model _Begrippenmodel NBNL_ en het _Common
-Information Model_ ;
-* aanlevering van de dataset vanuit de netbeheerder geschiedt via JSON-LD
-bestand;
-* netbeheerders leveren de dataset aan via een eigen faciliteit in het
-decentrale scenario;
-* het dataproduct is vindbaar via het NBNL Dataportaal.
+gebaseerd op het _Begrippenmodel NBNL_ (betekenis) en het _Common Information
+Model_ (structuur);
+* er worden drie dataproducten beschikbaar gesteld door de netbeheerder vanuit
+het Dataloket van de netbeheerder. Concreet worden er drie JSON-LD bestanden
+aangeleverd aan EDSN (zie <<_dataset>>);
+* EDSN verwerkt de aangeleverde dataproducten tot geconsolideerde datasets en
+ontsluit de datasets als JSON-LD bestanden of vanuit een REST API #TODO:
+alignment met systeemarchitectuur EDSN vereist#.
 
 == Dataset
 
-De dataset beschrijft de capaciteit en belasting van een MSR: 24 uren
-historisch, 24 uren geprognotiseerd en actueel.
+Voor de informatiebehoefte van Buurtnet worden drie dataproducten vanuit de
+_NBNL Profile Group_ (her)gebruikt:
+
+* *Equipment* (EQ): connectiviteit voor het LS-net;
+* *Operation* (OP): belasting van transformatoren in het LS-net;
+* *GeoLocation* (GL): locatie van netstations en aansluitingen in het LS-net.
 
 === Volume, variety, veracity, velocity
 
@@ -263,71 +247,77 @@ historisch, 24 uren geprognotiseerd en actueel.
 include::partial$four_v.adoc[]
 ====
 
-[cols="1, 1"]
+[cols="1, 1, 1, 1, 1"]
 |===
-|Type |Beschrijving
+|Dataproduct |Volume |Variety |Veracity |Velocity
 
-|Volume
+|Equipment
 |Midden, < 300MB (ongecomprimeerd)
-
-|Variety
 |Gestructureerd
+|Hoog, de dataset wordt samengesteld uit gegevens voor connectiviteit en
+aansluitingen.
+|Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 
-|Veracity
-|Midden, de dataset wordt samengesteld uit gegevens voor connectiviteit en
-aansluitingen. Beiden zijn zeer betrouwbaar, maar de koppeling tussen beiden is
-minder betrouwbaar
+|Operation
+|Midden, < 300MB (ongecomprimeerd)
+|Gestructureerd
+|
+|Hoog, minimaal één maal per 24 uur (zie <<_functionele_eisen>>)
 
-|Velocity
-|Hoog, minimaal één maal per 24 uur (zie functionele eisen)
+|GeoLocation
+|Laag, < 100MB (ongecomprimeerd)
+|Gestructureerd
+|
+|Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
+
 |===
 
 == Voorwaarden
 
-Dit dataproduct wordt als _open data_ aangeboden.
-Dit dataproduct kan op twee verschillende manieren worden geïmplementeerd:
-
-1. Als gesloten data. Hierbij wordt een aansluiting direct gekoppeld aan een
-transformator. Hierdoor is er een directe koppeling tussen invoeding en afname
-van een specifieke aansluiting en de bijdrage die de aansluiting heeft in de
-belasting van de transformator. Hiervoor wordt de EAN-code van de aansluiting
-gecommuniceerd in de dataset. De EAN-code is privacygevoelig.
-2. Als open data. Hierbij wordt invoeding en afname geaggregeerd per postcode6
-en wordt postcode6 gekoppeld aan een transformator. Hiervoor wordt geen
-EAN-code gecommuniceerd in de dataset. De gebruiker moet zelf aangeven/opzoeken
-voor welke postcode6 er capaciteit en belasting gevraagd wordt.
+Deze dataproducten worden als _open data_ aangeboden.
 
 == Beslissingen en aannames
 
-[cols="1, 1"]
+[cols="1, 1, 3"]
 |===
-|Type |Beschrijving
+|Datum |Type |Beschrijving
 
+|02-12-2025
 |Beslissing
 |Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in
 een Excel-bestand. Voor de tweede fase is er gekozen voor het
-bulk-integratiepatroon, ontsluiting via JSON-LD bestand
+bulk-integratiepatroon, waarbij elke deelnemende netbeheerder data ontsluit via
+JSON-LD bestanden richting EDSN.
 
+|02-12-2025
 |Beslissing
 |Er is gekozen voor een open dataproduct in fase 1.
 
-|Aanname
+|02-12-2025
+|Beslissing
 |Er wordt in fase 2 gekozen voor een open dataproduct. Dit houdt in dat er in
 dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn
-om een gesloten dataproduct te ontsluiten. De impact van een gesloten
-dataproduct ligt vooral op:
+om een gesloten dataproduct te ontsluiten.
 
-a) het inrichten van authenticatie en autorisatie bij elke netbeheerder;
-b) beperkt de herbruikbaarheid voor andere toepassingen en
-c) legt beperkingen op de gebruikers van het dataproduct.
+|02-12-2025
+|Beslissing
+|EDSN biedt faciliteiten voor de processen _Extract_, _Load_ en _Transform_,
+waarbij de consolideerde data van de netbeheerders via JSON-LD en REST API
+wordt ontsloten. Dit is inclusief filteren van de via het _Load_-proces
+ontsloten datasets.
 
-|Aanname
-|In het decentrale scenario zijn netbeheerders individueel bereid de
-faciliteiten voor het leveren van de dataset te bouwen en beheren
+|02-12-2025
+|Beslissing
+|Data ontsloten voor Buurtnet wordt als meerdere generieke _bouwblokken_
+aangeleverd om hergebruik en interopabiliteit van de data te verhogen.
 
-|Aanname
-|De gevraagde informatie wordt als los dataproduct aangeboden. Het lopende
-initiatief rondom de _bouwblokken_ maakt het mogelijk om de topologie
-herbruikbaar vanuit een bouwblok beschikbaar te maken. Deze keuze creëert een
-afhankelijkheid op de implementatie van de bouwblokken.
+|04-12-2025
+|Beslissing
+|Belasting vanuit _Operation_ wordt direct aan _Equipment_ (connectiviteit)
+gekoppeld via mRID. Een latere optimalisatie is het reduceren van de het aantal
+object benodigd vanuit Equipment d.m.v. een Topology dataset specifiek voor
+Buurtnet.
+|04-12-2025
+|Beslissing
+|De dataproducten zijn vindbaar via het _NBNL Dataportaal_.
 |===
