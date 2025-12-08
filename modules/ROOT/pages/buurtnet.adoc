@@ -40,6 +40,15 @@ daarop kan aanpassen.
 |Dan kan ik mijn gedrag hierop aanpassen en helpen de overbelasting te
 voorkomen.
 
+|Netbeheerder
+|Expliciet onderscheid tussen _Acceptatie_ en _Productie_
+|Ik wil controle over het moment waarop datasets beschikbaar gemaakt worden aan
+een klant en kwaliteitsbeheersing op de dataset.
+
+|Netbeheerder
+|Zonder menselijke interventie nieuwe datasets aanleveren
+|Ik wil de betrouwbaarheid van mijn interne processen verhogen.
+
 |===
 
 == Dataservice
