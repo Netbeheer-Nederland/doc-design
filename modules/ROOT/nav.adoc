@@ -6,3 +6,4 @@
 * xref::rijksinspectie-data-infrastructuur.adoc[]
 * xref::detectie.adoc[]
 * xref::nettopologie-belasting-capaciteit.adoc[]
+* xref::energieprofielen.adoc[]
