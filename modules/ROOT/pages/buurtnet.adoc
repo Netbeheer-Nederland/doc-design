@@ -13,11 +13,11 @@ include::partial$data_product.adoc[]
 Dit dataproduct verstrekt de informatie voor de volgende gebruikersscenario's:
 
 1. Wijkbewoners activeren om hun energie-gebruik en -opwek in balans te brengen
-op basis van beschikbare data, zodat de MSR (trafostation) niet uitvalt. Door
-het aanjagen van zelforganisatie en gedragsverandering hopen we piekbelasting
-te reduceren en spanningsklachten te verminderen waarmee de wachttijd voor
-wijkgerichte verzwaring wordt overbrugd;
-2. Klanten in kritieke wijken inzicht en handelingsperspectief bieden.
+op basis van beschikbare data, zodat de MSR (trafostation) niet overbelast
+raakt. Door het aanjagen van zelforganisatie en gedragsverandering hopen we
+piekbelasting te reduceren en spanningsklachten te verminderen waarmee de
+wachttijd voor wijkgerichte verzwaring wordt overbrugd;
+2. Klanten in (kritieke) wijken inzicht en handelingsperspectief bieden.
 
 == Functionele eisen
 
@@ -29,13 +29,13 @@ Het dataproduct is onderheving aan functionele eisen: wat het dataproduct moet
 |===
 |Als Rol |Wil ik |Want
 
-|Gebruiker
-|De belasting van de transformatoren in de MSR in mijn wijk inzien (24 uren
-historisch, 24 uren geprognotiseerd en actueel)
+|Klant
+|De belasting van de transformator(en) in het netstation in mijn wijk inzien
+(actueel, 24 en 48 uur geprognotiseerd)
 |Dan krijg ik inzicht in de momenten van overbelasting en kan ik mijn gedrag
 daarop kan aanpassen.
 
-|Gebruiker
+|Klant
 |Meldingen van momenten waarop overbelasting wordt verwacht ontvangen
 |Dan kan ik mijn gedrag hierop aanpassen en helpen de overbelasting te
 voorkomen.
@@ -222,14 +222,14 @@ legend: "" {
 ----
 
 * de structuur van de dataset behorende bij het dataproduct is
-gebaseerd op het _Begrippenmodel NBNL_ (betekenis) en het _Common Information
-Model_ (structuur);
+gebaseerd op het _Begrippenmodel NBNL_ (betekenis) en _NBNL Profile Group_
+(structuur);
 * er worden drie dataproducten beschikbaar gesteld door de netbeheerder vanuit
-het Dataloket van de netbeheerder. Concreet worden er drie JSON-LD bestanden
-aangeleverd aan EDSN (zie <<_dataset>>);
+het Dataloket van de netbeheerder. Er worden drie JSON-LD bestanden aangeleverd
+aan EDSN, conform bovenstaand architectuuroverzicht (zie <<_dataset>>);
 * EDSN verwerkt de aangeleverde dataproducten tot geconsolideerde datasets en
 ontsluit de datasets als JSON-LD bestanden of vanuit een REST API #TODO:
-alignment met systeemarchitectuur EDSN vereist#.
+alignment met systeemarchitectuur EDSN#.
 
 == Dataset
 
@@ -251,20 +251,20 @@ include::partial$four_v.adoc[]
 |===
 |Dataproduct |Volume |Variety |Veracity |Velocity
 
-|Equipment
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/index.html[Equipment]
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |Hoog, de dataset wordt samengesteld uit gegevens voor connectiviteit en
 aansluitingen.
 |Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 
-|Operation
+|#TODO: Operation#
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |
 |Hoog, minimaal één maal per 24 uur (zie <<_functionele_eisen>>)
 
-|GeoLocation
+|#TODO: GeoLocation#
 |Laag, < 100MB (ongecomprimeerd)
 |Gestructureerd
 |
@@ -282,41 +282,48 @@ Deze dataproducten worden als _open data_ aangeboden.
 |===
 |Datum |Type |Beschrijving
 
-|02-12-2025
-|Beslissing
-|Er is gekozen voor twee fases. In de eerste fase wordt de data aangeleverd in
-een Excel-bestand. Voor de tweede fase is er gekozen voor het
-bulk-integratiepatroon, waarbij elke deelnemende netbeheerder data ontsluit via
-JSON-LD bestanden richting EDSN.
-
-|02-12-2025
+|01-03-2025
 |Beslissing
 |Er is gekozen voor een open dataproduct in fase 1.
 
 |02-12-2025
+|Aanname
+|Er is in fase 2 gekozen voor een open dataproduct. Dit houdt in dat er in dit
+ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn om
+een gesloten dataproduct te ontsluiten. #TODO: Een positief advies van GEMS is
+vereist om deze beslissing definitief te nemen.#
+
+|02-12-2025
+|Aanname
+|Er is in fase 2 gekozen voor centrale dataproducten. Netbeheerders leveren
+hiervoor datasets aan bij EDSN.
+
+|02-12-2025
 |Beslissing
-|Er wordt in fase 2 gekozen voor een open dataproduct. Dit houdt in dat er in
-dit ontwerp geen rekening wordt gehouden met alle faciliteiten die nodig zijn
-om een gesloten dataproduct te ontsluiten.
+|Er is gekozen voor twee fases. In de eerste (pilot) fase wordt de data
+aangeleverd in een Excel-bestand. Voor de tweede fase is er gekozen voor het
+bulk-integratiepatroon, waarbij elke deelnemende netbeheerder data ontsluit via
+JSON-LD bestanden richting EDSN. Dit ontwerp beschrijft fase 2.
 
 |02-12-2025
 |Beslissing
 |EDSN biedt faciliteiten voor de processen _Extract_, _Load_ en _Transform_,
 waarbij de consolideerde data van de netbeheerders via JSON-LD en REST API
-wordt ontsloten. Dit is inclusief filteren van de via het _Load_-proces
+wordt ontsloten. Dit is inclusief **filteren** van de via het _Load_-proces
 ontsloten datasets.
 
 |02-12-2025
 |Beslissing
 |Data ontsloten voor Buurtnet wordt als meerdere generieke _bouwblokken_
-aangeleverd om hergebruik en interopabiliteit van de data te verhogen.
+aangeleverd om hergebruik en interopabiliteit van de data te verhogen. De
+concrete impact van deze keuze is dat de netbeheerder meerdere JSON-LD
+bestanden aanlevert, die naar elkaar verwijzen.
 
 |04-12-2025
 |Beslissing
 |Belasting vanuit _Operation_ wordt direct aan _Equipment_ (connectiviteit)
-gekoppeld via mRID. Een latere optimalisatie is het reduceren van de het aantal
-object benodigd vanuit Equipment d.m.v. een Topology dataset specifiek voor
-Buurtnet.
+gekoppeld via mRID.
+
 |04-12-2025
 |Beslissing
 |De dataproducten zijn vindbaar via het _NBNL Dataportaal_.
