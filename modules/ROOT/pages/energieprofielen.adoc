@@ -48,6 +48,9 @@ Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met ee
 
 // Bron: https://nl.wikipedia.org/wiki/Provincie, https://www.rijksoverheid.nl/onderwerpen/provincies/taken-provincie, https://www.rijksoverheid.nl/onderwerpen/gemeenten/taken-gemeente
 
+|EO
+|De Epic Owner (EO) is de eigenaar van de epic en als zodanig de opdrachtgever voor het ontwerp van het dataproduct.
+
 |===
 
 == Functionele eisen
@@ -93,6 +96,47 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 |Ik wil de energietransitie monitoren, prioriteiten stellen en focus aanbrengen
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
+
+ |{counter:fe}
+ |EO
+a|Ik wil van EANs
+
+* productsoort elektriciteit en gas
+* verbruikssegment kleinverbruik (KVB) en grootverbruik (GVB)
+* beide energierichtingen (invoeding en afname)
+* fysieke status 'In Bedrijf'
+* soort aansluiting `Normaal (NRM)`
+
+ |Want dit zijn de aansluitingen waar ik de energieprofielen van wil hebben, met hun relevante eigenschappen
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-01
+
+ |{counter:fe}
+ |EO
+ |Ik wil de volgende data per gebied
+a|
+
+* peildatum
+* energiedrager;
+* gemeente;
+* buurtcode;
+* buurtnaam;
+* postcode (indien van toepassing)
+* aantal E-aansluitingen op peildatum
+* aantal G-aansluitingen op peildatum
+* totaal E-standaardjaarverbruik invoeding (E-SJI)
+* totaal E-standaardjaarverbruik afname (E-SJA)
+* totaal G-standaardjaarverbruik (G-SJV)
+* E-kwartierwaarden afgelopen jaar inclusief
+** energierichting (invoeding en afname)
+** begingmomen (het kwartier)
+** aantal kWh
+* G-uurwaarden afgelopen jaar inclusief
+** energierichting (afname)
+** beginmoment (uur)
+** aantal m3
+
+|Want dit is de data die ik per gebied nodig heb
 
 |===
 
@@ -253,7 +297,7 @@ include::partial$four_v.adoc[]
 |Velocity
 |Laag (eenmalig, in de toekomst wellicht per kwartaal)
 
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
 |===
 
@@ -268,9 +312,11 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 |{counter:bea} |Aanname |Het wordt één dataproduct dat alledrie de aggregaties (KV, GV en SBI) kan bevatten. Dus niet één dataproduct per aggregatie.
 
-|{counter:bea} |Aanname |Het gebied waarover geaggregeerd wordt wordt bepaald op basis van PC5. Dus niet op basis van PC4 of op basis van Buurt.
+|{counter:bea} |Aanname |Het gebied waarover geaggregeerd wordt wordt bepaald op basis van postcode 6 van de aansluiting. Dus niet op basis van postcode 4, postcode 5 of op basis van Buurt.
 
 // Definitie Buurt: https://www.cbs.nl/nl-nl/cijfers/detail/86113NED?q=definitie%20buurt#shortTableDescription
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-02
 
 |{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid en goedkeuring van het GEMS.
 
@@ -289,6 +335,11 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
+// Tip over UL in TD: https://stackoverflow.com/questions/73674062/unordered-list-in-a-table-cell-with-asciidoc
+
+|{couter:bea} |Aanname |Elke aansluiting is te koppelen aan een gemeente, buurtcode, buurtnaam en postcode.
+
+// Nodig voor: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2, F-03
 
 |===
 
