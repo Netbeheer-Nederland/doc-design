@@ -203,28 +203,32 @@ grid-columns: 4
 vertical-gap: 80
 horizontal-gap: 160
 
-1.class: empty
+1_1.class: empty
 EDSN.class: [noun; business]
-2.class: empty
-3.class: empty
+1_3.class: empty
+1_4.class: empty
 
-Netbeheerder.class: [noun; business]
+# Netbeheerder.class: [noun; business]
+2_1.class: empty
 Broker.class: [noun; business]
 Consumer.class: [noun; business]
-4.class: empty
+2_4.class: empty
 
-5.class: empty
+3_1.class: empty
 Extract.class: [verb; business]
 Transform.class: [verb; business]
 Load.class: [verb; business]
 
-"MijnOmgeving/Maatwerk".class: [noun; application]
+# "MijnOmgeving/Maatwerk".class: [noun; application]
+4_1.class: empty
 "Data Product".class: [noun; application]
 "NBNL Dataportaal".class: [noun; application]
-6.class: empty
+4_4.class: empty
 
-7.class: empty
-"JSON File".class: [artifact; technology]
+5_1.class: empty
+"JSON-LD File".class: [artifact; technology]
+5_3.class: empty
+5_4.class: empty
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
@@ -233,9 +237,9 @@ Transform -> Load: "triggers"
 Extract -> Consumer: "serves"
 EDSN -> Broker: "assigned to"
 Broker -> Extract: "assigned to"
-"JSON File" -> "Data Product": "realises"
-"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
-"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
+"JSON-LD File" -> "Data Product": "realises"
+# "MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+# "Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
 legend: "" {
   style: {
