@@ -174,11 +174,14 @@ vars: {
   }
 }
 
-"Rol: Rol
+"EDSN": "EDSN\n "
+"DP": "Dataportaal\nData delen"
+
+"EDSN" -> "DP": "1. Ontsluit"
 
 ----
 
-1. Rol
+1. Ontsluit naar Dataportaal _Data delen_
 
 === Architectuur
 
