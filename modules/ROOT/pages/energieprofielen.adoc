@@ -190,6 +190,7 @@ Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
 .Architectuur
 [d2,svg,theme=4,scaledwidth=100%]
 ----
+
 vars: {
   d2-config: {
     pad: 20
@@ -202,7 +203,39 @@ grid-columns: 4
 vertical-gap: 80
 horizontal-gap: 160
 
+1.class: empty
+EDSN.class: [noun; business]
+2.class: empty
+3.class: empty
 
+Netbeheerder.class: [noun; business]
+Broker.class: [noun; business]
+Consumer.class: [noun; business]
+4.class: empty
+
+5.class: empty
+Extract.class: [verb; business]
+Transform.class: [verb; business]
+Load.class: [verb; business]
+
+"MijnOmgeving/Maatwerk".class: [noun; application]
+"Data Product".class: [noun; application]
+"NBNL Dataportaal".class: [noun; application]
+6.class: empty
+
+7.class: empty
+"JSON File".class: [artifact; technology]
+
+Extract -> Transform: "triggers"
+Transform -> Load: "triggers"
+"Data Product" -> "Extract": "serves"
+"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+Extract -> Consumer: "serves"
+EDSN -> Broker: "assigned to"
+Broker -> Extract: "assigned to"
+"JSON File" -> "Data Product": "realises"
+"MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
+"Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
 legend: "" {
   style: {
@@ -287,6 +320,7 @@ classes: {
     }
   }
 }
+
 
 ----
 
