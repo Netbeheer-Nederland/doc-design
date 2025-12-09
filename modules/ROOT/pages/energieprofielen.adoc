@@ -10,8 +10,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Het doel is een open dataset van profielen die per gebeid gegroepeerd kunnen worden. Deze gebieden zijn GV (grootverbruik), KV (kleinverbruik) en SBI (de standaard bedrijfsindeling van de het CBS op basis van de KvK).
-De prioriteit van de profielen is: Eerst GV (grootverbruik) dan KV (kleinverbruik) en tot slot SBI (de standaard bedrijfsindeling van de het CBS op bais van de KvK).
+Het doel is een open dataset van profielen die per gebeid geaggregeerd kunnen worden. Het aggregeren gebeurt op basis van KV (kleinverbruik), GV (grootverbruik) of SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK).
 
 // Bron: Mail, Robbert Hardin, Aantekeningen Afstemmen gebiedsprofielen, di 18-11-2025 11:09
 
@@ -30,7 +29,7 @@ Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met ee
 // Bron: https://nl.wikipedia.org/wiki/Ingenieursbureau
 
 |NP RES
-|NP RES staat voor het Nationaal Programma Regionale Energie Strategie. Provincies, gemeenten, waterschappen en netbeheerders werken in dertig regio’s samen met de samenleving aan het grootschalig opwekken van duurzame elektriciteit op land met windturbines en zonnepanelen. Ook stemmen ze warmtevraag en -aanbod op elkaar af.
+|NP RES staat voor het _Nationaal Programma Regionale Energie Strategie_. Provincies, gemeenten, waterschappen en netbeheerders werken in dertig regio’s samen met de samenleving aan het grootschalig opwekken van duurzame elektriciteit op land met windturbines en zonnepanelen. Ook stemmen ze warmtevraag en -aanbod op elkaar af.
 
 // Bron: https://www.netbeheernederland.nl/artikelen/nieuws/np-res-doelstellingen-waar-staan-we-eind-2024
 
@@ -229,7 +228,7 @@ classes: {
 
 == Dataset
 
-De dataset beschrijft per gebied (postcode, SBI) en per gebruik (KV, GV) de profielen.
+De energieprofielen in de dataset kunnen alleen gegroepeerd worden op basis van postcode, *expliciet niet* op basis van connectiviteit of topologie.
 
 === Volume, variety, veracity, velocity
 
@@ -249,31 +248,17 @@ include::partial$four_v.adoc[]
 |Gestructureerd
 
 |Veracity
-|Midden
+|Hoog
 
 |Velocity
-|Laag
+|Laag (eenmalig, in de toekomst wellicht per kwartaal)
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 
 
 |===
 
 == Voorwaarden
-Dit dataproduct wordt als open/gesloten data aangeboden, onder de volgende grondslag(en) 
-
-De lijst van grondslagen is te vinden op: https://www.autoriteitpersoonsgegevens.nl/themas/basis-avg/avg-algemeen/grondslagen-avg-uitgelegd.
-
-De grondslagen zijn:
-
-- Toestemming
-
-- Overeenkomst
-
-- Wettelijke verplichting
-
-- Vitaal belang
-
-- Taak van algemeen belang of uitoefening van openbaar gezag
-
-- Gerechtvaardigd belang
+Dit dataproduct wordt als _open data_ aangeboden.
 
 == Beslissingen en aannames
 
@@ -281,18 +266,28 @@ De grondslagen zijn:
 |===
 |Id |Type |Beschrijving
 
-|{counter:bea} |Aanname |Het wordt één dataproduct dat alledrie de profielen (KV, GV en SBI) kan bevatten.
+|{counter:bea} |Aanname |Het wordt één dataproduct dat alledrie de aggregaties (KV, GV en SBI) kan bevatten. Dus niet één dataproduct per aggregatie.
 
-|{counter:bea} |Aanname |Per gebied wordt het één dataproduct
+|{counter:bea} |Aanname |Het gebied waarover geaggregeerd wordt wordt bepaald op basis van PC5. Dus niet op basis van PC4 of op basis van Buurt.
 
-|{counter:bea} |Aanname |Groepering op postcode gaat op PC4 of PC5
+// Definitie Buurt: https://www.cbs.nl/nl-nl/cijfers/detail/86113NED?q=definitie%20buurt#shortTableDescription
 
-|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid 
+|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid.
 
-// Bron: 
+|{counter:bea} |Beslissing | Het dataproduct is een eenmalig _minimum viable product_ (MVP).
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:bea} |Beslissing |De data wordt gebaseerd op standaard jaaververbruik (SJV), dymaische profielfracties en restcorrectiefactor (RCF). *Expliciet* niet op basis van slimme meter data.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:bea} |Beslissing |Dit datproduct moet rekening houden met toekomstige doorontwikkeling: 
+* brondata gebeaseerd op daadwerkelijk gemeten kwartier- en uurwaardes.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
 
 |===
 
-== Interpretaties
 
-In dit ontwerp worden een aantal begrippen gebruikt die ambigu zijn waardoor ze verkeerd geïnterpreteerd kunnen worden. Daarom volgt hier hun interpretatie (hoe ze bedoeld zijn). Dit zijn dus _géén_ definities.
