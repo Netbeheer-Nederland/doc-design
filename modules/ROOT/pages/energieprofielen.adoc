@@ -62,36 +62,36 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 
 |{counter:fe}
 |Ingenieursbureau
-|Ik wil meer inzicht krijgen in Energieverbruik in bepaalde buurten/gebieden
+|Ik wil meer inzicht krijgen in energieverbruik in bepaalde buurten/gebieden
 |Ik wil betere technisch-economische haalbaarheidsanalyses van duurzame lokale energiesystemen kunnen uitvoeren 
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
 |{counter:fe}
-|Nationaal Programma Regionale EnergieStrategie (NPRES)
-|Ik wil gebiedsprofielen
-|Ik wil vraag en aanbod van energie afstemmen met een gebiedsgerichte aanpak.
+|NP RES
+|Ik wil energiesprofielen gegroepeerd per gebied
+|Ik wil vraag en aanbod van energie afstemmen met een gebiedsgerichte aanpak
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
 |{counter:fe}
 |Woningcorporatie
-|Ik wil meer inzicht in energiegebruik van mijn woningportfolio
+|Ik wil meer inzicht in energieverbruik van mijn woningportfolio
 |Ik wil betere prioriteiten stellen met betrekking tot het verduurzamen van mijn woningportfolio
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
 |{counter:fe}
-|Ministerie Klimaat en Groene Groei (KGG)
-|Ik wil inzicht in de ontwikkeling van de energietransitie op nationaal en regionaal niveau
-|Ik wil beleid voeren op de energietransitie en de voortgang ervan monitoren 
+|KGG
+|Ik wil inzicht in energieverbruik op nationaal en regionaal niveau
+|Ik wil beleid voeren en de voortgang van de energietransitie monitoren
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
 
 |{counter:fe}
-|Provincie en gemeente
-|Ik wil gebiedsprofielen
-|Ik wil met de gebiedsprofielen de energietransitie monitoren en ik wil met de gebiedsprofielen gebruken om prioriteiten te stellen en focus aan te brengen
+|Provincies en gemeentes
+|Ik wil energieprofielen
+|Ik wil de energietransitie monitoren, prioriteiten stellen en focus aanbrengen
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
 
