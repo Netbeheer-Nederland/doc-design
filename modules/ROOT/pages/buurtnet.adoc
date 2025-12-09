@@ -260,7 +260,7 @@ include::partial$four_v.adoc[]
 |===
 |Dataproduct |Volume |Variety |Veracity |Velocity
 
-|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/index.html[Equipment]
+|#TODO: Equipment#
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |Hoog, de dataset wordt samengesteld uit gegevens voor connectiviteit en
