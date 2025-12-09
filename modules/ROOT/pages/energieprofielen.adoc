@@ -107,14 +107,13 @@ a|Ik wil van EANs
 * fysieke status 'In Bedrijf'
 * soort aansluiting `Normaal (NRM)`
 
- |Want dit zijn de aansluitingen waar ik de energieprofielen van wil hebben, met hun relevante eigenschappen
+ |Dit zijn de aansluitingen waar ik de energieprofielen van wil hebben, met hun relevante eigenschappen
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-01
 
  |{counter:fe}
  |EO
- |Ik wil de volgende data per gebied
-a|
+a|Ik wil de volgende data per gebied
 
 * peildatum
 * energiedrager;
@@ -134,9 +133,29 @@ a|
 * G-uurwaarden afgelopen jaar inclusief
 ** energierichting (afname)
 ** beginmoment (uur)
-** aantal m3
+** aantal m^3^
 
 |Want dit is de data die ik per gebied nodig heb
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-03
+
+ |{counter:fe}
+ |EO
+a|Ik wil verbruiksselectie
+
+* Voor elektriciteit: SJA/SJI opdelen naar kwartieren middels dynamische profielfracties en het toepassen van de RCF (restcorrectiefactor)
+* Voor gas: SJV opdelen naar uren middels profielfracties en toepassing van de TCPF (temperatuur gecorrigeerde profielfracties))
+
+ |Ik heb behoefte aan kwartierwaardes (E) en uurwaardes (G) en dit is de meest accurate inschatting
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-04
+
+ |{counter:fe}
+ |EO
+ |Ik wil een vermelding dat de gevraagde data niet geleverd mag worden wanneer er minder dan 10 EANs per gebied per tijdseenheid per energierichting zijn
+ |Want dan zijn er te weinig EANs
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
 
 |===
 
@@ -320,6 +339,10 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 |{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid en goedkeuring van het GEMS.
 
+|{counter:bea} |Beslissing |Minimaal 10 EANs per gebied per tijdseenheid per energierichting.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
+
 |{counter:bea} |Beslissing | Het dataproduct is een eenmalig _minimum viable product_ (MVP).
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
@@ -339,7 +362,41 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 |{couter:bea} |Aanname |Elke aansluiting is te koppelen aan een gemeente, buurtcode, buurtnaam en postcode.
 
-// Nodig voor: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2, F-03
+// Bronr: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2, F-03
+
+|{counter:bea} |Aanname | We krijgen goedkeuring voor het gebruik van de daadwerkelijke SMA meetdata.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-04
+
+|counter:bea} |Beslissing |Voor de MVP betreft het data van één jaar.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-05
+
+|{counter:fe} |Beslissing | Als peildatum voor SJI, SJA en SJV wordt het moment van het genereren van de dataset gebruikt.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-08
+
+|{counter:bea} |Beslissing |De dataset van het dataproduct mag geen privacy of commercieel gevoelige gegevens bevatten.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, NF-01
+
+|{counter:bea} |Aanname |Er komt een positieve uitspraak van het GEMS over doelbinding.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, NF-02
+
+|{counter:bea} |Beslissing |Omdat het een eenmalige actie is, is het niet erg als het genereren van de dataset lang duurt.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-07
+
+|{counter:bea} |Beslissing |De dataset van het dataproduct is alleen beschikbaar voor data delen. Het dataproduct is open.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-12
+
+|{counter:bea} |Beslissing |Dataproduct _Energieprofielen_ is een open dataproduct.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-13
+
+|{counter:bea} |Beslissing |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat
 
 |===
 
