@@ -461,8 +461,7 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 
 |Aanname
 |Elke netbeheerder publiceert via de eigen
- dataintegratieomgeving/maatwerkproces decentraal de profielen. #TODO: is er
- een wens om te centraliseren, b.v. via de landelijke netbeheerder of EDSN?#
+ dataintegratieomgeving/maatwerkproces decentraal de profielen.
 
 |Aanname
 |Technische architectuur (integratiepatroon, dataplatform, etc.) worden op
@@ -489,6 +488,5 @@ image::beschikbaar_stellen_van_netbeheerdata_run-20250602.svg[]
 
 |Aanname
 |Gedurende implementatie van het ontwerp door _Werkgroep TSO/DSO_ is de
- werkgroep eigenaar van de te implementeren profielen. #TODO: wie is na
- implementatie eigenaar van de profielen?#
+ werkgroep eigenaar van de te implementeren profielen.
 |===
