@@ -56,7 +56,7 @@ Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met ee
 Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
 
 .Functionele eisen
-[cols="1, 1, 3, 3"]
+[cols="1, 2, 6, 6"]
 |===
 |ID |Als Rol |Wil ik |Want
 
