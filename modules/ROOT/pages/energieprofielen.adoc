@@ -5,22 +5,49 @@ Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _Energi
 [NOTE]
 ====
 include::partial$data_product.adoc[]
+
 ====
 
 == Reikwijdte
 
-Het doel is een open dataset van profielen die per gebeid gegroepeerd zijn. De prioriteit van de profielen is: Eerst GV (grootverbruik) dan KV (kleinverbruik) en tot slot SBI (de standaard bedrijfsindeling van de het CBS op bais van de KvK).
+Het doel is een open dataset van profielen die per gebeid gegroepeerd kunnen worden. Deze gebieden zijn GV (grootverbruik), KV (kleinverbruik) en SBI (de standaard bedrijfsindeling van de het CBS op basis van de KvK).
+De prioriteit van de profielen is: Eerst GV (grootverbruik) dan KV (kleinverbruik) en tot slot SBI (de standaard bedrijfsindeling van de het CBS op bais van de KvK).
 
 // Bron: Mail, Robbert Hardin, Aantekeningen Afstemmen gebiedsprofielen, di 18-11-2025 11:09
+
+== Rollen
+
+Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met een eigen verzameling behoeften en wensen. 
 
 .Rollen
 [cols="1, 2"]
 |===
 |Rol |Beschrijving
 
-|Rol
-|Beschrijving
+|Ingenieursbureau
+|Een ingenieursbureau is een bedrijf dat diensten levert op het gebied van advisering, ontwerp en begeleiding voor technische projecten binnen uiteenlopende sectoren.
 
+// Bron: https://nl.wikipedia.org/wiki/Ingenieursbureau
+
+|NP RES
+|NP RES staat voor het Nationaal Programma Regionale Energie Strategie. Provincies, gemeenten, waterschappen en netbeheerders werken in dertig regio’s samen met de samenleving aan het grootschalig opwekken van duurzame elektriciteit op land met windturbines en zonnepanelen. Ook stemmen ze warmtevraag en -aanbod op elkaar af.
+
+// Bron: https://www.netbeheernederland.nl/artikelen/nieuws/np-res-doelstellingen-waar-staan-we-eind-2024
+
+|Woningcorporatie
+|Een woningcorporatie is een sociale woningbouworganisatie die zich richt op het bouwen, beheren en verhuren van woonruimte met een betaalbare huur.
+
+// Bron: https://rws.begrippenxl.nl/ABDL/nl/page/DEF-5338
+
+|KGG
+|Ministerie van Klimaat en Groene Groei.
+
+// Bron: https://www.rijksoverheid.nl/ministeries/ministerie-van-klimaat-en-groene-groei
+
+|Provincies en gemeentes
+|Deelgebieden met een eigen regionaal bestuur. Zij voeren landelijk en eigen beleid uit. Staatsrechtelijk is de provincie de bestuurlijke eenheid tussen de gemeenten en de rijksoverheid.
+
+// Bron: https://nl.wikipedia.org/wiki/Provincie, https://www.rijksoverheid.nl/onderwerpen/provincies/taken-provincie, https://www.rijksoverheid.nl/onderwerpen/gemeenten/taken-gemeente
 
 |===
 
