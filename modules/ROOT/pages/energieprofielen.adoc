@@ -12,9 +12,11 @@ include::partial$data_product.adoc[]
 
 Het doel is een open dataset van profielen die per gebeid geaggregeerd kunnen worden. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding.
 
+Deze profielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. Dit inzicht wordt gebruikt voor een betere besluitvorming over netcapaciteit, congestiebeheer en energietransitie. 
+
 == Rollen
 
-Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met een eigen verzameling behoeften en wensen. 
+Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders (rollen), elk met een eigen verzameling behoeften en wensen. 
 
 .Rollen
 [cols="1, 2"]
@@ -56,7 +58,7 @@ Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met ee
 Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
 
 .Functionele eisen
-[cols="1, 2, 6, 6"]
+[cols="1, 1, 8, 8"]
 |===
 |ID |Als Rol |Wil ik |Want
 
@@ -166,6 +168,7 @@ Het volgende gebruiksscenario wordt ondersteund:
 .Gebruiksscenario
 [d2,svg,theme=4]
 ----
+
 shape: sequence_diagram
 
 vars: {
@@ -176,12 +179,19 @@ vars: {
 
 "EDSN": "EDSN\n "
 "DP": "Dataportaal\nData delen"
+"Derde": "Derde\n "
 
-"EDSN" -> "DP": "1. Ontsluit"
+"EDSN" -> "DP": "1. Ontsluit profielen"
+"Derde" -> "DP": "2. Vraag profielen op"
+"DP" -> "Derde": "3. Lever profielen"
 
 ----
 
-1. Ontsluit naar Dataportaal _Data delen_
+1. Ontsluit de profielen naar Dataportaal _Data delen_
+2. Vraag profielen per gebied en geaggregeerd op bij Dataportaal _Data delen_
+3. Lever profielen op
+
+_Derde_ is één van de stakeholders anders dan de Epic Owner.
 
 === Architectuur
 
@@ -439,7 +449,9 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Tip over UL in TD: https://stackoverflow.com/questions/73674062/unordered-list-in-a-table-cell-with-asciidoc
 
-|{counter:bea} |Beslissing |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat
+|{counter:bea} |Aanname |De energiefprofielen worden per gebied en aggregatie opgevraagd en geleverd.
+
+|{counter:bea} |Beslissing |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat.
 
 |===
 
