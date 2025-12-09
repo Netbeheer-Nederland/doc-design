@@ -242,7 +242,7 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|Laag
+|Groot
 
 |Variety
 |Gestructureerd
@@ -272,7 +272,7 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Definitie Buurt: https://www.cbs.nl/nl-nl/cijfers/detail/86113NED?q=definitie%20buurt#shortTableDescription
 
-|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid.
+|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid en goedkeuring van het GEMS.
 
 |{counter:bea} |Beslissing | Het dataproduct is een eenmalig _minimum viable product_ (MVP).
 
@@ -282,8 +282,10 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
-|{counter:bea} |Beslissing |Dit datproduct moet rekening houden met toekomstige doorontwikkeling: 
-* brondata gebeaseerd op daadwerkelijk gemeten kwartier- en uurwaardes.
+|{counter:bea} |Beslissing a|Dit datproduct moet rekening houden met toekomstige doorontwikkeling: 
+
+* brondata gebeaseerd op daadwerkelijk gemeten kwartier- en uurwaardes;
+* driemaandelijkse publicatie.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
