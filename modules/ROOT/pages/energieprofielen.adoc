@@ -1,0 +1,405 @@
+= Energieprofielen
+
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _Energieprofielen_, alsmede de achterliggende architectuur en gemaakte keuzes. 
+
+[NOTE]
+====
+include::partial$data_product.adoc[]
+
+====
+
+== Reikwijdte
+
+Het doel is een open dataset van profielen die per gebeid geaggregeerd kunnen worden. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding.
+
+== Rollen
+
+Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders, elk met een eigen verzameling behoeften en wensen. 
+
+.Rollen
+[cols="1, 2"]
+|===
+|Rol |Beschrijving
+
+|Ingenieursbureau
+|Een ingenieursbureau is een bedrijf dat diensten levert op het gebied van advisering, ontwerp en begeleiding voor technische projecten binnen uiteenlopende sectoren.
+
+// Bron: https://nl.wikipedia.org/wiki/Ingenieursbureau
+
+|NP RES
+|NP RES staat voor het _Nationaal Programma Regionale Energie Strategie_. Provincies, gemeenten, waterschappen en netbeheerders werken in dertig regio’s samen met de samenleving aan het grootschalig opwekken van duurzame elektriciteit op land met windturbines en zonnepanelen. Ook stemmen ze warmtevraag en -aanbod op elkaar af.
+
+// Bron: https://www.netbeheernederland.nl/artikelen/nieuws/np-res-doelstellingen-waar-staan-we-eind-2024
+
+|Woningcorporatie
+|Een woningcorporatie is een sociale woningbouworganisatie die zich richt op het bouwen, beheren en verhuren van woonruimte met een betaalbare huur.
+
+// Bron: https://rws.begrippenxl.nl/ABDL/nl/page/DEF-5338
+
+|KGG
+|Ministerie van Klimaat en Groene Groei.
+
+// Bron: https://www.rijksoverheid.nl/ministeries/ministerie-van-klimaat-en-groene-groei
+
+|Provincies en gemeentes
+|Deelgebieden met een eigen regionaal bestuur. Zij voeren landelijk en eigen beleid uit. Staatsrechtelijk is de provincie de bestuurlijke eenheid tussen de gemeenten en de rijksoverheid.
+
+// Bron: https://nl.wikipedia.org/wiki/Provincie, https://www.rijksoverheid.nl/onderwerpen/provincies/taken-provincie, https://www.rijksoverheid.nl/onderwerpen/gemeenten/taken-gemeente
+
+|EO
+|De Epic Owner (EO) is de eigenaar van de epic en als zodanig de opdrachtgever voor het ontwerp van het dataproduct.
+
+|===
+
+== Functionele eisen
+
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als rol"*) welke data (*"Wil ik"*) nodig heeft en waarom (*"Want"*).
+
+.Functionele eisen
+[cols="1, 1, 3, 3"]
+|===
+|ID |Als Rol |Wil ik |Want
+
+|{counter:fe}
+|Ingenieursbureau
+|Ik wil meer inzicht krijgen in energieverbruik in bepaalde buurten/gebieden
+|Ik wil betere technisch-economische haalbaarheidsanalyses van duurzame lokale energiesystemen kunnen uitvoeren 
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:fe}
+|NP RES
+|Ik wil energiesprofielen gegroepeerd per gebied
+|Ik wil vraag en aanbod van energie afstemmen met een gebiedsgerichte aanpak
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:fe}
+|Woningcorporatie
+|Ik wil meer inzicht in energieverbruik van mijn woningportfolio
+|Ik wil betere prioriteiten stellen met betrekking tot het verduurzamen van mijn woningportfolio
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:fe}
+|KGG
+|Ik wil inzicht in energieverbruik op nationaal en regionaal niveau
+|Ik wil beleid voeren en de voortgang van de energietransitie monitoren
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
+
+|{counter:fe}
+|Provincies en gemeentes
+|Ik wil energieprofielen
+|Ik wil de energietransitie monitoren, prioriteiten stellen en focus aanbrengen
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
+
+ |{counter:fe}
+ |EO
+a|Ik wil van EANs
+
+* productsoort elektriciteit en gas
+* verbruikssegment kleinverbruik (KVB) en grootverbruik (GVB)
+* beide energierichtingen (invoeding en afname)
+* fysieke status 'In Bedrijf'
+* soort aansluiting 'Normaal (NRM)'
+
+ |Dit zijn de aansluitingen waar ik de energieprofielen van wil hebben, met hun relevante eigenschappen
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-01
+
+ |{counter:fe}
+ |EO
+a|Ik wil per gebied de volgende gegevens:
+
+* peildatum (datum van genereren dataset)
+* energiedrager;
+* gemeente;
+* buurtcode;
+* buurtnaam;
+* postcode (indien van toepassing)
+* aantal E-aansluitingen op peildatum
+* aantal G-aansluitingen op peildatum
+* totaal E-standaardjaarverbruik invoeding (E-SJI)
+* totaal E-standaardjaarverbruik afname (E-SJA)
+* totaal G-standaardjaarverbruik (G-SJV)
+* E-kwartierwaarden afgelopen jaar inclusief
+** energierichting (invoeding en afname)
+** begingmoment (het kwartier)
+** aantal kWh
+* G-uurwaarden afgelopen jaar inclusief
+** energierichting (afname)
+** beginmoment (uur)
+** aantal m^3^
+
+|Want dit is de data die ik per gebied nodig heb
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-03
+
+ |{counter:fe}
+ |EO
+a|Ik wil verbruiksselectie
+
+* Voor elektriciteit: SJA/SJI verdeeld naar kwartieren middels dynamische profielfracties en het toepassen van de RCF (restcorrectiefactor)
+* Voor gas: SJV verdeeld naar uren middels profielfracties en toepassing van de TCPF (temperatuur gecorrigeerde profielfracties))
+
+ |Ik heb behoefte aan kwartierwaardes (E) en uurwaardes (G) en dit is de meest accurate inschatting
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-04
+
+ |{counter:fe}
+ |EO
+ |Ik wil een vermelding dat de gevraagde data niet geleverd mag worden wanneer er minder dan 10 EANs per gebied per tijdseenheid per energierichting zijn
+ |Want dan zijn er te weinig EANs
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
+
+|===
+
+== Dataservice
+
+=== Gebruiksscenario
+
+Het volgende gebruiksscenario wordt ondersteund:
+
+.Gebruiksscenario
+[d2,svg,theme=4]
+----
+shape: sequence_diagram
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+"Rol: Rol
+
+----
+
+1. Rol
+
+=== Architectuur
+
+Vanuit architectuurperspectief zijn de volgende keuzes gemaakt:
+
+.Architectuur
+[d2,svg,theme=4,scaledwidth=100%]
+----
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+grid-rows: 5
+grid-columns: 4
+
+vertical-gap: 80
+horizontal-gap: 160
+
+
+
+legend: "" {
+  style: {
+    fill: transparent
+    stroke: transparent
+  }
+  grid-rows: 3
+  grid-columns: 2
+  grid-gap: 10
+  near: bottom-right
+  business_color: "" {
+    style: {
+      fill: "#ffffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  business_text: "Business" {
+    shape: text
+  }
+  application_color: "" {
+    style: {
+      fill: "#afffff"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  application_text: "Application" {
+    shape: text
+  }
+  technology_color: "" {
+    style: {
+      fill: "#afffaf"
+      stroke: black
+      stroke-width: 1
+    }
+    width: 10
+    height: 10
+  }
+  technology_text: "Technology" {
+    shape: text
+  }
+}
+
+classes: {
+  *: {
+    style: {
+      shadow: true
+    }
+  }
+  empty: {
+    label: ""
+    style: {
+      fill: transparent
+      stroke-width: 0
+    }
+  }
+  verb: {
+    style: {border-radius: 30}
+  }
+  noun: {
+    style: {border-radius: 4}
+  }
+  artifact: {shape: page}
+  business: {
+    style: {
+      fill: "#ffffaf"
+    }
+  }
+  application: {
+    style: {
+      fill: "#afffff"
+    }
+  }
+  technology: {
+    style: {
+      fill: "#afffaf"
+    }
+  }
+}
+
+----
+
+== Dataset
+
+De energieprofielen in de dataset kunnen alleen gegroepeerd worden op basis van postcode, *expliciet niet* op basis van connectiviteit of topologie.
+
+=== Volume, variety, veracity, velocity
+
+[NOTE]
+====
+include::partial$four_v.adoc[]
+====
+
+[cols="1, 1"]
+|===
+|Type |Beschrijving
+
+|Volume
+|Groot
+
+|Variety
+|Gestructureerd
+
+|Veracity
+|Hoog
+
+|Velocity
+|Laag (eenmalig, in de toekomst wellicht per kwartaal)
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|===
+
+== Voorwaarden
+Dit dataproduct wordt als _open data_ aangeboden.
+
+== Beslissingen en aannames
+
+[cols="1, 3, 6"]
+|===
+|Id |Type |Beschrijving
+
+|{counter:bea} |Aanname |Het wordt één dataproduct dat alledrie de aggregaties (gas, elektriciteit en SBI) kan bevatten. *Dus niet* één dataproduct per aggregatie.
+
+|{counter:bea} |Aanname |Het gebied waarover geaggregeerd wordt wordt bepaald op basis van postcode 6 van de aansluiting. *Dus niet* op basis van postcode 4, postcode 5 of op basis van Buurt.
+
+// Definitie Buurt: https://www.cbs.nl/nl-nl/cijfers/detail/86113NED?q=definitie%20buurt#shortTableDescription
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-02
+
+|{counter:bea} |Aanname |Elke aansluiting is te koppelen aan een gemeente, buurtcode, buurtnaam en postcode.
+
+// Bronr: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2, F-03
+
+|{counter:bea} |Beslissing |Het is geen probleem dat postcode 6 in meerdere wijken of buurten kunnen liggen.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-02
+
+|{counter:bea} |Beslissing |De dataset van het dataproduct is alleen beschikbaar voor data delen. Het dataproduct is open.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-12
+
+|{counter:bea} |Beslissing |Dataproduct _Energieprofielen_ is een open dataproduct.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-13
+
+|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid en goedkeuring van het GEMS.
+
+|{counter:bea} |Aanname |Er komt een positieve uitspraak van het GEMS over doelbinding.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, NF-02
+
+|{counter:bea} |Beslissing |De dataset van het dataproduct mag geen privacy of commercieel gevoelige gegevens bevatten.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, NF-01
+
+|{counter:bea} |Beslissing |Minimaal 10 EANs per gebied per tijdseenheid per energierichting.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
+
+|{counter:bea} |Beslissing | Het dataproduct is een eenmalig _minimum viable product_ (MVP).
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:bea} |Beslissing |Voor de MVP betreft het data van één jaar.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-05
+
+|{counter:bea} |Aanname | We krijgen goedkeuring voor het gebruik van de daadwerkelijke SMA meetdata.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-04
+
+|{counter:bea} |Beslissing |Omdat het een eenmalige actie is, is het niet erg als het genereren van de dataset lang duurt.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-07
+
+|{counter:bea} |Beslissing | Als peildatum voor SJI, SJA en SJV wordt het moment van het genereren van de dataset gebruikt.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-08
+
+|{counter:bea} |Beslissing |De elektriciteits data wordt gebaseerd op standaard jaarververbruik (SJV), dymaische profielfracties en restcorrectiefactor (RCF). *Expliciet* niet op basis van slimme meter data.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+|{counter:bea} |Beslissing a|Dit datproduct moet rekening houden met toekomstige doorontwikkeling: 
+
+* brondata gebeaseerd op daadwerkelijk gemeten kwartier- en uurwaardes;
+* driemaandelijkse publicatie.
+
+// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
+
+// Tip over UL in TD: https://stackoverflow.com/questions/73674062/unordered-list-in-a-table-cell-with-asciidoc
+
+|{counter:bea} |Beslissing |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat
+
+|===
+
+
