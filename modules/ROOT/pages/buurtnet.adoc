@@ -245,9 +245,11 @@ alignment met systeemarchitectuur EDSN#.
 Voor de informatiebehoefte van Buurtnet worden drie dataproducten vanuit de
 _NBNL Profile Group_ (her)gebruikt:
 
-* *Equipment* (EQ): connectiviteit voor het LS-net;
+* *Equipment* (EQ): connectiviteit voor het LS-net, definitie van netfuncties
+voor de overige dataproducten;
 * *Operation* (OP): belasting van transformatoren in het LS-net;
-* *GeoLocation* (GL): locatie van netstations en aansluitingen in het LS-net.
+* *GeoLocation* (GL): locatie van aansluitingen in het LS-net;
+* *Topology* (TP): koppeling tussen overdrachtspunt en transformator.
 
 === Volume, variety, veracity, velocity
 
@@ -260,25 +262,30 @@ include::partial$four_v.adoc[]
 |===
 |Dataproduct |Volume |Variety |Veracity |Velocity
 
-|#TODO: Equipment#
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-equipment/latest/[Equipment]
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |Hoog, de dataset wordt samengesteld uit gegevens voor connectiviteit en
 aansluitingen.
 |Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 
-|#TODO: Operation#
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-operation/latest/[Operation]
 |Midden, < 300MB (ongecomprimeerd)
 |Gestructureerd
 |
 |Hoog, minimaal één maal per 24 uur (zie <<_functionele_eisen>>)
 
-|#TODO: GeoLocation#
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-geolocation/latest/[GeoLocation]
 |Laag, < 100MB (ongecomprimeerd)
 |Gestructureerd
 |
 |Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 
+|https://netbeheer-nederland.github.io/docs-dev/dp-nbnl-topology/latest/[Topology]
+|Laag, < 100MB (ongecomprimeerd)
+|Gestructureerd
+|
+|Laag, verandert alleen wanneer de connectiviteit van het LS-net verandert
 |===
 
 == Voorwaarden
