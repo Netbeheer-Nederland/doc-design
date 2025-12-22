@@ -10,7 +10,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Het doel is een open dataset van profielen die per gebeid geaggregeerd kunnen worden. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding.
+Het doel is een open dataset van profielen die per gebeid geaggregeerd zijn. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding.
 
 Deze profielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. Dit inzicht wordt gebruikt voor een betere besluitvorming over netcapaciteit, congestiebeheer en energietransitie. 
 
@@ -167,21 +167,21 @@ vars: {
   }
 }
 
-"EDSN": "EDSN\n "
-"DP": "Dataportaal\nData delen"
-"Derde": "Derde\n "
+"EDSN": "EDSN\nD&A "
+"DP": "Energiedata\nPortaal"
+"Afn": "Afnemer\n "
 
 "EDSN" -> "DP": "1. Ontsluit profielen"
-"Derde" -> "DP": "2. Vraag profielen op"
-"DP" -> "Derde": "3. Lever profielen"
+"Afn" -> "DP": "2. Vraag gebiedsprofielen op"
+"DP" -> "DP": "3. Aggregeer profielen per gebied"
+"DP" -> "Afn": "4. Lever gebeidsprofielen uit"
 
 ----
 
-1. Ontsluit de profielen naar Dataportaal _Data delen_
-2. Vraag profielen per gebied en geaggregeerd op bij Dataportaal _Data delen_
-3. Lever profielen op
-
-_Derde_ is één van de stakeholders anders dan de Epic Owner.
+1. Ontsluit de profielen naar Energiedata Portaal
+2. Vraag profielen van een gebied aan
+3. Aggregeer de profielen van het gebied
+3. Lever de geaggregeerde profielen uit
 
 === Architectuur
 
@@ -222,22 +222,22 @@ Load.class: [verb; business]
 # "MijnOmgeving/Maatwerk".class: [noun; application]
 4_1.class: empty
 "Data Product".class: [noun; application]
-"NBNL Dataportaal".class: [noun; application]
+"Energiedata Portaal".class: [noun; application]
 4_4.class: empty
 
 5_1.class: empty
-"JSON-LD File".class: [artifact; technology]
+"JSON File".class: [artifact; technology]
 5_3.class: empty
 5_4.class: empty
 
 Extract -> Transform: "triggers"
 Transform -> Load: "triggers"
 "Data Product" -> "Extract": "serves"
-"NBNL Dataportaal" -> "Data Product": "accesses (read)"
+"Energiedata Portaal" -> "Data Product": "accesses (read)"
 Extract -> Consumer: "serves"
 EDSN -> Broker: "assigned to"
 Broker -> Extract: "assigned to"
-"JSON-LD File" -> "Data Product": "realises"
+"JSON File" -> "Data Product": "realises"
 # "MijnOmgeving/Maatwerk" -> "Data Product": "accesses (read)"
 # "Netbeheerder" -> "MijnOmgeving/Maatwerk": "assigned to"
 
