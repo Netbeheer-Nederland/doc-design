@@ -147,13 +147,6 @@ a|Ik wil verbruiksselectie
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-04
 
- |{counter:fe}
- |Afnemer
- |Ik wil een vermelding dat de gevraagde data niet geleverd mag worden wanneer er minder dan 10 EANs per gebied per tijdseenheid per energierichting zijn
- |Want dan zijn er te weinig EANs
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
-
 |===
 
 == Dataservice
