@@ -16,7 +16,7 @@ Deze profielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. 
 
 == Rollen
 
-Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders (rollen), elk met een eigen verzameling behoeften en wensen. 
+Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders (rollen), elk met een eigen verzameling behoeften en wensen. Tezamen vormen zij de rol _afnemer_.
 
 .Rollen
 [cols="1, 2"]
@@ -47,9 +47,6 @@ Het dataproduct beschreven in dit ontwerp kent meerdere stakeholders (rollen), e
 |Deelgebieden met een eigen regionaal bestuur. Zij voeren landelijk en eigen beleid uit. Staatsrechtelijk is de provincie de bestuurlijke eenheid tussen de gemeenten en de rijksoverheid.
 
 // Bron: https://nl.wikipedia.org/wiki/Provincie, https://www.rijksoverheid.nl/onderwerpen/provincies/taken-provincie, https://www.rijksoverheid.nl/onderwerpen/gemeenten/taken-gemeente
-
-|EO
-|De Epic Owner (EO) is de eigenaar van de epic en als zodanig de opdrachtgever voor het ontwerp van het dataproduct.
 
 |===
 
@@ -98,11 +95,11 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
 
  |{counter:fe}
- |EO
+ |Afnemer
 a|Ik wil van EANs
 
 * productsoort elektriciteit en gas
-* verbruikssegment kleinverbruik (KVB) en grootverbruik (GVB)
+* verbruikssegment kleinverbruik (KV) en grootverbruik (GV)
 * beide energierichtingen (invoeding en afname)
 * fysieke status 'In Bedrijf'
 * soort aansluiting 'Normaal (NRM)'
@@ -112,7 +109,7 @@ a|Ik wil van EANs
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-01
 
  |{counter:fe}
- |EO
+ |Afnemer
 a|Ik wil per gebied de volgende gegevens:
 
 * peildatum (datum van genereren dataset)
@@ -140,7 +137,7 @@ a|Ik wil per gebied de volgende gegevens:
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-03
 
  |{counter:fe}
- |EO
+ |Afnemer
 a|Ik wil verbruiksselectie
 
 * Voor elektriciteit: SJA/SJI verdeeld naar kwartieren middels dynamische profielfracties en het toepassen van de RCF (restcorrectiefactor)
@@ -151,7 +148,7 @@ a|Ik wil verbruiksselectie
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-04
 
  |{counter:fe}
- |EO
+ |Afnemer
  |Ik wil een vermelding dat de gevraagde data niet geleverd mag worden wanneer er minder dan 10 EANs per gebied per tijdseenheid per energierichting zijn
  |Want dan zijn er te weinig EANs
 
@@ -394,6 +391,8 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-02
 
+|{counter:bea} |Aanname |De gebieden en regio's worden zo gedefinieerd dat de data daadwerkelijk op deze manier geaggregeerd kan worden.
+
 |{counter:bea} |Beslissing |De dataset van het dataproduct is alleen beschikbaar voor data delen. Het dataproduct is open.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-12
@@ -412,7 +411,7 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, NF-01
 
-|{counter:bea} |Beslissing |Minimaal 10 EANs per gebied per tijdseenheid per energierichting.
+|{counter:bea} |Beslissing |Minimaal 10 EANs per gebied per tijdseenheid per energierichting. Indien dat vor een gebied niet mogelijk is dan wordt vermeld dat de gevraagde data niet geleverd mag worden omdat er te weinig EANs zijn.
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
 
@@ -451,7 +450,15 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 |{counter:bea} |Aanname |De energiefprofielen worden per gebied en aggregatie opgevraagd en geleverd.
 
-|{counter:bea} |Beslissing |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat.
+|{counter:bea} |Aanname |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat.
+
+|{counter:bea} |Beslissing |Het dataproduct wordt gebouwd door team D&A van EDSN.
+
+// Bron: e-mail, Terugkoppeling review Energieprofielen, ma 22-12-2025 13:49
+
+|{counter:bea} |Beslissing |De ontsluiting gebeurt door team Data Delen.
+
+// Bron: e-mail, Terugkoppeling review Energieprofielen, ma 22-12-2025 13:49
 
 |===
 
