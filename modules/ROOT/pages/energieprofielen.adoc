@@ -89,13 +89,13 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 
 |{counter:fe}
 |Provincies en gemeentes
-|Ik wil energieprofielen
+|Ik wil energieprofielen per gebied
 |Ik wil de energietransitie monitoren, prioriteiten stellen en focus aanbrengen
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
 
  |{counter:fe}
- |Afnemer
+ |*BUITEN SCOPE ONTWERP, WORDT VERWIJDERD* Afnemer
 a|Ik wil van EANs met fysieke status 'In Bedrijf' en soort aansluiting 'Normaal (NRM)'
 
 * productsoort elektriciteit en gas
@@ -178,10 +178,10 @@ vars: {
 
 ----
 
-1. Ontsluit de profielen naar Energiedata Portaal
-2. Vraag profielen van een gebied aan
-3. Aggregeer de profielen van het gebied
-3. Lever de geaggregeerde profielen uit
+1. EDSN ontsluit de energieprofielen naar Energiedata Portaal
+2. Vraag energieprofielen van een gebied aan met parameters waarover geaggregeerd moet worden
+3. Aggregeer de energieprofielen van het gevraagde gebied over de geleverde parameters
+3. Lever de geaggregeerde energieprofielen uit
 
 === Architectuur
 
@@ -344,7 +344,7 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|Groot
+|Klein (< 10MB)
 
 |Variety
 |Gestructureerd
@@ -358,6 +358,9 @@ include::partial$four_v.adoc[]
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
 |===
+
+== Integratiepatroon
+Er zijn drie integratiepatronen: _bulk_, _request_ en _streaming_. Op basis van de bovenstaande tabel is gekozen voor het integratiepatroon _request_ (API).
 
 == Voorwaarden
 Dit dataproduct wordt als _open data_ aangeboden.
@@ -454,6 +457,8 @@ Dit dataproduct wordt als _open data_ aangeboden.
 |{counter:bea} |Beslissing |De ontsluiting gebeurt door team Data Delen.
 
 // Bron: e-mail, Terugkoppeling review Energieprofielen, ma 22-12-2025 13:49
+
+|{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van Meetdata.
 
 |===
 
