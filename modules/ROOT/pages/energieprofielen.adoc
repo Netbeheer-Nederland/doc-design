@@ -359,7 +359,7 @@ include::partial$four_v.adoc[]
 
 |===
 
-== Integratiepatroon
+=== Integratiepatroon
 De dataset van een dataproduct wordt ontsloten middels een dataservice. Hier zijn drie integratiepatronen voor: _bulk_, _request_ en _streaming_. Op basis van de bovenstaande tabel is gekozen voor het integratiepatroon _request_ (REST API). Een REST API (Representational State Transfer Application Programming Interface) is _een set van regels en conventies die het mogelijk maakt voor systemen om met elkaar te communiceren via het web_. Bijvoorbeeld om de dataset van een dataproduct op te halen. Een REST API heeft input-parameters (de vraag) en output (de dataset). Voor Energieprofielen zijn de input-parameters het gebied en de datavelden waarover geaggreerd moeten worden.
 
 == Voorwaarden
