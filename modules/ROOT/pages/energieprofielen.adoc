@@ -360,7 +360,7 @@ include::partial$four_v.adoc[]
 |===
 
 == Integratiepatroon
-Er zijn drie integratiepatronen: _bulk_, _request_ en _streaming_. Op basis van de bovenstaande tabel is gekozen voor het integratiepatroon _request_ (API).
+Er zijn drie integratiepatronen: _bulk_, _request_ en _streaming_. Op basis van de bovenstaande tabel is gekozen voor het integratiepatroon _request_ (REST API). Een REST API (Representational State Transfer Application Programming Interface) is _een set van regels en conventies die het mogelijk maakt voor systemen om met elkaar te communiceren via het web_. Bijvoorbeeld om de dataset van een dataproduct op te halen. Een REST API heeft input-parameters (de vraag) en output (de dataset).
 
 == Voorwaarden
 Dit dataproduct wordt als _open data_ aangeboden.
@@ -458,7 +458,7 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 // Bron: e-mail, Terugkoppeling review Energieprofielen, ma 22-12-2025 13:49
 
-|{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van Meetdata.
+|{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van https://netbeheer-nederland.github.io/docs-dev/dp-meetdata/latest/index.html[Meetdata].
 
 |===
 
