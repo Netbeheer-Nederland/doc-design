@@ -10,9 +10,9 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Het doel is een open dataset van profielen die per gebeid geaggregeerd zijn. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding.
+_Energieprofielen_ is de verzamelnaam voor een aantal dataproducten. Elk van deze dataproducten bevat een open dataset van profielen die per gebied geaggregeerd zijn. Het verschil tussen de dataproducten ligt in het gekozen gebied en de wijze waarop de energieprofielen geaggregeerd zijn. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding. Voor de leesbaarheid heb ik het over Energieprofielen, maar wanneer het onderscheid relevant wordt dan wordt dat uiteraard vermeld.
 
-Deze profielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. Dit inzicht wordt gebruikt voor een betere besluitvorming over netcapaciteit, congestiebeheer en energietransitie. 
+De Energieprofielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. Dit inzicht wordt gebruikt voor een betere besluitvorming over netcapaciteit, congestiebeheer en energietransitie. 
 
 == Rollen
 
@@ -95,20 +95,6 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3
 
  |{counter:fe}
- |*BUITEN SCOPE ONTWERP, WORDT VERWIJDERD* Afnemer
-a|Ik wil van EANs met fysieke status 'In Bedrijf' en soort aansluiting 'Normaal (NRM)'
-
-* productsoort elektriciteit en gas
-* verbruikssegment kleinverbruik (KV) en grootverbruik (GV)
-* beide energierichtingen (invoeding en afname)
-
-geaggregeerd per gebied
-
- |Dit zijn de aansluitingen waar ik de energieprofielen van wil hebben, met hun relevante eigenschappen
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-01
-
- |{counter:fe}
  |Afnemer
 a|Ik wil per gebied de volgende gegevens:
 
@@ -173,15 +159,13 @@ vars: {
 
 "EDSN" -> "DP": "1. Ontsluit profielen"
 "Afn" -> "DP": "2. Vraag gebiedsprofielen op"
-"DP" -> "DP": "3. Aggregeer profielen per gebied"
-"DP" -> "Afn": "4. Lever gebeidsprofielen uit"
+"DP" -> "Afn": "3. Lever gebeidsprofielen uit"
 
 ----
 
 1. EDSN ontsluit de energieprofielen naar Energiedata Portaal
-2. Vraag energieprofielen van een gebied aan met parameters waarover geaggregeerd moet worden
-3. Aggregeer de energieprofielen van het gevraagde gebied over de geleverde parameters
-3. Lever de geaggregeerde energieprofielen uit
+2. Afnemer vraagt de energieprofielen op
+3. Energiedata Portaal levert de geaggregeerde energieprofielen uit
 
 === Architectuur
 
