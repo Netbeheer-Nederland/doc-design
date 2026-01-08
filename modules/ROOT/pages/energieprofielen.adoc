@@ -10,7 +10,7 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-_Energieprofielen_ is de verzamelnaam voor een aantal dataproducten. Elk van deze dataproducten bevat een open dataset van profielen die per gebied geaggregeerd zijn. Het verschil tussen de dataproducten ligt in het gekozen gebied en de wijze waarop de energieprofielen geaggregeerd zijn. Het aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding. Voor de leesbaarheid heb ik het over Energieprofielen, maar wanneer het onderscheid relevant wordt dan wordt dat uiteraard vermeld.
+_Energieprofielen_ is de verzamelnaam voor een aantal dataproducten. Elk van deze dataproducten bevat een open dataset van profielen die per gebied geaggregeerd zijn. Het verschil tussen de dataproducten ligt in het gekozen gebied en de wijze waarop de energieprofielen geaggregeerd zijn. Dit aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding. Voor de leesbaarheid heb ik het over Energieprofielen, maar wanneer het onderscheid relevant wordt dan wordt dat uiteraard vermeld.
 
 De Energieprofielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. Dit inzicht wordt gebruikt voor een betere besluitvorming over netcapaciteit, congestiebeheer en energietransitie. 
 
@@ -163,9 +163,9 @@ vars: {
 
 ----
 
-1. EDSN ontsluit de energieprofielen naar Energiedata Portaal
-2. Afnemer vraagt de energieprofielen op
-3. Energiedata Portaal levert de geaggregeerde energieprofielen uit
+1. EDSN ontsluit de energieprofielen naar het Energiedata Portaal
+2. De afnemer vraagt de geaggregeerd energieprofielen op
+3. Het Energiedata Portaal levert de geaggregeerde energieprofielen aan de afnemer
 
 === Architectuur
 
@@ -314,7 +314,7 @@ classes: {
 
 == Dataset
 
-De energieprofielen in de dataset zijn alleen gegroepeerd worden op basis van postcode, *expliciet niet* op basis van connectiviteit of topologie.
+De energieprofielen in de dataset zijn alleen gegroepeerd tot een gebied op basis van postcode (PC6) en huisnummer (zonder toevoeging), *expliciet niet* op basis van connectiviteit of topologie.
 
 === Volume, variety, veracity, velocity
 
@@ -328,7 +328,7 @@ include::partial$four_v.adoc[]
 |Type |Beschrijving
 
 |Volume
-|Klein (< 10MB)
+|Groot (~100.000 records)
 
 |Variety
 |Gestructureerd
@@ -337,14 +337,14 @@ include::partial$four_v.adoc[]
 |Hoog
 
 |Velocity
-|Laag (eenmalig, in de toekomst wellicht per kwartaal)
+|Laag (driemaandelijkse verversing)
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
 
 |===
 
 === Integratiepatroon
-De dataset van een dataproduct wordt ontsloten middels een dataservice. Hier zijn drie integratiepatronen voor: _bulk_, _request_ en _streaming_. Op basis van de bovenstaande tabel is gekozen voor het integratiepatroon _request_ (REST API). Een REST API (Representational State Transfer Application Programming Interface) is _een set van regels en conventies die het mogelijk maakt voor systemen om met elkaar te communiceren via het web_. Bijvoorbeeld om de dataset van een dataproduct op te halen. Een REST API heeft input-parameters (de vraag) en output (de dataset). Voor Energieprofielen zijn de input-parameters het gebied en de datavelden waarover geaggreerd moeten worden.
+De dataset van een dataproduct wordt ontsloten middels een dataservice. Hier zijn drie integratiepatronen voor: _bulk_, _request_ en _streaming_. Op basis van de bovenstaande tabel is gekozen voor het integratiepatroon _bulk_.
 
 == Voorwaarden
 Dit dataproduct wordt als _open data_ aangeboden.
@@ -355,94 +355,25 @@ Dit dataproduct wordt als _open data_ aangeboden.
 |===
 |Id |Type |Beschrijving
 
-|{counter:bea} |Aanname |Het wordt één dataproduct dat alledrie de aggregaties (gas, elektriciteit en SBI) kan bevatten. *Dus niet* één dataproduct per aggregatie.
+|{counter:bea} |Aanname |Er komen zes dataproducten: GV, KV, Invoeding, Afname, Gas en SBI.
 
-|{counter:bea} |Aanname |Het gebied waarover geaggregeerd wordt wordt bepaald op basis van postcode 6 van de aansluiting. *Dus niet* op basis van postcode 4, postcode 5 of op basis van Buurt.
+|{counter:bea} |Aanname |Het gebied is een groepering van postcode en huisnummer (zonder toevoeging) van de ligging van de aansluiting. Deze groepering gebruikt de mapping van het CBS.
 
-// Definitie Buurt: https://www.cbs.nl/nl-nl/cijfers/detail/86113NED?q=definitie%20buurt#shortTableDescription
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-02
-
-|{counter:bea} |Aanname |Elke aansluiting is te koppelen aan een gemeente, buurtcode, buurtnaam en postcode.
-
-// Bronr: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2, F-03
-
-|{counter:bea} |Beslissing |Het is geen probleem dat postcode 6 in meerdere wijken of buurten kunnen liggen.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-02
-
-|{counter:bea} |Aanname |De gebieden en regio's worden zo gedefinieerd dat de data daadwerkelijk op deze manier geaggregeerd kan worden.
-
-|{counter:bea} |Beslissing |De dataset van het dataproduct is alleen beschikbaar voor data delen. Het dataproduct is open.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-12
-
-|{counter:bea} |Beslissing |Dataproduct _Energieprofielen_ is een open dataproduct.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-13
-
-|{counter:bea} |Aanname |De datasets horende bij de dataproducten worden open datasets met in achtneming van herleidbaarheid en goedkeuring van het GEMS.
-
-|{counter:bea} |Beslissing |Er is een positieve uitspraak van het GEMS over doelbinding.
-
-// Bron: 20251212 GEMS advies EPICS 753 en 793.pdf
-
-|{counter:bea} |Beslissing |De dataset van het dataproduct mag geen privacy of commercieel gevoelige gegevens bevatten.
+|{counter:bea} |Beslissing |De dataset van elk dataproduct mag geen privacy of commercieel gevoelige gegevens bevatten. 
 
 // Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, NF-01
 
-|{counter:bea} |Beslissing |Minimaal 10 EANs per gebied per tijdseenheid per energierichting. Indien dat vor een gebied niet mogelijk is dan wordt vermeld dat de gevraagde data niet geleverd mag worden omdat er te weinig EANs zijn.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-06
-
-|{counter:bea} |Beslissing | Het dataproduct is een eenmalig _minimum viable product_ (MVP).
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
-
-|{counter:bea} |Beslissing |Voor de MVP betreft het data van één jaar.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-05
-
-|{counter:bea} |Aanname | We krijgen goedkeuring voor het gebruik van de daadwerkelijke SMA meetdata.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-04
-
-|{counter:bea} |Beslissing |Omdat het een eenmalige actie is, is het niet erg als het genereren van de dataset lang duurt.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 5, NF-07
-
-|{counter:bea} |Beslissing | Als peildatum voor SJI, SJA en SJV wordt het moment van het genereren van de dataset gebruikt.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 4, F-08
-
-|{counter:bea} |Beslissing |De elektriciteits data wordt gebaseerd op standaard jaarververbruik (SJV), dymaische profielfracties en restcorrectiefactor (RCF). *Expliciet* niet op basis van slimme meter data.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
-
-|{counter:bea} |Beslissing a|Dit datproduct moet rekening houden met toekomstige doorontwikkeling: 
-
-* brondata gebeaseerd op daadwerkelijk gemeten kwartier- en uurwaardes;
-* driemaandelijkse publicatie.
-
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 2
-
-// Tip over UL in TD: https://stackoverflow.com/questions/73674062/unordered-list-in-a-table-cell-with-asciidoc
-
-|{counter:bea} |Beslissing |De energiefprofielen worden per gebied opgevraagd en geaggregeerd geleverd.
-
-// Bron: Teams: PaulWiezer-20251222T1627.png
+|{counter:bea} |Beslissing |Voor GV wordt de daadwerkelijke meetdata gebruikt. Voor KV ook zodra die beschikbaar is. Tot dat moment wordt de data voor KV gebaseerd op standaard jaarververbruik (SJV), dynamische profielfracties en restcorrectiefactor (RCF). Als peildatum voor SJI, SJA en SJV wordt het moment van het genereren van de dataset gebruikt.
 
 |{counter:bea} |Aanname |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat.
 
-|{counter:bea} |Beslissing |Het dataproduct wordt gebouwd door team D&A van EDSN.
-
-// Bron: e-mail, Terugkoppeling review Energieprofielen, ma 22-12-2025 13:49
-
-|{counter:bea} |Beslissing |De ontsluiting gebeurt door team Data Delen.
-
-// Bron: e-mail, Terugkoppeling review Energieprofielen, ma 22-12-2025 13:49
-
 |{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van https://netbeheer-nederland.github.io/docs-dev/dp-meetdata/latest/index.html[Meetdata].
+
+|{counter:bea} |Beslissing |De dataset bevat de data van de 12 maanden voorafgaand aan het driemaandelijkse verversmoment.
+
+|{counter:bea} |Beslissing |Tijdens het aggregeren wordt 'ruis' toegevoegd om herleidbaarheid tot individuele aansluitingen te voorkomen.
+
+|{counter:bea} |Beslissing |Ruis is niet erg omdat de afnemer geïnteresseerd is in indicatieve waardes (orde van grootte) en niet in de de exacte waarde.
 
 |===
 
