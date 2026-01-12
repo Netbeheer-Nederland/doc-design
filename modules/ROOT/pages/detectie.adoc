@@ -30,13 +30,16 @@ In de landelijke fase wordt het statistische model landelijk toegepast op alle a
 |123 |0 |100 |0 |90 |5 |80 |0 |100
 |345 |3 |90 |22 |95 |5 |70 |4 |70
 
+Ook hier geldt dat het model géén dataproduct is.
+
 |===
 
 === Data deel fase
+In de data deel fase wordt het dataproduct DEIA gebruikt om het statistische model te ontsluiten naar derden, zoals flexaanbieders, maar ook gemeenten en mogelijk andere overheden. 
 
 == Functionele eisen
 
-Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*").
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*"). Deze functionele eisen zijn alleen van toepassing op de fase data delen. Dat komt doordat dat de enige fase met een dataproduct is.
 
 .Functionele eisen
 [cols="1, 1, 1"]
@@ -51,17 +54,29 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
 |Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
 
+|Gemeente
+|Een uniform overzicht van het geschatte piekvermogen van energie-intensieve apparaten (PV, EV, WP en BESS) achter een MS/LS-trafo
+|Ik wil deze informatie gebruiken voor besluitvorming rondom publieke laadpalen en warmtenetten.
+
+|Flexaanbieder
+|Een uniform overzicht van het geschatte piekvermogen van energie-intensieve apparaten (PV, EV, WP en BESS) achter een MS/LS-trafo
+|Ik wil deze aangeslotenen een flexpropositie doen
+
 |===
 
 == Dataservice
 
 === Pilot fase
 
-In de pilot fase is gekozen voor een decentraal scenario waarbij de verbruiksdata van de slimme meters van de 1.000 medewerkers van de drie grootste RNB's door de data science teams van de deelnemende RNB's met elkaar gedeeld wordt.
+In de pilot fase is gekozen voor _federated learning_; elke RNB gebruikt haar eigen data om het statistische model te ontwikkelen.
 
 === Landelijke fase
 
-Er is gekozen voor een centraal scenario waarbij de geregistreerde verbruiksdata van de slimme meters centraal beschikbaar wordt gesteld aan de data science teams van de deelnemende RNB's.
+In de landelijke fase is er gekozen voor een centraal scenario waarbij de geregistreerde verbruiksdata van de slimme meters centraal beschikbaar wordt gesteld aan de data science teams van de deelnemende RNB's.
+
+=== Data delen fase
+
+In de data delen fase is er gekozen voor een centraal scenario waarbij de data geaggregeerd wordt gedeeld als open dataset
 
 === Gebruiksscenario
 
