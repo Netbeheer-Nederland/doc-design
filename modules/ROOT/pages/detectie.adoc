@@ -296,60 +296,8 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |ID |Type |Beschrijving
 
 |{counter:bea} 
-|Aanname
-|Het is mogelijk om de data uit het dataproduct te verrijken met gegevens die relevant zin voor de analyse zoals weergegevens
-
-|{counter:bea} 
-|Aanname
-|Het is mogelijk op basis van analyse te bepalen of één van de vier apparaattypes (zonnepaneel, thuislaadpunt, warmtepomp of thuisbatterij) zich achter het aansluitpunt bevindt.
-
-|{counter:bea} 
-|Aanname
-|Het is mogelijk om middels een enquête 1.000 medewerkers bij de drie grootste RNB's te vinden die willen meedoen
-
-|{counter:bea} 
-|Beslissing
-|Zowel in de pilot fase als in de landelijke fase is er behoefte aan 15 minuten waarden (kwartierstanden)
-
-|{counter:bea} 
-|Aanname
-|In de pilot foas wordt de data verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
-
-|{counter:bea} 
-|Aanname
-|De Data Scientist verrijkt zelf de slimme meter data
-
-|{counter:bea} 
-|Aanname
-|De Data Scientist berekent niet het gebruiksprofiel van een energie-intensief apparaat
-
-|{counter:bea} 
 |Beslissing
 |In de landelijke fase komen de kwartierwaarden uit een database
-
-|{counter:bea} 
-|Beslissing
-|Enexis, Stedin en Alliander hebben elk hun eigen team met Data Scientists
-
-|{counter:bea} 
-|Aanname
-|Enexis, Steden en Alliander zijn de enige deelnemende RNB's
-
-|{counter:bea} 
-|Beslissing
-|Elk Data Scientist team krijgt dezelfde data
-
-|{counter:bea} 
-|Aanname
-|In de pilot fase ontvangt elke Data Scientist team van elke deelnemende RNB de verbruiksdata van de slimme meter van deze RNB en deelt deze met de Data Scientist teams van de andere deelenmende RNB's
-
-|{counter:bea} 
-|Beslissing
-|Voor elk apparaattype is er een Data Scientist team dat een model maak om haar aanwezigheid te voorspellen inclusief hun geschatte vermogen
-
-|{counter:bea} 
-|Beslissing
-|Elk Data Scientist team maakt een eigen model om de aanwezigheid één of meerdere apparaattypes te voorspellen inclusief hun geschatte vermogen
 
 |{counter:bea} 
 |Beslissing
