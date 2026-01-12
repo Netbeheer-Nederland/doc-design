@@ -20,18 +20,19 @@ De epic bestaat uit drie fasen, een pilot fase, een landelijke fase en een data 
 In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 medewerkers van de drie grootste RNB's gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
 === Landelijke fase
-In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence_). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS-trafo) niveau:
+In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS-trafo) niveau:
 
 .Voorbeeld eindresultaat (geaggregeerd op MS/LS-trafo)
 [cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
 |===
-|Trafo |PV (kW(p) |Confidence |EV (kW(p)) |Confidence |WP (kW(p)) |Confidence |BESS (kW(p)) |Confidence
+|Trafo |PV |Confidence |EV |Confidence |WP |Confidence |BESS |Confidence
 
-|123 |0 |100 |0 |90 |5kW |80 |0 |100
-|345 |3kWp |90 |22kW |95 |5kW |70 |4kW |70
+|123 |0 |100 |0 |90 |5 |80 |0 |100
+|345 |3 |90 |22 |95 |5 |70 |4 |70
 
 |===
 
+=== Data deel fase
 
 == Functionele eisen
 
