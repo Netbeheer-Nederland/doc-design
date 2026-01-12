@@ -3,7 +3,7 @@
 * xref::meetdata.adoc[]
 * xref::netbewust-laden.adoc[]
 * xref::netcode-h13.adoc[]
-* xref::rijksinspectie-data-infrastructuur.adoc[]
+* xref::rijksinspectie-digitale-infrastructuur.adoc[]
 * xref::detectie.adoc[]
 * xref::nettopologie-belasting-capaciteit.adoc[]
 * xref::energieprofielen.adoc[]
