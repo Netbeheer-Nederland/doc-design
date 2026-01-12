@@ -77,30 +77,38 @@ vars: {
   }
 }
 
-Scenario: {
+Scenario - Flexaanbieder: {
   shape: sequence_diagram
 
-  CARM: " \nC-ARM\n "
-  DST: "Data Scientist\nTeam\n(DS)"
-  RNB: "Regionale\nNetbeheerder\n(RNB)"
+  FA: "Flexaan-\nbieder"
+  EDSN: "EDSN\n "
+  TSP: "Toestemmings-\nplatform"
+  A: "Aange-\nslotene"
 
-  DST -> CARM: 1. Vraag kwartierwaarden op
-  CARM -> DST: 2. Lever kwartierwaarden
-  Analyse: {
-    DST -> DST: 3. Verrijk de kwartierwaarden
-    DST -> DST: 4. Maak en train model
+  A -> FA: "1. Verzoek flexpropositie"
+  FA -> EDSN: "2. Verzoek overzicht"
+  EDSN -> TSP: "3. Toestemming verleend?"
+  "Verifieer toestemming": {
+    TSP -> A: "4. Toestemming verleend?"
+    A -> TSP: "5. Toestemming verleend!"
   }
-  DST -> RNB: 5. Stuur model
+  TSP -> EDSN: "6. Toestemming verleend"
+  EDSN -> FA: "7. Lever overzicht"
+  FA -> FA: "8. Maak flexpropositie"
+  FA -> A: "9. Lever flexpropositie"
 }
-
 
 ----
 
-1. Een Data Scientists Team vragen de kwartierwaarden op bij C-ARM
-2. C-ARM levert de kwartierwaarden aan de het Data Scientist Team
-3. Het Data Scientist Team verrijkt de kwartierwaarden. Bijvoorbeeld met locatie- en meteogegevens
-4. Het Data Scientist Team maakt en traint het model
-5. Het Data Scientist Team stuurt het model naar de Regionale Netbeheerder
+1. Een aangeslotene verzoekt een flexaanbieder om een flexpropositie
+2. De flexaanbieder verzoekt EDSN om het uniforme overzicht van de aangeslotene
+3. EDSN vraagt aan het toestemmingsplatform of de aangeslotene toestemming heeft verleend aan de flexaanbieder
+4. Het toestemmingsplatform verifieert bij de aangeslotene of er toestemming is verleend
+5. De aangeslotene antwoordt het toestemmingsplatform dat er toestemming verleend
+6. Het toestemmingsplatform antwoordt EDSN dat er toestemming is verleend
+7. EDSN levert het uniforme overzicht van de aangeslotene aan de flexaanbieder
+8. De flexaanbieder maakt een flexpropositie op basis van het uniforme overzicht
+9. De flexaanbieder levert de flexpropositie aan de aangeslotene
 
 === Architectuur
 
@@ -289,5 +297,13 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |{counter:bea} 
 |Aanname
 |Aggregatie in de landelijke fase gebeurt op connectiviteit (je wilt netburen aggregeren)
+
+|{counter:bea}
+|Aanname
+|Het uniforme overzicht van een aangesloten wordt opgeslagen bij EDSN
+
+|{counter:bea}
+|Aanname
+|De uniforme overzichten worden periodiek bijgewerkt
 
 |===
