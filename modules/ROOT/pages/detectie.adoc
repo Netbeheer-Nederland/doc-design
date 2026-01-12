@@ -1,6 +1,6 @@
-= Detectie van energie-intensieve apparaten ten behoeve flexoplossingen
+= Detectie van energie-intensieve apparaten ten behoeve flexoplossingen (DEIA)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _energie-intensieve apparaten_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB). Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_Detectie van energie-intensieve apparaten ten behoeve flexoplossingen_), alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB). Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven. 
 
 [NOTE]
 ====
@@ -9,23 +9,23 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie zijn hierbij van belang. Denk hierbij aan zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP), thuisbatterijen (BESS) en apparaten ten behoeve van elektrisch koken. 
+Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie zijn hierbij van belang. Denk hierbij aan zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP, ook wel afgekort tot HP (heat pumps)), thuisbatterijen (BESS, Battery Energy Storage System) en apparaten ten behoeve van elektrisch koken (keramische en inductie kookplaten). 
 
 Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. Data Scientist teams bij de RNB's werken samen om statistische modellen te maken die dit inzicht kunnen geven.
 
-De epic bestaat uit twee fasen, een pilot fase en een landelijke fase. 
+De epic bestaat uit drie fasen, een pilot fase, een landelijke fase en een data deel fase. Dit is vergelijkbaar met een ontwikkel-, test- en productiefase.
 
 === Pilot fase
 
-In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 1.000 medewerkers van de drie grootste RNB's gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
+In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 medewerkers van de drie grootste RNB's gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
 === Landelijke fase
-In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kW(p)) met een bijbehorende betrouwbaarheid (Confidence). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS trafo) niveau:
+In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence_). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS-trafo) niveau:
 
-.Voorbeeld eindresultaat (geaggregeerd op trafo)
+.Voorbeeld eindresultaat (geaggregeerd op MS/LS-trafo)
 [cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
 |===
-|Trafo |PV |Confidence |EV |Confidence |WP |Confidence |BESS |Confidence
+|Trafo |PV (kW(p) |Confidence |EV (kW(p)) |Confidence |WP (kW(p)) |Confidence |BESS (kW(p)) |Confidence
 
 |123 |0 |100 |0 |90 |5kW |80 |0 |100
 |345 |3kWp |90 |22kW |95 |5kW |70 |4kW |70
