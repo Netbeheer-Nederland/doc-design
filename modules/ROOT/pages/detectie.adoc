@@ -22,10 +22,10 @@ In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 6
 === Landelijke fase
 In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Het betreft dan niet alleen maar slimme meter data. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS-trafo) niveau:
 
-.Voorbeeld eindresultaat (geaggregeerd op MS/LS-trafo)
+.Voorbeeld eindresultaat (uniform overzicht geaggregeerd op MS/LS-trafo)
 [cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
 |===
-|Trafo |PV |Confidence |EV |Confidence |WP |Confidence |BESS |Confidence
+|Trafo |PV |CL |EV |CL |WP |CL |BESS |CL
 
 |123 |0 |100 |0 |90 |5 |80 |0 |100
 |345 |3 |90 |22 |95 |5 |70 |4 |70
@@ -297,6 +297,10 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 |{counter:bea} 
 |Aanname
 |Aggregatie in de landelijke fase gebeurt op connectiviteit (je wilt netburen aggregeren)
+
+|{counter:bea}
+|Aanname
+|De data die gedeeld wordt is niet het statistische model waarmee het uniforme overzicht wordt gemaakt, maar het uniforme overzicht
 
 |{counter:bea}
 |Aanname
