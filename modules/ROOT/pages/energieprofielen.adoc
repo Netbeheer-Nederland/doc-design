@@ -10,7 +10,13 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-_Energieprofielen_ is de verzamelnaam voor een aantal dataproducten. Elk van deze dataproducten bevat een open dataset van profielen die per gebied geaggregeerd zijn. Het verschil tussen de dataproducten ligt in het gekozen gebied en de wijze waarop de energieprofielen geaggregeerd zijn. Dit aggregeren gebeurt op basis van SBI (de Standaard BedrijfsIndeling van de het CBS op basis van de KvK) of op basis van energiedrager (gas of elektriciteit). In geval van elektriciteit wordt er nog onderscheid gemaakt tussen KV (kleinverbruik) versus GV (grootverbruik) en tussen Afname versus Invoeding. Voor de leesbaarheid heb ik het over Energieprofielen, maar wanneer het onderscheid relevant wordt dan wordt dat uiteraard vermeld.
+_Energieprofielen_ is de verzamelnaam voor een aantal dataproducten. Elk van deze dataproducten bevat een open dataset van profielen die per gebied geaggregeerd zijn. Er wordt gegroepeerd op Elektra versus Gas, op KV versus GV en op Buurt versus Wijk versus Gemeente versus Postcode 4 versus Postcode 6. 
+
+Concreet levert dat de volgende 20 energieprofielen op: Elektra GV Buurt, Elektra GV Postcode 4, Elektra GV Postcode 6, Elektra GV Wijk, Elektra GV Gemeente, Elektra KV Buurt, Elektra KV Postcode 4, Elektra KV Postcode 6, Elektra KV Wijk, Elektra KV Gemeente, GAS GV Buurt, GAS GV Postcode 4, GAS GV Postcode 6, GAS GV Wijk, GAS GV Gemeente, GAS KV Buurt, GAS KV Postcode 4, GAS KV Postcode 6, GAS KV Wijk, GAS KV Gemeente. 
+
+Los hiervan is er ook een dataset geaggregeerd op SBI, de Standaard BedrijfsIndeling van de het CBS.
+
+Voor de leesbaarheid heb ik het over Energieprofielen, maar wanneer het onderscheid relevant wordt dan wordt dat uiteraard vermeld.
 
 De Energieprofielen geven inzicht in energieverbruik en -opwekking op gebiedsniveau. Dit inzicht wordt gebruikt voor een betere besluitvorming over netcapaciteit, congestiebeheer en energietransitie. 
 
@@ -98,29 +104,14 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie (*"Als ro
  |Afnemer
 a|Ik wil per gebied de volgende gegevens:
 
-* peildatum (datum van genereren dataset)
-* energiedrager;
-* gemeente;
-* buurtcode;
-* buurtnaam;
-* postcode (indien van toepassing)
-* aantal E-aansluitingen op peildatum
-* aantal G-aansluitingen op peildatum
-* totaal E-standaardjaarverbruik invoeding (E-SJI)
-* totaal E-standaardjaarverbruik afname (E-SJA)
-* totaal G-standaardjaarverbruik (G-SJV)
-* E-kwartierwaarden afgelopen jaar inclusief
-** energierichting (invoeding en afname)
-** begingmoment (het kwartier)
-** aantal kWh
-* G-uurwaarden afgelopen jaar inclusief
-** energierichting (afname)
-** beginmoment (uur)
-** aantal m^3^
+* Peildatum (datum en tijd van genereren dataset)
+* Gebied (Buurt, Wijk, Gemeente, PC4, PC6)
+* Verbruik afname
+* Verbruik invoeding (niet bij gas)
 
 |Want dit is de data die ik per gebied nodig heb
 
-// Bron: ADA-E1026 - Energiedata KleinVerbruik-071025-072013.pdf, pagina 3, F-03
+// Bron: Mail, Vincent de Graaff, maandag 12 januari 2026 15:54
 
  |{counter:fe}
  |Afnemer
