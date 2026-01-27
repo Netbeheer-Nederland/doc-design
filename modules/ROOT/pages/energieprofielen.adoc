@@ -346,7 +346,9 @@ Dit dataproduct wordt als _open data_ aangeboden.
 |===
 |Id |Type |Beschrijving
 
-|{counter:bea} |Aanname |Er komen zes dataproducten: GV, KV, Invoeding, Afname, Gas en SBI.
+|{counter:bea} |Beslissing |Er komen 21 dataproducten: : (Elektra\|Gas) x (KV\|GV) x (PC4\|PC6\|Buurt\|Wijk\|Gemeente) en SBI.
+
+// Bron: Mail, Vincent de Graaff, maandag 12 januari 2026 15:54
 
 |{counter:bea} |Aanname |Het gebied is een groepering van postcode en huisnummer (zonder toevoeging) van de ligging van de aansluiting. Deze groepering gebruikt de mapping van het CBS.
 
@@ -356,15 +358,21 @@ Dit dataproduct wordt als _open data_ aangeboden.
 
 |{counter:bea} |Beslissing |Voor GV wordt de daadwerkelijke meetdata gebruikt. Voor KV ook zodra die beschikbaar is. Tot dat moment wordt de data voor KV gebaseerd op standaard jaarververbruik (SJV), dynamische profielfracties en restcorrectiefactor (RCF). Als peildatum voor SJI, SJA en SJV wordt het moment van het genereren van de dataset gebruikt.
 
-|{counter:bea} |Aanname |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat.
+|{counter:bea} |Beslissing |De data uit de dataset van het dataproduct wordt aangeboden in JSON-LD-formaat.
+
+// Bron: Mondeling, Besloten door Enterprise Architect Leon
 
 |{counter:bea} |Aanname |Het CIM-model kan gebaseerd worden op het model van https://netbeheer-nederland.github.io/docs-dev/dp-meetdata/latest/index.html[Meetdata].
 
-|{counter:bea} |Beslissing |De dataset bevat de data van de 12 maanden voorafgaand aan het driemaandelijkse verversmoment.
+|{counter:bea} |Aanname |Elke dataset bevat gegevens over drie maanden.
+
+|{counter:bea} |Beslissing |De datasets samen bevatten de data van de 12 maanden voorafgaand aan het driemaandelijkse verversmoment.
 
 |{counter:bea} |Beslissing |Tijdens het aggregeren wordt 'ruis' toegevoegd om herleidbaarheid tot individuele aansluitingen te voorkomen.
 
 |{counter:bea} |Beslissing |Ruis is niet erg omdat de afnemer geïnteresseerd is in indicatieve waardes (orde van grootte) en niet in de de exacte waarde.
+
+|{counter:bea} |Beslissing |De datasets worden beschikbaar gesteld 'in één grote bak' op het Energiedata Portaal.
 
 |===
 
