@@ -35,7 +35,7 @@ In de landelijke fase wordt het statistische model landelijk toegepast op alle a
 Deze tabel is géén dataproduct.
 
 === Data deel fase
-In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar flexaanbieders en het geagregeerde uniforme overzicht als open dataproduct set aan te bieden op het Energiedata Portaal van EDSN.
+In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar flexaanbieders en het geagregeerde uniforme overzicht als open dataproduct aan te bieden op het Energiedata Portaal van EDSN.
 
 De data bestaat uit kwartierwarden van 10 dagen per kwartaal. PV- en BESS-data is invoedingsdata en mag op aansluitniveau gedeeld worden. WP- en EV-data zijn afnamedata en mogen alleen geaggregeerd gedeeld worden.
 
@@ -346,6 +346,10 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 |{counter:bea}
 |Aanname
 |De geaggreeerde uniforme overzichten worden ontsloten op het Energiedata Portaal van EDSN
+
+|{counter:bea}
+|Aanname
+|In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
 
 
 |===
