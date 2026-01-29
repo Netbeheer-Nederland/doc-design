@@ -133,15 +133,20 @@ Scenario - Geaggregeerd: {
 
   "DST": "Data Science\nTeams"
   "DP": "Energiedata\nPortaal"
-  "Afn": "Afnemer\n "
+  "Opv": "Opvrager\n "
   
   "DST" -> "DP": "1. Ontsluit uniforme overzicht"
-  "Afn" -> "DP": "2. Vraag uniforme overzicht"
+  "Opv" -> "DP": "2. Vraag uniforme overzicht"
   "DP" -> "DP": "3. Aggregeer het uniforme overzicht"
-  "DP" -> "Afn": "4. Lever uniforme overzich uit"
+  "DP" -> "Opv": "4. Lever uniforme overzich uit"
 }
 
 ----
+
+1. De Data Scientists Teams ontsluiten de uniforme weergaves naar het Energiedata Portaal van EDSN.
+2. Een opvrager vraagt het geaggregeerde uniforme overzicht van een gebied op bij het Energiedata Portaal van EDSN.
+3. Het Energiedata Portaal van EDSN genereert het gewenste geaggregeerde uniforme overzicht.
+4. Het Energiedata Portaal van EDSN levert het gewenste geaggregeerde uniforme overzicht aan de opvrager.
 
 === Architectuur
 
