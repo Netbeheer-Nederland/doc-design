@@ -32,8 +32,12 @@ In de landelijke fase wordt het statistische model landelijk toegepast op alle a
 
 |===
 
+Deze tabel is géén dataproduct.
+
 === Data deel fase
-In de data deel fase wordt het dataproduct DEIA gebruikt om het statistische model te ontsluiten naar  flexaanbieders. 
+In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar flexaanbieders en het geagregeerde uniforme overzicht als open dataproduct set aan te bieden op het Energiedata Portaal van EDSN.
+
+De data bestaat uit kwartierwarden van 10 dagen per kwartaal. PV- en BESS-data is invoedingsdata en mag op aansluitniveau gedeeld worden. WP- en EV-data zijn afnamedata en mogen alleen geaggregeerd gedeeld worden.
 
 == Functionele eisen
 
@@ -63,9 +67,9 @@ Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als ro
 
 == Dataservice
 
-In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
+=== Gebruiksscenario - Flexaanbieder
 
-=== Gebruiksscenario
+In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
 
 .Gebruiksscenario 
 [d2,svg,theme=4]
@@ -109,6 +113,43 @@ Scenario - Flexaanbieder: {
 7. EDSN levert het uniforme overzicht van de aangeslotene aan de flexaanbieder
 8. De flexaanbieder maakt een flexpropositie op basis van het uniforme overzicht
 9. De flexaanbieder levert de flexpropositie aan de aangeslotene
+
+=== Gebruiksscenario - Geaggregeerd
+
+In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggreerde datasets als open dataproduct worden aangeboden.
+
+.Gebruiksscenario 
+[d2,svg,theme=4]
+----
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+
+Scenario - Geaggregeerd: {
+  shape: sequence_diagram
+
+  FA: "Flexaan-\nbieder"
+  EDSN: "EDSN\n "
+  TSP: "Toestemmings-\nplatform"
+  A: "Aange-\nslotene"
+
+  A -> FA: "1. Verzoek flexpropositie"
+  FA -> EDSN: "2. Verzoek overzicht"
+  EDSN -> TSP: "3. Toestemming verleend?"
+  "Verifieer toestemming": {
+    TSP -> A: "4. Toestemming verleend?"
+    A -> TSP: "5. Toestemming verleend!"
+  }
+  TSP -> EDSN: "6. Toestemming verleend"
+  EDSN -> FA: "7. Lever overzicht"
+  FA -> FA: "8. Maak flexpropositie"
+  FA -> A: "9. Lever flexpropositie"
+}
+
+----
 
 === Architectuur
 
@@ -245,8 +286,7 @@ classes: {
 
 ----
 
-
-1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
+De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
 
 == Dataset
 
@@ -278,7 +318,7 @@ include::partial$four_v.adoc[]
 
 == Voorwaarden
 
-Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist omdat een derde de aanvraag doet.
+Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist omdat een derde de aanvraag doet.
 
 == Beslissingen en aannames
 
@@ -288,26 +328,27 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Gronds
 
 |{counter:bea} 
 |Beslissing
-|In de landelijke fase komen de kwartierwaarden uit een database
-
-|{counter:bea} 
-|Beslissing
 |De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 danwel MS/LS-trafo)
 
-|{counter:bea} 
-|Aanname
-|Aggregatie in de landelijke fase gebeurt op connectiviteit (je wilt netburen aggregeren)
+ |{counter:bea} 
+ |Aanname
+ a|De Data Scientist teams verrijken de kwartierwaarden met 
 
-|{counter:bea}
-|Aanname
-|De data die gedeeld wordt is niet het statistische model waarmee het uniforme overzicht wordt gemaakt, maar het uniforme overzicht
-
-|{counter:bea}
-|Aanname
-|Het uniforme overzicht van een aangesloten wordt opgeslagen bij EDSN
+* het correspondentieadres van de aangeslotene (ten behoeve van de flexaanbieder),
+* het locatieadres van de aansluiting (ten behoeve van de aggregatie),
+* de MS/LS-transformator van de aansluiting (ten behoeve van de aggregatie)
 
 |{counter:bea}
 |Aanname
 |De uniforme overzichten worden periodiek bijgewerkt
+
+|{counter:bea}
+|Aanname
+|De uniforme overzichten per aansluiting worden ontsloten op het Energiedata Portaal van EDSN
+
+|{counter:bea}
+|Aanname
+|De geaggreeerde uniforme overzichten worden ontsloten op het Energiedata Portaal van EDSN
+
 
 |===
