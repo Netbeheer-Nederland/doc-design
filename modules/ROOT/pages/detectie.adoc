@@ -127,26 +127,18 @@ vars: {
     pad: 20
   }
 }
-
+  
 Scenario - Geaggregeerd: {
   shape: sequence_diagram
 
-  FA: "Flexaan-\nbieder"
-  EDSN: "EDSN\n "
-  TSP: "Toestemmings-\nplatform"
-  A: "Aange-\nslotene"
-
-  A -> FA: "1. Verzoek flexpropositie"
-  FA -> EDSN: "2. Verzoek overzicht"
-  EDSN -> TSP: "3. Toestemming verleend?"
-  "Verifieer toestemming": {
-    TSP -> A: "4. Toestemming verleend?"
-    A -> TSP: "5. Toestemming verleend!"
-  }
-  TSP -> EDSN: "6. Toestemming verleend"
-  EDSN -> FA: "7. Lever overzicht"
-  FA -> FA: "8. Maak flexpropositie"
-  FA -> A: "9. Lever flexpropositie"
+  "DST": "Data Science\nTeams"
+  "DP": "Energiedata\nPortaal"
+  "Afn": "Afnemer\n "
+  
+  "DST" -> "DP": "1. Ontsluit uniforme overzicht"
+  "Afn" -> "DP": "2. Vraag uniforme overzicht"
+  "DP" -> "DP": "3. Aggregeer het uniforme overzicht"
+  "DP" -> "Afn": "4. Lever uniforme overzich uit"
 }
 
 ----
