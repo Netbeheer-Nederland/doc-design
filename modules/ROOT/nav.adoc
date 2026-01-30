@@ -1,3 +1,4 @@
+* xref::architecture-decision-log.adoc[]
 * xref::buurtnet.adoc[]
 * xref::capaciteitskaart.adoc[]
 * xref::meetdata.adoc[]
