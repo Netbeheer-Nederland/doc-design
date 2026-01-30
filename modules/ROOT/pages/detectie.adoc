@@ -1,6 +1,6 @@
-= Detectie van energie-intensieve apparaten ten behoeve flexoplossingen
+= Detectie van energie-intensieve apparaten ten behoeve flexoplossingen (DEIA)
 
-Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct _energie-intensieve apparaten_, alsmede haar achterliggende architectuur en de gemaakte keuzes. Het is geschreven vanuit het perspectief van de Regionale Netbeheerder (RNB). Voor de leesbaarheid en voor de begripsvorming wordt soms ook een deel van de context beschreven. 
+Dit ontwerp beschrijft het beoogde gebruiksscenario voor het dataproduct DEIA (_**D**etectie van **E**nergie-**I**ntensieve **A**pparaten ten behoeve flexoplossingen_), alsmede haar achterliggende architectuur en de gemaakte keuzes. 
 
 [NOTE]
 ====
@@ -9,60 +9,67 @@ include::partial$data_product.adoc[]
 
 == Reikwijdte
 
-Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie zijn hierbij van belang. Denk hierbij aan zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP), thuisbatterijen (BESS) en apparaten ten behoeve van elektrisch koken. 
+Om het net beter te benutten voor kleinverbruik klanten is slimme sturing van apparaten en/of gedragsverandering nodig. Met name de zogenaamde energie-intensieve apparaten met flexibiliteitspotentie zijn hierbij van belang. Denk hierbij aan zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP, ook wel afgekort tot HP (_heat pumps_)), thuisbatterijen (BESS, _Battery Energy Storage System_) en apparaten ten behoeve van elektrisch koken (keramische en inductie kookplaten). 
 
-Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. Data Scientist teams bij de RNB's werken samen om statistische modellen te maken die dit inzicht kunnen geven.
+Om deze apparaten slim te kunnen sturen, op basis van toestemming van de klant, hebben dienstverleners (flexaanbieders) inzicht nodig in waar deze energie-intensieve apparaten zich bevinden. Data Scientist teams bij de RNB's werken samen om statistische modellen te maken die dit inzicht kunnen geven.
 
-De epic bestaat uit twee fasen, een pilot fase en een landelijke fase. 
+De epic bestaat uit drie fasen, een pilot fase, een landelijke fase en een data deel fase. Het dataproduct DEIA wordt alleen in de fase data delen gebruikt.
 
 === Pilot fase
 
-In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 1.000 medewerkers van de drie grootste RNB's gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
+In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 vrijwilligers gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
 === Landelijke fase
-In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Wellicht gaat er eerst een kleine, regionale testfase aan vooraf. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kW(p)) met een bijbehorende betrouwbaarheid (Confidence). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS trafo) niveau:
+In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Het betreft dan niet alleen maar slimme meter data. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS-trafo) niveau:
 
-.Voorbeeld eindresultaat (geaggregeerd op trafo)
+.Voorbeeld eindresultaat (uniform overzicht geaggregeerd op MS/LS-trafo)
 [cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
 |===
-|Trafo |PV |Confidence |EV |Confidence |WP |Confidence |BESS |Confidence
+|Trafo |PV |CL |EV |CL |WP |CL |BESS |CL
 
-|123 |0 |100 |0 |90 |5kW |80 |0 |100
-|345 |3kWp |90 |22kW |95 |5kW |70 |4kW |70
+|123 |0 |100 |0 |90 |5 |80 |0 |100
+|345 |3 |90 |22 |95 |5 |70 |4 |70
 
 |===
 
+Deze tabel is géén dataproduct.
+
+=== Data deel fase
+In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar flexaanbieders en het geagregeerde uniforme overzicht als open dataproduct aan te bieden op het Energiedata Portaal van EDSN.
+
+De data bestaat uit kwartierwarden van 10 dagen per kwartaal. PV- en BESS-data is invoedingsdata en mag op aansluitniveau gedeeld worden. WP- en EV-data zijn afnamedata en mogen alleen geaggregeerd gedeeld worden.
 
 == Functionele eisen
 
-Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*").
+Het dataproduct moet voldoen aan functionele eisen; deze vertellen wie ("*Als rol*") welke data ("*Wil ik*") nodig heeft en waarom ("*Want*"). Deze functionele eisen zijn alleen van toepassing op de fase data delen. Dat komt doordat dat de enige fase is met een dataproduct.
 
 .Functionele eisen
-[cols="1, 1, 1"]
+[cols="1, 1, 8, 8"]
 |===
-|Als rol |Wil ik |Want
+|ID |Als rol |Wil ik |Want
 
+|{counter:fe} 
 |Regionale Netbeheerder (RNB)
 |Een uniform overzicht van aansluitingen en het gedrag van invoeding en afname in de tijd
 |Ik wil deze informatie laten verrijken zodat er een analyse op uitgevoerd kan worden die met grote zekerheid kan vaststellen of zich achter deze aansluiting een van de volgende vijf apparaattypes bevindt: zonnepanelen (PV), thuislaadpunten (EV), warmtepompen (WP),  thuisbatterijen (BESS) of apparaten tbv elektrisch koken
 
+|{counter:fe} 
 |Regionale Netbeheerder (RNB)
 |Een uniform overzicht van aansluitingen waarachter zich energie-intensieve apparaten bevinden
 |Ik wil de aangeslotene in staat stellen om de verbruiksdata van haar slimme meter, met haar toestemming, te delen met aanbiedingen van flexoplossingen
+
+|{counter:fe} 
+|Flexaanbieder
+|Een uniform overzicht van het geschatte piekvermogen van energie-intensieve apparaten (PV, EV, WP en BESS) van een aangeslotene
+|Ik wil deze aangeslotene, op diens verzoek, een flexpropositie doen
 
 |===
 
 == Dataservice
 
-=== Pilot fase
+=== Gebruiksscenario - Flexaanbieder
 
-In de pilot fase is gekozen voor een decentraal scenario waarbij de verbruiksdata van de slimme meters van de 1.000 medewerkers van de drie grootste RNB's door de data science teams van de deelnemende RNB's met elkaar gedeeld wordt.
-
-=== Landelijke fase
-
-Er is gekozen voor een centraal scenario waarbij de geregistreerde verbruiksdata van de slimme meters centraal beschikbaar wordt gesteld aan de data science teams van de deelnemende RNB's.
-
-=== Gebruiksscenario
+In de data delen fase is er gekozen voor een centraal scenario waarbij de aangeslotene toestemming verleent aan een flexaanbieder om een flexpropositie te doen.
 
 .Gebruiksscenario 
 [d2,svg,theme=4]
@@ -74,30 +81,72 @@ vars: {
   }
 }
 
-Scenario: {
+Scenario - Flexaanbieder: {
   shape: sequence_diagram
 
-  CARM: " \nC-ARM\n "
-  DST: "Data Scientist\nTeam\n(DS)"
-  RNB: "Regionale\nNetbeheerder\n(RNB)"
+  FA: "Flexaan-\nbieder"
+  EDSN: "EDSN\n "
+  TSP: "Toestemmings-\nplatform"
+  A: "Aange-\nslotene"
 
-  DST -> CARM: 1. Vraag kwartierwaarden op
-  CARM -> DST: 2. Lever kwartierwaarden
-  Analyse: {
-    DST -> DST: 3. Verrijk de kwartierwaarden
-    DST -> DST: 4. Maak en train model
+  A -> FA: "1. Verzoek flexpropositie"
+  FA -> EDSN: "2. Verzoek overzicht"
+  EDSN -> TSP: "3. Toestemming verleend?"
+  "Verifieer toestemming": {
+    TSP -> A: "4. Toestemming verleend?"
+    A -> TSP: "5. Toestemming verleend!"
   }
-  DST -> RNB: 5. Stuur model
+  TSP -> EDSN: "6. Toestemming verleend"
+  EDSN -> FA: "7. Lever overzicht"
+  FA -> FA: "8. Maak flexpropositie"
+  FA -> A: "9. Lever flexpropositie"
 }
-
 
 ----
 
-1. Een Data Scientists Team vragen de kwartierwaarden op bij C-ARM
-2. C-ARM levert de kwartierwaarden aan de het Data Scientist Team
-3. Het Data Scientist Team verrijkt de kwartierwaarden. Bijvoorbeeld met locatie- en meteogegevens
-4. Het Data Scientist Team maakt en traint het model
-5. Het Data Scientist Team stuurt het model naar de Regionale Netbeheerder
+1. Een aangeslotene verzoekt een flexaanbieder om een flexpropositie
+2. De flexaanbieder verzoekt EDSN om het uniforme overzicht van de aangeslotene
+3. EDSN vraagt aan het toestemmingsplatform of de aangeslotene toestemming heeft verleend aan de flexaanbieder
+4. Het toestemmingsplatform verifieert bij de aangeslotene of er toestemming is verleend
+5. De aangeslotene antwoordt het toestemmingsplatform dat er toestemming verleend
+6. Het toestemmingsplatform antwoordt EDSN dat er toestemming is verleend
+7. EDSN levert het uniforme overzicht van de aangeslotene aan de flexaanbieder
+8. De flexaanbieder maakt een flexpropositie op basis van het uniforme overzicht
+9. De flexaanbieder levert de flexpropositie aan de aangeslotene
+
+=== Gebruiksscenario - Geaggregeerd
+
+In de data delen fase is er gekozen voor een centraal scenario waarbij de geaggreerde datasets als open dataproduct worden aangeboden.
+
+.Gebruiksscenario 
+[d2,svg,theme=4]
+----
+
+vars: {
+  d2-config: {
+    pad: 20
+  }
+}
+  
+Scenario - Geaggregeerd: {
+  shape: sequence_diagram
+
+  "DST": "Data Science\nTeams"
+  "DP": "Energiedata\nPortaal"
+  "Opv": "Opvrager\n "
+  
+  "DST" -> "DP": "1. Ontsluit uniforme overzicht"
+  "Opv" -> "DP": "2. Vraag uniforme overzicht"
+  "DP" -> "DP": "3. Aggregeer het uniforme overzicht"
+  "DP" -> "Opv": "4. Lever uniforme overzich uit"
+}
+
+----
+
+1. De Data Scientists Teams ontsluiten de uniforme weergaves naar het Energiedata Portaal van EDSN.
+2. Een opvrager vraagt het geaggregeerde uniforme overzicht van een gebied op bij het Energiedata Portaal van EDSN.
+3. Het Energiedata Portaal van EDSN genereert het gewenste geaggregeerde uniforme overzicht.
+4. Het Energiedata Portaal van EDSN levert het gewenste geaggregeerde uniforme overzicht aan de opvrager.
 
 === Architectuur
 
@@ -234,8 +283,7 @@ classes: {
 
 ----
 
-
-1. De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
+De structuur van de dataset is gebaseerd op het _Begrippenmodel NBNL_ en het _Common Information Model_
 
 == Dataset
 
@@ -262,64 +310,46 @@ include::partial$four_v.adoc[]
 |Hoog
 
 |Velocity
-|Laag (15 minuten)
+|Laag
 |===
 
 == Voorwaarden
 
-Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist indien een derde de aanvraag doet, voor een medewerker is toestemming niet vereist indien het om meetdata van de eigen aansluiting(en) gaat.
+Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag _Grondslag Toestemming_. De grondslag is vereist omdat een derde de aanvraag doet.
 
 == Beslissingen en aannames
 
-[cols="1, 1"]
+[cols="1, 3, 6"]
 |===
-|Type |Beschrijving
+|ID |Type |Beschrijving
 
-|Aanname
-|Het is mogelijk om de data uit het dataproduct te verrijken met gegevens die relevant zin voor de analyse zoals weergegevens
-
-|Aanname
-|Het is mogelijk op basis van analyse te bepalen of één van de vier apparaattypes (zonnepaneel, thuislaadpunt, warmtepomp of thuisbatterij) zich achter het aansluitpunt bevindt.
-
-|Aanname
-|Het is mogelijk om middels een enquête 1.000 medewerkers bij de drie grootste RNB's te vinden die willen meedoen
-
-|Beslissing
-|Zowel in de pilot fase als in de landelijke fase is er behoefte aan 15 minuten waarden (kwartierstanden)
-
-|Aanname
-|In de pilot foas wordt de data verkregen door het periodiek en rechtstreeks uitlezen van de slimme meter, niet door het opvragen van reeds uitgelezen en opgeslagen slimme metersstanden
-
-|Aanname
-|De Data Scientist verrijkt zelf de slimme meter data
-
-|Aanname
-|De Data Scientist berekent niet het gebruiksprofiel van een energie-intensief apparaat
-
-|Beslissing
-|In de landelijke fase komen de kwartierwaarden uit een database
-
-|Beslissing
-|Enexis, Stedin en Alliander hebben elk hun eigen team met Data Scientists
-
-|Aanname
-|Enexis, Steden en Alliander zijn de enige deelnemende RNB's
-
-|Beslissing
-|Elk Data Scientist team krijgt dezelfde data
-
-|Aanname
-|In de pilot fase ontvangt elke Data Scientist team van elke deelnemende RNB de verbruiksdata van de slimme meter van deze RNB en deelt deze met de Data Scientist teams van de andere deelenmende RNB's
-
-|Beslissing
-|Voor elk apparaattype is er een Data Scientist team dat een model maak om haar aanwezigheid te voorspellen inclusief hun geschatte vermogen
-
-|Beslissing
-|Elk Data Scientist team maakt een eigen model om de aanwezigheid één of meerdere apparaattypes te voorspellen inclusief hun geschatte vermogen
-
+|{counter:bea} 
 |Beslissing
 |De Data Scientist teams verrijken de kwartierwaarden met locatiegegevens (PC6 danwel MS/LS-trafo)
 
+ |{counter:bea} 
+ |Aanname
+ a|De Data Scientist teams verrijken de kwartierwaarden met 
+
+* het correspondentieadres van de aangeslotene (ten behoeve van de flexaanbieder),
+* het locatieadres van de aansluiting (ten behoeve van de aggregatie),
+* de MS/LS-transformator van de aansluiting (ten behoeve van de aggregatie)
+
+|{counter:bea}
 |Aanname
-|Aggregatie in de landelijke fase gebeurt op connectiviteit (je wilt netburen aggregeren)
+|De uniforme overzichten worden periodiek bijgewerkt
+
+|{counter:bea}
+|Aanname
+|De uniforme overzichten per aansluiting worden ontsloten op het Energiedata Portaal van EDSN
+
+|{counter:bea}
+|Aanname
+|De geaggreeerde uniforme overzichten worden ontsloten op het Energiedata Portaal van EDSN
+
+|{counter:bea}
+|Aanname
+|In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
+
+
 |===
