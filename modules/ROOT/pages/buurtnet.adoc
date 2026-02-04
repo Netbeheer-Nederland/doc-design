@@ -79,11 +79,13 @@ Klant -> EDSN: "4. Vraag connectiviteit & belasting"
 EDSN -> Klant: "5. Lever connectiviteit & belasting"
 ----
 
-1. Elke netbeheerder levert twee datasets aan EDSN met connectiviteit &
-belasting voor het LS-net binnen het dekkingsgebied van de netbeheerder;
+1. Elke netbeheerder levert vier datasets aan EDSN met _Equipment_, _Topology_,
+_Operation_ en _GeoLocation_ voor het LS-net binnen het dekkingsgebied van de
+netbeheerder;
 2. EDSN verwerkt de datasets en stelt deze beschikbaar aan afnemers. Hiervoor
 _consolideert_ EDSN de aangeleverde datasets van de verschillende netbeheerders
-voor centrale ontsluiting;
+voor centrale ontsluiting. Daar waar nodig wordt verrijkt, b.v. met
+aggregatieniveaus;
 3. EDSN bevestigt ontvangst en verwerking van de datasets aan de netbeheerder;
 4. Een klant vraagt de geconsolideerde datasets op bij EDSN;
 5. EDSN levert de geconsolideerde datasets.
@@ -230,11 +232,11 @@ legend: "" {
 }
 ----
 
-* de structuur van de dataset behorende bij het dataproduct is
+* de structuur van de datasets behorende bij de dataproducten is
 gebaseerd op het _Begrippenmodel NBNL_ (betekenis) en _NBNL Profile Group_
 (structuur);
-* er worden drie dataproducten beschikbaar gesteld door de netbeheerder vanuit
-het Dataloket van de netbeheerder. Er worden drie JSON-LD bestanden aangeleverd
+* er worden vier dataproducten beschikbaar gesteld door de netbeheerder vanuit
+het Dataloket van de netbeheerder. Er worden vier JSON-LD bestanden aangeleverd
 aan EDSN, conform bovenstaand architectuuroverzicht (zie <<_dataset>>);
 * EDSN verwerkt de aangeleverde dataproducten tot geconsolideerde datasets en
 ontsluit de datasets als JSON-LD bestanden of vanuit een REST API #TODO:
@@ -242,7 +244,7 @@ alignment met systeemarchitectuur EDSN#.
 
 == Dataset
 
-Voor de informatiebehoefte van Buurtnet worden drie dataproducten vanuit de
+Voor de informatiebehoefte van Buurtnet worden vier dataproducten vanuit de
 _NBNL Profile Group_ (her)gebruikt:
 
 * *Equipment* (EQ): connectiviteit voor het LS-net, definitie van netfuncties
