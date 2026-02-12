@@ -20,7 +20,7 @@ De epic bestaat uit drie fasen, een pilot fase, een landelijke fase en een data 
 In de pilot fase wordt een jaar lang de verbruiksdata van de slimme meters van 620 vrijwilligers gebruikt om een statistisch model te ontwikkelen en te trainen. Dit model is géén dataproduct.
 
 === Landelijke fase
-In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Het betreft dan niet alleen maar slimme meter data. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is _niet_ per aansluiting, maar geaggreerd op middenspanningsruimte (MS/LS-trafo) niveau:
+In de landelijke fase wordt het statistische model landelijk toegepast op alle aansluitingen waarvoor de _use case_ is link:https://www.netbeheernederland.nl/Goedgekeurde_use_cases[goedgekeurd]. Het betreft dan niet alleen maar slimme meter data. Deze fase resulteert in een tabel met voor elk energie-intensief apparaat (PV, EV, WP, BESS) het geschatte vermogen (in kiloWatt piek (kW(p))) met een bijbehorende betrouwbaarheid (_Confidence Level_ in procenten). Deze tabel wordt periodiek bijgewerkt. Zij is per aansluiting en kan geaggregeerd worden tot middenspanningsruimte (MS/LS-trafo) of tot postcode 6-niveau niveau en tot gebiedsniveau. Formeel zijn dit geen dataproducten omdat ze worden uitgewisseld tussen netbeheerders onderling.
 
 .Voorbeeld eindresultaat (uniform overzicht geaggregeerd op MS/LS-trafo)
 [cols= "1, 1, 1, 1, 1, 1, 1, 1, 1"]
@@ -31,8 +31,6 @@ In de landelijke fase wordt het statistische model landelijk toegepast op alle a
 |345 |3 |90 |22 |95 |5 |70 |4 |70
 
 |===
-
-Deze tabel is géén dataproduct.
 
 === Data deel fase
 In de data deel fase wordt het statistische model uit de landelijke fase gebruikt om het uniforme overzicht te ontsluiten naar flexaanbieders en het geagregeerde uniforme overzicht als open dataproduct aan te bieden op het Energiedata Portaal van EDSN.
@@ -350,6 +348,22 @@ Dit dataproduct wordt als _gesloten dataproduct_ aangeboden, onder de grondslag 
 |{counter:bea}
 |Aanname
 |In de data delen fase is alle landelijke data beschikbaar. Zowel de data van Alliander, Enexis en Stedin, als de data van Coteq, Rendo en Westland Infra.
+
+|{counter:bea}
+|Aanname
+|Wat in de landelijke fase wordt opgeleverd is ten behoeve van de netbeheerders onderling, formeel geen dataproduct. In de data deel fase wordt er ook extern gedeeld waardoor het wel een dataproduct wordt.
+
+|{counter:bea}
+|Aanname
+|In de data deel fase zal het statistische model hertraind moeten worden. Zowel periodiek als incidenteel, bijvoorbeeld met de komst van nieuwe relevante energie-intensieve apparaten.
+
+|{counter:bea}
+|Aanname
+|In de data deel fase wordt de data op postcode 6-niveau geaggregeerd. *Dus niet* op MSR en ook niet op gebied.
+
+|{counter:bea}
+|Aanname
+|In de data deel fase worden de dataproducten centraal (op één URLendpoint aangeboden). *Dus niet* fedratieft via zes URLs (één per nebeheerder)
 
 
 |===
