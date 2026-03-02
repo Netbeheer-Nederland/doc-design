@@ -23,3 +23,6 @@
 # Diagrams.net
 *.bkp
 *.dtmp
+
+# Devcontainer
+.devcontainer.json
