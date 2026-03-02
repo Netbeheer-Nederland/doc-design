@@ -260,8 +260,8 @@ Dit dataproduct wordt als _gesloten data_ aangeboden, onder de grondslag _Wettel
 |Beslissing
 |Er is gekozen voor een decentraal scenario waarbij de RDI de procesdata opvraagt bij de DSB _via_ de GUE
 
-|Aanname
-|Het GUE regelt (eventuele) autorisatie en authenticatie
+|Beslissing
+|Het GUE regelt autorisatie, authenticatie en filtering waardoor zij de gewenste datasets ongewijzigd kan verstrekken
 
 |Aanname
 |Het betreft uitsluitend KV-klanten; GV-klanten hebben geen salderingsregeling (maar misschien wel een ouderwetse terugdraaimeter)
