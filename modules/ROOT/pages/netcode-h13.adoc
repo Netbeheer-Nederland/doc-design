@@ -71,37 +71,22 @@ Elektriciteit].
 |{counter:fr}
 |RNB
 |Inzicht in alle onderstations in het landelijk hoogspanningsnet
-|Ik heb behoefte aan inzicht in de koppeling tussen landelijk en regionaal net.
-|§13.5.5
+|
+|
 
 |{counter:fr}
 |RNB
 |Inzicht in alle voor mij relevante koppelpunten met het landelijk
- hoogspanningsnet
-|Ik heb behoefte aan inzicht in de koppeling tussen landelijk en regionaal net.
-|§13.5.5
+hoogspanningsnet
+|
+|
 
 |{counter:fr}
 |LNB
-|Inzicht in de structurele gegevens van elk afzonderlijk station van de RNB dat
- direct gekoppeld is aan het landelijk hoogspanningsnet
+|Inzicht in elke vermogenstransformator van de RNB, direct gekoppeld aan het
+landelijk hoogspanningsnet
 |
-|§13.5.1, §13.5.2
-
-|{counter:fr}
-|LNB
-|Inzicht in de structurele gegevens van elk achter een overdrachtspunt van een
- aansluiting gelegen deelnet van de RNB
 |
-|§13.5.3, §13.5.4
-
-|{counter:fr}
-|LNB
-|Inzicht in de structurele gegevens van elk achter een overdrachtspunt van een
- aansluiting gelegen deelnet van elke beheerder van een _gesloten
- distributiesysteem_ aangesloten op het landelijk hoogspanningsnet
-|
-|§13.5.5
 
 |===
 
